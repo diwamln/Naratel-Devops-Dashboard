@@ -483,6 +483,7 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$re
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$file$2d$text$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__FileText$3e$__ = __turbopack_context__.i("[project]/node_modules/lucide-react/dist/esm/icons/file-text.js [app-client] (ecmascript) <export default as FileText>");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$x$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__X$3e$__ = __turbopack_context__.i("[project]/node_modules/lucide-react/dist/esm/icons/x.js [app-client] (ecmascript) <export default as X>");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$key$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Key$3e$__ = __turbopack_context__.i("[project]/node_modules/lucide-react/dist/esm/icons/key.js [app-client] (ecmascript) <export default as Key>");
+var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$layout$2d$grid$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__LayoutGrid$3e$__ = __turbopack_context__.i("[project]/node_modules/lucide-react/dist/esm/icons/layout-grid.js [app-client] (ecmascript) <export default as LayoutGrid>");
 var __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$app$2f$components$2f$Navigation$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/src/app/components/Navigation.js [app-client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$navigation$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/next/navigation.js [app-client] (ecmascript)");
 ;
@@ -944,7 +945,7 @@ function ManifestPage() {
                 onPageChange: handleNavigation
             }, void 0, false, {
                 fileName: "[project]/src/app/manifest/page.js",
-                lineNumber: 333,
+                lineNumber: 334,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -953,37 +954,64 @@ function ManifestPage() {
                     className: "max-w-4xl mx-auto",
                     children: [
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                            className: "mb-8",
+                            className: "mb-8 flex flex-col md:flex-row md:items-end md:justify-between gap-4",
                             children: [
-                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h1", {
-                                    className: "text-2xl font-bold flex items-center gap-2",
+                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                     children: [
-                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$file$2d$plus$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__FilePlus$3e$__["FilePlus"], {
-                                            className: "text-[#FFA500]"
-                                        }, void 0, false, {
+                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h1", {
+                                            className: "text-2xl font-bold flex items-center gap-2",
+                                            children: [
+                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$file$2d$plus$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__FilePlus$3e$__["FilePlus"], {
+                                                    className: "text-[#FFA500]"
+                                                }, void 0, false, {
+                                                    fileName: "[project]/src/app/manifest/page.js",
+                                                    lineNumber: 343,
+                                                    columnNumber: 17
+                                                }, this),
+                                                "WebUI Generator System"
+                                            ]
+                                        }, void 0, true, {
                                             fileName: "[project]/src/app/manifest/page.js",
-                                            lineNumber: 341,
+                                            lineNumber: 342,
                                             columnNumber: 15
                                         }, this),
-                                        "WebUI Generator System"
+                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                                            className: "text-neutral-500 dark:text-neutral-400 mt-1",
+                                            children: "Generate encrypted Helm values for Production & Testing environments."
+                                        }, void 0, false, {
+                                            fileName: "[project]/src/app/manifest/page.js",
+                                            lineNumber: 346,
+                                            columnNumber: 15
+                                        }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/app/manifest/page.js",
-                                    lineNumber: 340,
+                                    lineNumber: 341,
                                     columnNumber: 13
                                 }, this),
-                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                                    className: "text-neutral-500 dark:text-neutral-400 mt-1",
-                                    children: "Generate encrypted Helm values for Production & Testing environments."
-                                }, void 0, false, {
+                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
+                                    onClick: ()=>router.push('/tools'),
+                                    className: "flex items-center gap-2 px-4 py-2 bg-white dark:bg-neutral-900 hover:bg-neutral-50 dark:hover:bg-neutral-800 text-neutral-700 dark:text-neutral-300 rounded-lg text-sm font-bold transition-all border border-neutral-200 dark:border-neutral-800 shadow-sm",
+                                    children: [
+                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$layout$2d$grid$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__LayoutGrid$3e$__["LayoutGrid"], {
+                                            size: 16,
+                                            className: "text-[#FFA500]"
+                                        }, void 0, false, {
+                                            fileName: "[project]/src/app/manifest/page.js",
+                                            lineNumber: 354,
+                                            columnNumber: 15
+                                        }, this),
+                                        "Tools & Services"
+                                    ]
+                                }, void 0, true, {
                                     fileName: "[project]/src/app/manifest/page.js",
-                                    lineNumber: 344,
+                                    lineNumber: 350,
                                     columnNumber: 13
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/src/app/manifest/page.js",
-                            lineNumber: 339,
+                            lineNumber: 340,
                             columnNumber: 11
                         }, this),
                         message.text && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -993,26 +1021,26 @@ function ManifestPage() {
                                     size: 18
                                 }, void 0, false, {
                                     fileName: "[project]/src/app/manifest/page.js",
-                                    lineNumber: 355,
+                                    lineNumber: 365,
                                     columnNumber: 45
                                 }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$circle$2d$alert$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__AlertCircle$3e$__["AlertCircle"], {
                                     size: 18
                                 }, void 0, false, {
                                     fileName: "[project]/src/app/manifest/page.js",
-                                    lineNumber: 355,
+                                    lineNumber: 365,
                                     columnNumber: 73
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                                     children: message.text
                                 }, void 0, false, {
                                     fileName: "[project]/src/app/manifest/page.js",
-                                    lineNumber: 356,
+                                    lineNumber: 366,
                                     columnNumber: 15
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/src/app/manifest/page.js",
-                            lineNumber: 351,
+                            lineNumber: 361,
                             columnNumber: 13
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1034,7 +1062,7 @@ function ManifestPage() {
                                                                 size: 20
                                                             }, void 0, false, {
                                                                 fileName: "[project]/src/app/manifest/page.js",
-                                                                lineNumber: 369,
+                                                                lineNumber: 379,
                                                                 columnNumber: 21
                                                             }, this),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h2", {
@@ -1042,13 +1070,13 @@ function ManifestPage() {
                                                                 children: "Application Details"
                                                             }, void 0, false, {
                                                                 fileName: "[project]/src/app/manifest/page.js",
-                                                                lineNumber: 370,
+                                                                lineNumber: 380,
                                                                 columnNumber: 21
                                                             }, this)
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/src/app/manifest/page.js",
-                                                        lineNumber: 368,
+                                                        lineNumber: 378,
                                                         columnNumber: 19
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1061,7 +1089,7 @@ function ManifestPage() {
                                                                         children: "App Name"
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/src/app/manifest/page.js",
-                                                                        lineNumber: 375,
+                                                                        lineNumber: 385,
                                                                         columnNumber: 23
                                                                     }, this),
                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
@@ -1075,13 +1103,13 @@ function ManifestPage() {
                                                                             })
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/src/app/manifest/page.js",
-                                                                        lineNumber: 376,
+                                                                        lineNumber: 386,
                                                                         columnNumber: 23
                                                                     }, this)
                                                                 ]
                                                             }, void 0, true, {
                                                                 fileName: "[project]/src/app/manifest/page.js",
-                                                                lineNumber: 374,
+                                                                lineNumber: 384,
                                                                 columnNumber: 21
                                                             }, this),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1091,7 +1119,7 @@ function ManifestPage() {
                                                                         children: "App ID"
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/src/app/manifest/page.js",
-                                                                        lineNumber: 384,
+                                                                        lineNumber: 394,
                                                                         columnNumber: 23
                                                                     }, this),
                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
@@ -1105,13 +1133,13 @@ function ManifestPage() {
                                                                             })
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/src/app/manifest/page.js",
-                                                                        lineNumber: 385,
+                                                                        lineNumber: 395,
                                                                         columnNumber: 23
                                                                     }, this)
                                                                 ]
                                                             }, void 0, true, {
                                                                 fileName: "[project]/src/app/manifest/page.js",
-                                                                lineNumber: 383,
+                                                                lineNumber: 393,
                                                                 columnNumber: 21
                                                             }, this),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1122,7 +1150,7 @@ function ManifestPage() {
                                                                         children: "Image Repository"
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/src/app/manifest/page.js",
-                                                                        lineNumber: 393,
+                                                                        lineNumber: 403,
                                                                         columnNumber: 23
                                                                     }, this),
                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
@@ -1136,13 +1164,13 @@ function ManifestPage() {
                                                                             })
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/src/app/manifest/page.js",
-                                                                        lineNumber: 394,
+                                                                        lineNumber: 404,
                                                                         columnNumber: 23
                                                                     }, this)
                                                                 ]
                                                             }, void 0, true, {
                                                                 fileName: "[project]/src/app/manifest/page.js",
-                                                                lineNumber: 392,
+                                                                lineNumber: 402,
                                                                 columnNumber: 21
                                                             }, this),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1153,7 +1181,7 @@ function ManifestPage() {
                                                                         children: "Image Tag"
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/src/app/manifest/page.js",
-                                                                        lineNumber: 402,
+                                                                        lineNumber: 412,
                                                                         columnNumber: 23
                                                                     }, this),
                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
@@ -1167,13 +1195,13 @@ function ManifestPage() {
                                                                             })
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/src/app/manifest/page.js",
-                                                                        lineNumber: 403,
+                                                                        lineNumber: 413,
                                                                         columnNumber: 23
                                                                     }, this)
                                                                 ]
                                                             }, void 0, true, {
                                                                 fileName: "[project]/src/app/manifest/page.js",
-                                                                lineNumber: 401,
+                                                                lineNumber: 411,
                                                                 columnNumber: 21
                                                             }, this),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1183,7 +1211,7 @@ function ManifestPage() {
                                                                         children: "Service Port"
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/src/app/manifest/page.js",
-                                                                        lineNumber: 411,
+                                                                        lineNumber: 421,
                                                                         columnNumber: 23
                                                                     }, this),
                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
@@ -1197,13 +1225,13 @@ function ManifestPage() {
                                                                             })
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/src/app/manifest/page.js",
-                                                                        lineNumber: 412,
+                                                                        lineNumber: 422,
                                                                         columnNumber: 23
                                                                     }, this)
                                                                 ]
                                                             }, void 0, true, {
                                                                 fileName: "[project]/src/app/manifest/page.js",
-                                                                lineNumber: 410,
+                                                                lineNumber: 420,
                                                                 columnNumber: 21
                                                             }, this),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1213,7 +1241,7 @@ function ManifestPage() {
                                                                         children: "Target Port"
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/src/app/manifest/page.js",
-                                                                        lineNumber: 419,
+                                                                        lineNumber: 429,
                                                                         columnNumber: 23
                                                                     }, this),
                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
@@ -1227,25 +1255,25 @@ function ManifestPage() {
                                                                             })
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/src/app/manifest/page.js",
-                                                                        lineNumber: 420,
+                                                                        lineNumber: 430,
                                                                         columnNumber: 23
                                                                     }, this)
                                                                 ]
                                                             }, void 0, true, {
                                                                 fileName: "[project]/src/app/manifest/page.js",
-                                                                lineNumber: 418,
+                                                                lineNumber: 428,
                                                                 columnNumber: 21
                                                             }, this)
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/src/app/manifest/page.js",
-                                                        lineNumber: 373,
+                                                        lineNumber: 383,
                                                         columnNumber: 19
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/src/app/manifest/page.js",
-                                                lineNumber: 367,
+                                                lineNumber: 377,
                                                 columnNumber: 17
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1258,7 +1286,7 @@ function ManifestPage() {
                                                                 size: 20
                                                             }, void 0, false, {
                                                                 fileName: "[project]/src/app/manifest/page.js",
-                                                                lineNumber: 432,
+                                                                lineNumber: 442,
                                                                 columnNumber: 21
                                                             }, this),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h2", {
@@ -1266,13 +1294,13 @@ function ManifestPage() {
                                                                 children: "App Deployment Secrets"
                                                             }, void 0, false, {
                                                                 fileName: "[project]/src/app/manifest/page.js",
-                                                                lineNumber: 433,
+                                                                lineNumber: 443,
                                                                 columnNumber: 21
                                                             }, this)
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/src/app/manifest/page.js",
-                                                        lineNumber: 431,
+                                                        lineNumber: 441,
                                                         columnNumber: 19
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1283,14 +1311,14 @@ function ManifestPage() {
                                                                 children: "SOPS/Age"
                                                             }, void 0, false, {
                                                                 fileName: "[project]/src/app/manifest/page.js",
-                                                                lineNumber: 436,
+                                                                lineNumber: 446,
                                                                 columnNumber: 58
                                                             }, this),
                                                             " in the App Manifest."
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/src/app/manifest/page.js",
-                                                        lineNumber: 435,
+                                                        lineNumber: 445,
                                                         columnNumber: 19
                                                     }, this),
                                                     !appFileName && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1319,7 +1347,7 @@ function ManifestPage() {
                                                                 id: "app-env-input"
                                                             }, void 0, false, {
                                                                 fileName: "[project]/src/app/manifest/page.js",
-                                                                lineNumber: 454,
+                                                                lineNumber: 464,
                                                                 columnNumber: 23
                                                             }, this),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("label", {
@@ -1331,7 +1359,7 @@ function ManifestPage() {
                                                                         size: 24
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/src/app/manifest/page.js",
-                                                                        lineNumber: 462,
+                                                                        lineNumber: 472,
                                                                         columnNumber: 25
                                                                     }, this),
                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1339,19 +1367,19 @@ function ManifestPage() {
                                                                         children: "Drag & drop .env for App"
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/src/app/manifest/page.js",
-                                                                        lineNumber: 463,
+                                                                        lineNumber: 473,
                                                                         columnNumber: 25
                                                                     }, this)
                                                                 ]
                                                             }, void 0, true, {
                                                                 fileName: "[project]/src/app/manifest/page.js",
-                                                                lineNumber: 461,
+                                                                lineNumber: 471,
                                                                 columnNumber: 23
                                                             }, this)
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/src/app/manifest/page.js",
-                                                        lineNumber: 441,
+                                                        lineNumber: 451,
                                                         columnNumber: 21
                                                     }, this),
                                                     appFileName && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1365,7 +1393,7 @@ function ManifestPage() {
                                                                         size: 16
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/src/app/manifest/page.js",
-                                                                        lineNumber: 474,
+                                                                        lineNumber: 484,
                                                                         columnNumber: 25
                                                                     }, this),
                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1375,7 +1403,7 @@ function ManifestPage() {
                                                                                 children: appFileName
                                                                             }, void 0, false, {
                                                                                 fileName: "[project]/src/app/manifest/page.js",
-                                                                                lineNumber: 476,
+                                                                                lineNumber: 486,
                                                                                 columnNumber: 27
                                                                             }, this),
                                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1386,19 +1414,19 @@ function ManifestPage() {
                                                                                 ]
                                                                             }, void 0, true, {
                                                                                 fileName: "[project]/src/app/manifest/page.js",
-                                                                                lineNumber: 477,
+                                                                                lineNumber: 487,
                                                                                 columnNumber: 27
                                                                             }, this)
                                                                         ]
                                                                     }, void 0, true, {
                                                                         fileName: "[project]/src/app/manifest/page.js",
-                                                                        lineNumber: 475,
+                                                                        lineNumber: 485,
                                                                         columnNumber: 25
                                                                     }, this)
                                                                 ]
                                                             }, void 0, true, {
                                                                 fileName: "[project]/src/app/manifest/page.js",
-                                                                lineNumber: 473,
+                                                                lineNumber: 483,
                                                                 columnNumber: 23
                                                             }, this),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -1409,18 +1437,18 @@ function ManifestPage() {
                                                                     size: 14
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/src/app/manifest/page.js",
-                                                                    lineNumber: 481,
+                                                                    lineNumber: 491,
                                                                     columnNumber: 25
                                                                 }, this)
                                                             }, void 0, false, {
                                                                 fileName: "[project]/src/app/manifest/page.js",
-                                                                lineNumber: 480,
+                                                                lineNumber: 490,
                                                                 columnNumber: 23
                                                             }, this)
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/src/app/manifest/page.js",
-                                                        lineNumber: 472,
+                                                        lineNumber: 482,
                                                         columnNumber: 21
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1434,7 +1462,7 @@ function ManifestPage() {
                                                                 className: "rounded border-neutral-300 text-[#FFA500] focus:ring-[#FFA500]"
                                                             }, void 0, false, {
                                                                 fileName: "[project]/src/app/manifest/page.js",
-                                                                lineNumber: 488,
+                                                                lineNumber: 498,
                                                                 columnNumber: 21
                                                             }, this),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("label", {
@@ -1443,13 +1471,13 @@ function ManifestPage() {
                                                                 children: "Separate Production & Testing Values"
                                                             }, void 0, false, {
                                                                 fileName: "[project]/src/app/manifest/page.js",
-                                                                lineNumber: 495,
+                                                                lineNumber: 505,
                                                                 columnNumber: 21
                                                             }, this)
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/src/app/manifest/page.js",
-                                                        lineNumber: 487,
+                                                        lineNumber: 497,
                                                         columnNumber: 19
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1465,7 +1493,7 @@ function ManifestPage() {
                                                                             onChange: (e)=>updateAppSecret(idx, 'key', e.target.value)
                                                                         }, void 0, false, {
                                                                             fileName: "[project]/src/app/manifest/page.js",
-                                                                            lineNumber: 503,
+                                                                            lineNumber: 513,
                                                                             columnNumber: 25
                                                                         }, this),
                                                                         !form.separateAppSecrets ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
@@ -1475,7 +1503,7 @@ function ManifestPage() {
                                                                             onChange: (e)=>updateAppSecret(idx, 'value', e.target.value)
                                                                         }, void 0, false, {
                                                                             fileName: "[project]/src/app/manifest/page.js",
-                                                                            lineNumber: 510,
+                                                                            lineNumber: 520,
                                                                             columnNumber: 27
                                                                         }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                                                             className: "flex-1 flex flex-col gap-2",
@@ -1487,7 +1515,7 @@ function ManifestPage() {
                                                                                     onChange: (e)=>updateAppSecret(idx, 'valueProd', e.target.value)
                                                                                 }, void 0, false, {
                                                                                     fileName: "[project]/src/app/manifest/page.js",
-                                                                                    lineNumber: 517,
+                                                                                    lineNumber: 527,
                                                                                     columnNumber: 29
                                                                                 }, this),
                                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
@@ -1497,13 +1525,13 @@ function ManifestPage() {
                                                                                     onChange: (e)=>updateAppSecret(idx, 'valueTest', e.target.value)
                                                                                 }, void 0, false, {
                                                                                     fileName: "[project]/src/app/manifest/page.js",
-                                                                                    lineNumber: 522,
+                                                                                    lineNumber: 532,
                                                                                     columnNumber: 29
                                                                                 }, this)
                                                                             ]
                                                                         }, void 0, true, {
                                                                             fileName: "[project]/src/app/manifest/page.js",
-                                                                            lineNumber: 516,
+                                                                            lineNumber: 526,
                                                                             columnNumber: 27
                                                                         }, this),
                                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -1514,18 +1542,18 @@ function ManifestPage() {
                                                                                 size: 16
                                                                             }, void 0, false, {
                                                                                 fileName: "[project]/src/app/manifest/page.js",
-                                                                                lineNumber: 531,
+                                                                                lineNumber: 541,
                                                                                 columnNumber: 27
                                                                             }, this)
                                                                         }, void 0, false, {
                                                                             fileName: "[project]/src/app/manifest/page.js",
-                                                                            lineNumber: 530,
+                                                                            lineNumber: 540,
                                                                             columnNumber: 25
                                                                         }, this)
                                                                     ]
                                                                 }, idx, true, {
                                                                     fileName: "[project]/src/app/manifest/page.js",
-                                                                    lineNumber: 502,
+                                                                    lineNumber: 512,
                                                                     columnNumber: 23
                                                                 }, this)),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -1537,27 +1565,27 @@ function ManifestPage() {
                                                                         size: 16
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/src/app/manifest/page.js",
-                                                                        lineNumber: 537,
+                                                                        lineNumber: 547,
                                                                         columnNumber: 23
                                                                     }, this),
                                                                     " Add App Secret"
                                                                 ]
                                                             }, void 0, true, {
                                                                 fileName: "[project]/src/app/manifest/page.js",
-                                                                lineNumber: 536,
+                                                                lineNumber: 546,
                                                                 columnNumber: 21
                                                             }, this)
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/src/app/manifest/page.js",
-                                                        lineNumber: 500,
+                                                        lineNumber: 510,
                                                         columnNumber: 19
                                                     }, this),
                                                     "                "
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/src/app/manifest/page.js",
-                                                lineNumber: 430,
+                                                lineNumber: 440,
                                                 columnNumber: 17
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1570,7 +1598,7 @@ function ManifestPage() {
                                                                 size: 20
                                                             }, void 0, false, {
                                                                 fileName: "[project]/src/app/manifest/page.js",
-                                                                lineNumber: 544,
+                                                                lineNumber: 554,
                                                                 columnNumber: 21
                                                             }, this),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h2", {
@@ -1578,13 +1606,13 @@ function ManifestPage() {
                                                                 children: "Database Add-on"
                                                             }, void 0, false, {
                                                                 fileName: "[project]/src/app/manifest/page.js",
-                                                                lineNumber: 545,
+                                                                lineNumber: 555,
                                                                 columnNumber: 21
                                                             }, this)
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/src/app/manifest/page.js",
-                                                        lineNumber: 543,
+                                                        lineNumber: 553,
                                                         columnNumber: 19
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1602,7 +1630,7 @@ function ManifestPage() {
                                                                         className: "text-[#FFA500] focus:ring-[#FFA500]"
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/src/app/manifest/page.js",
-                                                                        lineNumber: 550,
+                                                                        lineNumber: 560,
                                                                         columnNumber: 23
                                                                     }, this),
                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -1610,13 +1638,13 @@ function ManifestPage() {
                                                                         children: "None"
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/src/app/manifest/page.js",
-                                                                        lineNumber: 555,
+                                                                        lineNumber: 565,
                                                                         columnNumber: 23
                                                                     }, this)
                                                                 ]
                                                             }, void 0, true, {
                                                                 fileName: "[project]/src/app/manifest/page.js",
-                                                                lineNumber: 549,
+                                                                lineNumber: 559,
                                                                 columnNumber: 21
                                                             }, this),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("label", {
@@ -1631,7 +1659,7 @@ function ManifestPage() {
                                                                         className: "text-[#FFA500] focus:ring-[#FFA500]"
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/src/app/manifest/page.js",
-                                                                        lineNumber: 558,
+                                                                        lineNumber: 568,
                                                                         columnNumber: 23
                                                                     }, this),
                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -1639,13 +1667,13 @@ function ManifestPage() {
                                                                         children: "PostgreSQL"
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/src/app/manifest/page.js",
-                                                                        lineNumber: 563,
+                                                                        lineNumber: 573,
                                                                         columnNumber: 23
                                                                     }, this)
                                                                 ]
                                                             }, void 0, true, {
                                                                 fileName: "[project]/src/app/manifest/page.js",
-                                                                lineNumber: 557,
+                                                                lineNumber: 567,
                                                                 columnNumber: 21
                                                             }, this),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("label", {
@@ -1660,7 +1688,7 @@ function ManifestPage() {
                                                                         className: "text-[#FFA500] focus:ring-[#FFA500]"
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/src/app/manifest/page.js",
-                                                                        lineNumber: 566,
+                                                                        lineNumber: 576,
                                                                         columnNumber: 23
                                                                     }, this),
                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -1668,19 +1696,19 @@ function ManifestPage() {
                                                                         children: "MariaDB / MySQL"
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/src/app/manifest/page.js",
-                                                                        lineNumber: 571,
+                                                                        lineNumber: 581,
                                                                         columnNumber: 23
                                                                     }, this)
                                                                 ]
                                                             }, void 0, true, {
                                                                 fileName: "[project]/src/app/manifest/page.js",
-                                                                lineNumber: 565,
+                                                                lineNumber: 575,
                                                                 columnNumber: 21
                                                             }, this)
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/src/app/manifest/page.js",
-                                                        lineNumber: 548,
+                                                        lineNumber: 558,
                                                         columnNumber: 19
                                                     }, this),
                                                     form.dbType !== 'none' && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1693,7 +1721,7 @@ function ManifestPage() {
                                                                         size: 18
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/src/app/manifest/page.js",
-                                                                        lineNumber: 579,
+                                                                        lineNumber: 589,
                                                                         columnNumber: 25
                                                                     }, this),
                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h3", {
@@ -1701,13 +1729,13 @@ function ManifestPage() {
                                                                         children: "Database Secrets (Optional)"
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/src/app/manifest/page.js",
-                                                                        lineNumber: 580,
+                                                                        lineNumber: 590,
                                                                         columnNumber: 25
                                                                     }, this)
                                                                 ]
                                                             }, void 0, true, {
                                                                 fileName: "[project]/src/app/manifest/page.js",
-                                                                lineNumber: 578,
+                                                                lineNumber: 588,
                                                                 columnNumber: 23
                                                             }, this),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1715,7 +1743,7 @@ function ManifestPage() {
                                                                 children: "Add extra secrets for the DB (e.g. POSTGRES_PASSWORD). System generates defaults if empty."
                                                             }, void 0, false, {
                                                                 fileName: "[project]/src/app/manifest/page.js",
-                                                                lineNumber: 582,
+                                                                lineNumber: 592,
                                                                 columnNumber: 23
                                                             }, this),
                                                             !dbFileName && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1744,7 +1772,7 @@ function ManifestPage() {
                                                                         id: "db-env-input"
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/src/app/manifest/page.js",
-                                                                        lineNumber: 601,
+                                                                        lineNumber: 611,
                                                                         columnNumber: 27
                                                                     }, this),
                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("label", {
@@ -1756,7 +1784,7 @@ function ManifestPage() {
                                                                                 size: 24
                                                                             }, void 0, false, {
                                                                                 fileName: "[project]/src/app/manifest/page.js",
-                                                                                lineNumber: 609,
+                                                                                lineNumber: 619,
                                                                                 columnNumber: 29
                                                                             }, this),
                                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1764,19 +1792,19 @@ function ManifestPage() {
                                                                                 children: "Drag & drop .env for Database"
                                                                             }, void 0, false, {
                                                                                 fileName: "[project]/src/app/manifest/page.js",
-                                                                                lineNumber: 610,
+                                                                                lineNumber: 620,
                                                                                 columnNumber: 29
                                                                             }, this)
                                                                         ]
                                                                     }, void 0, true, {
                                                                         fileName: "[project]/src/app/manifest/page.js",
-                                                                        lineNumber: 608,
+                                                                        lineNumber: 618,
                                                                         columnNumber: 27
                                                                     }, this)
                                                                 ]
                                                             }, void 0, true, {
                                                                 fileName: "[project]/src/app/manifest/page.js",
-                                                                lineNumber: 588,
+                                                                lineNumber: 598,
                                                                 columnNumber: 25
                                                             }, this),
                                                             dbFileName && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1790,7 +1818,7 @@ function ManifestPage() {
                                                                                 size: 16
                                                                             }, void 0, false, {
                                                                                 fileName: "[project]/src/app/manifest/page.js",
-                                                                                lineNumber: 621,
+                                                                                lineNumber: 631,
                                                                                 columnNumber: 29
                                                                             }, this),
                                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1800,7 +1828,7 @@ function ManifestPage() {
                                                                                         children: dbFileName
                                                                                     }, void 0, false, {
                                                                                         fileName: "[project]/src/app/manifest/page.js",
-                                                                                        lineNumber: 623,
+                                                                                        lineNumber: 633,
                                                                                         columnNumber: 31
                                                                                     }, this),
                                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1811,19 +1839,19 @@ function ManifestPage() {
                                                                                         ]
                                                                                     }, void 0, true, {
                                                                                         fileName: "[project]/src/app/manifest/page.js",
-                                                                                        lineNumber: 624,
+                                                                                        lineNumber: 634,
                                                                                         columnNumber: 31
                                                                                     }, this)
                                                                                 ]
                                                                             }, void 0, true, {
                                                                                 fileName: "[project]/src/app/manifest/page.js",
-                                                                                lineNumber: 622,
+                                                                                lineNumber: 632,
                                                                                 columnNumber: 29
                                                                             }, this)
                                                                         ]
                                                                     }, void 0, true, {
                                                                         fileName: "[project]/src/app/manifest/page.js",
-                                                                        lineNumber: 620,
+                                                                        lineNumber: 630,
                                                                         columnNumber: 27
                                                                     }, this),
                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -1834,18 +1862,18 @@ function ManifestPage() {
                                                                             size: 14
                                                                         }, void 0, false, {
                                                                             fileName: "[project]/src/app/manifest/page.js",
-                                                                            lineNumber: 628,
+                                                                            lineNumber: 638,
                                                                             columnNumber: 29
                                                                         }, this)
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/src/app/manifest/page.js",
-                                                                        lineNumber: 627,
+                                                                        lineNumber: 637,
                                                                         columnNumber: 27
                                                                     }, this)
                                                                 ]
                                                             }, void 0, true, {
                                                                 fileName: "[project]/src/app/manifest/page.js",
-                                                                lineNumber: 619,
+                                                                lineNumber: 629,
                                                                 columnNumber: 25
                                                             }, this),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1859,7 +1887,7 @@ function ManifestPage() {
                                                                         className: "rounded border-neutral-300 text-[#FFA500] focus:ring-[#FFA500]"
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/src/app/manifest/page.js",
-                                                                        lineNumber: 635,
+                                                                        lineNumber: 645,
                                                                         columnNumber: 25
                                                                     }, this),
                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("label", {
@@ -1868,13 +1896,13 @@ function ManifestPage() {
                                                                         children: "Separate Production & Testing Values"
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/src/app/manifest/page.js",
-                                                                        lineNumber: 642,
+                                                                        lineNumber: 652,
                                                                         columnNumber: 25
                                                                     }, this)
                                                                 ]
                                                             }, void 0, true, {
                                                                 fileName: "[project]/src/app/manifest/page.js",
-                                                                lineNumber: 634,
+                                                                lineNumber: 644,
                                                                 columnNumber: 23
                                                             }, this),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1890,7 +1918,7 @@ function ManifestPage() {
                                                                                     onChange: (e)=>updateDbSecret(idx, 'key', e.target.value)
                                                                                 }, void 0, false, {
                                                                                     fileName: "[project]/src/app/manifest/page.js",
-                                                                                    lineNumber: 650,
+                                                                                    lineNumber: 660,
                                                                                     columnNumber: 29
                                                                                 }, this),
                                                                                 !form.separateDbSecrets ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
@@ -1900,13 +1928,8 @@ function ManifestPage() {
                                                                                     onChange: (e)=>updateDbSecret(idx, 'value', e.target.value)
                                                                                 }, void 0, false, {
                                                                                     fileName: "[project]/src/app/manifest/page.js",
-<<<<<<< HEAD
-                                                                                    lineNumber: 659,
-                                                                                    columnNumber: 85
-=======
-                                                                                    lineNumber: 657,
+                                                                                    lineNumber: 667,
                                                                                     columnNumber: 31
->>>>>>> 9b9e391 (add login & tools page)
                                                                                 }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                                                                     className: "flex-1 flex flex-col gap-2",
                                                                                     children: [
@@ -1917,13 +1940,8 @@ function ManifestPage() {
                                                                                             onChange: (e)=>updateDbSecret(idx, 'valueProd', e.target.value)
                                                                                         }, void 0, false, {
                                                                                             fileName: "[project]/src/app/manifest/page.js",
-<<<<<<< HEAD
-                                                                                            lineNumber: 670,
-                                                                                            columnNumber: 89
-=======
-                                                                                            lineNumber: 664,
+                                                                                            lineNumber: 677,
                                                                                             columnNumber: 33
->>>>>>> 9b9e391 (add login & tools page)
                                                                                         }, this),
                                                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
                                                                                             placeholder: "VALUE (TESTING)",
@@ -1932,24 +1950,14 @@ function ManifestPage() {
                                                                                             onChange: (e)=>updateDbSecret(idx, 'valueTest', e.target.value)
                                                                                         }, void 0, false, {
                                                                                             fileName: "[project]/src/app/manifest/page.js",
-<<<<<<< HEAD
-                                                                                            lineNumber: 679,
-                                                                                            columnNumber: 89
-=======
-                                                                                            lineNumber: 669,
+                                                                                            lineNumber: 685,
                                                                                             columnNumber: 33
->>>>>>> 9b9e391 (add login & tools page)
                                                                                         }, this)
                                                                                     ]
                                                                                 }, void 0, true, {
                                                                                     fileName: "[project]/src/app/manifest/page.js",
-<<<<<<< HEAD
-                                                                                    lineNumber: 669,
-                                                                                    columnNumber: 85
-=======
-                                                                                    lineNumber: 663,
+                                                                                    lineNumber: 676,
                                                                                     columnNumber: 31
->>>>>>> 9b9e391 (add login & tools page)
                                                                                 }, this),
                                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
                                                                                     type: "button",
@@ -1959,28 +1967,18 @@ function ManifestPage() {
                                                                                         size: 16
                                                                                     }, void 0, false, {
                                                                                         fileName: "[project]/src/app/manifest/page.js",
-<<<<<<< HEAD
-                                                                                        lineNumber: 691,
-                                                                                        columnNumber: 53
-                                                                                    }, this)
-                                                                                }, void 0, false, {
-                                                                                    fileName: "[project]/src/app/manifest/page.js",
-                                                                                    lineNumber: 690,
-                                                                                    columnNumber: 53
-=======
-                                                                                        lineNumber: 678,
+                                                                                        lineNumber: 696,
                                                                                         columnNumber: 31
                                                                                     }, this)
                                                                                 }, void 0, false, {
                                                                                     fileName: "[project]/src/app/manifest/page.js",
-                                                                                    lineNumber: 677,
+                                                                                    lineNumber: 695,
                                                                                     columnNumber: 29
->>>>>>> 9b9e391 (add login & tools page)
                                                                                 }, this)
                                                                             ]
                                                                         }, idx, true, {
                                                                             fileName: "[project]/src/app/manifest/page.js",
-                                                                            lineNumber: 649,
+                                                                            lineNumber: 659,
                                                                             columnNumber: 27
                                                                         }, this)),
                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -1992,43 +1990,33 @@ function ManifestPage() {
                                                                                 size: 16
                                                                             }, void 0, false, {
                                                                                 fileName: "[project]/src/app/manifest/page.js",
-<<<<<<< HEAD
-                                                                                lineNumber: 697,
-                                                                                columnNumber: 49
-=======
-                                                                                lineNumber: 684,
+                                                                                lineNumber: 702,
                                                                                 columnNumber: 27
->>>>>>> 9b9e391 (add login & tools page)
                                                                             }, this),
                                                                             " Add DB Secret"
                                                                         ]
                                                                     }, void 0, true, {
                                                                         fileName: "[project]/src/app/manifest/page.js",
-<<<<<<< HEAD
-                                                                        lineNumber: 696,
-                                                                        columnNumber: 49
-=======
-                                                                        lineNumber: 683,
+                                                                        lineNumber: 701,
                                                                         columnNumber: 25
->>>>>>> 9b9e391 (add login & tools page)
                                                                     }, this)
                                                                 ]
                                                             }, void 0, true, {
                                                                 fileName: "[project]/src/app/manifest/page.js",
-                                                                lineNumber: 647,
+                                                                lineNumber: 657,
                                                                 columnNumber: 23
                                                             }, this),
                                                             "                    "
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/src/app/manifest/page.js",
-                                                        lineNumber: 577,
+                                                        lineNumber: 587,
                                                         columnNumber: 21
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/src/app/manifest/page.js",
-                                                lineNumber: 542,
+                                                lineNumber: 552,
                                                 columnNumber: 17
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2041,11 +2029,7 @@ function ManifestPage() {
                                                                 size: 20
                                                             }, void 0, false, {
                                                                 fileName: "[project]/src/app/manifest/page.js",
-<<<<<<< HEAD
-                                                                lineNumber: 706,
-=======
-                                                                lineNumber: 693,
->>>>>>> 9b9e391 (add login & tools page)
+                                                                lineNumber: 711,
                                                                 columnNumber: 21
                                                             }, this),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h2", {
@@ -2053,21 +2037,13 @@ function ManifestPage() {
                                                                 children: "Ingress / Domain Access"
                                                             }, void 0, false, {
                                                                 fileName: "[project]/src/app/manifest/page.js",
-<<<<<<< HEAD
-                                                                lineNumber: 707,
-=======
-                                                                lineNumber: 694,
->>>>>>> 9b9e391 (add login & tools page)
+                                                                lineNumber: 712,
                                                                 columnNumber: 21
                                                             }, this)
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/src/app/manifest/page.js",
-<<<<<<< HEAD
-                                                        lineNumber: 705,
-=======
-                                                        lineNumber: 692,
->>>>>>> 9b9e391 (add login & tools page)
+                                                        lineNumber: 710,
                                                         columnNumber: 19
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("label", {
@@ -2083,11 +2059,7 @@ function ManifestPage() {
                                                                 className: "rounded border-neutral-300 text-[#FFA500] focus:ring-[#FFA500]"
                                                             }, void 0, false, {
                                                                 fileName: "[project]/src/app/manifest/page.js",
-<<<<<<< HEAD
-                                                                lineNumber: 711,
-=======
-                                                                lineNumber: 698,
->>>>>>> 9b9e391 (add login & tools page)
+                                                                lineNumber: 716,
                                                                 columnNumber: 21
                                                             }, this),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -2095,21 +2067,13 @@ function ManifestPage() {
                                                                 children: "Enable Public Access?"
                                                             }, void 0, false, {
                                                                 fileName: "[project]/src/app/manifest/page.js",
-<<<<<<< HEAD
-                                                                lineNumber: 716,
-=======
-                                                                lineNumber: 703,
->>>>>>> 9b9e391 (add login & tools page)
+                                                                lineNumber: 721,
                                                                 columnNumber: 21
                                                             }, this)
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/src/app/manifest/page.js",
-<<<<<<< HEAD
-                                                        lineNumber: 710,
-=======
-                                                        lineNumber: 697,
->>>>>>> 9b9e391 (add login & tools page)
+                                                        lineNumber: 715,
                                                         columnNumber: 19
                                                     }, this),
                                                     form.ingressEnabled && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2122,11 +2086,7 @@ function ManifestPage() {
                                                                         children: "Hostname"
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/src/app/manifest/page.js",
-<<<<<<< HEAD
-                                                                        lineNumber: 722,
-=======
-                                                                        lineNumber: 709,
->>>>>>> 9b9e391 (add login & tools page)
+                                                                        lineNumber: 727,
                                                                         columnNumber: 25
                                                                     }, this),
                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
@@ -2140,21 +2100,13 @@ function ManifestPage() {
                                                                             })
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/src/app/manifest/page.js",
-<<<<<<< HEAD
-                                                                        lineNumber: 723,
-=======
-                                                                        lineNumber: 710,
->>>>>>> 9b9e391 (add login & tools page)
+                                                                        lineNumber: 728,
                                                                         columnNumber: 25
                                                                     }, this)
                                                                 ]
                                                             }, void 0, true, {
                                                                 fileName: "[project]/src/app/manifest/page.js",
-<<<<<<< HEAD
-                                                                lineNumber: 721,
-=======
-                                                                lineNumber: 708,
->>>>>>> 9b9e391 (add login & tools page)
+                                                                lineNumber: 726,
                                                                 columnNumber: 23
                                                             }, this),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("label", {
@@ -2170,11 +2122,7 @@ function ManifestPage() {
                                                                         className: "rounded border-neutral-300 text-[#FFA500] focus:ring-[#FFA500]"
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/src/app/manifest/page.js",
-<<<<<<< HEAD
-                                                                        lineNumber: 731,
-=======
-                                                                        lineNumber: 718,
->>>>>>> 9b9e391 (add login & tools page)
+                                                                        lineNumber: 736,
                                                                         columnNumber: 25
                                                                     }, this),
                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -2182,41 +2130,25 @@ function ManifestPage() {
                                                                         children: "Enable HTTPS/TLS?"
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/src/app/manifest/page.js",
-<<<<<<< HEAD
-                                                                        lineNumber: 736,
-=======
-                                                                        lineNumber: 723,
->>>>>>> 9b9e391 (add login & tools page)
+                                                                        lineNumber: 741,
                                                                         columnNumber: 25
                                                                     }, this)
                                                                 ]
                                                             }, void 0, true, {
                                                                 fileName: "[project]/src/app/manifest/page.js",
-<<<<<<< HEAD
-                                                                lineNumber: 730,
-=======
-                                                                lineNumber: 717,
->>>>>>> 9b9e391 (add login & tools page)
+                                                                lineNumber: 735,
                                                                 columnNumber: 23
                                                             }, this)
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/src/app/manifest/page.js",
-<<<<<<< HEAD
-                                                        lineNumber: 720,
-=======
-                                                        lineNumber: 707,
->>>>>>> 9b9e391 (add login & tools page)
+                                                        lineNumber: 725,
                                                         columnNumber: 21
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/src/app/manifest/page.js",
-<<<<<<< HEAD
-                                                lineNumber: 704,
-=======
-                                                lineNumber: 691,
->>>>>>> 9b9e391 (add login & tools page)
+                                                lineNumber: 709,
                                                 columnNumber: 17
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2232,13 +2164,8 @@ function ManifestPage() {
                                                                 className: "animate-spin"
                                                             }, void 0, false, {
                                                                 fileName: "[project]/src/app/manifest/page.js",
-<<<<<<< HEAD
-                                                                lineNumber: 751,
-                                                                columnNumber: 27
-=======
-                                                                lineNumber: 738,
+                                                                lineNumber: 756,
                                                                 columnNumber: 25
->>>>>>> 9b9e391 (add login & tools page)
                                                             }, this),
                                                             "Processing..."
                                                         ]
@@ -2248,44 +2175,31 @@ function ManifestPage() {
                                                                 size: 20
                                                             }, void 0, false, {
                                                                 fileName: "[project]/src/app/manifest/page.js",
-<<<<<<< HEAD
-                                                                lineNumber: 756,
-                                                                columnNumber: 27
-=======
-                                                                lineNumber: 743,
+                                                                lineNumber: 761,
                                                                 columnNumber: 25
->>>>>>> 9b9e391 (add login & tools page)
                                                             }, this),
                                                             "Generate Manifests"
                                                         ]
                                                     }, void 0, true)
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/app/manifest/page.js",
-<<<<<<< HEAD
-                                                    lineNumber: 744,
-=======
-                                                    lineNumber: 731,
->>>>>>> 9b9e391 (add login & tools page)
+                                                    lineNumber: 749,
                                                     columnNumber: 19
                                                 }, this)
                                             }, void 0, false, {
                                                 fileName: "[project]/src/app/manifest/page.js",
-<<<<<<< HEAD
-                                                lineNumber: 743,
-=======
-                                                lineNumber: 730,
->>>>>>> 9b9e391 (add login & tools page)
+                                                lineNumber: 748,
                                                 columnNumber: 17
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/src/app/manifest/page.js",
-                                        lineNumber: 364,
+                                        lineNumber: 374,
                                         columnNumber: 15
                                     }, this)
                                 }, void 0, false, {
                                     fileName: "[project]/src/app/manifest/page.js",
-                                    lineNumber: 363,
+                                    lineNumber: 373,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2300,37 +2214,22 @@ function ManifestPage() {
                                                         className: "text-[#FFA500]"
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/app/manifest/page.js",
-<<<<<<< HEAD
-                                                        lineNumber: 769,
-                                                        columnNumber: 20
-=======
-                                                        lineNumber: 756,
+                                                        lineNumber: 774,
                                                         columnNumber: 19
->>>>>>> 9b9e391 (add login & tools page)
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h2", {
                                                         className: "font-bold text-sm uppercase text-neutral-600 dark:text-neutral-300",
                                                         children: "Registered Apps"
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/app/manifest/page.js",
-<<<<<<< HEAD
-                                                        lineNumber: 770,
-                                                        columnNumber: 20
-=======
-                                                        lineNumber: 757,
+                                                        lineNumber: 775,
                                                         columnNumber: 19
->>>>>>> 9b9e391 (add login & tools page)
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/src/app/manifest/page.js",
-<<<<<<< HEAD
-                                                lineNumber: 768,
-                                                columnNumber: 18
-=======
-                                                lineNumber: 755,
+                                                lineNumber: 773,
                                                 columnNumber: 17
->>>>>>> 9b9e391 (add login & tools page)
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                                 className: "max-h-[80vh] overflow-y-auto",
@@ -2339,13 +2238,8 @@ function ManifestPage() {
                                                     children: "No apps registered yet."
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/app/manifest/page.js",
-<<<<<<< HEAD
-                                                    lineNumber: 774,
-                                                    columnNumber: 23
-=======
-                                                    lineNumber: 761,
+                                                    lineNumber: 779,
                                                     columnNumber: 21
->>>>>>> 9b9e391 (add login & tools page)
                                                 }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("ul", {
                                                     className: "divide-y divide-neutral-100 dark:divide-neutral-800",
                                                     children: existingApps.map((app)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("li", {
@@ -2366,37 +2260,22 @@ function ManifestPage() {
                                                                                         ]
                                                                                     }, void 0, true, {
                                                                                         fileName: "[project]/src/app/manifest/page.js",
-<<<<<<< HEAD
-                                                                                        lineNumber: 784,
-                                                                                        columnNumber: 38
-=======
-                                                                                        lineNumber: 771,
+                                                                                        lineNumber: 789,
                                                                                         columnNumber: 33
->>>>>>> 9b9e391 (add login & tools page)
                                                                                     }, this),
                                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                                                                                         className: "font-semibold text-sm text-neutral-900 dark:text-white",
                                                                                         children: app.name
                                                                                     }, void 0, false, {
                                                                                         fileName: "[project]/src/app/manifest/page.js",
-<<<<<<< HEAD
-                                                                                        lineNumber: 787,
-                                                                                        columnNumber: 38
-=======
-                                                                                        lineNumber: 774,
+                                                                                        lineNumber: 792,
                                                                                         columnNumber: 33
->>>>>>> 9b9e391 (add login & tools page)
                                                                                     }, this)
                                                                                 ]
                                                                             }, void 0, true, {
                                                                                 fileName: "[project]/src/app/manifest/page.js",
-<<<<<<< HEAD
-                                                                                lineNumber: 783,
-                                                                                columnNumber: 36
-=======
-                                                                                lineNumber: 770,
+                                                                                lineNumber: 788,
                                                                                 columnNumber: 31
->>>>>>> 9b9e391 (add login & tools page)
                                                                             }, this),
                                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
                                                                                 className: "text-[10px] text-neutral-400 mt-1 font-mono truncate max-w-[180px]",
@@ -2404,13 +2283,8 @@ function ManifestPage() {
                                                                                 children: app.image
                                                                             }, void 0, false, {
                                                                                 fileName: "[project]/src/app/manifest/page.js",
-<<<<<<< HEAD
-                                                                                lineNumber: 791,
-                                                                                columnNumber: 36
-=======
-                                                                                lineNumber: 778,
+                                                                                lineNumber: 796,
                                                                                 columnNumber: 31
->>>>>>> 9b9e391 (add login & tools page)
                                                                             }, this),
                                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                                                                 className: "flex gap-2 mt-2",
@@ -2421,47 +2295,27 @@ function ManifestPage() {
                                                                                             size: 10
                                                                                         }, void 0, false, {
                                                                                             fileName: "[project]/src/app/manifest/page.js",
-<<<<<<< HEAD
-                                                                                            lineNumber: 797,
-                                                                                            columnNumber: 43
-=======
-                                                                                            lineNumber: 784,
+                                                                                            lineNumber: 802,
                                                                                             columnNumber: 37
->>>>>>> 9b9e391 (add login & tools page)
                                                                                         }, this),
                                                                                         " ",
                                                                                         app.db
                                                                                     ]
                                                                                 }, void 0, true, {
                                                                                     fileName: "[project]/src/app/manifest/page.js",
-<<<<<<< HEAD
-                                                                                    lineNumber: 796,
-                                                                                    columnNumber: 41
-                                                                                }, this)
-                                                                            }, void 0, false, {
-                                                                                fileName: "[project]/src/app/manifest/page.js",
-                                                                                lineNumber: 794,
-                                                                                columnNumber: 36
-=======
-                                                                                    lineNumber: 783,
+                                                                                    lineNumber: 801,
                                                                                     columnNumber: 35
                                                                                 }, this)
                                                                             }, void 0, false, {
                                                                                 fileName: "[project]/src/app/manifest/page.js",
-                                                                                lineNumber: 781,
+                                                                                lineNumber: 799,
                                                                                 columnNumber: 31
->>>>>>> 9b9e391 (add login & tools page)
                                                                             }, this)
                                                                         ]
                                                                     }, void 0, true, {
                                                                         fileName: "[project]/src/app/manifest/page.js",
-<<<<<<< HEAD
-                                                                        lineNumber: 782,
-                                                                        columnNumber: 33
-=======
-                                                                        lineNumber: 769,
+                                                                        lineNumber: 787,
                                                                         columnNumber: 29
->>>>>>> 9b9e391 (add login & tools page)
                                                                     }, this),
                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
                                                                         onClick: ()=>handleDelete(app.id, app.name),
@@ -2473,117 +2327,73 @@ function ManifestPage() {
                                                                             className: "animate-spin"
                                                                         }, void 0, false, {
                                                                             fileName: "[project]/src/app/manifest/page.js",
-<<<<<<< HEAD
-                                                                            lineNumber: 808,
-                                                                            columnNumber: 60
-=======
-                                                                            lineNumber: 795,
+                                                                            lineNumber: 813,
                                                                             columnNumber: 56
->>>>>>> 9b9e391 (add login & tools page)
                                                                         }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$trash$2d$2$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Trash2$3e$__["Trash2"], {
                                                                             size: 16
                                                                         }, void 0, false, {
                                                                             fileName: "[project]/src/app/manifest/page.js",
-<<<<<<< HEAD
-                                                                            lineNumber: 808,
-                                                                            columnNumber: 109
-                                                                        }, this)
-                                                                    }, void 0, false, {
-                                                                        fileName: "[project]/src/app/manifest/page.js",
-                                                                        lineNumber: 802,
-                                                                        columnNumber: 33
-=======
-                                                                            lineNumber: 795,
+                                                                            lineNumber: 813,
                                                                             columnNumber: 105
                                                                         }, this)
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/src/app/manifest/page.js",
-                                                                        lineNumber: 789,
+                                                                        lineNumber: 807,
                                                                         columnNumber: 29
->>>>>>> 9b9e391 (add login & tools page)
                                                                     }, this)
                                                                 ]
                                                             }, void 0, true, {
                                                                 fileName: "[project]/src/app/manifest/page.js",
-<<<<<<< HEAD
-                                                                lineNumber: 781,
-                                                                columnNumber: 30
-                                                            }, this)
-                                                        }, app.id, false, {
-                                                            fileName: "[project]/src/app/manifest/page.js",
-                                                            lineNumber: 780,
-                                                            columnNumber: 27
-                                                        }, this))
-                                                }, void 0, false, {
-                                                    fileName: "[project]/src/app/manifest/page.js",
-                                                    lineNumber: 778,
-                                                    columnNumber: 23
-                                                }, this)
-                                            }, void 0, false, {
-                                                fileName: "[project]/src/app/manifest/page.js",
-                                                lineNumber: 772,
-                                                columnNumber: 18
-=======
-                                                                lineNumber: 768,
+                                                                lineNumber: 786,
                                                                 columnNumber: 27
                                                             }, this)
                                                         }, app.id, false, {
                                                             fileName: "[project]/src/app/manifest/page.js",
-                                                            lineNumber: 767,
+                                                            lineNumber: 785,
                                                             columnNumber: 25
                                                         }, this))
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/app/manifest/page.js",
-                                                    lineNumber: 765,
+                                                    lineNumber: 783,
                                                     columnNumber: 21
                                                 }, this)
                                             }, void 0, false, {
                                                 fileName: "[project]/src/app/manifest/page.js",
-                                                lineNumber: 759,
+                                                lineNumber: 777,
                                                 columnNumber: 17
->>>>>>> 9b9e391 (add login & tools page)
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/src/app/manifest/page.js",
-<<<<<<< HEAD
-                                        lineNumber: 767,
-                                        columnNumber: 16
-                                    }, this)
-                                }, void 0, false, {
-                                    fileName: "[project]/src/app/manifest/page.js",
-                                    lineNumber: 766,
-=======
-                                        lineNumber: 754,
+                                        lineNumber: 772,
                                         columnNumber: 15
                                     }, this)
                                 }, void 0, false, {
                                     fileName: "[project]/src/app/manifest/page.js",
-                                    lineNumber: 753,
->>>>>>> 9b9e391 (add login & tools page)
+                                    lineNumber: 771,
                                     columnNumber: 13
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/src/app/manifest/page.js",
-                            lineNumber: 360,
+                            lineNumber: 370,
                             columnNumber: 11
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/src/app/manifest/page.js",
-                    lineNumber: 336,
+                    lineNumber: 337,
                     columnNumber: 9
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/src/app/manifest/page.js",
-                lineNumber: 335,
+                lineNumber: 336,
                 columnNumber: 7
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/src/app/manifest/page.js",
-        lineNumber: 332,
+        lineNumber: 333,
         columnNumber: 5
     }, this);
 }
