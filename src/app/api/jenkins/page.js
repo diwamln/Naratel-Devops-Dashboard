@@ -32,6 +32,10 @@ export default function DashboardPage() {
       router.push('/');
     } else if (page === 'k8s-secret') {
       router.push('/secrets');
+    } else if (page === 'manifest') {
+      router.push('/manifest');
+    } else if (page === 'tools') {
+      router.push('/tools');
     }
   };
 

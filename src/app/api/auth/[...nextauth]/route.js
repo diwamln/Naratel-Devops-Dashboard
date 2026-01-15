@@ -1,42 +1,45 @@
-// src/app/api/auth/[...nextauth]/route.js
+import NextAuth from "next-auth"
+import CredentialsProvider from "next-auth/providers/credentials"
 
-import NextAuth from 'next-auth';
-import CredentialsProvider from 'next-auth/providers/credentials';
-
-const authOptions = {
+const handler = NextAuth({
   providers: [
     CredentialsProvider({
       name: 'Credentials',
       credentials: {
-        username: { label: "Username", type: "text" },
+        username: { label: "Username", type: "text", placeholder: "admin" },
         password: { label: "Password", type: "password" }
       },
-      async authorize(credentials) {
-        // GANTI DENGAN LOGIC AUTHENTICATION ANDA
-        // Contoh sederhana (JANGAN PAKAI DI PRODUCTION!):
-        if (credentials?.username === 'admin' && credentials?.password === 'admin123') {
-          return {
-            id: '1',
-            name: 'Admin',
-            email: 'admin@company.com',
-            role: 'admin'
-          };
+      async authorize(credentials, req) {
+        // User requested no database and simple "best practice" for this constraints
+        // Credentials are now managed via environment variables (K8s secret friendly)
+        const validUsername = process.env.ADMIN_USERNAME;
+        const validPassword = process.env.ADMIN_PASSWORD;
+
+        if (credentials?.username === validUsername && credentials?.password === validPassword) {
+          return { id: "1", name: "DevOps Admin", email: "admin@naratel.com" }
         }
-        
-        // Return null jika authentication gagal
-        return null;
+        return null
       }
     })
   ],
   pages: {
-    signIn: '/auth/signin',
+    signIn: '/login',
   },
-  session: {
-    strategy: 'jwt',
+  callbacks: {
+    async jwt({ token, user }) {
+      if (user) {
+        token.id = user.id
+      }
+      return token
+    },
+    async session({ session, token }) {
+      if (session.user) {
+        session.user.id = token.id
+      }
+      return session
+    }
   },
-  secret: process.env.NEXTAUTH_SECRET,
-};
+  secret: process.env.NEXTAUTH_SECRET || 'devops-dashboard-secret-key-change-me',
+})
 
-const handler = NextAuth(authOptions);
-
-export { handler as GET, handler as POST };
+export { handler as GET, handler as POST }

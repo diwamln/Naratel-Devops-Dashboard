@@ -1,0 +1,6 @@
+{
+  "version": 3,
+  "sources": [],
+  "sections": [
+    {"offset": {"line": 16, "column": 0}, "map": {"version":3,"sources":["turbopack:///[project]/src/middleware.js"],"sourcesContent":["export { default } from \"next-auth/middleware\"\n\nexport const config = {\n    matcher: [\n        /*\n         * Match all request paths except for the ones starting with:\n         * - login (custom login page)\n         * - api/auth (next-auth api routes)\n         * - _next/static (static files)\n         * - _next/image (image optimization files)\n         * - favicon.ico (favicon file)\n         */\n        '/((?!login|api/auth|_next/static|_next/image|favicon.ico|Logo.png).*)',\n    ],\n}\n"],"names":[],"mappings":";;;;AAAA;;AAEO,MAAM,SAAS;IAClB,SAAS;QACL;;;;;;;SAOC,GACD;KACH;AACL"}}]
+}

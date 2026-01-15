@@ -36,6 +36,7 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$re
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$moon$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Moon$3e$__ = __turbopack_context__.i("[project]/node_modules/lucide-react/dist/esm/icons/moon.js [app-ssr] (ecmascript) <export default as Moon>");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$file$2d$plus$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__FilePlus$3e$__ = __turbopack_context__.i("[project]/node_modules/lucide-react/dist/esm/icons/file-plus.js [app-ssr] (ecmascript) <export default as FilePlus>");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$chevron$2d$right$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__ChevronRight$3e$__ = __turbopack_context__.i("[project]/node_modules/lucide-react/dist/esm/icons/chevron-right.js [app-ssr] (ecmascript) <export default as ChevronRight>");
+var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$layout$2d$grid$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__LayoutGrid$3e$__ = __turbopack_context__.i("[project]/node_modules/lucide-react/dist/esm/icons/layout-grid.js [app-ssr] (ecmascript) <export default as LayoutGrid>");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2d$auth$2f$react$2f$index$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/next-auth/react/index.js [app-ssr] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2d$themes$2f$dist$2f$index$2e$mjs__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/next-themes/dist/index.mjs [app-ssr] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$image$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/next/image.js [app-ssr] (ecmascript)");
@@ -69,11 +70,16 @@ function Navigation({ activePage, onPageChange }) {
             id: 'manifest',
             label: 'Manifest Generator',
             icon: __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$file$2d$plus$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__FilePlus$3e$__["FilePlus"]
+        },
+        {
+            id: 'tools',
+            label: 'Tools & Services',
+            icon: __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$layout$2d$grid$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__LayoutGrid$3e$__["LayoutGrid"]
         }
     ];
     const handleLogout = async ()=>{
         await (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2d$auth$2f$react$2f$index$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["signOut"])({
-            callbackUrl: '/auth/signin'
+            callbackUrl: '/login'
         });
     };
     const toggleTheme = ()=>{
@@ -103,12 +109,12 @@ function Navigation({ activePage, onPageChange }) {
                                                 priority: true
                                             }, void 0, false, {
                                                 fileName: "[project]/src/app/components/Navigation.js",
-                                                lineNumber: 65,
+                                                lineNumber: 71,
                                                 columnNumber: 17
                                             }, this)
                                         }, void 0, false, {
                                             fileName: "[project]/src/app/components/Navigation.js",
-                                            lineNumber: 64,
+                                            lineNumber: 70,
                                             columnNumber: 15
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -116,13 +122,13 @@ function Navigation({ activePage, onPageChange }) {
                                             children: "DevOps"
                                         }, void 0, false, {
                                             fileName: "[project]/src/app/components/Navigation.js",
-                                            lineNumber: 74,
+                                            lineNumber: 80,
                                             columnNumber: 15
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/app/components/Navigation.js",
-                                    lineNumber: 63,
+                                    lineNumber: 69,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -135,18 +141,18 @@ function Navigation({ activePage, onPageChange }) {
                                                 size: 20
                                             }, void 0, false, {
                                                 fileName: "[project]/src/app/components/Navigation.js",
-                                                lineNumber: 83,
+                                                lineNumber: 89,
                                                 columnNumber: 39
                                             }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$moon$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Moon$3e$__["Moon"], {
                                                 size: 20
                                             }, void 0, false, {
                                                 fileName: "[project]/src/app/components/Navigation.js",
-                                                lineNumber: 83,
+                                                lineNumber: 89,
                                                 columnNumber: 59
                                             }, this)
                                         }, void 0, false, {
                                             fileName: "[project]/src/app/components/Navigation.js",
-                                            lineNumber: 79,
+                                            lineNumber: 85,
                                             columnNumber: 17
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -156,30 +162,30 @@ function Navigation({ activePage, onPageChange }) {
                                                 size: 24
                                             }, void 0, false, {
                                                 fileName: "[project]/src/app/components/Navigation.js",
-                                                lineNumber: 90,
+                                                lineNumber: 96,
                                                 columnNumber: 35
                                             }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$menu$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Menu$3e$__["Menu"], {
                                                 size: 24
                                             }, void 0, false, {
                                                 fileName: "[project]/src/app/components/Navigation.js",
-                                                lineNumber: 90,
+                                                lineNumber: 96,
                                                 columnNumber: 53
                                             }, this)
                                         }, void 0, false, {
                                             fileName: "[project]/src/app/components/Navigation.js",
-                                            lineNumber: 86,
+                                            lineNumber: 92,
                                             columnNumber: 15
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/app/components/Navigation.js",
-                                    lineNumber: 77,
+                                    lineNumber: 83,
                                     columnNumber: 13
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/src/app/components/Navigation.js",
-                            lineNumber: 62,
+                            lineNumber: 68,
                             columnNumber: 11
                         }, this),
                         mobileMenuOpen && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -202,33 +208,33 @@ function Navigation({ activePage, onPageChange }) {
                                                         size: 20
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/app/components/Navigation.js",
-                                                        lineNumber: 116,
+                                                        lineNumber: 121,
                                                         columnNumber: 23
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                                                         children: item.label
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/app/components/Navigation.js",
-                                                        lineNumber: 117,
+                                                        lineNumber: 122,
                                                         columnNumber: 23
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/src/app/components/Navigation.js",
-                                                lineNumber: 115,
+                                                lineNumber: 120,
                                                 columnNumber: 21
                                             }, this),
                                             isActive && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$chevron$2d$right$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__ChevronRight$3e$__["ChevronRight"], {
                                                 size: 16
                                             }, void 0, false, {
                                                 fileName: "[project]/src/app/components/Navigation.js",
-                                                lineNumber: 119,
+                                                lineNumber: 124,
                                                 columnNumber: 34
                                             }, this)
                                         ]
                                     }, item.id, true, {
                                         fileName: "[project]/src/app/components/Navigation.js",
-                                        lineNumber: 103,
+                                        lineNumber: 109,
                                         columnNumber: 19
                                     }, this);
                                 }),
@@ -240,37 +246,37 @@ function Navigation({ activePage, onPageChange }) {
                                             size: 20
                                         }, void 0, false, {
                                             fileName: "[project]/src/app/components/Navigation.js",
-                                            lineNumber: 127,
+                                            lineNumber: 132,
                                             columnNumber: 17
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                                             children: "Logout"
                                         }, void 0, false, {
                                             fileName: "[project]/src/app/components/Navigation.js",
-                                            lineNumber: 128,
+                                            lineNumber: 133,
                                             columnNumber: 17
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/app/components/Navigation.js",
-                                    lineNumber: 123,
+                                    lineNumber: 128,
                                     columnNumber: 15
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/src/app/components/Navigation.js",
-                            lineNumber: 97,
+                            lineNumber: 103,
                             columnNumber: 13
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/src/app/components/Navigation.js",
-                    lineNumber: 61,
+                    lineNumber: 67,
                     columnNumber: 9
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/src/app/components/Navigation.js",
-                lineNumber: 60,
+                lineNumber: 66,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("aside", {
@@ -290,12 +296,12 @@ function Navigation({ activePage, onPageChange }) {
                                     priority: true
                                 }, void 0, false, {
                                     fileName: "[project]/src/app/components/Navigation.js",
-                                    lineNumber: 140,
+                                    lineNumber: 145,
                                     columnNumber: 13
                                 }, this)
                             }, void 0, false, {
                                 fileName: "[project]/src/app/components/Navigation.js",
-                                lineNumber: 139,
+                                lineNumber: 144,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -306,7 +312,7 @@ function Navigation({ activePage, onPageChange }) {
                                         children: "Naratel"
                                     }, void 0, false, {
                                         fileName: "[project]/src/app/components/Navigation.js",
-                                        lineNumber: 150,
+                                        lineNumber: 155,
                                         columnNumber: 13
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -314,19 +320,19 @@ function Navigation({ activePage, onPageChange }) {
                                         children: "DevOps"
                                     }, void 0, false, {
                                         fileName: "[project]/src/app/components/Navigation.js",
-                                        lineNumber: 151,
+                                        lineNumber: 156,
                                         columnNumber: 13
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/src/app/components/Navigation.js",
-                                lineNumber: 149,
+                                lineNumber: 154,
                                 columnNumber: 11
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/src/app/components/Navigation.js",
-                        lineNumber: 138,
+                        lineNumber: 143,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -346,7 +352,7 @@ function Navigation({ activePage, onPageChange }) {
                                                 className: isActive ? 'text-white' : 'group-hover:text-[#FFA500]'
                                             }, void 0, false, {
                                                 fileName: "[project]/src/app/components/Navigation.js",
-                                                lineNumber: 172,
+                                                lineNumber: 176,
                                                 columnNumber: 19
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -354,13 +360,13 @@ function Navigation({ activePage, onPageChange }) {
                                                 children: item.label
                                             }, void 0, false, {
                                                 fileName: "[project]/src/app/components/Navigation.js",
-                                                lineNumber: 173,
+                                                lineNumber: 177,
                                                 columnNumber: 19
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/src/app/components/Navigation.js",
-                                        lineNumber: 171,
+                                        lineNumber: 175,
                                         columnNumber: 17
                                     }, this),
                                     isActive && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$chevron$2d$right$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__ChevronRight$3e$__["ChevronRight"], {
@@ -368,19 +374,19 @@ function Navigation({ activePage, onPageChange }) {
                                         className: "animate-pulse"
                                     }, void 0, false, {
                                         fileName: "[project]/src/app/components/Navigation.js",
-                                        lineNumber: 175,
+                                        lineNumber: 179,
                                         columnNumber: 30
                                     }, this)
                                 ]
                             }, item.id, true, {
                                 fileName: "[project]/src/app/components/Navigation.js",
-                                lineNumber: 162,
+                                lineNumber: 167,
                                 columnNumber: 15
                             }, this);
                         })
                     }, void 0, false, {
                         fileName: "[project]/src/app/components/Navigation.js",
-                        lineNumber: 156,
+                        lineNumber: 161,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -394,26 +400,26 @@ function Navigation({ activePage, onPageChange }) {
                                         size: 18
                                     }, void 0, false, {
                                         fileName: "[project]/src/app/components/Navigation.js",
-                                        lineNumber: 188,
+                                        lineNumber: 192,
                                         columnNumber: 35
                                     }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$moon$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Moon$3e$__["Moon"], {
                                         size: 18
                                     }, void 0, false, {
                                         fileName: "[project]/src/app/components/Navigation.js",
-                                        lineNumber: 188,
+                                        lineNumber: 192,
                                         columnNumber: 55
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                                         children: theme === 'dark' ? 'Light Mode' : 'Dark Mode'
                                     }, void 0, false, {
                                         fileName: "[project]/src/app/components/Navigation.js",
-                                        lineNumber: 189,
+                                        lineNumber: 193,
                                         columnNumber: 15
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/src/app/components/Navigation.js",
-                                lineNumber: 184,
+                                lineNumber: 188,
                                 columnNumber: 13
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -424,32 +430,32 @@ function Navigation({ activePage, onPageChange }) {
                                         size: 18
                                     }, void 0, false, {
                                         fileName: "[project]/src/app/components/Navigation.js",
-                                        lineNumber: 197,
+                                        lineNumber: 201,
                                         columnNumber: 13
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                                         children: "Logout System"
                                     }, void 0, false, {
                                         fileName: "[project]/src/app/components/Navigation.js",
-                                        lineNumber: 198,
+                                        lineNumber: 202,
                                         columnNumber: 13
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/src/app/components/Navigation.js",
-                                lineNumber: 193,
+                                lineNumber: 197,
                                 columnNumber: 11
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/src/app/components/Navigation.js",
-                        lineNumber: 182,
+                        lineNumber: 186,
                         columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/src/app/components/Navigation.js",
-                lineNumber: 136,
+                lineNumber: 141,
                 columnNumber: 7
             }, this)
         ]
@@ -504,6 +510,8 @@ function K8sSecretManager() {
             router.push('/secrets');
         } else if (page === 'manifest') {
             router.push('/manifest');
+        } else if (page === 'tools') {
+            router.push('/tools');
         }
     };
     // Form state
@@ -857,7 +865,7 @@ function K8sSecretManager() {
                 onPageChange: handlePageChange
             }, void 0, false, {
                 fileName: "[project]/src/app/secrets/page.js",
-                lineNumber: 319,
+                lineNumber: 321,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -870,20 +878,20 @@ function K8sSecretManager() {
                                 className: "absolute top-[-10%] right-[-5%] w-96 h-96 bg-[#FFA500]/5 rounded-full blur-3xl"
                             }, void 0, false, {
                                 fileName: "[project]/src/app/secrets/page.js",
-                                lineNumber: 324,
+                                lineNumber: 326,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                 className: "absolute bottom-[-10%] left-[-5%] w-96 h-96 bg-[#FFA500]/5 rounded-full blur-3xl"
                             }, void 0, false, {
                                 fileName: "[project]/src/app/secrets/page.js",
-                                lineNumber: 325,
+                                lineNumber: 327,
                                 columnNumber: 11
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/src/app/secrets/page.js",
-                        lineNumber: 323,
+                        lineNumber: 325,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -902,12 +910,12 @@ function K8sSecretManager() {
                                                     className: "text-neutral-900 dark:text-white"
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/app/secrets/page.js",
-                                                    lineNumber: 333,
+                                                    lineNumber: 335,
                                                     columnNumber: 17
                                                 }, this)
                                             }, void 0, false, {
                                                 fileName: "[project]/src/app/secrets/page.js",
-                                                lineNumber: 332,
+                                                lineNumber: 334,
                                                 columnNumber: 15
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("h1", {
@@ -915,13 +923,13 @@ function K8sSecretManager() {
                                                 children: "Kubernetes Secret Manager"
                                             }, void 0, false, {
                                                 fileName: "[project]/src/app/secrets/page.js",
-                                                lineNumber: 335,
+                                                lineNumber: 337,
                                                 columnNumber: 15
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/src/app/secrets/page.js",
-                                        lineNumber: 331,
+                                        lineNumber: 333,
                                         columnNumber: 13
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -929,13 +937,13 @@ function K8sSecretManager() {
                                         children: "Kelola secrets di cluster Kubernetes Anda"
                                     }, void 0, false, {
                                         fileName: "[project]/src/app/secrets/page.js",
-                                        lineNumber: 337,
+                                        lineNumber: 339,
                                         columnNumber: 13
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/src/app/secrets/page.js",
-                                lineNumber: 330,
+                                lineNumber: 332,
                                 columnNumber: 11
                             }, this),
                             message.text && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -945,26 +953,26 @@ function K8sSecretManager() {
                                         size: 16
                                     }, void 0, false, {
                                         fileName: "[project]/src/app/secrets/page.js",
-                                        lineNumber: 347,
+                                        lineNumber: 348,
                                         columnNumber: 45
                                     }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$circle$2d$alert$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__AlertCircle$3e$__["AlertCircle"], {
                                         size: 16
                                     }, void 0, false, {
                                         fileName: "[project]/src/app/secrets/page.js",
-                                        lineNumber: 347,
+                                        lineNumber: 348,
                                         columnNumber: 73
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                                         children: message.text
                                     }, void 0, false, {
                                         fileName: "[project]/src/app/secrets/page.js",
-                                        lineNumber: 348,
+                                        lineNumber: 349,
                                         columnNumber: 15
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/src/app/secrets/page.js",
-                                lineNumber: 342,
+                                lineNumber: 344,
                                 columnNumber: 13
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -983,15 +991,15 @@ function K8sSecretManager() {
                                                             className: "text-[#FFA500]"
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/app/secrets/page.js",
-                                                            lineNumber: 357,
-                                                            columnNumber: 29
+                                                            lineNumber: 358,
+                                                            columnNumber: 19
                                                         }, this),
                                                         "Create New Secret"
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/src/app/secrets/page.js",
-                                                    lineNumber: 356,
-                                                    columnNumber: 27
+                                                    lineNumber: 357,
+                                                    columnNumber: 17
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                                     className: "mb-4 flex items-center gap-2 p-2.5 bg-[#FFA500]/10 border border-[#FFA500]/20 rounded-md",
@@ -1004,8 +1012,8 @@ function K8sSecretManager() {
                                                             className: "w-3.5 h-3.5 text-[#FFA500] rounded focus:ring-[#FFA500]"
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/app/secrets/page.js",
-                                                            lineNumber: 362,
-                                                            columnNumber: 29
+                                                            lineNumber: 363,
+                                                            columnNumber: 19
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("label", {
                                                             htmlFor: "createDualEnv",
@@ -1013,14 +1021,14 @@ function K8sSecretManager() {
                                                             children: "Create 2 environments (Dev & Prod)"
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/app/secrets/page.js",
-                                                            lineNumber: 369,
-                                                            columnNumber: 29
+                                                            lineNumber: 370,
+                                                            columnNumber: 19
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/src/app/secrets/page.js",
-                                                    lineNumber: 361,
-                                                    columnNumber: 27
+                                                    lineNumber: 362,
+                                                    columnNumber: 17
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                                     className: "space-y-4",
@@ -1040,7 +1048,7 @@ function K8sSecretManager() {
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/src/app/secrets/page.js",
                                                                     lineNumber: 387,
-                                                                    columnNumber: 33
+                                                                    columnNumber: 23
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("label", {
                                                                     htmlFor: "env-file-input",
@@ -1052,7 +1060,7 @@ function K8sSecretManager() {
                                                                         }, void 0, false, {
                                                                             fileName: "[project]/src/app/secrets/page.js",
                                                                             lineNumber: 395,
-                                                                            columnNumber: 35
+                                                                            columnNumber: 25
                                                                         }, this),
                                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
                                                                             className: "text-sm font-semibold text-neutral-600 dark:text-neutral-300 mb-0.5",
@@ -1060,7 +1068,7 @@ function K8sSecretManager() {
                                                                         }, void 0, false, {
                                                                             fileName: "[project]/src/app/secrets/page.js",
                                                                             lineNumber: 396,
-                                                                            columnNumber: 35
+                                                                            columnNumber: 25
                                                                         }, this),
                                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
                                                                             className: "text-xs text-neutral-500",
@@ -1068,19 +1076,19 @@ function K8sSecretManager() {
                                                                         }, void 0, false, {
                                                                             fileName: "[project]/src/app/secrets/page.js",
                                                                             lineNumber: 399,
-                                                                            columnNumber: 35
+                                                                            columnNumber: 25
                                                                         }, this)
                                                                     ]
                                                                 }, void 0, true, {
                                                                     fileName: "[project]/src/app/secrets/page.js",
                                                                     lineNumber: 394,
-                                                                    columnNumber: 33
+                                                                    columnNumber: 23
                                                                 }, this)
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/src/app/secrets/page.js",
-                                                            lineNumber: 377,
-                                                            columnNumber: 31
+                                                            lineNumber: 378,
+                                                            columnNumber: 21
                                                         }, this),
                                                         fileName && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                                             className: "flex items-center justify-between bg-gray-50 dark:bg-neutral-950 border border-neutral-200 dark:border-neutral-800 p-3 rounded-md",
@@ -1094,7 +1102,7 @@ function K8sSecretManager() {
                                                                         }, void 0, false, {
                                                                             fileName: "[project]/src/app/secrets/page.js",
                                                                             lineNumber: 410,
-                                                                            columnNumber: 35
+                                                                            columnNumber: 25
                                                                         }, this),
                                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                                                             children: [
@@ -1104,7 +1112,7 @@ function K8sSecretManager() {
                                                                                 }, void 0, false, {
                                                                                     fileName: "[project]/src/app/secrets/page.js",
                                                                                     lineNumber: 412,
-                                                                                    columnNumber: 37
+                                                                                    columnNumber: 27
                                                                                 }, this),
                                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
                                                                                     className: "text-[10px] text-neutral-500",
@@ -1115,19 +1123,19 @@ function K8sSecretManager() {
                                                                                 }, void 0, true, {
                                                                                     fileName: "[project]/src/app/secrets/page.js",
                                                                                     lineNumber: 413,
-                                                                                    columnNumber: 37
+                                                                                    columnNumber: 27
                                                                                 }, this)
                                                                             ]
                                                                         }, void 0, true, {
                                                                             fileName: "[project]/src/app/secrets/page.js",
                                                                             lineNumber: 411,
-                                                                            columnNumber: 35
+                                                                            columnNumber: 25
                                                                         }, this)
                                                                     ]
                                                                 }, void 0, true, {
                                                                     fileName: "[project]/src/app/secrets/page.js",
                                                                     lineNumber: 409,
-                                                                    columnNumber: 33
+                                                                    columnNumber: 23
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
                                                                     onClick: clearEnvFile,
@@ -1137,18 +1145,18 @@ function K8sSecretManager() {
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/src/app/secrets/page.js",
                                                                         lineNumber: 422,
-                                                                        columnNumber: 35
+                                                                        columnNumber: 25
                                                                     }, this)
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/src/app/secrets/page.js",
                                                                     lineNumber: 418,
-                                                                    columnNumber: 33
+                                                                    columnNumber: 23
                                                                 }, this)
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/src/app/secrets/page.js",
                                                             lineNumber: 408,
-                                                            columnNumber: 31
+                                                            columnNumber: 21
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                                             className: isDualEnv ? "grid grid-cols-1 xl:grid-cols-2 gap-4" : "space-y-4",
@@ -1162,7 +1170,7 @@ function K8sSecretManager() {
                                                                         }, void 0, false, {
                                                                             fileName: "[project]/src/app/secrets/page.js",
                                                                             lineNumber: 431,
-                                                                            columnNumber: 47
+                                                                            columnNumber: 37
                                                                         }, this),
                                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                                                             className: "grid grid-cols-1 md:grid-cols-2 gap-3 mb-3",
@@ -1175,7 +1183,7 @@ function K8sSecretManager() {
                                                                                         }, void 0, false, {
                                                                                             fileName: "[project]/src/app/secrets/page.js",
                                                                                             lineNumber: 436,
-                                                                                            columnNumber: 37
+                                                                                            columnNumber: 27
                                                                                         }, this),
                                                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
                                                                                             type: "text",
@@ -1189,13 +1197,13 @@ function K8sSecretManager() {
                                                                                         }, void 0, false, {
                                                                                             fileName: "[project]/src/app/secrets/page.js",
                                                                                             lineNumber: 439,
-                                                                                            columnNumber: 37
+                                                                                            columnNumber: 27
                                                                                         }, this)
                                                                                     ]
                                                                                 }, void 0, true, {
                                                                                     fileName: "[project]/src/app/secrets/page.js",
                                                                                     lineNumber: 435,
-                                                                                    columnNumber: 35
+                                                                                    columnNumber: 25
                                                                                 }, this),
                                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                                                                     children: [
@@ -1205,7 +1213,7 @@ function K8sSecretManager() {
                                                                                         }, void 0, false, {
                                                                                             fileName: "[project]/src/app/secrets/page.js",
                                                                                             lineNumber: 449,
-                                                                                            columnNumber: 37
+                                                                                            columnNumber: 27
                                                                                         }, this),
                                                                                         loadingNamespaces ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                                                                             className: "w-full bg-gray-50 dark:bg-neutral-950 border border-neutral-200 dark:border-neutral-800 rounded-md px-3 py-1.5 flex items-center gap-2 text-neutral-500",
@@ -1216,7 +1224,7 @@ function K8sSecretManager() {
                                                                                                 }, void 0, false, {
                                                                                                     fileName: "[project]/src/app/secrets/page.js",
                                                                                                     lineNumber: 454,
-                                                                                                    columnNumber: 41
+                                                                                                    columnNumber: 31
                                                                                                 }, this),
                                                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                                                                                                     className: "text-xs",
@@ -1224,13 +1232,13 @@ function K8sSecretManager() {
                                                                                                 }, void 0, false, {
                                                                                                     fileName: "[project]/src/app/secrets/page.js",
                                                                                                     lineNumber: 455,
-                                                                                                    columnNumber: 41
+                                                                                                    columnNumber: 31
                                                                                                 }, this)
                                                                                             ]
                                                                                         }, void 0, true, {
                                                                                             fileName: "[project]/src/app/secrets/page.js",
                                                                                             lineNumber: 453,
-                                                                                            columnNumber: 39
+                                                                                            columnNumber: 29
                                                                                         }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("select", {
                                                                                             value: form.namespace,
                                                                                             onChange: (e)=>setForm({
@@ -1244,24 +1252,24 @@ function K8sSecretManager() {
                                                                                                 }, ns, false, {
                                                                                                     fileName: "[project]/src/app/secrets/page.js",
                                                                                                     lineNumber: 464,
-                                                                                                    columnNumber: 43
+                                                                                                    columnNumber: 33
                                                                                                 }, this))
                                                                                         }, void 0, false, {
                                                                                             fileName: "[project]/src/app/secrets/page.js",
                                                                                             lineNumber: 458,
-                                                                                            columnNumber: 39
+                                                                                            columnNumber: 29
                                                                                         }, this)
                                                                                     ]
                                                                                 }, void 0, true, {
                                                                                     fileName: "[project]/src/app/secrets/page.js",
                                                                                     lineNumber: 448,
-                                                                                    columnNumber: 35
+                                                                                    columnNumber: 25
                                                                                 }, this)
                                                                             ]
                                                                         }, void 0, true, {
                                                                             fileName: "[project]/src/app/secrets/page.js",
                                                                             lineNumber: 434,
-                                                                            columnNumber: 33
+                                                                            columnNumber: 23
                                                                         }, this),
                                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                                                             className: "mb-3",
@@ -1272,7 +1280,7 @@ function K8sSecretManager() {
                                                                                 }, void 0, false, {
                                                                                     fileName: "[project]/src/app/secrets/page.js",
                                                                                     lineNumber: 473,
-                                                                                    columnNumber: 35
+                                                                                    columnNumber: 25
                                                                                 }, this),
                                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("select", {
                                                                                     value: form.secretType,
@@ -1287,18 +1295,18 @@ function K8sSecretManager() {
                                                                                         }, type, false, {
                                                                                             fileName: "[project]/src/app/secrets/page.js",
                                                                                             lineNumber: 482,
-                                                                                            columnNumber: 39
+                                                                                            columnNumber: 29
                                                                                         }, this))
                                                                                 }, void 0, false, {
                                                                                     fileName: "[project]/src/app/secrets/page.js",
                                                                                     lineNumber: 476,
-                                                                                    columnNumber: 35
+                                                                                    columnNumber: 25
                                                                                 }, this)
                                                                             ]
                                                                         }, void 0, true, {
                                                                             fileName: "[project]/src/app/secrets/page.js",
                                                                             lineNumber: 472,
-                                                                            columnNumber: 33
+                                                                            columnNumber: 23
                                                                         }, this),
                                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                                                             children: [
@@ -1311,7 +1319,7 @@ function K8sSecretManager() {
                                                                                         }, void 0, false, {
                                                                                             fileName: "[project]/src/app/secrets/page.js",
                                                                                             lineNumber: 490,
-                                                                                            columnNumber: 37
+                                                                                            columnNumber: 27
                                                                                         }, this),
                                                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
                                                                                             onClick: ()=>addSecretField('dev'),
@@ -1322,20 +1330,20 @@ function K8sSecretManager() {
                                                                                                 }, void 0, false, {
                                                                                                     fileName: "[project]/src/app/secrets/page.js",
                                                                                                     lineNumber: 497,
-                                                                                                    columnNumber: 39
+                                                                                                    columnNumber: 29
                                                                                                 }, this),
                                                                                                 "Add Field"
                                                                                             ]
                                                                                         }, void 0, true, {
                                                                                             fileName: "[project]/src/app/secrets/page.js",
                                                                                             lineNumber: 493,
-                                                                                            columnNumber: 37
+                                                                                            columnNumber: 27
                                                                                         }, this)
                                                                                     ]
                                                                                 }, void 0, true, {
                                                                                     fileName: "[project]/src/app/secrets/page.js",
                                                                                     lineNumber: 489,
-                                                                                    columnNumber: 35
+                                                                                    columnNumber: 25
                                                                                 }, this),
                                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                                                                     className: "space-y-2 max-h-[300px] overflow-y-auto pr-1",
@@ -1351,7 +1359,7 @@ function K8sSecretManager() {
                                                                                                 }, void 0, false, {
                                                                                                     fileName: "[project]/src/app/secrets/page.js",
                                                                                                     lineNumber: 505,
-                                                                                                    columnNumber: 41
+                                                                                                    columnNumber: 31
                                                                                                 }, this),
                                                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                                                                                     className: "flex-1 relative",
@@ -1364,12 +1372,12 @@ function K8sSecretManager() {
                                                                                                     }, void 0, false, {
                                                                                                         fileName: "[project]/src/app/secrets/page.js",
                                                                                                         lineNumber: 513,
-                                                                                                        columnNumber: 43
+                                                                                                        columnNumber: 33
                                                                                                     }, this)
                                                                                                 }, void 0, false, {
                                                                                                     fileName: "[project]/src/app/secrets/page.js",
                                                                                                     lineNumber: 512,
-                                                                                                    columnNumber: 41
+                                                                                                    columnNumber: 31
                                                                                                 }, this),
                                                                                                 form.secretData.length > 1 && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
                                                                                                     onClick: ()=>removeSecretField(index, 'dev'),
@@ -1379,35 +1387,35 @@ function K8sSecretManager() {
                                                                                                     }, void 0, false, {
                                                                                                         fileName: "[project]/src/app/secrets/page.js",
                                                                                                         lineNumber: 526,
-                                                                                                        columnNumber: 45
+                                                                                                        columnNumber: 35
                                                                                                     }, this)
                                                                                                 }, void 0, false, {
                                                                                                     fileName: "[project]/src/app/secrets/page.js",
                                                                                                     lineNumber: 522,
-                                                                                                    columnNumber: 43
+                                                                                                    columnNumber: 33
                                                                                                 }, this)
                                                                                             ]
                                                                                         }, index, true, {
                                                                                             fileName: "[project]/src/app/secrets/page.js",
                                                                                             lineNumber: 504,
-                                                                                            columnNumber: 39
+                                                                                            columnNumber: 29
                                                                                         }, this))
                                                                                 }, void 0, false, {
                                                                                     fileName: "[project]/src/app/secrets/page.js",
                                                                                     lineNumber: 502,
-                                                                                    columnNumber: 35
+                                                                                    columnNumber: 25
                                                                                 }, this)
                                                                             ]
                                                                         }, void 0, true, {
                                                                             fileName: "[project]/src/app/secrets/page.js",
                                                                             lineNumber: 488,
-                                                                            columnNumber: 33
+                                                                            columnNumber: 23
                                                                         }, this)
                                                                     ]
                                                                 }, void 0, true, {
                                                                     fileName: "[project]/src/app/secrets/page.js",
                                                                     lineNumber: 430,
-                                                                    columnNumber: 31
+                                                                    columnNumber: 21
                                                                 }, this),
                                                                 isDualEnv && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                                                     className: "p-3 rounded-lg border border-[#FFA500]/20 bg-[#FFA500]/5",
@@ -1418,7 +1426,7 @@ function K8sSecretManager() {
                                                                         }, void 0, false, {
                                                                             fileName: "[project]/src/app/secrets/page.js",
                                                                             lineNumber: 538,
-                                                                            columnNumber: 35
+                                                                            columnNumber: 25
                                                                         }, this),
                                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                                                             className: "grid grid-cols-1 md:grid-cols-2 gap-3 mb-3",
@@ -1431,7 +1439,7 @@ function K8sSecretManager() {
                                                                                         }, void 0, false, {
                                                                                             fileName: "[project]/src/app/secrets/page.js",
                                                                                             lineNumber: 543,
-                                                                                            columnNumber: 39
+                                                                                            columnNumber: 29
                                                                                         }, this),
                                                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
                                                                                             type: "text",
@@ -1445,13 +1453,13 @@ function K8sSecretManager() {
                                                                                         }, void 0, false, {
                                                                                             fileName: "[project]/src/app/secrets/page.js",
                                                                                             lineNumber: 546,
-                                                                                            columnNumber: 39
+                                                                                            columnNumber: 29
                                                                                         }, this)
                                                                                     ]
                                                                                 }, void 0, true, {
                                                                                     fileName: "[project]/src/app/secrets/page.js",
                                                                                     lineNumber: 542,
-                                                                                    columnNumber: 37
+                                                                                    columnNumber: 27
                                                                                 }, this),
                                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                                                                     children: [
@@ -1461,7 +1469,7 @@ function K8sSecretManager() {
                                                                                         }, void 0, false, {
                                                                                             fileName: "[project]/src/app/secrets/page.js",
                                                                                             lineNumber: 556,
-                                                                                            columnNumber: 39
+                                                                                            columnNumber: 29
                                                                                         }, this),
                                                                                         loadingNamespaces ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                                                                             className: "w-full bg-gray-50 dark:bg-neutral-950 border border-neutral-200 dark:border-neutral-800 rounded-md px-3 py-1.5 flex items-center gap-2 text-neutral-500",
@@ -1472,7 +1480,7 @@ function K8sSecretManager() {
                                                                                                 }, void 0, false, {
                                                                                                     fileName: "[project]/src/app/secrets/page.js",
                                                                                                     lineNumber: 561,
-                                                                                                    columnNumber: 43
+                                                                                                    columnNumber: 33
                                                                                                 }, this),
                                                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                                                                                                     className: "text-xs",
@@ -1480,13 +1488,13 @@ function K8sSecretManager() {
                                                                                                 }, void 0, false, {
                                                                                                     fileName: "[project]/src/app/secrets/page.js",
                                                                                                     lineNumber: 562,
-                                                                                                    columnNumber: 43
+                                                                                                    columnNumber: 33
                                                                                                 }, this)
                                                                                             ]
                                                                                         }, void 0, true, {
                                                                                             fileName: "[project]/src/app/secrets/page.js",
                                                                                             lineNumber: 560,
-                                                                                            columnNumber: 41
+                                                                                            columnNumber: 31
                                                                                         }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("select", {
                                                                                             value: formProd.namespace,
                                                                                             onChange: (e)=>setFormProd({
@@ -1500,24 +1508,24 @@ function K8sSecretManager() {
                                                                                                 }, ns, false, {
                                                                                                     fileName: "[project]/src/app/secrets/page.js",
                                                                                                     lineNumber: 571,
-                                                                                                    columnNumber: 45
+                                                                                                    columnNumber: 35
                                                                                                 }, this))
                                                                                         }, void 0, false, {
                                                                                             fileName: "[project]/src/app/secrets/page.js",
                                                                                             lineNumber: 565,
-                                                                                            columnNumber: 41
+                                                                                            columnNumber: 31
                                                                                         }, this)
                                                                                     ]
                                                                                 }, void 0, true, {
                                                                                     fileName: "[project]/src/app/secrets/page.js",
                                                                                     lineNumber: 555,
-                                                                                    columnNumber: 37
+                                                                                    columnNumber: 27
                                                                                 }, this)
                                                                             ]
                                                                         }, void 0, true, {
                                                                             fileName: "[project]/src/app/secrets/page.js",
                                                                             lineNumber: 541,
-                                                                            columnNumber: 35
+                                                                            columnNumber: 25
                                                                         }, this),
                                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                                                             className: "mb-3",
@@ -1528,7 +1536,7 @@ function K8sSecretManager() {
                                                                                 }, void 0, false, {
                                                                                     fileName: "[project]/src/app/secrets/page.js",
                                                                                     lineNumber: 580,
-                                                                                    columnNumber: 37
+                                                                                    columnNumber: 27
                                                                                 }, this),
                                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("select", {
                                                                                     value: formProd.secretType,
@@ -1543,18 +1551,18 @@ function K8sSecretManager() {
                                                                                         }, type, false, {
                                                                                             fileName: "[project]/src/app/secrets/page.js",
                                                                                             lineNumber: 589,
-                                                                                            columnNumber: 41
+                                                                                            columnNumber: 31
                                                                                         }, this))
                                                                                 }, void 0, false, {
                                                                                     fileName: "[project]/src/app/secrets/page.js",
                                                                                     lineNumber: 583,
-                                                                                    columnNumber: 37
+                                                                                    columnNumber: 27
                                                                                 }, this)
                                                                             ]
                                                                         }, void 0, true, {
                                                                             fileName: "[project]/src/app/secrets/page.js",
                                                                             lineNumber: 579,
-                                                                            columnNumber: 35
+                                                                            columnNumber: 25
                                                                         }, this),
                                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                                                             children: [
@@ -1567,7 +1575,7 @@ function K8sSecretManager() {
                                                                                         }, void 0, false, {
                                                                                             fileName: "[project]/src/app/secrets/page.js",
                                                                                             lineNumber: 597,
-                                                                                            columnNumber: 39
+                                                                                            columnNumber: 29
                                                                                         }, this),
                                                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
                                                                                             onClick: ()=>addSecretField('prod'),
@@ -1578,20 +1586,20 @@ function K8sSecretManager() {
                                                                                                 }, void 0, false, {
                                                                                                     fileName: "[project]/src/app/secrets/page.js",
                                                                                                     lineNumber: 604,
-                                                                                                    columnNumber: 41
+                                                                                                    columnNumber: 31
                                                                                                 }, this),
                                                                                                 "Add Field"
                                                                                             ]
                                                                                         }, void 0, true, {
                                                                                             fileName: "[project]/src/app/secrets/page.js",
                                                                                             lineNumber: 600,
-                                                                                            columnNumber: 39
+                                                                                            columnNumber: 29
                                                                                         }, this)
                                                                                     ]
                                                                                 }, void 0, true, {
                                                                                     fileName: "[project]/src/app/secrets/page.js",
                                                                                     lineNumber: 596,
-                                                                                    columnNumber: 37
+                                                                                    columnNumber: 27
                                                                                 }, this),
                                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                                                                     className: "space-y-2 max-h-[300px] overflow-y-auto pr-1",
@@ -1607,7 +1615,7 @@ function K8sSecretManager() {
                                                                                                 }, void 0, false, {
                                                                                                     fileName: "[project]/src/app/secrets/page.js",
                                                                                                     lineNumber: 612,
-                                                                                                    columnNumber: 43
+                                                                                                    columnNumber: 33
                                                                                                 }, this),
                                                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                                                                                     className: "flex-1 relative",
@@ -1620,12 +1628,12 @@ function K8sSecretManager() {
                                                                                                     }, void 0, false, {
                                                                                                         fileName: "[project]/src/app/secrets/page.js",
                                                                                                         lineNumber: 620,
-                                                                                                        columnNumber: 45
+                                                                                                        columnNumber: 35
                                                                                                     }, this)
                                                                                                 }, void 0, false, {
                                                                                                     fileName: "[project]/src/app/secrets/page.js",
                                                                                                     lineNumber: 619,
-                                                                                                    columnNumber: 43
+                                                                                                    columnNumber: 33
                                                                                                 }, this),
                                                                                                 formProd.secretData.length > 1 && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
                                                                                                     onClick: ()=>removeSecretField(index, 'prod'),
@@ -1635,41 +1643,41 @@ function K8sSecretManager() {
                                                                                                     }, void 0, false, {
                                                                                                         fileName: "[project]/src/app/secrets/page.js",
                                                                                                         lineNumber: 633,
-                                                                                                        columnNumber: 47
+                                                                                                        columnNumber: 37
                                                                                                     }, this)
                                                                                                 }, void 0, false, {
                                                                                                     fileName: "[project]/src/app/secrets/page.js",
                                                                                                     lineNumber: 629,
-                                                                                                    columnNumber: 45
+                                                                                                    columnNumber: 35
                                                                                                 }, this)
                                                                                             ]
                                                                                         }, index, true, {
                                                                                             fileName: "[project]/src/app/secrets/page.js",
                                                                                             lineNumber: 611,
-                                                                                            columnNumber: 41
+                                                                                            columnNumber: 31
                                                                                         }, this))
                                                                                 }, void 0, false, {
                                                                                     fileName: "[project]/src/app/secrets/page.js",
                                                                                     lineNumber: 609,
-                                                                                    columnNumber: 37
+                                                                                    columnNumber: 27
                                                                                 }, this)
                                                                             ]
                                                                         }, void 0, true, {
                                                                             fileName: "[project]/src/app/secrets/page.js",
                                                                             lineNumber: 595,
-                                                                            columnNumber: 35
+                                                                            columnNumber: 25
                                                                         }, this)
                                                                     ]
                                                                 }, void 0, true, {
                                                                     fileName: "[project]/src/app/secrets/page.js",
                                                                     lineNumber: 537,
-                                                                    columnNumber: 33
+                                                                    columnNumber: 23
                                                                 }, this)
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/src/app/secrets/page.js",
                                                             lineNumber: 428,
-                                                            columnNumber: 29
+                                                            columnNumber: 19
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
                                                             onClick: handleSubmit,
@@ -1683,7 +1691,7 @@ function K8sSecretManager() {
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/src/app/secrets/page.js",
                                                                         lineNumber: 652,
-                                                                        columnNumber: 35
+                                                                        columnNumber: 25
                                                                     }, this),
                                                                     isDualEnv ? 'Creating Secrets...' : 'Creating Secret...'
                                                                 ]
@@ -1694,7 +1702,7 @@ function K8sSecretManager() {
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/src/app/secrets/page.js",
                                                                         lineNumber: 657,
-                                                                        columnNumber: 35
+                                                                        columnNumber: 25
                                                                     }, this),
                                                                     isDualEnv ? 'Create / Update Secrets' : 'Create / Update Secret'
                                                                 ]
@@ -1702,24 +1710,24 @@ function K8sSecretManager() {
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/app/secrets/page.js",
                                                             lineNumber: 645,
-                                                            columnNumber: 29
+                                                            columnNumber: 19
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/src/app/secrets/page.js",
-                                                    lineNumber: 374,
-                                                    columnNumber: 27
+                                                    lineNumber: 375,
+                                                    columnNumber: 17
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/src/app/secrets/page.js",
-                                            lineNumber: 355,
-                                            columnNumber: 25
+                                            lineNumber: 356,
+                                            columnNumber: 15
                                         }, this)
                                     }, void 0, false, {
                                         fileName: "[project]/src/app/secrets/page.js",
-                                        lineNumber: 354,
-                                        columnNumber: 23
+                                        lineNumber: 355,
+                                        columnNumber: 13
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                         className: "w-full",
@@ -1738,7 +1746,7 @@ function K8sSecretManager() {
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/src/app/secrets/page.js",
                                                                     lineNumber: 671,
-                                                                    columnNumber: 31
+                                                                    columnNumber: 21
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("h2", {
                                                                     className: "text-lg font-bold",
@@ -1746,13 +1754,13 @@ function K8sSecretManager() {
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/src/app/secrets/page.js",
                                                                     lineNumber: 672,
-                                                                    columnNumber: 31
+                                                                    columnNumber: 21
                                                                 }, this)
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/src/app/secrets/page.js",
                                                             lineNumber: 670,
-                                                            columnNumber: 29
+                                                            columnNumber: 19
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                                             className: "text-[10px] text-neutral-500 bg-neutral-50 dark:bg-neutral-800 px-2 py-1 rounded-md border border-neutral-200 dark:border-neutral-700",
@@ -1764,19 +1772,19 @@ function K8sSecretManager() {
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/src/app/secrets/page.js",
                                                                     lineNumber: 675,
-                                                                    columnNumber: 42
+                                                                    columnNumber: 32
                                                                 }, this)
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/src/app/secrets/page.js",
                                                             lineNumber: 674,
-                                                            columnNumber: 29
+                                                            columnNumber: 19
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/src/app/secrets/page.js",
                                                     lineNumber: 669,
-                                                    columnNumber: 27
+                                                    columnNumber: 17
                                                 }, this),
                                                 loadingSecrets ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                                     className: "flex items-center justify-center py-12 text-neutral-500",
@@ -1786,12 +1794,12 @@ function K8sSecretManager() {
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/app/secrets/page.js",
                                                         lineNumber: 681,
-                                                        columnNumber: 31
+                                                        columnNumber: 21
                                                     }, this)
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/app/secrets/page.js",
                                                     lineNumber: 680,
-                                                    columnNumber: 29
+                                                    columnNumber: 19
                                                 }, this) : existingSecrets.length === 0 ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                                     className: "text-center py-12 text-neutral-500 text-xs",
                                                     children: [
@@ -1801,14 +1809,14 @@ function K8sSecretManager() {
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/app/secrets/page.js",
                                                             lineNumber: 685,
-                                                            columnNumber: 31
+                                                            columnNumber: 21
                                                         }, this),
                                                         "Tidak ada secret di namespace ini"
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/src/app/secrets/page.js",
                                                     lineNumber: 684,
-                                                    columnNumber: 29
+                                                    columnNumber: 19
                                                 }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                                     className: "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3 max-h-[500px] overflow-y-auto pr-1",
                                                     children: existingSecrets.map((secret, idx)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1823,7 +1831,7 @@ function K8sSecretManager() {
                                                                         }, void 0, false, {
                                                                             fileName: "[project]/src/app/secrets/page.js",
                                                                             lineNumber: 697,
-                                                                            columnNumber: 37
+                                                                            columnNumber: 27
                                                                         }, this),
                                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
                                                                             className: "text-[10px] text-neutral-500",
@@ -1831,13 +1839,13 @@ function K8sSecretManager() {
                                                                         }, void 0, false, {
                                                                             fileName: "[project]/src/app/secrets/page.js",
                                                                             lineNumber: 698,
-                                                                            columnNumber: 37
+                                                                            columnNumber: 27
                                                                         }, this)
                                                                     ]
                                                                 }, void 0, true, {
                                                                     fileName: "[project]/src/app/secrets/page.js",
                                                                     lineNumber: 696,
-                                                                    columnNumber: 35
+                                                                    columnNumber: 25
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                                                     className: "flex items-center gap-1 mt-2 pt-2 border-t border-neutral-200 dark:border-neutral-800",
@@ -1848,7 +1856,7 @@ function K8sSecretManager() {
                                                                         }, void 0, false, {
                                                                             fileName: "[project]/src/app/secrets/page.js",
                                                                             lineNumber: 701,
-                                                                            columnNumber: 37
+                                                                            columnNumber: 27
                                                                         }, this),
                                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                                                                             className: "text-[10px] text-neutral-500",
@@ -1859,41 +1867,41 @@ function K8sSecretManager() {
                                                                         }, void 0, true, {
                                                                             fileName: "[project]/src/app/secrets/page.js",
                                                                             lineNumber: 702,
-                                                                            columnNumber: 37
+                                                                            columnNumber: 27
                                                                         }, this)
                                                                     ]
                                                                 }, void 0, true, {
                                                                     fileName: "[project]/src/app/secrets/page.js",
                                                                     lineNumber: 700,
-                                                                    columnNumber: 35
+                                                                    columnNumber: 25
                                                                 }, this)
                                                             ]
                                                         }, idx, true, {
                                                             fileName: "[project]/src/app/secrets/page.js",
                                                             lineNumber: 691,
-                                                            columnNumber: 33
+                                                            columnNumber: 23
                                                         }, this))
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/app/secrets/page.js",
                                                     lineNumber: 689,
-                                                    columnNumber: 29
+                                                    columnNumber: 19
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/src/app/secrets/page.js",
                                             lineNumber: 668,
-                                            columnNumber: 25
+                                            columnNumber: 15
                                         }, this)
                                     }, void 0, false, {
                                         fileName: "[project]/src/app/secrets/page.js",
                                         lineNumber: 667,
-                                        columnNumber: 23
+                                        columnNumber: 13
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/src/app/secrets/page.js",
-                                lineNumber: 352,
-                                columnNumber: 21
+                                lineNumber: 353,
+                                columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                 className: "mt-6 p-3 bg-white dark:bg-neutral-900/50 border border-neutral-200 dark:border-neutral-800 rounded-lg text-xs text-neutral-500 dark:text-neutral-400 shadow-sm dark:shadow-none",
@@ -1959,19 +1967,19 @@ function K8sSecretManager() {
                         ]
                     }, void 0, true, {
                         fileName: "[project]/src/app/secrets/page.js",
-                        lineNumber: 328,
+                        lineNumber: 330,
                         columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/src/app/secrets/page.js",
-                lineNumber: 322,
+                lineNumber: 324,
                 columnNumber: 7
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/src/app/secrets/page.js",
-        lineNumber: 318,
+        lineNumber: 320,
         columnNumber: 5
     }, this);
 }

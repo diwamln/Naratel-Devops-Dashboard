@@ -3,16 +3,17 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { 
-  Activity, 
-  Lock, 
-  Menu, 
-  X, 
-  LogOut, 
-  Sun, 
-  Moon, 
-  FilePlus, // Ikon baru untuk Manifest
-  ChevronRight 
+import {
+  Activity,
+  Lock,
+  Menu,
+  X,
+  LogOut,
+  Sun,
+  Moon,
+  FilePlus,
+  ChevronRight,
+  LayoutGrid // Ikon untuk Tools
 } from 'lucide-react';
 import { signOut } from 'next-auth/react';
 import { useTheme } from 'next-themes';
@@ -38,16 +39,21 @@ export default function Navigation({ activePage, onPageChange }) {
       id: 'k8s-secret',
       label: 'K8s Secrets',
       icon: Lock,
-    },    
+    },
     {
       id: 'manifest',
-      label: 'Manifest Generator', // Nama lebih deskriptif
-      icon: FilePlus, // Ikon yang lebih cocok untuk generate file
+      label: 'Manifest Generator',
+      icon: FilePlus,
+    },
+    {
+      id: 'tools',
+      label: 'Tools & Services', // Pintu ke service lain
+      icon: LayoutGrid,
     }
   ];
 
   const handleLogout = async () => {
-    await signOut({ callbackUrl: '/auth/signin' });
+    await signOut({ callbackUrl: '/login' });
   };
 
   const toggleTheme = () => {
@@ -98,7 +104,7 @@ export default function Navigation({ activePage, onPageChange }) {
               {menuItems.map((item) => {
                 const Icon = item.icon;
                 const isActive = activePage === item.id;
-                
+
                 return (
                   <button
                     key={item.id}
@@ -106,11 +112,10 @@ export default function Navigation({ activePage, onPageChange }) {
                       onPageChange(item.id);
                       setMobileMenuOpen(false);
                     }}
-                    className={`w-full flex items-center justify-between px-4 py-3 rounded-lg font-semibold transition-all ${
-                      isActive
-                        ? 'bg-[#FFA500] text-white shadow-md'
-                        : 'text-neutral-500 dark:text-neutral-400 hover:bg-neutral-100 dark:hover:bg-neutral-800'
-                    }`}
+                    className={`w-full flex items-center justify-between px-4 py-3 rounded-lg font-semibold transition-all ${isActive
+                      ? 'bg-[#FFA500] text-white shadow-md'
+                      : 'text-neutral-500 dark:text-neutral-400 hover:bg-neutral-100 dark:hover:bg-neutral-800'
+                      }`}
                   >
                     <div className="flex items-center gap-3">
                       <Icon size={20} />
@@ -157,16 +162,15 @@ export default function Navigation({ activePage, onPageChange }) {
           {menuItems.map((item) => {
             const Icon = item.icon;
             const isActive = activePage === item.id;
-            
+
             return (
               <button
                 key={item.id}
                 onClick={() => onPageChange(item.id)}
-                className={`w-full group flex items-center justify-between px-4 py-3 rounded-xl transition-all duration-200 ${
-                  isActive
-                    ? 'bg-[#FFA500] text-white shadow-lg shadow-[#FFA500]/20'
-                    : 'text-neutral-500 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-white hover:bg-neutral-100 dark:hover:bg-neutral-800'
-                }`}
+                className={`w-full group flex items-center justify-between px-4 py-3 rounded-xl transition-all duration-200 ${isActive
+                  ? 'bg-[#FFA500] text-white shadow-lg shadow-[#FFA500]/20'
+                  : 'text-neutral-500 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-white hover:bg-neutral-100 dark:hover:bg-neutral-800'
+                  }`}
               >
                 <div className="flex items-center gap-3">
                   <Icon size={18} className={isActive ? 'text-white' : 'group-hover:text-[#FFA500]'} />

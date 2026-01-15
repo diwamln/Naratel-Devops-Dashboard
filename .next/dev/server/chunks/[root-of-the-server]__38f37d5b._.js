@@ -104,7 +104,6 @@ module.exports = mod;
 "[project]/src/app/api/auth/[...nextauth]/route.js [app-route] (ecmascript)", ((__turbopack_context__) => {
 "use strict";
 
-// src/app/api/auth/[...nextauth]/route.js
 __turbopack_context__.s([
     "GET",
     ()=>handler,
@@ -115,45 +114,56 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2d$auth
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2d$auth$2f$providers$2f$credentials$2e$js__$5b$app$2d$route$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/next-auth/providers/credentials.js [app-route] (ecmascript)");
 ;
 ;
-const authOptions = {
+const handler = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2d$auth$2f$index$2e$js__$5b$app$2d$route$5d$__$28$ecmascript$29$__["default"])({
     providers: [
         (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2d$auth$2f$providers$2f$credentials$2e$js__$5b$app$2d$route$5d$__$28$ecmascript$29$__["default"])({
             name: 'Credentials',
             credentials: {
                 username: {
                     label: "Username",
-                    type: "text"
+                    type: "text",
+                    placeholder: "admin"
                 },
                 password: {
                     label: "Password",
                     type: "password"
                 }
             },
-            async authorize (credentials) {
-                // GANTI DENGAN LOGIC AUTHENTICATION ANDA
-                // Contoh sederhana (JANGAN PAKAI DI PRODUCTION!):
-                if (credentials?.username === 'admin' && credentials?.password === 'admin123') {
+            async authorize (credentials, req) {
+                // User requested no database and simple "best practice" for this constraints
+                // Credentials are now managed via environment variables (K8s secret friendly)
+                const validUsername = process.env.ADMIN_USERNAME;
+                const validPassword = process.env.ADMIN_PASSWORD;
+                if (credentials?.username === validUsername && credentials?.password === validPassword) {
                     return {
-                        id: '1',
-                        name: 'Admin',
-                        email: 'admin@company.com',
-                        role: 'admin'
+                        id: "1",
+                        name: "DevOps Admin",
+                        email: "admin@naratel.com"
                     };
                 }
-                // Return null jika authentication gagal
                 return null;
             }
         })
     ],
     pages: {
-        signIn: '/auth/signin'
+        signIn: '/login'
     },
-    session: {
-        strategy: 'jwt'
+    callbacks: {
+        async jwt ({ token, user }) {
+            if (user) {
+                token.id = user.id;
+            }
+            return token;
+        },
+        async session ({ session, token }) {
+            if (session.user) {
+                session.user.id = token.id;
+            }
+            return session;
+        }
     },
-    secret: process.env.NEXTAUTH_SECRET
-};
-const handler = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2d$auth$2f$index$2e$js__$5b$app$2d$route$5d$__$28$ecmascript$29$__["default"])(authOptions);
+    secret: process.env.NEXTAUTH_SECRET || 'devops-dashboard-secret-key-change-me'
+});
 ;
 }),
 ];
