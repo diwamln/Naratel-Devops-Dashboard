@@ -51,6 +51,12 @@ export async function POST(req) {
   const generatedFolders = [];
   const errors = [];
 
+  // Sanitize Image Repo (Remove accidental 'dockerio/' prefix)
+  let safeImageRepo = data.imageRepo;
+  if (safeImageRepo && safeImageRepo.startsWith('dockerio/')) {
+      safeImageRepo = safeImageRepo.replace('dockerio/', '');
+  }
+
   // --- Helper: Generate YAML Content ---
   const generateYaml = (templateType, env) => {
     // Common Variables
@@ -89,6 +95,11 @@ export async function POST(req) {
              let val = s.value;
              if (env === 'prod' && s.valueProd) val = s.valueProd;
              if (env === 'testing' && s.valueTest) val = s.valueTest;
+             
+             // Ensure we treat whitespace-only strings as empty so defaults kick in
+             if (val && typeof val === 'string') {
+                 val = val.trim();
+             }
 
              if (s.key && val) dbSecretObj[s.key] = val;
         });
@@ -111,11 +122,21 @@ export async function POST(req) {
 
 
     // --- TEMPLATE LOGIC ---
+    // Helper to format secrets safely
+    const formatSecrets = (obj) => {
+        if (Object.keys(obj).length === 0) return '{}';
+        return Object.entries(obj)
+            .map(([k, v]) => {
+                // Escape double quotes and backslashes
+                const safeVal = String(v).replace(/\\/g, '\\\\').replace(/"/g, '\\"');
+                return `  ${k}: "${safeVal}"`;
+            })
+            .join('\n');
+    };
+
     // A. APP PRODUCTION
     if (templateType === 'app-prod') {
-        const secretYamlLines = Object.entries(appSecretObj)
-            .map(([k, v]) => `  ${k}: "${v}"`) // Corrected escaping for quotes within template literal
-            .join('\n');
+        const secretYamlLines = formatSecrets(appSecretObj);
 
         let yaml = `
 namespace: prod
@@ -127,7 +148,7 @@ app:
   env: "prod"
 
 image:
-  repository: "${data.imageRepo}"
+  repository: "${safeImageRepo}"
   tag: "${data.imageTag}"
 
 service:
@@ -135,7 +156,7 @@ service:
   targetPort: ${data.targetPort}
 
 secretData:
-${secretYamlLines || '{}'}
+${secretYamlLines}
 `.trim();
 
         if (data.dbType !== 'none') {
@@ -153,9 +174,7 @@ ${secretYamlLines || '{}'}
 
     // B. APP TESTING
     if (templateType === 'app-testing') {
-        const secretYamlLines = Object.entries(appSecretObj)
-            .map(([k, v]) => `  ${k}: "${v}"`) // Corrected escaping for quotes within template literal
-            .join('\n');
+        const secretYamlLines = formatSecrets(appSecretObj);
 
         let yaml = `
 namespace: testing
@@ -175,7 +194,7 @@ service:
   targetPort: ${data.targetPort}
 
 secretData:
-${secretYamlLines || '{}'}
+${secretYamlLines}
 `.trim();
 
         if (data.ingressEnabled) {
@@ -186,9 +205,7 @@ ${secretYamlLines || '{}'}
 
     // C. DB PRODUCTION
     if (templateType === 'db-prod') {
-        const secretYamlLines = Object.entries(dbSecretObj)
-            .map(([k, v]) => `  ${k}: "${v}"`) // Corrected escaping for quotes within template literal
-            .join('\n');
+        const secretYamlLines = formatSecrets(dbSecretObj);
 
         const dbImage = data.dbType === 'postgres' ? 'postgres' : 'mariadb';
         const dbTag = data.dbType === 'postgres' ? '15-alpine' : '10.11'; 
@@ -200,7 +217,7 @@ controllerType: StatefulSet
 
 app:
   id: "${appId}"
-  name: "${appName}"
+  name: "${appName}-db"
   env: "prod"
 
 image:
@@ -212,7 +229,7 @@ service:
   targetPort: ${dbPort}
 
 secretData:
-${secretYamlLines || '{}'}
+${secretYamlLines}
 
 backup:
   enabled: true
@@ -223,9 +240,7 @@ backup:
 
     // D. DB TESTING
     if (templateType === 'db-testing') {
-        const secretYamlLines = Object.entries(dbSecretObj)
-            .map(([k, v]) => `  ${k}: "${v}"`) // Corrected escaping for quotes within template literal
-            .join('\n');
+        const secretYamlLines = formatSecrets(dbSecretObj);
 
         const dbImage = data.dbType === 'postgres' ? 'postgres' : 'mariadb';
         const dbTag = data.dbType === 'postgres' ? '15-alpine' : '10.11';
@@ -237,7 +252,7 @@ controllerType: StatefulSet
 
 app:
   id: "${appId}"
-  name: "${appName}"
+  name: "${appName}-db"
   env: "testing"
 
 image:
@@ -249,7 +264,7 @@ service:
   targetPort: ${dbPort}
 
 secretData:
-${secretYamlLines || '{}'}
+${secretYamlLines}
 `.trim();
         return yaml;
     }
@@ -307,7 +322,7 @@ ${secretYamlLines || '{}'}
           const newEntry = {
               id: data.appId,
               name: data.appName,
-              image: `${data.imageRepo}:${data.imageTag}`,
+              image: `${safeImageRepo}:${data.imageTag}`,
               db: data.dbType,
               createdAt: new Date().toISOString()
           };

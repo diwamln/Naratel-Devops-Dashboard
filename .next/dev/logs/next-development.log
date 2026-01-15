@@ -130,3 +130,57 @@ Expected '}', got '<eof>'
 [00:38:31.041] Server  LOG      ✓ Compiled in 25ms
 [00:38:46.931] Server  LOG      ✓ Compiled in 76ms
 [00:39:03.393] Server  LOG      ✓ Compiled in 36ms
+[00:56:33.220] Server  WARN     ⚠ Cross origin request detected from 192.168.89.127 to /_next/* resource. In a future major version of Next.js, you will need to explicitly configure "allowedDevOrigins" in next.config to allow this.
+Read more: https://nextjs.org/docs/app/api-reference/config/next-config-js/allowedDevOrigins
+[00:56:33.240] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:56:33.507] Server  LOG     Optimization: Processing 0 active jobs out of 6 total jobs.
+[00:56:43.910] Server  LOG     Optimization: Processing 0 active jobs out of 6 total jobs.
+[00:56:53.813] Server  LOG     Optimization: Processing 0 active jobs out of 6 total jobs.
+[00:57:04.145] Server  LOG     Optimization: Processing 0 active jobs out of 6 total jobs.
+[00:57:13.914] Server  LOG     Optimization: Processing 0 active jobs out of 6 total jobs.
+[00:57:23.861] Server  LOG     Optimization: Processing 0 active jobs out of 6 total jobs.
+[00:57:29.616] Server  LOG     Updating repository at /tmp/manifest-repo-workdir...
+[00:57:30.478] Server  LOG     Updated registry.json
+[00:57:35.168] Server  LOG     Optimization: Processing 0 active jobs out of 6 total jobs.
+[00:58:00.299] Server  LOG     Optimization: Processing 0 active jobs out of 6 total jobs.
+[00:58:03.456] Server  LOG     Optimization: Processing 0 active jobs out of 6 total jobs.
+[00:58:13.788] Server  LOG     Optimization: Processing 0 active jobs out of 6 total jobs.
+[00:58:23.832] Server  LOG     Optimization: Processing 0 active jobs out of 6 total jobs.
+[00:58:33.902] Server  LOG     Optimization: Processing 0 active jobs out of 6 total jobs.
+[00:58:43.850] Server  LOG     Optimization: Processing 0 active jobs out of 6 total jobs.
+[00:58:54.322] Server  LOG     Optimization: Processing 0 active jobs out of 6 total jobs.
+[00:59:04.051] Server  LOG     Optimization: Processing 0 active jobs out of 6 total jobs.
+[00:59:16.031] Server  LOG     Optimization: Processing 0 active jobs out of 6 total jobs.
+[00:59:36.886] Server  LOG     Optimization: Processing 0 active jobs out of 6 total jobs.
+[00:59:43.443] Server  LOG     Optimization: Processing 0 active jobs out of 6 total jobs.
+[00:59:51.632] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:59:54.227] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[01:10:07.256] Server  LOG     Updating repository at /tmp/manifest-repo-workdir...
+[01:10:08.175] Server  LOG     Updated registry.json
+[01:23:09.981] Server  LOG      ✓ Compiled in 52ms
+[01:27:13.815] Server  LOG     Updating repository at /tmp/manifest-repo-workdir...
+[01:27:14.750] Server  LOG     Updated registry.json
+[01:30:34.527] Server  LOG      ✓ Compiled in 30ms
+[01:33:56.150] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[01:34:00.614] Server  LOG     Optimization: Processing 0 active jobs out of 6 total jobs.
+[01:34:00.830] Server  LOG     Optimization: Processing 0 active jobs out of 6 total jobs.
+[01:50:25.926] Server  LOG     Updating repository at /tmp/manifest-repo-workdir...
+[01:50:27.352] Server  ERROR   Failed to update registry: ReferenceError: safeImageRepo is not defined
+[01:51:57.424] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[01:51:59.370] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[01:52:00.421] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[01:52:01.415] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[01:52:03.057] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[01:53:30.254] Server  LOG     Updating repository at /tmp/manifest-repo-workdir...
+[01:53:31.097] Server  LOG     Folder todoapp-prod exists, overwriting...
+[01:53:31.130] Server  LOG     Folder todoapp-testing exists, overwriting...
+[01:53:31.164] Server  LOG     Folder todoapp-db-prod exists, overwriting...
+[01:53:31.197] Server  LOG     Folder todoapp-db-testing exists, overwriting...
+[01:53:31.232] Server  LOG     Updated registry.json
+[02:06:00.658] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[02:06:11.595] Server  LOG     Optimization: Processing 0 active jobs out of 6 total jobs.
+[02:06:11.697] Server  LOG     Optimization: Processing 0 active jobs out of 6 total jobs.
+[02:09:12.204] Server  LOG     Updating repository at /tmp/manifest-repo-workdir...
+[02:09:13.227] Server  LOG     Updated registry.json
+[02:17:58.030] Server  LOG     Updating repository at /tmp/manifest-repo-workdir...
+[02:17:59.050] Server  LOG     Updated registry.json

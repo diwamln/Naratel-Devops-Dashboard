@@ -393,7 +393,7 @@ export default function ManifestPage() {
                       <label className="block text-xs font-bold text-neutral-500 uppercase mb-1">Image Repository</label>
                       <input required 
                         className="w-full p-2 text-sm border rounded dark:bg-neutral-950 dark:border-neutral-800 focus:ring-1 focus:ring-[#FFA500] outline-none"
-                        placeholder="e.g. docker.io/myorg/myapp"
+                        placeholder="e.g. devopsnaratel/todo-app-php (without https://)"
                         value={form.imageRepo}
                         onChange={e => setForm({...form, imageRepo: e.target.value})}
                       />
@@ -655,27 +655,38 @@ export default function ManifestPage() {
                                                     onChange={e => updateDbSecret(idx, 'key', e.target.value)}
                                                     />
                         
-                                                    {!form.separateDbSecrets ? (
-                                                        <input placeholder="VALUE" 
-                                                        className="flex-1 p-2 text-xs border rounded dark:bg-neutral-950 dark:border-neutral-800"
-                                                        value={secret.value}
-                                                        onChange={e => updateDbSecret(idx, 'value', e.target.value)}
-                                                        />
-                                                    ) : (
-                                                        <div className="flex-1 flex flex-col gap-2">
-                                                            <input placeholder="VALUE (PRODUCTION)" 
-                                                              className="w-full p-2 text-xs border border-orange-200 dark:border-orange-900/50 rounded dark:bg-neutral-950"
-                                                              value={secret.valueProd}
-                                                              onChange={e => updateDbSecret(idx, 'valueProd', e.target.value)}
-                                                            />
-                                                            <input placeholder="VALUE (TESTING)" 
-                                                              className="w-full p-2 text-xs border border-blue-200 dark:border-blue-900/50 rounded dark:bg-neutral-950"
-                                                              value={secret.valueTest}
-                                                              onChange={e => updateDbSecret(idx, 'valueTest', e.target.value)}
-                                                            />
-                                                        </div>
-                                                    )}
-                        
+                                                                                {!form.separateDbSecrets ? (
+                                                                                    <input placeholder="VALUE" 
+                                                                                    className={`flex-1 p-2 text-xs border rounded dark:bg-neutral-950 dark:border-neutral-800 ${
+                                                                                        (secret.key === 'POSTGRES_PASSWORD' || secret.key === 'MYSQL_ROOT_PASSWORD') && !secret.value
+                                                                                        ? 'border-red-500 ring-1 ring-red-500' 
+                                                                                        : ''
+                                                                                    }`}
+                                                                                    value={secret.value}
+                                                                                    onChange={e => updateDbSecret(idx, 'value', e.target.value)}
+                                                                                    />
+                                                                                ) : (
+                                                                                    <div className="flex-1 flex flex-col gap-2">
+                                                                                        <input placeholder="VALUE (PRODUCTION)" 
+                                                                                          className={`w-full p-2 text-xs border rounded dark:bg-neutral-950 ${
+                                                                                              (secret.key === 'POSTGRES_PASSWORD' || secret.key === 'MYSQL_ROOT_PASSWORD') && !secret.valueProd
+                                                                                              ? 'border-red-500 ring-1 ring-red-500'
+                                                                                              : 'border-orange-200 dark:border-orange-900/50'
+                                                                                          }`}
+                                                                                          value={secret.valueProd}
+                                                                                          onChange={e => updateDbSecret(idx, 'valueProd', e.target.value)}
+                                                                                        />
+                                                                                        <input placeholder="VALUE (TESTING)" 
+                                                                                          className={`w-full p-2 text-xs border rounded dark:bg-neutral-950 ${
+                                                                                              (secret.key === 'POSTGRES_PASSWORD' || secret.key === 'MYSQL_ROOT_PASSWORD') && !secret.valueTest
+                                                                                              ? 'border-red-500 ring-1 ring-red-500'
+                                                                                              : 'border-blue-200 dark:border-blue-900/50'
+                                                                                          }`}
+                                                                                          value={secret.valueTest}
+                                                                                          onChange={e => updateDbSecret(idx, 'valueTest', e.target.value)}
+                                                                                        />
+                                                                                    </div>
+                                                                                )}                        
                                                     <button type="button" onClick={() => removeDbSecret(idx)} className="p-2 text-red-500 hover:bg-red-500/10 rounded h-[34px]">
                                                     <Trash2 size={16} />
                                                     </button>

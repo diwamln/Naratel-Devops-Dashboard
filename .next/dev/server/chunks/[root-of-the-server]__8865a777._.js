@@ -84,14 +84,14 @@ var __TURBOPACK__imported__module__$5b$externals$5d2f$os__$5b$external$5d$__$28$
 ;
 async function POST(req) {
     const data = await req.json();
-    // Cloud-Native Path: Use OS temp dir or a specific app folder
-    // In Docker/K8s, this will be inside the container ephemeral storage
     const repoDirName = 'manifest-repo-workdir';
     const repoPath = __TURBOPACK__imported__module__$5b$externals$5d2f$path__$5b$external$5d$__$28$path$2c$__cjs$29$__["default"].join(__TURBOPACK__imported__module__$5b$externals$5d2f$os__$5b$external$5d$__$28$os$2c$__cjs$29$__["default"].tmpdir(), repoDirName);
+    const registryPath = __TURBOPACK__imported__module__$5b$externals$5d2f$path__$5b$external$5d$__$28$path$2c$__cjs$29$__["default"].join(repoPath, 'registry.json');
     const token = process.env.GITHUB_TOKEN;
     const repoUrl = process.env.MANIFEST_REPO_URL;
     const userName = process.env.GIT_USER_NAME || "Naratel DevOps Dashboard";
     const userEmail = process.env.GIT_USER_EMAIL || "devops@naratel.com";
+    const ageKey = "age1ywhtcmyuhmfa32kfaaxcak4dvq27q9g6m55gqlzu2vlwkgfj24wq3g4ejx";
     if (!repoUrl || !token) {
         return __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$server$2e$js__$5b$app$2d$route$5d$__$28$ecmascript$29$__["NextResponse"].json({
             error: "Configuration Error: MANIFEST_REPO_URL or GITHUB_TOKEN is missing."
@@ -99,16 +99,12 @@ async function POST(req) {
             status: 500
         });
     }
-    // Helper to mask token in logs
-    const maskToken = (url)=>url.replace(token, '*****');
     try {
-        // 0. Setup Repository (Clone or Pull)
+        // --- 0. Git Setup (Clone/Pull) ---
         const authenticatedUrl = repoUrl.replace("https://", `https://${token}@`);
         if (!__TURBOPACK__imported__module__$5b$externals$5d2f$fs__$5b$external$5d$__$28$fs$2c$__cjs$29$__["default"].existsSync(repoPath)) {
             console.log(`Cloning repository to ${repoPath}...`);
-            // Clone if doesn't exist
             (0, __TURBOPACK__imported__module__$5b$externals$5d2f$child_process__$5b$external$5d$__$28$child_process$2c$__cjs$29$__["execSync"])(`git clone ${authenticatedUrl} ${repoPath}`);
-            // Set Identity after clone
             (0, __TURBOPACK__imported__module__$5b$externals$5d2f$child_process__$5b$external$5d$__$28$child_process$2c$__cjs$29$__["execSync"])(`git config user.name "${userName}"`, {
                 cwd: repoPath
             });
@@ -117,9 +113,7 @@ async function POST(req) {
             });
         } else {
             console.log(`Updating repository at ${repoPath}...`);
-            // Pull if exists (reset to origin/main to avoid conflicts from previous messy runs)
             try {
-                // Reset hard to ensure clean state matching remote
                 (0, __TURBOPACK__imported__module__$5b$externals$5d2f$child_process__$5b$external$5d$__$28$child_process$2c$__cjs$29$__["execSync"])(`git fetch origin`, {
                     cwd: repoPath
                 });
@@ -151,129 +145,264 @@ async function POST(req) {
     }
     const generatedFolders = [];
     const errors = [];
-    // Helper to create manifest
-    const createManifest = (folderName, env, config, type = 'app')=>{
+    // Sanitize Image Repo (Remove accidental 'dockerio/' prefix)
+    let safeImageRepo = data.imageRepo;
+    if (safeImageRepo && safeImageRepo.startsWith('dockerio/')) {
+        safeImageRepo = safeImageRepo.replace('dockerio/', '');
+    }
+    // --- Helper: Generate YAML Content ---
+    const generateYaml = (templateType, env)=>{
+        // Common Variables
+        const appName = data.appName;
+        const appId = data.appId;
+        // --- APP SECRETS Construction ---
+        const appSecretObj = {};
+        if (data.appSecrets && Array.isArray(data.appSecrets)) {
+            data.appSecrets.forEach((s)=>{
+                let val = s.value;
+                if (env === 'prod' && s.valueProd) val = s.valueProd;
+                if (env === 'testing' && s.valueTest) val = s.valueTest;
+                if (s.key && val) appSecretObj[s.key] = val;
+            });
+        }
+        // Auto-inject DB Connection info into APP Secrets if DB is enabled
+        if (data.dbType !== 'none') {
+            const dbPort = data.dbType === 'postgres' ? "5432" : "3306";
+            const dbName = data.appName.replace(/-/g, '_');
+            // Default Connection Vars
+            if (!appSecretObj["DB_HOST"]) appSecretObj["DB_HOST"] = `${data.appName}`;
+            if (!appSecretObj["DB_PORT"]) appSecretObj["DB_PORT"] = dbPort;
+            if (!appSecretObj["DB_NAME"]) appSecretObj["DB_NAME"] = dbName;
+            if (!appSecretObj["DB_USER"]) appSecretObj["DB_USER"] = "admin";
+            if (!appSecretObj["DB_PASSWORD"]) appSecretObj["DB_PASSWORD"] = "changeme_securely";
+        }
+        // --- DB SECRETS Construction ---
+        const dbSecretObj = {};
+        if (data.dbSecrets && Array.isArray(data.dbSecrets)) {
+            data.dbSecrets.forEach((s)=>{
+                let val = s.value;
+                if (env === 'prod' && s.valueProd) val = s.valueProd;
+                if (env === 'testing' && s.valueTest) val = s.valueTest;
+                // Ensure we treat whitespace-only strings as empty so defaults kick in
+                if (val && typeof val === 'string') {
+                    val = val.trim();
+                }
+                if (s.key && val) dbSecretObj[s.key] = val;
+            });
+        }
+        // Auto-inject Defaults for DB Container if DB is enabled
+        if (data.dbType !== 'none') {
+            const dbName = data.appName.replace(/-/g, '_');
+            if (data.dbType === 'postgres') {
+                if (!dbSecretObj["POSTGRES_DB"]) dbSecretObj["POSTGRES_DB"] = dbName;
+                if (!dbSecretObj["POSTGRES_USER"]) dbSecretObj["POSTGRES_USER"] = "admin";
+                if (!dbSecretObj["POSTGRES_PASSWORD"]) dbSecretObj["POSTGRES_PASSWORD"] = "changeme_securely";
+            } else {
+                if (!dbSecretObj["MYSQL_DATABASE"]) dbSecretObj["MYSQL_DATABASE"] = dbName;
+                if (!dbSecretObj["MYSQL_USER"]) dbSecretObj["MYSQL_USER"] = "admin";
+                if (!dbSecretObj["MYSQL_PASSWORD"]) dbSecretObj["MYSQL_PASSWORD"] = "changeme_securely";
+                if (!dbSecretObj["MYSQL_ROOT_PASSWORD"]) dbSecretObj["MYSQL_ROOT_PASSWORD"] = "changeme_root";
+            }
+        }
+        // --- TEMPLATE LOGIC ---
+        // Helper to format secrets safely
+        const formatSecrets = (obj)=>{
+            if (Object.keys(obj).length === 0) return '{}';
+            return Object.entries(obj).map(([k, v])=>{
+                // Escape double quotes and backslashes
+                const safeVal = String(v).replace(/\\/g, '\\\\').replace(/"/g, '\\"');
+                return `  ${k}: "${safeVal}"`;
+            }).join('\n');
+        };
+        // A. APP PRODUCTION
+        if (templateType === 'app-prod') {
+            const secretYamlLines = formatSecrets(appSecretObj);
+            let yaml = `
+namespace: prod
+controllerType: Deployment
+
+app:
+  id: "${appId}"
+  name: "${appName}"
+  env: "prod"
+
+image:
+  repository: "${safeImageRepo}"
+  tag: "${data.imageTag}"
+
+service:
+  port: ${data.servicePort}
+  targetPort: ${data.targetPort}
+
+secretData:
+${secretYamlLines}
+`.trim();
+            if (data.dbType !== 'none') {
+                yaml += `\n\nbackup:\n  enabled: true\n  type: "${data.dbType}"`;
+            }
+            if (data.ingressEnabled) {
+                yaml += `\n\ningress:\n  enabled: true\n  className: "nginx"\n  hosts:\n    - host: "${data.ingressHost}"\n      path: /`;
+                if (data.tlsEnabled) {
+                    yaml += `\n  tls:\n    - secretName: "${appName}-tls"\n      hosts:\n        - "${data.ingressHost}"`;
+                }
+            }
+            return yaml;
+        }
+        // B. APP TESTING
+        if (templateType === 'app-testing') {
+            const secretYamlLines = formatSecrets(appSecretObj);
+            let yaml = `
+namespace: testing
+controllerType: Deployment
+
+app:
+  id: "${appId}"
+  name: "${appName}"
+  env: "testing"
+
+image:
+  repository: "${data.imageRepo}"
+  tag: "${data.imageTag}"
+
+service:
+  port: ${data.servicePort}
+  targetPort: ${data.targetPort}
+
+secretData:
+${secretYamlLines}
+`.trim();
+            if (data.ingressEnabled) {
+                yaml += `\n\ningress:\n  enabled: true\n  className: "nginx"\n  hosts:\n    - host: "test-${data.ingressHost}"\n      path: /`;
+            }
+            return yaml;
+        }
+        // C. DB PRODUCTION
+        if (templateType === 'db-prod') {
+            const secretYamlLines = formatSecrets(dbSecretObj);
+            const dbImage = data.dbType === 'postgres' ? 'postgres' : 'mariadb';
+            const dbTag = data.dbType === 'postgres' ? '15-alpine' : '10.11';
+            const dbPort = data.dbType === 'postgres' ? 5432 : 3306;
+            let yaml = `
+namespace: prod
+controllerType: StatefulSet
+
+app:
+  id: "${appId}"
+  name: "${appName}-db"
+  env: "prod"
+
+image:
+  repository: "${dbImage}"
+  tag: "${dbTag}"
+
+service:
+  port: ${dbPort}
+  targetPort: ${dbPort}
+
+secretData:
+${secretYamlLines}
+
+backup:
+  enabled: true
+  type: "${data.dbType}"
+`.trim();
+            return yaml;
+        }
+        // D. DB TESTING
+        if (templateType === 'db-testing') {
+            const secretYamlLines = formatSecrets(dbSecretObj);
+            const dbImage = data.dbType === 'postgres' ? 'postgres' : 'mariadb';
+            const dbTag = data.dbType === 'postgres' ? '15-alpine' : '10.11';
+            const dbPort = data.dbType === 'postgres' ? 5432 : 3306;
+            let yaml = `
+namespace: testing
+controllerType: StatefulSet
+
+app:
+  id: "${appId}"
+  name: "${appName}-db"
+  env: "testing"
+
+image:
+  repository: "${dbImage}"
+  tag: "${dbTag}"
+
+service:
+  port: ${dbPort}
+  targetPort: ${dbPort}
+
+secretData:
+${secretYamlLines}
+`.trim();
+            return yaml;
+        }
+    };
+    // --- Helper: Write & Encrypt ---
+    const processManifest = (folderName, type, env)=>{
         const targetFolder = __TURBOPACK__imported__module__$5b$externals$5d2f$path__$5b$external$5d$__$28$path$2c$__cjs$29$__["default"].join(repoPath, 'apps', folderName);
         const filePath = __TURBOPACK__imported__module__$5b$externals$5d2f$path__$5b$external$5d$__$28$path$2c$__cjs$29$__["default"].join(targetFolder, 'values.yaml');
         if (__TURBOPACK__imported__module__$5b$externals$5d2f$fs__$5b$external$5d$__$28$fs$2c$__cjs$29$__["default"].existsSync(targetFolder)) {
-            errors.push(`Folder ${folderName} already exists!`);
-            return;
-        }
-        __TURBOPACK__imported__module__$5b$externals$5d2f$fs__$5b$external$5d$__$28$fs$2c$__cjs$29$__["default"].mkdirSync(targetFolder, {
-            recursive: true
-        });
-        // Construct Secret Data
-        const secretDataObj = {};
-        // Add custom user secrets
-        if (data.secrets && Array.isArray(data.secrets)) {
-            data.secrets.forEach((s)=>{
-                if (s.key && s.value) secretDataObj[s.key] = s.value;
+            console.log(`Folder ${folderName} exists, overwriting...`);
+        } else {
+            __TURBOPACK__imported__module__$5b$externals$5d2f$fs__$5b$external$5d$__$28$fs$2c$__cjs$29$__["default"].mkdirSync(targetFolder, {
+                recursive: true
             });
         }
-        // Add DB secrets if applicable
-        if (data.useDb) {
-            secretDataObj["DB_HOST"] = `svc-${data.appName}-db-${data.nextId}`; // Assumes svc name convention
-            secretDataObj["DB_PORT"] = "5432";
-            secretDataObj["DB_USER"] = "postgres";
-            secretDataObj["DB_PASSWORD"] = data.dbPassword;
-            secretDataObj["DB_NAME"] = data.dbName;
-        }
-        secretDataObj["PORT"] = config.targetPort?.toString() || "3000";
-        // Convert secret obj to YAML string lines
-        const secretDataYaml = Object.entries(secretDataObj).map(([k, v])=>`  ${k}: "${v}"`).join('\n');
-        let yamlContent = "";
-        if (type === 'app') {
-            yamlContent = `
-namespace: ${env}
-controllerType: Deployment
-app:
-  id: "${data.nextId}"
-  name: "${config.name}"
-  env: "${env}"
-image:
-  repository: "${config.imageRepo}"
-  tag: "${config.imageTag}"
-service:
-  port: ${config.port}
-  targetPort: ${config.targetPort}
-secretData:
-${secretDataYaml}
-`.trim();
-        } else if (type === 'db') {
-            // DB Manifest Template (Simplified based on assumption)
-            yamlContent = `
-namespace: ${env}
-controllerType: StatefulSet
-app:
-  id: "${data.nextId}"
-  name: "${data.appName}-db"
-  env: "${env}"
-image:
-  repository: "postgres"
-  tag: "15-alpine"
-service:
-  port: 5432
-  targetPort: 5432
-secretData:
-  POSTGRES_DB: "${data.dbName}"
-  POSTGRES_USER: "postgres"
-  POSTGRES_PASSWORD: "${data.dbPassword}"
-`.trim();
-        }
+        const yamlContent = generateYaml(type, env);
         __TURBOPACK__imported__module__$5b$externals$5d2f$fs__$5b$external$5d$__$28$fs$2c$__cjs$29$__["default"].writeFileSync(filePath, yamlContent);
-        // Encrypt
+        // Encrypt with SOPS
         try {
-            (0, __TURBOPACK__imported__module__$5b$externals$5d2f$child_process__$5b$external$5d$__$28$child_process$2c$__cjs$29$__["execSync"])(`sops --encrypt --age ${process.env.SOPS_AGE_PUBKEY} --encrypted-regex '^(secretData)$' --in-place ${filePath}`, {
+            (0, __TURBOPACK__imported__module__$5b$externals$5d2f$child_process__$5b$external$5d$__$28$child_process$2c$__cjs$29$__["execSync"])(`sops --encrypt --age ${ageKey} --encrypted-regex '^(secretData)$' --in-place ${filePath}`, {
                 cwd: repoPath
             });
             generatedFolders.push(folderName);
         } catch (e) {
+            console.error(`Encryption failed for ${folderName}`, e);
             errors.push(`Encryption failed for ${folderName}: ${e.message}`);
         }
     };
     try {
-        const envs = [
-            'testing',
-            'prod'
-        ];
-        // 1. Generate App Manifests
-        if (data.isMicroservice && data.microservices?.length > 0) {
-            // Microservices Mode
-            for (const svc of data.microservices){
-                for (const env of envs){
-                    const folderName = `${data.appName}-${svc.name}-${env}`;
-                    createManifest(folderName, env, {
-                        name: `${data.appName}-${svc.name}`,
-                        imageRepo: svc.imageRepo,
-                        imageTag: svc.imageTag,
-                        port: svc.port,
-                        targetPort: svc.targetPort
-                    }, 'app');
+        // 1. App Prod
+        processManifest(`${data.appName}-prod`, 'app-prod', 'prod');
+        // 2. App Testing
+        processManifest(`${data.appName}-testing`, 'app-testing', 'testing');
+        // 3. DB (if enabled)
+        if (data.dbType !== 'none') {
+            processManifest(`${data.appName}-db-prod`, 'db-prod', 'prod');
+            processManifest(`${data.appName}-db-testing`, 'db-testing', 'testing');
+        }
+        // --- 4. Update REGISTRY.JSON ---
+        try {
+            let registry = [];
+            if (__TURBOPACK__imported__module__$5b$externals$5d2f$fs__$5b$external$5d$__$28$fs$2c$__cjs$29$__["default"].existsSync(registryPath)) {
+                const content = __TURBOPACK__imported__module__$5b$externals$5d2f$fs__$5b$external$5d$__$28$fs$2c$__cjs$29$__["default"].readFileSync(registryPath, 'utf8');
+                try {
+                    registry = JSON.parse(content);
+                } catch (e) {
+                    registry = [];
                 }
             }
-        } else {
-            // Monolith Mode
-            for (const env of envs){
-                const folderName = `${data.appName}-${env}`;
-                createManifest(folderName, env, {
-                    name: data.appName,
-                    imageRepo: data.imageRepo,
-                    imageTag: data.imageTag,
-                    port: data.port,
-                    targetPort: data.targetPort
-                }, 'app');
+            // Check if ID already exists, if so update, else append
+            const existingIdx = registry.findIndex((r)=>r.id === data.appId);
+            const newEntry = {
+                id: data.appId,
+                name: data.appName,
+                image: `${safeImageRepo}:${data.imageTag}`,
+                db: data.dbType,
+                createdAt: new Date().toISOString()
+            };
+            if (existingIdx >= 0) {
+                registry[existingIdx] = newEntry;
+            } else {
+                registry.push(newEntry);
             }
-        }
-        // 2. Generate DB Manifests (if enabled)
-        if (data.useDb) {
-            for (const env of envs){
-                const folderName = `${data.appName}-db-${env}`;
-                createManifest(folderName, env, {}, 'db');
-            }
+            __TURBOPACK__imported__module__$5b$externals$5d2f$fs__$5b$external$5d$__$28$fs$2c$__cjs$29$__["default"].writeFileSync(registryPath, JSON.stringify(registry, null, 2));
+            console.log("Updated registry.json");
+        } catch (regError) {
+            console.error("Failed to update registry:", regError);
+            errors.push("Failed to update registry.json: " + regError.message);
         }
         if (errors.length > 0) {
-            // If there were errors but some folders were created, we might want to clean up or just report partial success.
-            // For now, fail if any error occurred.
             return __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$server$2e$js__$5b$app$2d$route$5d$__$28$ecmascript$29$__["NextResponse"].json({
                 error: errors.join(', '),
                 generated: generatedFolders
@@ -288,37 +417,34 @@ secretData:
                 status: 400
             });
         }
-        // 3. Git Automation
+        // --- Commit & Push ---
+        const commitMsg = `feat: add manifests for ${data.appName} (ID: ${data.appId})`;
+        (0, __TURBOPACK__imported__module__$5b$externals$5d2f$child_process__$5b$external$5d$__$28$child_process$2c$__cjs$29$__["execSync"])(`git add .`, {
+            cwd: repoPath
+        });
         try {
-            const commitMsg = `feat: add manifests for ${data.appName} (${generatedFolders.length} items) ID: ${data.nextId}`;
-            // Execute git commands
-            // Ensure we are adding ONLY the new files to avoid adding random temp files
-            (0, __TURBOPACK__imported__module__$5b$externals$5d2f$child_process__$5b$external$5d$__$28$child_process$2c$__cjs$29$__["execSync"])(`git add .`, {
-                cwd: repoPath
-            });
             (0, __TURBOPACK__imported__module__$5b$externals$5d2f$child_process__$5b$external$5d$__$28$child_process$2c$__cjs$29$__["execSync"])(`git commit -m "${commitMsg}"`, {
                 cwd: repoPath
             });
             (0, __TURBOPACK__imported__module__$5b$externals$5d2f$child_process__$5b$external$5d$__$28$child_process$2c$__cjs$29$__["execSync"])(`git push origin main`, {
                 cwd: repoPath
             });
-            return __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$server$2e$js__$5b$app$2d$route$5d$__$28$ecmascript$29$__["NextResponse"].json({
-                message: `Success! Generated ${generatedFolders.length} manifests and pushed to Git: ${generatedFolders.join(', ')}`,
-                folders: generatedFolders
-            });
-        } catch (gitError) {
-            console.error("Git automation failed:", gitError);
-            return __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$server$2e$js__$5b$app$2d$route$5d$__$28$ecmascript$29$__["NextResponse"].json({
-                error: `Manifests generated but Git push failed: ${gitError.message}`,
-                generated: generatedFolders
-            }, {
-                status: 500
-            });
+        } catch (e) {
+            if (e.message.includes('nothing to commit')) {
+                return __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$server$2e$js__$5b$app$2d$route$5d$__$28$ecmascript$29$__["NextResponse"].json({
+                    message: "No changes detected (manifests already match)."
+                });
+            }
+            throw e;
         }
-    } catch (error) {
-        console.error(error);
         return __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$server$2e$js__$5b$app$2d$route$5d$__$28$ecmascript$29$__["NextResponse"].json({
-            error: error.message
+            message: `Success! Generated and pushed: ${generatedFolders.join(', ')}`,
+            folders: generatedFolders
+        });
+    } catch (err) {
+        console.error(err);
+        return __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$server$2e$js__$5b$app$2d$route$5d$__$28$ecmascript$29$__["NextResponse"].json({
+            error: err.message
         }, {
             status: 500
         });
