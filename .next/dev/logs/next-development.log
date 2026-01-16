@@ -45,3 +45,10 @@ Read more: https://nextjs.org/docs/app/api-reference/config/next-config-js/allow
 [01:14:29.940] Server  LOG     Updating repository at /tmp/manifest-repo-workdir...
 [01:15:13.992] Server  LOG     Optimization: Processing 0 active jobs out of 6 total jobs.
 [01:15:14.133] Server  LOG     Optimization: Processing 0 active jobs out of 6 total jobs.
+[01:24:30.010] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[01:24:31.076] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[01:26:42.542] Server  LOG     Updating repository at /tmp/manifest-repo-workdir...
+[01:26:51.435] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[02:45:23.627] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[02:50:38.044] Server  LOG     Updating repository at /tmp/manifest-repo-workdir...
+[02:50:47.386] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
