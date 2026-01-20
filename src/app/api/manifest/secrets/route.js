@@ -117,7 +117,7 @@ const overwriteSecretFile = (filePath, newSecrets, agePubKey) => {
     try {
         const cleanSecrets = {};
         Object.entries(newSecrets).forEach(([k, v]) => {
-            if (v !== undefined && v !== null && v !== "") {
+            if (v !== undefined && v !== null) {
                 cleanSecrets[k] = v;
             }
         });
@@ -161,36 +161,39 @@ export async function POST(req) {
 
             const appsPath = path.join(repoPath, 'apps');
             
-            const appProdObj = {};
-            const appTestObj = {};
-            appSecrets.forEach(s => {
-                if (s.key) {
-                    if (s.valueProd) appProdObj[s.key] = s.valueProd;
-                    if (s.valueTest) appTestObj[s.key] = s.valueTest;
-                }
-            });
-
-            const dbProdObj = {};
-            const dbTestObj = {};
-            if (dbSecrets) {
-                dbSecrets.forEach(s => {
+            // --- PROCESS APP SECRETS ---
+            if (appSecrets && Array.isArray(appSecrets)) {
+                const appProdObj = {};
+                const appTestObj = {};
+                appSecrets.forEach(s => {
                     if (s.key) {
-                        if (s.valueProd) dbProdObj[s.key] = s.valueProd;
-                        if (s.valueTest) dbTestObj[s.key] = s.valueTest;
+                        if (s.valueProd !== undefined && s.valueProd !== null) appProdObj[s.key] = s.valueProd;
+                        if (s.valueTest !== undefined && s.valueTest !== null) appTestObj[s.key] = s.valueTest;
                     }
                 });
+
+                const appProdPath = path.join(appsPath, `${appName}-prod`, 'secrets.yaml');
+                const appTestPath = path.join(appsPath, `${appName}-testing`, 'secrets.yaml');
+                
+                overwriteSecretFile(appProdPath, appProdObj, agePubKey);
+                overwriteSecretFile(appTestPath, appTestObj, agePubKey);
             }
 
-            // TARGET secrets.yaml
-            const appProdPath = path.join(appsPath, `${appName}-prod`, 'secrets.yaml');
-            const appTestPath = path.join(appsPath, `${appName}-testing`, 'secrets.yaml');
-            
-            overwriteSecretFile(appProdPath, appProdObj, agePubKey);
-            overwriteSecretFile(appTestPath, appTestObj, agePubKey);
+            // --- PROCESS DB SECRETS ---
+            if (dbSecrets && Array.isArray(dbSecrets)) {
+                const dbProdObj = {};
+                const dbTestObj = {};
+                dbSecrets.forEach(s => {
+                    if (s.key) {
+                        if (s.valueProd !== undefined && s.valueProd !== null) dbProdObj[s.key] = s.valueProd;
+                        if (s.valueTest !== undefined && s.valueTest !== null) dbTestObj[s.key] = s.valueTest;
+                    }
+                });
 
-            if (dbSecrets && dbSecrets.length > 0) {
                 const dbProdPath = path.join(appsPath, `${appName}-db-prod`, 'secrets.yaml');
                 const dbTestPath = path.join(appsPath, `${appName}-db-testing`, 'secrets.yaml');
+                
+                // Only overwrite if paths exist (or just try, the helper handles check)
                 overwriteSecretFile(dbProdPath, dbProdObj, agePubKey);
                 overwriteSecretFile(dbTestPath, dbTestObj, agePubKey);
             }

@@ -15,20 +15,15 @@ import {
   AlertTriangle
 } from "lucide-react";
 
-export default function EditSecretsForm({ appName, onClose, onSuccess }) {
+export default function EditAppSecretsForm({ appName, onClose, onSuccess }) {
   const [loading, setLoading] = useState(true);
   const [saving, setSaving] = useState(false);
   const [message, setMessage] = useState({ text: '', type: '' });
   
-  const [hasDb, setHasDb] = useState(false);
   const [appSecrets, setAppSecrets] = useState([]);
-  const [dbSecrets, setDbSecrets] = useState([]);
 
   const [isDraggingApp, setIsDraggingApp] = useState(false);
   const [appFileName, setAppFileName] = useState('');
-  const [isDraggingDb, setIsDraggingDb] = useState(false);
-  const [dbFileName, setDbFileName] = useState('');
-
 
   // --- Fetch Initial Data ---
   useEffect(() => {
@@ -37,11 +32,7 @@ export default function EditSecretsForm({ appName, onClose, onSuccess }) {
             const res = await fetch(`/api/manifest/secrets?appName=${appName}`);
             if (!res.ok) throw new Error("Failed to fetch secrets");
             const data = await res.json();
-            
-            // In Overwrite mode, values come back empty.
             setAppSecrets(data.appSecrets || []);
-            setDbSecrets(data.dbSecrets || []);
-            setHasDb(data.hasDb);
         } catch (e) {
             setMessage({ text: e.message, type: 'error' });
         } finally {
@@ -50,7 +41,6 @@ export default function EditSecretsForm({ appName, onClose, onSuccess }) {
     };
     fetchData();
   }, [appName]);
-
 
   // --- Parse .env ---
   const parseEnvFile = (content) => {
@@ -63,7 +53,7 @@ export default function EditSecretsForm({ appName, onClose, onSuccess }) {
       if (match) {
         const key = match[1].trim();
         let value = match[2].trim();
-        if ((value.startsWith("'") && value.endsWith("'")) || (value.startsWith("'") && value.endsWith("'"))) {
+        if ((value.startsWith("'" ) && value.endsWith("'")) || (value.startsWith('"') && value.endsWith('"'))) {
           value = value.slice(1, -1);
         }
         parsed.push({ key, value });
@@ -92,35 +82,10 @@ export default function EditSecretsForm({ appName, onClose, onSuccess }) {
     reader.readAsText(file);
   };
 
-  const handleDbFile = (file) => {
-    const reader = new FileReader();
-    reader.onload = (e) => {
-      const parsed = parseEnvFile(e.target.result);
-      const newSecrets = parsed.map(p => ({ key: p.key, valueProd: p.value, valueTest: p.value }));
-      setDbSecrets(prev => {
-          const merged = [...prev];
-          newSecrets.forEach(ns => {
-              const idx = merged.findIndex(m => m.key === ns.key);
-              if (idx >= 0) merged[idx] = ns;
-              else merged.push(ns);
-          });
-          return merged;
-      });
-      setDbFileName(file.name);
-    };
-    reader.readAsText(file);
-  };
-
   const updateAppSecret = (index, field, value) => {
     const updated = [...appSecrets];
     updated[index][field] = value;
     setAppSecrets(updated);
-  };
-
-  const updateDbSecret = (index, field, value) => {
-    const updated = [...dbSecrets];
-    updated[index][field] = value;
-    setDbSecrets(updated);
   };
 
   const handleSubmit = async (e) => {
@@ -129,10 +94,11 @@ export default function EditSecretsForm({ appName, onClose, onSuccess }) {
       setMessage({ text: '', type: '' });
 
       try {
+          // Only send appSecrets
           const res = await fetch('/api/manifest/secrets', {
               method: 'POST',
               headers: { 'Content-Type': 'application/json' },
-              body: JSON.stringify({ appName, appSecrets, dbSecrets })
+              body: JSON.stringify({ appName, appSecrets }) 
           });
           
           const result = await res.json();
@@ -146,7 +112,6 @@ export default function EditSecretsForm({ appName, onClose, onSuccess }) {
           setSaving(false);
       }
   };
-
 
   if (loading) {
       return (
@@ -162,22 +127,20 @@ export default function EditSecretsForm({ appName, onClose, onSuccess }) {
        {/* Header */}
        <div className="sticky top-0 z-10 bg-white/95 dark:bg-neutral-900/95 backdrop-blur-sm p-4 border-b border-neutral-200 dark:border-neutral-800 flex justify-between items-center">
           <h2 className="text-lg font-bold flex items-center gap-2">
-            <Lock className="text-[#FFA500]" /> Manage Secrets: <span className="text-neutral-500">{appName}</span>
+            <Lock className="text-[#FFA500]" /> App Secrets: <span className="text-neutral-500">{appName}</span>
           </h2>
           <button onClick={onClose} className="p-2 hover:bg-neutral-100 dark:hover:bg-neutral-800 rounded-lg">
              <X size={20} />
           </button>
        </div>
 
-       <div className="p-6">
-        
+       <div className="p-6">        
         {/* Warning Banner */}
         <div className="bg-amber-50 dark:bg-amber-900/20 border border-amber-200 dark:border-amber-800 p-4 rounded-lg mb-6 flex items-start gap-3">
             <AlertTriangle className="text-amber-600 dark:text-amber-400 shrink-0 mt-0.5" size={20} />
             <div className="text-sm text-amber-800 dark:text-amber-200">
                 <p className="font-bold">Write-Only Mode (Secure)</p>
-                <p>Existing secrets are encrypted and cannot be displayed without the private key. </p>
-                <p className="mt-1 font-semibold">Any value you enter here will overwrite the existing secret. Empty fields will remain empty/unset.</p>
+                <p>Values are encrypted. Enter new values to overwrite. Empty fields will be skipped/unchanged.</p>
             </div>
         </div>
 
@@ -198,7 +161,7 @@ export default function EditSecretsForm({ appName, onClose, onSuccess }) {
             <div className="p-4 rounded-xl border border-neutral-200 dark:border-neutral-800 bg-gray-50/50 dark:bg-neutral-950/50">
                <div className="flex items-center gap-2 mb-4 text-[#FFA500]">
                   <Key size={20} />
-                  <h3 className="font-bold uppercase text-sm tracking-wider text-neutral-500">App Secrets</h3>
+                  <h3 className="font-bold uppercase text-sm tracking-wider text-neutral-500">Application Environment Variables</h3>
                </div>
 
                 {/* Drag & Drop */}
@@ -239,7 +202,7 @@ export default function EditSecretsForm({ appName, onClose, onSuccess }) {
                           />
                           <div className="flex-1 flex flex-col gap-1">
                              <input 
-                                placeholder="New Value (Production) - Leave empty to skip"
+                                placeholder="New Value (Production)"
                                 className="w-full p-2 text-xs border border-orange-200 dark:border-orange-900/50 rounded dark:bg-neutral-950"
                                 value={secret.valueProd}
                                 onChange={e => updateAppSecret(idx, 'valueProd', e.target.value)}
@@ -247,7 +210,7 @@ export default function EditSecretsForm({ appName, onClose, onSuccess }) {
                                 name={`edit-app-prod-${idx}`}
                              />
                              <input 
-                                placeholder="New Value (Testing) - Leave empty to skip"
+                                placeholder="New Value (Testing)"
                                 className="w-full p-2 text-xs border border-blue-200 dark:border-blue-900/50 rounded dark:bg-neutral-950"
                                 value={secret.valueTest}
                                 onChange={e => updateAppSecret(idx, 'valueTest', e.target.value)}
@@ -266,49 +229,6 @@ export default function EditSecretsForm({ appName, onClose, onSuccess }) {
                </div>
             </div>
 
-            {/* DB SECRETS (If exists) */}
-            {hasDb && (
-                <div className="p-4 rounded-xl border border-neutral-200 dark:border-neutral-800 bg-gray-50/50 dark:bg-neutral-950/50">
-                    <div className="flex items-center gap-2 mb-4 text-[#FFA500]">
-                        <Key size={20} />
-                        <h3 className="font-bold uppercase text-sm tracking-wider text-neutral-500">DB Secrets</h3>
-                    </div>
-
-                    <div className="space-y-3">
-                        {dbSecrets.map((secret, idx) => (
-                            <div key={idx} className="flex gap-2 items-start">
-                                <input 
-                                    placeholder="KEY"
-                                    className="flex-[0.5] p-2 text-xs border rounded dark:bg-neutral-950 dark:border-neutral-800 font-mono font-bold text-neutral-600 dark:text-neutral-400"
-                                    value={secret.key}
-                                    readOnly
-                                    autoComplete="off"
-                                    name={`edit-db-key-${idx}`}
-                                />
-                                <div className="flex-1 flex flex-col gap-1">
-                                    <input 
-                                        placeholder="New Value (Prod)"
-                                        className="w-full p-2 text-xs border border-orange-200 dark:border-orange-900/50 rounded dark:bg-neutral-950"
-                                        value={secret.valueProd}
-                                        onChange={e => updateDbSecret(idx, 'valueProd', e.target.value)}
-                                        autoComplete="off"
-                                        name={`edit-db-prod-${idx}`}
-                                    />
-                                    <input 
-                                        placeholder="New Value (Test)"
-                                        className="w-full p-2 text-xs border border-blue-200 dark:border-blue-900/50 rounded dark:bg-neutral-950"
-                                        value={secret.valueTest}
-                                        onChange={e => updateDbSecret(idx, 'valueTest', e.target.value)}
-                                        autoComplete="off"
-                                        name={`edit-db-test-${idx}`}
-                                    />
-                                </div>
-                            </div>
-                        ))}
-                    </div>
-                </div>
-            )}
-
             <div className="flex justify-end pt-4">
               <button
                   type="submit"
@@ -318,12 +238,12 @@ export default function EditSecretsForm({ appName, onClose, onSuccess }) {
                   {saving ? (
                     <>
                       <Loader2 size={20} className="animate-spin" />
-                      Encrypting & Pushing...
+                      Encrypting...
                     </>
                   ) : (
                     <>
                       <Save size={20} />
-                      Overwrite & Save
+                      Save App Secrets
                     </>
                   )}
                 </button>

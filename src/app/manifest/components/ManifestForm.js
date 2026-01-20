@@ -260,6 +260,9 @@ export default function ManifestForm({ onClose, onSuccess }) {
            { key: "MYSQL_ROOT_PASSWORD", value: "", valueProd: "", valueTest: "" }
         ];
      }
+     
+     // Reset file name as we are resetting secrets
+     setDbFileName('');
 
      // Auto-inject DB_HOST into App Secrets
      let newAppSecrets = [...form.appSecrets];
@@ -474,6 +477,8 @@ export default function ManifestForm({ onClose, onSuccess }) {
                       className="flex-1 p-2 text-xs border rounded dark:bg-neutral-950 dark:border-neutral-800 font-mono"
                       value={secret.key}
                       onChange={e => updateAppSecret(idx, 'key', e.target.value)}
+                      autoComplete="off"
+                      name={`app-secret-key-${idx}`}
                     />
                     
                     {!form.separateAppSecrets ? (
@@ -481,6 +486,8 @@ export default function ManifestForm({ onClose, onSuccess }) {
                           className="flex-1 p-2 text-xs border rounded dark:bg-neutral-950 dark:border-neutral-800"
                           value={secret.value}
                           onChange={e => updateAppSecret(idx, 'value', e.target.value)}
+                          autoComplete="off"
+                          name={`app-secret-val-${idx}`}
                         />
                     ) : (
                         <div className="flex-1 flex flex-col gap-2">
@@ -488,11 +495,15 @@ export default function ManifestForm({ onClose, onSuccess }) {
                               className="w-full p-2 text-xs border border-orange-200 dark:border-orange-900/50 rounded dark:bg-neutral-950"
                               value={secret.valueProd}
                               onChange={e => updateAppSecret(idx, 'valueProd', e.target.value)}
+                              autoComplete="off"
+                              name={`app-secret-prod-${idx}`}
                             />
                             <input placeholder="VALUE (TESTING)" 
                               className="w-full p-2 text-xs border border-blue-200 dark:border-blue-900/50 rounded dark:bg-neutral-950"
                               value={secret.valueTest}
                               onChange={e => updateAppSecret(idx, 'valueTest', e.target.value)}
+                              autoComplete="off"
+                              name={`app-secret-test-${idx}`}
                             />
                         </div>
                     )}
@@ -628,6 +639,8 @@ export default function ManifestForm({ onClose, onSuccess }) {
                               value={secret.key}
                               onChange={e => updateDbSecret(idx, 'key', e.target.value)}
                               disabled={isProtected}
+                              autoComplete="off"
+                              name={`db-secret-key-${idx}`}
                             />
 
                             {!form.separateDbSecrets ? (
@@ -639,6 +652,8 @@ export default function ManifestForm({ onClose, onSuccess }) {
                                 }`}
                                 value={secret.value}
                                 onChange={e => updateDbSecret(idx, 'value', e.target.value)}
+                                autoComplete="off"
+                                name={`db-secret-val-${idx}`}
                                 />
                             ) : (
                                 <div className="flex-1 flex flex-col gap-2">
@@ -650,6 +665,8 @@ export default function ManifestForm({ onClose, onSuccess }) {
                                       }`}
                                       value={secret.valueProd}
                                       onChange={e => updateDbSecret(idx, 'valueProd', e.target.value)}
+                                      autoComplete="off"
+                                      name={`db-secret-prod-${idx}`}
                                     />
                                     <input placeholder="VALUE (TESTING)" 
                                       className={`w-full p-2 text-xs border rounded dark:bg-neutral-950 ${ 
@@ -659,6 +676,8 @@ export default function ManifestForm({ onClose, onSuccess }) {
                                       }`}
                                       value={secret.valueTest}
                                       onChange={e => updateDbSecret(idx, 'valueTest', e.target.value)}
+                                      autoComplete="off"
+                                      name={`db-secret-test-${idx}`}
                                     />
                                 </div>
                             ) }

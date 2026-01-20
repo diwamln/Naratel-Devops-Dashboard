@@ -34,12 +34,12 @@ export default function Navigation({ isCollapsed = false, toggleCollapse }) {
 
   const menuItems = [
     {
-      label: 'Jenkins Approval',
+      label: 'Approval Gateway',
       href: '/',
       icon: Activity,
     },
     {
-      label: 'Manifest Generator',
+      label: 'App Deployment',
       href: '/manifest',
       icon: FilePlus,
     },
@@ -138,33 +138,20 @@ export default function Navigation({ isCollapsed = false, toggleCollapse }) {
         }`}
       >
         {/* Logo Section */}
-        <div className={`flex items-center p-6 mb-2 ${isCollapsed ? 'justify-center px-2 flex-col gap-4' : 'justify-between gap-3'}`}>
-          <div className="flex items-center gap-3">
-            <div className="h-10 w-auto">
-              <Image
-                src={Logo}
-                alt="Logo"
-                className="h-full w-auto object-contain"
-                priority
-              />
-            </div>
-            {!isCollapsed && (
-              <div className="flex flex-col animate-in fade-in duration-300">
-                <span className="text-sm font-black text-neutral-900 dark:text-white leading-none uppercase">Naratel</span>
-                <span className="text-[10px] font-bold text-[#FFA500] uppercase tracking-widest">DevOps</span>
-              </div>
-            )}
+        <div className={`flex items-center p-6 mb-2 ${isCollapsed ? 'justify-center px-2' : 'justify-start px-6 gap-3'}`}>
+          <div className="h-10 w-auto min-w-[40px]">
+            <Image
+              src={Logo}
+              alt="Logo"
+              className="h-full w-auto object-contain"
+              priority
+            />
           </div>
-          
-          {/* Toggle Button */}
-          {toggleCollapse && (
-            <button 
-              onClick={toggleCollapse}
-              className={`text-neutral-400 hover:text-[#FFA500] transition-colors p-1 rounded-md hover:bg-neutral-100 dark:hover:bg-neutral-800 ${isCollapsed ? 'mt-2' : ''}`}
-              title={isCollapsed ? "Expand Sidebar" : "Collapse Sidebar"}
-            >
-              {isCollapsed ? <PanelRightClose size={20} /> : <PanelLeftClose size={20} />}
-            </button>
+          {!isCollapsed && (
+            <div className="flex flex-col animate-in fade-in duration-300">
+              <span className="text-sm font-black text-neutral-900 dark:text-white leading-none uppercase">Naratel</span>
+              <span className="text-[10px] font-bold text-[#FFA500] uppercase tracking-widest">DevOps</span>
+            </div>
           )}
         </div>
 
@@ -183,7 +170,7 @@ export default function Navigation({ isCollapsed = false, toggleCollapse }) {
                   isActive
                     ? 'bg-[#FFA500] text-white shadow-lg shadow-[#FFA500]/20'
                     : 'text-neutral-500 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-white hover:bg-neutral-100 dark:hover:bg-neutral-800'
-                  } ${isCollapsed ? 'justify-center' : 'justify-between'}`}
+                  } ${isCollapsed ? 'justify-center px-0' : 'justify-between'}`}
               >
                 <div className={`flex items-center gap-3 ${isCollapsed ? 'justify-center' : ''}`}>
                   <Icon size={18} className={isActive ? 'text-white' : 'group-hover:text-[#FFA500]'} />
@@ -202,7 +189,7 @@ export default function Navigation({ isCollapsed = false, toggleCollapse }) {
               onClick={toggleTheme}
               title={isCollapsed ? (theme === 'dark' ? 'Switch to Light Mode' : 'Switch to Dark Mode') : ''}
               className={`w-full flex items-center px-4 py-3 text-neutral-500 dark:text-neutral-400 hover:text-[#FFA500] rounded-xl transition-all text-xs font-bold uppercase tracking-wider ${
-                isCollapsed ? 'justify-center' : 'gap-3'
+                isCollapsed ? 'justify-center px-0' : 'gap-3'
               }`}
             >
               {theme === 'dark' ? <Sun size={18} /> : <Moon size={18} />}
@@ -214,11 +201,29 @@ export default function Navigation({ isCollapsed = false, toggleCollapse }) {
             onClick={handleLogout}
             title={isCollapsed ? "Logout" : ""}
             className={`w-full flex items-center px-4 py-3 text-red-500 dark:text-red-400 hover:bg-red-50 dark:hover:bg-red-500/10 rounded-xl transition-all text-xs font-bold uppercase tracking-wider ${
-              isCollapsed ? 'justify-center' : 'gap-3'
+              isCollapsed ? 'justify-center px-0' : 'gap-3'
             }`}
           >
             <LogOut size={18} />
             {!isCollapsed && <span>Logout System</span>}
+          </button>
+        </div>
+
+        {/* Floating Sidebar Toggle (Bottom) */}
+        <div className="p-4 border-t border-neutral-100 dark:border-neutral-800/50 flex justify-center">
+          <button 
+            onClick={toggleCollapse}
+            className="flex items-center justify-center w-full py-2.5 rounded-xl bg-neutral-50 dark:bg-neutral-950 border border-neutral-200 dark:border-neutral-800 text-neutral-400 hover:text-[#FFA500] hover:border-[#FFA500]/50 transition-all duration-300 shadow-sm group"
+            title={isCollapsed ? "Expand Sidebar" : "Collapse Sidebar"}
+          >
+            {isCollapsed ? (
+              <PanelRightClose size={20} className="group-hover:scale-110 transition-transform" />
+            ) : (
+              <div className="flex items-center gap-2">
+                <PanelLeftClose size={20} className="group-hover:scale-110 transition-transform" />
+                <span className="text-[10px] font-bold uppercase tracking-tighter">Hide Sidebar</span>
+              </div>
+            )}
           </button>
         </div>
       </aside>

@@ -10,14 +10,18 @@ import {
   Loader2
 } from "lucide-react";
 import DashboardLayout from "../components/DashboardLayout";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import ManifestForm from "./components/ManifestForm";
 import AppList from "./components/AppList";
-import EditSecretsForm from "./components/EditSecretsForm";
+import EditAppSecretsForm from "./components/EditAppSecretsForm";
+import EditDbSecretsForm from "./components/EditDbSecretsForm";
 import EditIngressForm from "./components/EditIngressForm";
 
 export default function ManifestPage() {
   const router = useRouter();
+  const searchParams = useSearchParams();
+  const searchQuery = searchParams.get('search')?.toLowerCase() || '';
+
   const [existingApps, setExistingApps] = useState([]);
   const [isLoadingRegistry, setIsLoadingRegistry] = useState(true);
   const [isDeleting, setIsDeleting] = useState(null);
@@ -25,7 +29,8 @@ export default function ManifestPage() {
   // Modals State
   const [isModalOpen, setIsModalOpen] = useState(false);
   
-  const [isEditModalOpen, setIsEditModalOpen] = useState(false);
+  const [isEditAppSecretsOpen, setIsEditAppSecretsOpen] = useState(false);
+  const [isEditDbSecretsOpen, setIsEditDbSecretsOpen] = useState(false);
   const [editingAppName, setEditingAppName] = useState(null);
 
   const [isIngressModalOpen, setIsIngressModalOpen] = useState(false);
@@ -49,6 +54,13 @@ export default function ManifestPage() {
   useEffect(() => {
     fetchRegistry();
   }, []);
+
+  const filteredApps = existingApps.filter(app => 
+    app.name.toLowerCase().includes(searchQuery) ||
+    app.id.toString().includes(searchQuery) ||
+    (app.image && app.image.toLowerCase().includes(searchQuery)) ||
+    (app.liveIngressProd && app.liveIngressProd.toLowerCase().includes(searchQuery))
+  );
 
   const handleDelete = async (appId, appName) => {
     if(!confirm(`Are you sure you want to delete ${appName} (ID: ${appId})? This will remove all manifests from the repository.`)) return;
@@ -83,13 +95,24 @@ export default function ManifestPage() {
     fetchRegistry();
   };
 
-  const handleEdit = (appName) => {
+  const handleEditAppSecrets = (appName) => {
       setEditingAppName(appName);
-      setIsEditModalOpen(true);
+      setIsEditAppSecretsOpen(true);
   };
 
-  const handleEditSuccess = (msg) => {
-      setIsEditModalOpen(false);
+  const handleEditDbSecrets = (appName) => {
+      setEditingAppName(appName);
+      setIsEditDbSecretsOpen(true);
+  };
+
+  const handleEditAppSecretsSuccess = (msg) => {
+      setIsEditAppSecretsOpen(false);
+      setEditingAppName(null);
+      setMessage({ text: msg, type: 'success' });
+  };
+
+  const handleEditDbSecretsSuccess = (msg) => {
+      setIsEditDbSecretsOpen(false);
       setEditingAppName(null);
       setMessage({ text: msg, type: 'success' });
   };
@@ -109,19 +132,6 @@ export default function ManifestPage() {
     <DashboardLayout>
         <div className="w-full">
           
-          {/* Header */}
-          <div className="mb-8 flex flex-col md:flex-row md:items-center justify-between gap-4">
-            <div>
-                <h1 className="text-2xl font-bold flex items-center gap-2">
-                <Server className="text-[#FFA500]" />
-                Application Registry
-                </h1>
-                <p className="text-neutral-500 dark:text-neutral-400 mt-1">
-                Manage your registered applications and their manifests.
-                </p>
-            </div>
-          </div>
-
           {/* Feedback Message (Page Level) */}
           {message && (
             <div className={`mb-6 p-4 rounded-lg border flex items-center gap-3 text-sm animate-in fade-in slide-in-from-top-2 ${ 
@@ -143,9 +153,10 @@ export default function ManifestPage() {
             </div>
           ) : (
             <AppList 
-                apps={existingApps}
+                apps={filteredApps}
                 onDelete={handleDelete}
-                onEdit={handleEdit}
+                onEditAppSecrets={handleEditAppSecrets}
+                onEditDbSecrets={handleEditDbSecrets}
                 onEditIngress={handleEditIngress}
                 isDeleting={isDeleting}
                 onCreate={() => setIsModalOpen(true)}
@@ -165,7 +176,7 @@ export default function ManifestPage() {
 
         {/* Modal Create Overlay */}
         {isModalOpen && (
-            <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50 backdrop-blur-sm animate-in fade-in">
+            <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50 animate-in fade-in">
                 <ManifestForm 
                     onClose={() => setIsModalOpen(false)} 
                     onSuccess={handleFormSuccess} 
@@ -173,20 +184,31 @@ export default function ManifestPage() {
             </div>
         )}
 
-        {/* Modal Edit Secrets Overlay */}
-        {isEditModalOpen && editingAppName && (
-            <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50 backdrop-blur-sm animate-in fade-in">
-                <EditSecretsForm 
+        {/* Modal Edit App Secrets Overlay */}
+        {isEditAppSecretsOpen && editingAppName && (
+            <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50 animate-in fade-in">
+                <EditAppSecretsForm 
                     appName={editingAppName}
-                    onClose={() => { setIsEditModalOpen(false); setEditingAppName(null); }} 
-                    onSuccess={handleEditSuccess} 
+                    onClose={() => { setIsEditAppSecretsOpen(false); setEditingAppName(null); }} 
+                    onSuccess={handleEditAppSecretsSuccess} 
+                />
+            </div>
+        )}
+
+        {/* Modal Edit DB Secrets Overlay */}
+        {isEditDbSecretsOpen && editingAppName && (
+            <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50 animate-in fade-in">
+                <EditDbSecretsForm 
+                    appName={editingAppName}
+                    onClose={() => { setIsEditDbSecretsOpen(false); setEditingAppName(null); }} 
+                    onSuccess={handleEditDbSecretsSuccess} 
                 />
             </div>
         )}
 
         {/* Modal Edit Ingress Overlay */}
         {isIngressModalOpen && ingressAppName && (
-            <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50 backdrop-blur-sm animate-in fade-in">
+            <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50 animate-in fade-in">
                 <EditIngressForm
                     appName={ingressAppName}
                     onClose={() => { setIsIngressModalOpen(false); setIngressAppName(null); }} 

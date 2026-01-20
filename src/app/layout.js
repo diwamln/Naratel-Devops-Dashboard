@@ -7,8 +7,11 @@ import ThemeProvider from './providers/ThemeProvider';
 import { SidebarProvider } from './providers/SidebarProvider';
 
 export const metadata = {
-  title: 'DevOps Gateway',
+  title: 'Naratel Dashboard',
   description: 'Jenkins & Kubernetes Management Portal',
+  icons: {
+    icon: '/logo-icon.png',
+  },
 };
 
 const inter = Inter({ subsets: ['latin'] });

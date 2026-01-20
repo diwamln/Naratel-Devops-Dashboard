@@ -1,6 +1,7 @@
 'use client';
 
 import Navigation from './Navigation';
+import TopBar from './TopBar';
 import { useSidebar } from '../providers/SidebarProvider';
 
 export default function DashboardLayout({ children }) {
@@ -20,6 +21,7 @@ export default function DashboardLayout({ children }) {
             isCollapsed ? 'md:ml-20' : 'md:ml-60'
         }`}
       >
+        <TopBar />
         {children}
       </main>
     </div>

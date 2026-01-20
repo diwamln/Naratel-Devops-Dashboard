@@ -169,17 +169,6 @@ export default function ToolsPage() {
         <DashboardLayout>
                 <div className="w-full">
 
-                    {/* Header */}
-                    <div className="mb-8">
-                        <h1 className="text-2xl font-bold flex items-center gap-2">
-                            <LayoutGrid className="text-[#FFA500]" />
-                            DevOps Gateway
-                        </h1>
-                        <p className="text-neutral-500 dark:text-neutral-400 mt-1">
-                            Centralized access to your development operations & infrastructure tools.
-                        </p>
-                    </div>
-
                     {/* Tools Grid */}
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
                         {tools.map((tool) => {

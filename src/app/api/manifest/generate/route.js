@@ -50,6 +50,39 @@ export async function POST(req) {
           return NextResponse.json({ error: "Failed to initialize git repository: " + error.message }, { status: 500 });
       }
 
+      // --- CRITICAL FIX: Race Condition Check ---
+      // Read registry freshly pulled from git to verify ID availability
+      try {
+          if (fs.existsSync(registryPath)) {
+              const content = fs.readFileSync(registryPath, 'utf8');
+              const currentRegistry = JSON.parse(content);
+              
+              // Check if the requested ID is already taken
+              const isTaken = currentRegistry.some(app => app.id === data.appId);
+              
+              if (isTaken) {
+                  console.log(`[CONFLICT] App ID ${data.appId} is already taken. Calculating new ID...`);
+                  
+                  // Calculate new Max ID
+                  let maxId = 0;
+                  currentRegistry.forEach(app => {
+                      const idNum = parseInt(app.id);
+                      if (!isNaN(idNum) && idNum > maxId) {
+                          maxId = idNum;
+                      }
+                  });
+                  
+                  const newId = String(maxId + 1).padStart(3, '0');
+                  console.log(`[RESOLVED] Auto-assigning new ID: ${newId}`);
+                  data.appId = newId; // Override the ID
+              }
+          }
+      } catch (e) {
+          console.warn("Failed to validate App ID collision:", e.message);
+          // Continue, worst case it overwrites or fails later
+      }
+      // ------------------------------------------
+
       const generatedFolders = [];
       const errors = [];
 
@@ -70,7 +103,10 @@ export async function POST(req) {
                 let val = s.value;
                 if (env === 'prod' && s.valueProd) val = s.valueProd;
                 if (env === 'testing' && s.valueTest) val = s.valueTest;
-                if (s.key && val) appSecretObj[s.key] = val;
+                
+                if (s.key && val !== undefined && val !== null) {
+                    appSecretObj[s.key] = val;
+                }
             });
         }
 
@@ -105,8 +141,12 @@ export async function POST(req) {
                  let val = s.value;
                  if (env === 'prod' && s.valueProd) val = s.valueProd;
                  if (env === 'testing' && s.valueTest) val = s.valueTest;
+                 
                  if (val && typeof val === 'string') val = val.trim();
-                 if (s.key && val) dbSecretObj[s.key] = val;
+                 
+                 if (s.key && val !== undefined && val !== null) {
+                     dbSecretObj[s.key] = val;
+                 }
             });
         }
         
@@ -117,6 +157,11 @@ export async function POST(req) {
              console.log("[DEBUG] Initial dbSecretObj:", JSON.stringify(dbSecretObj, null, 2));
 
              if (data.dbType === 'postgres') {
+                // STRICT CLEANUP: Remove any MySQL keys that might have slipped in
+                Object.keys(dbSecretObj).forEach(k => {
+                    if (k.startsWith('MYSQL_')) delete dbSecretObj[k];
+                });
+
                 // FORCE: Gunakan Key standar PostgreSQL (POSTGRES_*)
                 // Prioritaskan input dari dbSecretObj (Form DB Secrets), fallback ke appSecretObj (Form App Secrets)
                 
@@ -137,6 +182,11 @@ export async function POST(req) {
                 delete dbSecretObj["DB_DATABASE"];
                 
              } else {
+                // STRICT CLEANUP: Remove any Postgres keys that might have slipped in
+                Object.keys(dbSecretObj).forEach(k => {
+                    if (k.startsWith('POSTGRES_')) delete dbSecretObj[k];
+                });
+
                 // FORCE: Gunakan Key standar MySQL (MYSQL_*)
                 const userDbName = dbSecretObj["DB_NAME"] || appSecretObj["DB_NAME"] || dbName;
                 const userDbUser = dbSecretObj["DB_USER"] || appSecretObj["DB_USER"] || "admin";
@@ -233,6 +283,7 @@ image:
   tag: "${data.imageTag}"
 
 service:
+  type: NodePort
   port: ${data.servicePort}
   targetPort: ${data.targetPort}
 `.trim();
