@@ -1,5 +1,5 @@
-[00:00:00.971] Server  WARN     ⚠ The "middleware" file convention is deprecated. Please use "proxy" instead. Learn more: https://nextjs.org/docs/messages/middleware-to-proxy
-[00:00:00.974] Server  ERROR    ⨯ The file "./src/middleware.js" must export a function, either as a default export or as a named "middleware" export.
+[00:00:01.017] Server  WARN     ⚠ The "middleware" file convention is deprecated. Please use "proxy" instead. Learn more: https://nextjs.org/docs/messages/middleware-to-proxy
+[00:00:01.020] Server  ERROR    ⨯ The file "./src/middleware.js" must export a function, either as a default export or as a named "middleware" export.
 This function is what Next.js runs for every request handled by this middleware.
 
 Why this happens:
@@ -11,945 +11,1901 @@ To fix it:
 - Ensure this file has either a default or "middleware" function export.
 
 Learn more: https://nextjs.org/docs/messages/middleware-to-proxy
-[00:00:01.076] Server  LOG      ✓ Ready in 769ms
-[00:00:05.188] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:00:38.260] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:01:35.271] Server  LOG     Updating repository at /tmp/manifest-repo-workdir...
-[00:01:35.951] Server  LOG     Folder todoapp-prod exists, updating...
-[00:01:35.952] Server  LOG     [DEBUG] Generating todoapp-prod (prod):
-[00:01:35.954] Server  LOG     App Secret Keys: ["DB_HOST","DB_NAME","DB_PASS","DB_PORT","DB_USER","DB_DATABASE","DB_USERNAME","DB_PASSWORD"]
-[00:01:35.981] Server  LOG     [DEBUG] Generating todoapp-testing (testing):
-[00:01:35.982] Server  LOG     App Secret Keys: ["DB_HOST","DB_NAME","DB_PASS","DB_PORT","DB_USER","DB_DATABASE","DB_USERNAME","DB_PASSWORD"]
-[00:01:36.008] Server  LOG     [DEBUG] Generating todoapp-db-prod (prod):
-[00:01:36.008] Server  LOG     DB Secret Keys: ["POSTGRES_DB","POSTGRES_USER","POSTGRES_PASSWORD"]
-[00:01:36.033] Server  LOG     [DEBUG] Generating todoapp-db-testing (testing):
-[00:01:36.034] Server  LOG     DB Secret Keys: ["POSTGRES_DB","POSTGRES_USER","POSTGRES_PASSWORD"]
-[00:05:06.164] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:05:52.302] Server  WARN     ⚠ Cross origin request detected from 192.168.89.127 to /_next/* resource. In a future major version of Next.js, you will need to explicitly configure "allowedDevOrigins" in next.config to allow this.
+[00:00:01.128] Server  LOG      ✓ Ready in 804ms
+[00:00:08.088] Server  WARN     ⚠ Cross origin request detected from 192.168.89.127 to /_next/* resource. In a future major version of Next.js, you will need to explicitly configure "allowedDevOrigins" in next.config to allow this.
 Read more: https://nextjs.org/docs/app/api-reference/config/next-config-js/allowedDevOrigins
-[00:05:52.323] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:05:57.545] Server  LOG     Optimization: Processing 0 active jobs out of 6 total jobs.
-[00:06:49.633] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:08:52.125] Server  ERROR   (node:64138) Warning: Setting the NODE_TLS_REJECT_UNAUTHORIZED environment variable to '0' makes TLS connections and HTTPS requests insecure by disabling certificate verification.
-(Use `node-22 --trace-warnings ...` to show where the warning was created)
-[00:09:16.134] Server  LOG     Optimization: Processing 0 active jobs out of 6 total jobs.
-[00:09:16.996] Server  LOG     Optimization: Processing 0 active jobs out of 6 total jobs.
-[00:13:54.651] Server  LOG     Updating repository at /tmp/manifest-repo-workdir...
-[00:13:55.480] Server  LOG     [DEBUG] Generating todoapp-prod (prod):
-[00:13:55.481] Server  LOG     App Secret Keys: ["DB_HOST","DB_NAME","DB_PASS","DB_PORT","DB_USER","DB_DATABASE","DB_USERNAME","DB_PASSWORD"]
-[00:13:55.518] Server  LOG     [DEBUG] Generating todoapp-testing (testing):
-[00:13:55.518] Server  LOG     App Secret Keys: ["DB_HOST","DB_NAME","DB_PASS","DB_PORT","DB_USER","DB_DATABASE","DB_USERNAME","DB_PASSWORD"]
-[00:13:55.556] Server  LOG     [DEBUG] Generating todoapp-db-prod (prod):
-[00:13:55.556] Server  LOG     DB Secret Keys: ["POSTGRES_DB","POSTGRES_USER","POSTGRES_PASSWORD"]
-[00:13:55.590] Server  LOG     [DEBUG] Generating todoapp-db-testing (testing):
-[00:13:55.590] Server  LOG     DB Secret Keys: ["POSTGRES_DB","POSTGRES_USER","POSTGRES_PASSWORD"]
-[00:39:49.705] Server  LOG     Updating repository at /tmp/manifest-repo-workdir...
-[00:39:50.548] Server  LOG     [DEBUG] Generating ngetest-prod (prod):
-[00:39:50.549] Server  LOG     App Secret Keys: ["DB_HOST","DB_NAME","DB_PASS","DB_PORT","DB_USER","DB_DATABASE","DB_USERNAME","DB_PASSWORD"]
-[00:39:50.586] Server  LOG     [DEBUG] Generating ngetest-testing (testing):
-[00:39:50.587] Server  LOG     App Secret Keys: ["DB_HOST","DB_NAME","DB_PASS","DB_PORT","DB_USER","DB_DATABASE","DB_USERNAME","DB_PASSWORD"]
-[00:39:50.622] Server  LOG     [DEBUG] Generating ngetest-db-prod (prod):
-[00:39:50.623] Server  LOG     DB Secret Keys: ["POSTGRES_DB","POSTGRES_USER","POSTGRES_PASSWORD"]
-[00:39:50.658] Server  LOG     [DEBUG] Generating ngetest-db-testing (testing):
-[00:39:50.659] Server  LOG     DB Secret Keys: ["POSTGRES_DB","POSTGRES_USER","POSTGRES_PASSWORD"]
-[00:57:35.965] Server  LOG     Updating repository at /tmp/manifest-repo-workdir...
-[00:57:36.705] Server  LOG     [DEBUG] Generating ngetest-prod (prod):
-[00:57:36.705] Server  LOG     App Secret Keys: ["DB_HOST","DB_NAME","DB_PASS","DB_PORT","DB_USER","DB_DATABASE","DB_USERNAME","DB_PASSWORD"]
-[00:57:36.743] Server  LOG     [DEBUG] Generating ngetest-testing (testing):
-[00:57:36.743] Server  LOG     App Secret Keys: ["DB_HOST","DB_NAME","DB_PASS","DB_PORT","DB_USER","DB_DATABASE","DB_USERNAME","DB_PASSWORD"]
-[00:57:36.781] Server  LOG     [DEBUG] Generating ngetest-db-prod (prod):
-[00:57:36.782] Server  LOG     DB Secret Keys: ["POSTGRES_DB","POSTGRES_USER","POSTGRES_PASSWORD"]
-[00:57:36.818] Server  LOG     [DEBUG] Generating ngetest-db-testing (testing):
-[00:57:36.818] Server  LOG     DB Secret Keys: ["POSTGRES_DB","POSTGRES_USER","POSTGRES_PASSWORD"]
-[01:13:27.605] Server  LOG      ✓ Compiled in 115ms
-[01:27:54.844] Server  LOG     Updating repository at /tmp/manifest-repo-workdir...
-[01:27:55.713] Server  LOG     [DEBUG] Mapping DB Secrets for type: "postgres"
-[01:27:55.713] Server  LOG     [DEBUG] Initial dbSecretObj: "{\n  \"POSTGRES_DB\": \"todoapp_php_db\",\n  \"POSTGRES_USER\": \"postgres\",\n  \"POSTGRES_PASSWORD\": \"buattesting\"\n}"
-[01:27:55.713] Server  LOG     [DEBUG] Final dbSecretObj: "{\n  \"POSTGRES_DB\": \"todoapp_php_db\",\n  \"POSTGRES_USER\": \"postgres\",\n  \"POSTGRES_PASSWORD\": \"buattesting\"\n}"
-[01:27:55.713] Server  LOG     [DEBUG] Generating ngetesttt-prod (prod):
-[01:27:55.714] Server  LOG     App Secret Keys: ["DB_HOST","DB_NAME","DB_PASS","DB_PORT","DB_USER","DB_DATABASE","DB_USERNAME","DB_PASSWORD"]
-[01:27:55.752] Server  LOG     [DEBUG] Mapping DB Secrets for type: "postgres"
-[01:27:55.752] Server  LOG     [DEBUG] Initial dbSecretObj: "{\n  \"POSTGRES_DB\": \"todoapp_php_db\",\n  \"POSTGRES_USER\": \"postgres\",\n  \"POSTGRES_PASSWORD\": \"buattesting\"\n}"
-[01:27:55.752] Server  LOG     [DEBUG] Final dbSecretObj: "{\n  \"POSTGRES_DB\": \"todoapp_php_db\",\n  \"POSTGRES_USER\": \"postgres\",\n  \"POSTGRES_PASSWORD\": \"buattesting\"\n}"
-[01:27:55.752] Server  LOG     [DEBUG] Generating ngetesttt-testing (testing):
-[01:27:55.753] Server  LOG     App Secret Keys: ["DB_HOST","DB_NAME","DB_PASS","DB_PORT","DB_USER","DB_DATABASE","DB_USERNAME","DB_PASSWORD"]
-[01:27:55.788] Server  LOG     [DEBUG] Mapping DB Secrets for type: "postgres"
-[01:27:55.788] Server  LOG     [DEBUG] Initial dbSecretObj: "{\n  \"POSTGRES_DB\": \"todoapp_php_db\",\n  \"POSTGRES_USER\": \"postgres\",\n  \"POSTGRES_PASSWORD\": \"buattesting\"\n}"
-[01:27:55.788] Server  LOG     [DEBUG] Final dbSecretObj: "{\n  \"POSTGRES_DB\": \"todoapp_php_db\",\n  \"POSTGRES_USER\": \"postgres\",\n  \"POSTGRES_PASSWORD\": \"buattesting\"\n}"
-[01:27:55.789] Server  LOG     [DEBUG] Generating ngetesttt-db-prod (prod):
-[01:27:55.789] Server  LOG     DB Secret Keys: ["POSTGRES_DB","POSTGRES_USER","POSTGRES_PASSWORD"]
-[01:27:55.826] Server  LOG     [DEBUG] Mapping DB Secrets for type: "postgres"
-[01:27:55.826] Server  LOG     [DEBUG] Initial dbSecretObj: "{\n  \"POSTGRES_DB\": \"todoapp_php_db\",\n  \"POSTGRES_USER\": \"postgres\",\n  \"POSTGRES_PASSWORD\": \"buattesting\"\n}"
-[01:27:55.826] Server  LOG     [DEBUG] Final dbSecretObj: "{\n  \"POSTGRES_DB\": \"todoapp_php_db\",\n  \"POSTGRES_USER\": \"postgres\",\n  \"POSTGRES_PASSWORD\": \"buattesting\"\n}"
-[01:27:55.826] Server  LOG     [DEBUG] Generating ngetesttt-db-testing (testing):
-[01:27:55.826] Server  LOG     DB Secret Keys: ["POSTGRES_DB","POSTGRES_USER","POSTGRES_PASSWORD"]
-[01:56:50.134] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[01:56:54.908] Server  LOG      ✓ Compiled in 106ms
-[01:57:25.311] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[01:58:44.846] Server  LOG     Optimization: Processing 0 active jobs out of 6 total jobs.
-[01:58:44.921] Server  LOG     Optimization: Processing 0 active jobs out of 6 total jobs.
-[01:58:59.920] Server  LOG     Optimization: Processing 0 active jobs out of 6 total jobs.
-[01:59:00.102] Server  LOG     Optimization: Processing 0 active jobs out of 6 total jobs.
-[02:05:22.690] Server  LOG     Optimization: Processing 0 active jobs out of 6 total jobs.
-[02:05:22.880] Server  LOG     Optimization: Processing 0 active jobs out of 6 total jobs.
-[02:05:44.862] Server  LOG      ✓ Compiled in 81ms
-[02:10:41.399] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[02:10:48.840] Server  LOG      ✓ Compiled in 28ms
-[02:14:42.200] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[02:24:44.019] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[02:24:54.065] Server  LOG     Optimization: Processing 0 active jobs out of 6 total jobs.
-[02:24:54.150] Server  LOG     Optimization: Processing 0 active jobs out of 6 total jobs.
-[02:30:53.538] Server  LOG      ✓ Compiled in 75ms
-[02:31:47.304] Server  LOG      ✓ Compiled in 112ms
-[02:31:58.562] Server  LOG      ✓ Compiled in 28ms
-[02:32:42.269] Server  LOG      ✓ Compiled in 38ms
-[02:35:49.621] Server  LOG     Optimization: Processing 0 active jobs out of 6 total jobs.
-[02:35:49.709] Server  LOG     Optimization: Processing 0 active jobs out of 6 total jobs.
-[02:35:57.936] Server  LOG     Optimization: Processing 0 active jobs out of 6 total jobs.
-[02:35:58.024] Server  LOG     Optimization: Processing 0 active jobs out of 6 total jobs.
-[02:36:03.198] Server  LOG     Optimization: Processing 0 active jobs out of 6 total jobs.
-[02:36:03.281] Server  LOG     Optimization: Processing 0 active jobs out of 6 total jobs.
-[02:36:05.877] Server  LOG     Optimization: Processing 0 active jobs out of 6 total jobs.
-[02:36:05.950] Server  LOG     Optimization: Processing 0 active jobs out of 6 total jobs.
-[02:36:07.350] Server  LOG      ✓ Compiled in 40ms
-[02:36:07.463] Browser ERROR   ./webui-devops/Naratel-Devops-Dashboard/src/app/secrets/page.js:723:7
-Parsing ecmascript source code failed
-  721 |         </div>
-  722 |       </div>
-> 723 |     </div>
-      |       ^^^
-  724 |   );
-  725 | }
-  726 |
-
-Expected corresponding JSX closing tag for <DashboardLayout>
-
-Import traces:
-  Client Component Browser:
-    ./webui-devops/Naratel-Devops-Dashboard/src/app/secrets/page.js [Client Component Browser]
-    ./webui-devops/Naratel-Devops-Dashboard/src/app/secrets/page.js [Server Component]
-
-  Client Component SSR:
-    ./webui-devops/Naratel-Devops-Dashboard/src/app/secrets/page.js [Client Component SSR]
-    ./webui-devops/Naratel-Devops-Dashboard/src/app/secrets/page.js [Server Component]
-[02:36:08.257] Browser ERROR   ./webui-devops/Naratel-Devops-Dashboard/src/app/secrets/page.js:723:7
-Parsing ecmascript source code failed
-  721 |         </div>
-  722 |       </div>
-> 723 |     </div>
-      |       ^^^
-  724 |   );
-  725 | }
-  726 |
-
-Expected corresponding JSX closing tag for <DashboardLayout>
-
-Import traces:
-  Client Component Browser:
-    ./webui-devops/Naratel-Devops-Dashboard/src/app/secrets/page.js [Client Component Browser]
-    ./webui-devops/Naratel-Devops-Dashboard/src/app/secrets/page.js [Server Component]
-
-  Client Component SSR:
-    ./webui-devops/Naratel-Devops-Dashboard/src/app/secrets/page.js [Client Component SSR]
-    ./webui-devops/Naratel-Devops-Dashboard/src/app/secrets/page.js [Server Component]
-[02:36:12.750] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[02:36:12.851] Browser ERROR   ./webui-devops/Naratel-Devops-Dashboard/src/app/secrets/page.js:723:7
-Parsing ecmascript source code failed
-  721 |         </div>
-  722 |       </div>
-> 723 |     </div>
-      |       ^^^
-  724 |   );
-  725 | }
-  726 |
-
-Expected corresponding JSX closing tag for <DashboardLayout>
-
-Import traces:
-  Client Component Browser:
-    ./webui-devops/Naratel-Devops-Dashboard/src/app/secrets/page.js [Client Component Browser]
-    ./webui-devops/Naratel-Devops-Dashboard/src/app/secrets/page.js [Server Component]
-
-  Client Component SSR:
-    ./webui-devops/Naratel-Devops-Dashboard/src/app/secrets/page.js [Client Component SSR]
-    ./webui-devops/Naratel-Devops-Dashboard/src/app/secrets/page.js [Server Component]
-[02:36:12.987] Browser ERROR   ./webui-devops/Naratel-Devops-Dashboard/src/app/secrets/page.js:723:7
-Parsing ecmascript source code failed
-  721 |         </div>
-  722 |       </div>
-> 723 |     </div>
-      |       ^^^
-  724 |   );
-  725 | }
-  726 |
-
-Expected corresponding JSX closing tag for <DashboardLayout>
-
-Import traces:
-  Client Component Browser:
-    ./webui-devops/Naratel-Devops-Dashboard/src/app/secrets/page.js [Client Component Browser]
-    ./webui-devops/Naratel-Devops-Dashboard/src/app/secrets/page.js [Server Component]
-
-  Client Component SSR:
-    ./webui-devops/Naratel-Devops-Dashboard/src/app/secrets/page.js [Client Component SSR]
-    ./webui-devops/Naratel-Devops-Dashboard/src/app/secrets/page.js [Server Component]
-[02:36:13.081] Browser ERROR   ./webui-devops/Naratel-Devops-Dashboard/src/app/secrets/page.js:723:7
-Parsing ecmascript source code failed
-  721 |         </div>
-  722 |       </div>
-> 723 |     </div>
-      |       ^^^
-  724 |   );
-  725 | }
-  726 |
-
-Expected corresponding JSX closing tag for <DashboardLayout>
-
-Import traces:
-  Client Component Browser:
-    ./webui-devops/Naratel-Devops-Dashboard/src/app/secrets/page.js [Client Component Browser]
-    ./webui-devops/Naratel-Devops-Dashboard/src/app/secrets/page.js [Server Component]
-
-  Client Component SSR:
-    ./webui-devops/Naratel-Devops-Dashboard/src/app/secrets/page.js [Client Component SSR]
-    ./webui-devops/Naratel-Devops-Dashboard/src/app/secrets/page.js [Server Component]
-[02:36:13.281] Browser ERROR   ./webui-devops/Naratel-Devops-Dashboard/src/app/secrets/page.js:723:7
-Parsing ecmascript source code failed
-  721 |         </div>
-  722 |       </div>
-> 723 |     </div>
-      |       ^^^
-  724 |   );
-  725 | }
-  726 |
-
-Expected corresponding JSX closing tag for <DashboardLayout>
-
-Import traces:
-  Client Component Browser:
-    ./webui-devops/Naratel-Devops-Dashboard/src/app/secrets/page.js [Client Component Browser]
-    ./webui-devops/Naratel-Devops-Dashboard/src/app/secrets/page.js [Server Component]
-
-  Client Component SSR:
-    ./webui-devops/Naratel-Devops-Dashboard/src/app/secrets/page.js [Client Component SSR]
-    ./webui-devops/Naratel-Devops-Dashboard/src/app/secrets/page.js [Server Component]
-[02:36:13.281] Browser ERROR   ./webui-devops/Naratel-Devops-Dashboard/src/app/secrets/page.js:723:7
-Parsing ecmascript source code failed
-  721 |         </div>
-  722 |       </div>
-> 723 |     </div>
-      |       ^^^
-  724 |   );
-  725 | }
-  726 |
-
-Expected corresponding JSX closing tag for <DashboardLayout>
-
-Import traces:
-  Client Component Browser:
-    ./webui-devops/Naratel-Devops-Dashboard/src/app/secrets/page.js [Client Component Browser]
-    ./webui-devops/Naratel-Devops-Dashboard/src/app/secrets/page.js [Server Component]
-
-  Client Component SSR:
-    ./webui-devops/Naratel-Devops-Dashboard/src/app/secrets/page.js [Client Component SSR]
-    ./webui-devops/Naratel-Devops-Dashboard/src/app/secrets/page.js [Server Component]
-[02:36:13.281] Browser ERROR   ./webui-devops/Naratel-Devops-Dashboard/src/app/secrets/page.js:723:7
-Parsing ecmascript source code failed
-  721 |         </div>
-  722 |       </div>
-> 723 |     </div>
-      |       ^^^
-  724 |   );
-  725 | }
-  726 |
-
-Expected corresponding JSX closing tag for <DashboardLayout>
-
-Import traces:
-  Client Component Browser:
-    ./webui-devops/Naratel-Devops-Dashboard/src/app/secrets/page.js [Client Component Browser]
-    ./webui-devops/Naratel-Devops-Dashboard/src/app/secrets/page.js [Server Component]
-
-  Client Component SSR:
-    ./webui-devops/Naratel-Devops-Dashboard/src/app/secrets/page.js [Client Component SSR]
-    ./webui-devops/Naratel-Devops-Dashboard/src/app/secrets/page.js [Server Component]
-[02:36:13.592] Browser ERROR   ./webui-devops/Naratel-Devops-Dashboard/src/app/secrets/page.js:723:7
-Parsing ecmascript source code failed
-  721 |         </div>
-  722 |       </div>
-> 723 |     </div>
-      |       ^^^
-  724 |   );
-  725 | }
-  726 |
-
-Expected corresponding JSX closing tag for <DashboardLayout>
-
-Import traces:
-  Client Component Browser:
-    ./webui-devops/Naratel-Devops-Dashboard/src/app/secrets/page.js [Client Component Browser]
-    ./webui-devops/Naratel-Devops-Dashboard/src/app/secrets/page.js [Server Component]
-
-  Client Component SSR:
-    ./webui-devops/Naratel-Devops-Dashboard/src/app/secrets/page.js [Client Component SSR]
-    ./webui-devops/Naratel-Devops-Dashboard/src/app/secrets/page.js [Server Component]
-[02:36:13.592] Browser ERROR   ./webui-devops/Naratel-Devops-Dashboard/src/app/secrets/page.js:723:7
-Parsing ecmascript source code failed
-  721 |         </div>
-  722 |       </div>
-> 723 |     </div>
-      |       ^^^
-  724 |   );
-  725 | }
-  726 |
-
-Expected corresponding JSX closing tag for <DashboardLayout>
-
-Import traces:
-  Client Component Browser:
-    ./webui-devops/Naratel-Devops-Dashboard/src/app/secrets/page.js [Client Component Browser]
-    ./webui-devops/Naratel-Devops-Dashboard/src/app/secrets/page.js [Server Component]
-
-  Client Component SSR:
-    ./webui-devops/Naratel-Devops-Dashboard/src/app/secrets/page.js [Client Component SSR]
-    ./webui-devops/Naratel-Devops-Dashboard/src/app/secrets/page.js [Server Component]
-[02:36:14.035] Browser ERROR   ./webui-devops/Naratel-Devops-Dashboard/src/app/secrets/page.js:723:7
-Parsing ecmascript source code failed
-  721 |         </div>
-  722 |       </div>
-> 723 |     </div>
-      |       ^^^
-  724 |   );
-  725 | }
-  726 |
-
-Expected corresponding JSX closing tag for <DashboardLayout>
-
-Import traces:
-  Client Component Browser:
-    ./webui-devops/Naratel-Devops-Dashboard/src/app/secrets/page.js [Client Component Browser]
-    ./webui-devops/Naratel-Devops-Dashboard/src/app/secrets/page.js [Server Component]
-
-  Client Component SSR:
-    ./webui-devops/Naratel-Devops-Dashboard/src/app/secrets/page.js [Client Component SSR]
-    ./webui-devops/Naratel-Devops-Dashboard/src/app/secrets/page.js [Server Component]
-[02:36:14.035] Browser ERROR   Fetch Error: {}
-[02:36:14.035] Browser ERROR   [next-auth][error][CLIENT_FETCH_ERROR] 
-https://next-auth.js.org/errors#client_fetch_error JSON.parse: unexpected character at line 1 column 1 of the JSON data {"error":{"message":"JSON.parse: unexpected character at line 1 column 1 of the JSON data","name":"SyntaxError","stack":""},"message":"JSON.parse: unexpected character at line 1 column 1 of the JSON data","url":"/api/auth/session"}
-[02:36:14.035] Browser ERROR   ./webui-devops/Naratel-Devops-Dashboard/src/app/secrets/page.js:723:7
-Parsing ecmascript source code failed
-  721 |         </div>
-  722 |       </div>
-> 723 |     </div>
-      |       ^^^
-  724 |   );
-  725 | }
-  726 |
-
-Expected corresponding JSX closing tag for <DashboardLayout>
-
-Import traces:
-  Client Component Browser:
-    ./webui-devops/Naratel-Devops-Dashboard/src/app/secrets/page.js [Client Component Browser]
-    ./webui-devops/Naratel-Devops-Dashboard/src/app/secrets/page.js [Server Component]
-
-  Client Component SSR:
-    ./webui-devops/Naratel-Devops-Dashboard/src/app/secrets/page.js [Client Component SSR]
-    ./webui-devops/Naratel-Devops-Dashboard/src/app/secrets/page.js [Server Component]
-[02:36:14.300] Browser ERROR   ./webui-devops/Naratel-Devops-Dashboard/src/app/secrets/page.js:723:7
-Parsing ecmascript source code failed
-  721 |         </div>
-  722 |       </div>
-> 723 |     </div>
-      |       ^^^
-  724 |   );
-  725 | }
-  726 |
-
-Expected corresponding JSX closing tag for <DashboardLayout>
-
-Import traces:
-  Client Component Browser:
-    ./webui-devops/Naratel-Devops-Dashboard/src/app/secrets/page.js [Client Component Browser]
-    ./webui-devops/Naratel-Devops-Dashboard/src/app/secrets/page.js [Server Component]
-
-  Client Component SSR:
-    ./webui-devops/Naratel-Devops-Dashboard/src/app/secrets/page.js [Client Component SSR]
-    ./webui-devops/Naratel-Devops-Dashboard/src/app/secrets/page.js [Server Component]
-[02:36:14.300] Browser ERROR   ./webui-devops/Naratel-Devops-Dashboard/src/app/secrets/page.js:723:7
-Parsing ecmascript source code failed
-  721 |         </div>
-  722 |       </div>
-> 723 |     </div>
-      |       ^^^
-  724 |   );
-  725 | }
-  726 |
-
-Expected corresponding JSX closing tag for <DashboardLayout>
-
-Import traces:
-  Client Component Browser:
-    ./webui-devops/Naratel-Devops-Dashboard/src/app/secrets/page.js [Client Component Browser]
-    ./webui-devops/Naratel-Devops-Dashboard/src/app/secrets/page.js [Server Component]
-
-  Client Component SSR:
-    ./webui-devops/Naratel-Devops-Dashboard/src/app/secrets/page.js [Client Component SSR]
-    ./webui-devops/Naratel-Devops-Dashboard/src/app/secrets/page.js [Server Component]
-[02:36:14.300] Browser ERROR   ./webui-devops/Naratel-Devops-Dashboard/src/app/secrets/page.js:723:7
-Parsing ecmascript source code failed
-  721 |         </div>
-  722 |       </div>
-> 723 |     </div>
-      |       ^^^
-  724 |   );
-  725 | }
-  726 |
-
-Expected corresponding JSX closing tag for <DashboardLayout>
-
-Import traces:
-  Client Component Browser:
-    ./webui-devops/Naratel-Devops-Dashboard/src/app/secrets/page.js [Client Component Browser]
-    ./webui-devops/Naratel-Devops-Dashboard/src/app/secrets/page.js [Server Component]
-
-  Client Component SSR:
-    ./webui-devops/Naratel-Devops-Dashboard/src/app/secrets/page.js [Client Component SSR]
-    ./webui-devops/Naratel-Devops-Dashboard/src/app/secrets/page.js [Server Component]
-[02:36:14.300] Browser ERROR   ./webui-devops/Naratel-Devops-Dashboard/src/app/secrets/page.js:723:7
-Parsing ecmascript source code failed
-  721 |         </div>
-  722 |       </div>
-> 723 |     </div>
-      |       ^^^
-  724 |   );
-  725 | }
-  726 |
-
-Expected corresponding JSX closing tag for <DashboardLayout>
-
-Import traces:
-  Client Component Browser:
-    ./webui-devops/Naratel-Devops-Dashboard/src/app/secrets/page.js [Client Component Browser]
-    ./webui-devops/Naratel-Devops-Dashboard/src/app/secrets/page.js [Server Component]
-
-  Client Component SSR:
-    ./webui-devops/Naratel-Devops-Dashboard/src/app/secrets/page.js [Client Component SSR]
-    ./webui-devops/Naratel-Devops-Dashboard/src/app/secrets/page.js [Server Component]
-[02:36:15.735] Browser ERROR   ./webui-devops/Naratel-Devops-Dashboard/src/app/secrets/page.js:723:7
-Parsing ecmascript source code failed
-  721 |         </div>
-  722 |       </div>
-> 723 |     </div>
-      |       ^^^
-  724 |   );
-  725 | }
-  726 |
-
-Expected corresponding JSX closing tag for <DashboardLayout>
-
-Import traces:
-  Client Component Browser:
-    ./webui-devops/Naratel-Devops-Dashboard/src/app/secrets/page.js [Client Component Browser]
-    ./webui-devops/Naratel-Devops-Dashboard/src/app/secrets/page.js [Server Component]
-
-  Client Component SSR:
-    ./webui-devops/Naratel-Devops-Dashboard/src/app/secrets/page.js [Client Component SSR]
-    ./webui-devops/Naratel-Devops-Dashboard/src/app/secrets/page.js [Server Component]
-[02:36:16.246] Browser ERROR   ./webui-devops/Naratel-Devops-Dashboard/src/app/secrets/page.js:723:7
-Parsing ecmascript source code failed
-  721 |         </div>
-  722 |       </div>
-> 723 |     </div>
-      |       ^^^
-  724 |   );
-  725 | }
-  726 |
-
-Expected corresponding JSX closing tag for <DashboardLayout>
-
-Import traces:
-  Client Component Browser:
-    ./webui-devops/Naratel-Devops-Dashboard/src/app/secrets/page.js [Client Component Browser]
-    ./webui-devops/Naratel-Devops-Dashboard/src/app/secrets/page.js [Server Component]
-
-  Client Component SSR:
-    ./webui-devops/Naratel-Devops-Dashboard/src/app/secrets/page.js [Client Component SSR]
-    ./webui-devops/Naratel-Devops-Dashboard/src/app/secrets/page.js [Server Component]
-[02:36:21.462] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[02:36:21.773] Browser ERROR   ./webui-devops/Naratel-Devops-Dashboard/src/app/secrets/page.js:723:7
-Parsing ecmascript source code failed
-  721 |         </div>
-  722 |       </div>
-> 723 |     </div>
-      |       ^^^
-  724 |   );
-  725 | }
-  726 |
-
-Expected corresponding JSX closing tag for <DashboardLayout>
-
-Import traces:
-  Client Component Browser:
-    ./webui-devops/Naratel-Devops-Dashboard/src/app/secrets/page.js [Client Component Browser]
-    ./webui-devops/Naratel-Devops-Dashboard/src/app/secrets/page.js [Server Component]
-
-  Client Component SSR:
-    ./webui-devops/Naratel-Devops-Dashboard/src/app/secrets/page.js [Client Component SSR]
-    ./webui-devops/Naratel-Devops-Dashboard/src/app/secrets/page.js [Server Component]
-[02:36:21.773] Browser ERROR   ./webui-devops/Naratel-Devops-Dashboard/src/app/secrets/page.js:723:7
-Parsing ecmascript source code failed
-  721 |         </div>
-  722 |       </div>
-> 723 |     </div>
-      |       ^^^
-  724 |   );
-  725 | }
-  726 |
-
-Expected corresponding JSX closing tag for <DashboardLayout>
-
-Import traces:
-  Client Component Browser:
-    ./webui-devops/Naratel-Devops-Dashboard/src/app/secrets/page.js [Client Component Browser]
-    ./webui-devops/Naratel-Devops-Dashboard/src/app/secrets/page.js [Server Component]
-
-  Client Component SSR:
-    ./webui-devops/Naratel-Devops-Dashboard/src/app/secrets/page.js [Client Component SSR]
-    ./webui-devops/Naratel-Devops-Dashboard/src/app/secrets/page.js [Server Component]
-[02:36:21.773] Browser ERROR   Fetch Error: {}
-[02:36:21.773] Browser ERROR   ./webui-devops/Naratel-Devops-Dashboard/src/app/secrets/page.js:723:7
-Parsing ecmascript source code failed
-  721 |         </div>
-  722 |       </div>
-> 723 |     </div>
-      |       ^^^
-  724 |   );
-  725 | }
-  726 |
-
-Expected corresponding JSX closing tag for <DashboardLayout>
-
-Import traces:
-  Client Component Browser:
-    ./webui-devops/Naratel-Devops-Dashboard/src/app/secrets/page.js [Client Component Browser]
-    ./webui-devops/Naratel-Devops-Dashboard/src/app/secrets/page.js [Server Component]
-
-  Client Component SSR:
-    ./webui-devops/Naratel-Devops-Dashboard/src/app/secrets/page.js [Client Component SSR]
-    ./webui-devops/Naratel-Devops-Dashboard/src/app/secrets/page.js [Server Component]
-[02:36:21.773] Browser ERROR   [next-auth][error][CLIENT_FETCH_ERROR] 
-https://next-auth.js.org/errors#client_fetch_error JSON.parse: unexpected character at line 1 column 1 of the JSON data {"error":{"message":"JSON.parse: unexpected character at line 1 column 1 of the JSON data","name":"SyntaxError","stack":""},"message":"JSON.parse: unexpected character at line 1 column 1 of the JSON data","url":"/api/auth/session"}
-[02:36:21.773] Browser ERROR   ./webui-devops/Naratel-Devops-Dashboard/src/app/secrets/page.js:723:7
-Parsing ecmascript source code failed
-  721 |         </div>
-  722 |       </div>
-> 723 |     </div>
-      |       ^^^
-  724 |   );
-  725 | }
-  726 |
-
-Expected corresponding JSX closing tag for <DashboardLayout>
-
-Import traces:
-  Client Component Browser:
-    ./webui-devops/Naratel-Devops-Dashboard/src/app/secrets/page.js [Client Component Browser]
-    ./webui-devops/Naratel-Devops-Dashboard/src/app/secrets/page.js [Server Component]
-
-  Client Component SSR:
-    ./webui-devops/Naratel-Devops-Dashboard/src/app/secrets/page.js [Client Component SSR]
-    ./webui-devops/Naratel-Devops-Dashboard/src/app/secrets/page.js [Server Component]
-[02:36:22.211] Browser ERROR   ./webui-devops/Naratel-Devops-Dashboard/src/app/secrets/page.js:723:7
-Parsing ecmascript source code failed
-  721 |         </div>
-  722 |       </div>
-> 723 |     </div>
-      |       ^^^
-  724 |   );
-  725 | }
-  726 |
-
-Expected corresponding JSX closing tag for <DashboardLayout>
-
-Import traces:
-  Client Component Browser:
-    ./webui-devops/Naratel-Devops-Dashboard/src/app/secrets/page.js [Client Component Browser]
-    ./webui-devops/Naratel-Devops-Dashboard/src/app/secrets/page.js [Server Component]
-
-  Client Component SSR:
-    ./webui-devops/Naratel-Devops-Dashboard/src/app/secrets/page.js [Client Component SSR]
-    ./webui-devops/Naratel-Devops-Dashboard/src/app/secrets/page.js [Server Component]
-[02:36:22.211] Browser ERROR   ./webui-devops/Naratel-Devops-Dashboard/src/app/secrets/page.js:723:7
-Parsing ecmascript source code failed
-  721 |         </div>
-  722 |       </div>
-> 723 |     </div>
-      |       ^^^
-  724 |   );
-  725 | }
-  726 |
-
-Expected corresponding JSX closing tag for <DashboardLayout>
-
-Import traces:
-  Client Component Browser:
-    ./webui-devops/Naratel-Devops-Dashboard/src/app/secrets/page.js [Client Component Browser]
-    ./webui-devops/Naratel-Devops-Dashboard/src/app/secrets/page.js [Server Component]
-
-  Client Component SSR:
-    ./webui-devops/Naratel-Devops-Dashboard/src/app/secrets/page.js [Client Component SSR]
-    ./webui-devops/Naratel-Devops-Dashboard/src/app/secrets/page.js [Server Component]
-[02:36:22.211] Browser ERROR   ./webui-devops/Naratel-Devops-Dashboard/src/app/secrets/page.js:723:7
-Parsing ecmascript source code failed
-  721 |         </div>
-  722 |       </div>
-> 723 |     </div>
-      |       ^^^
-  724 |   );
-  725 | }
-  726 |
-
-Expected corresponding JSX closing tag for <DashboardLayout>
-
-Import traces:
-  Client Component Browser:
-    ./webui-devops/Naratel-Devops-Dashboard/src/app/secrets/page.js [Client Component Browser]
-    ./webui-devops/Naratel-Devops-Dashboard/src/app/secrets/page.js [Server Component]
-
-  Client Component SSR:
-    ./webui-devops/Naratel-Devops-Dashboard/src/app/secrets/page.js [Client Component SSR]
-    ./webui-devops/Naratel-Devops-Dashboard/src/app/secrets/page.js [Server Component]
-[02:36:22.211] Browser ERROR   ./webui-devops/Naratel-Devops-Dashboard/src/app/secrets/page.js:723:7
-Parsing ecmascript source code failed
-  721 |         </div>
-  722 |       </div>
-> 723 |     </div>
-      |       ^^^
-  724 |   );
-  725 | }
-  726 |
-
-Expected corresponding JSX closing tag for <DashboardLayout>
-
-Import traces:
-  Client Component Browser:
-    ./webui-devops/Naratel-Devops-Dashboard/src/app/secrets/page.js [Client Component Browser]
-    ./webui-devops/Naratel-Devops-Dashboard/src/app/secrets/page.js [Server Component]
-
-  Client Component SSR:
-    ./webui-devops/Naratel-Devops-Dashboard/src/app/secrets/page.js [Client Component SSR]
-    ./webui-devops/Naratel-Devops-Dashboard/src/app/secrets/page.js [Server Component]
-[02:36:23.277] Server  LOG      ✓ Compiled in 41ms
-[02:36:26.080] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[02:36:31.072] Server  LOG      ✓ Compiled in 33ms
-[02:36:37.746] Server  LOG      ✓ Compiled in 26ms
-[02:36:37.850] Browser ERROR   ./webui-devops/Naratel-Devops-Dashboard/src/app/tools/page.js:279:11
-Parsing ecmascript source code failed
-  277 |                 </div>
-  278 |             </div>
-> 279 |         </div>
-      |           ^^^
-  280 |     );
-  281 | }
-  282 |
-
-Expected corresponding JSX closing tag for <DashboardLayout>
-
-Import traces:
-  Client Component Browser:
-    ./webui-devops/Naratel-Devops-Dashboard/src/app/tools/page.js [Client Component Browser]
-    ./webui-devops/Naratel-Devops-Dashboard/src/app/tools/page.js [Server Component]
-
-  Client Component SSR:
-    ./webui-devops/Naratel-Devops-Dashboard/src/app/tools/page.js [Client Component SSR]
-    ./webui-devops/Naratel-Devops-Dashboard/src/app/tools/page.js [Server Component]
-[02:36:38.261] Browser ERROR   ./webui-devops/Naratel-Devops-Dashboard/src/app/tools/page.js:279:11
-Parsing ecmascript source code failed
-  277 |                 </div>
-  278 |             </div>
-> 279 |         </div>
-      |           ^^^
-  280 |     );
-  281 | }
-  282 |
-
-Expected corresponding JSX closing tag for <DashboardLayout>
-
-Import traces:
-  Client Component Browser:
-    ./webui-devops/Naratel-Devops-Dashboard/src/app/tools/page.js [Client Component Browser]
-    ./webui-devops/Naratel-Devops-Dashboard/src/app/tools/page.js [Server Component]
-
-  Client Component SSR:
-    ./webui-devops/Naratel-Devops-Dashboard/src/app/tools/page.js [Client Component SSR]
-    ./webui-devops/Naratel-Devops-Dashboard/src/app/tools/page.js [Server Component]
-[02:36:42.162] Server  LOG      ✓ Compiled in 38ms
-[02:37:04.453] Server  LOG     Optimization: Processing 0 active jobs out of 6 total jobs.
-[02:37:04.684] Server  LOG     Optimization: Processing 0 active jobs out of 6 total jobs.
-[02:38:36.993] Server  LOG      ✓ Compiled in 69ms
-[02:38:47.329] Server  LOG      ✓ Compiled in 30ms
-[02:39:00.889] Server  LOG      ✓ Compiled in 31ms
-[02:39:00.993] Browser ERROR   ./webui-devops/Naratel-Devops-Dashboard/src/app/manifest/page.js:206:5
-Parsing ecmascript source code failed
-  204 |
-  205 |       </div>
-> 206 |     </DashboardLayout>
-      |     ^
-  207 |   );
-  208 | }
-
-Expression expected
-
-Import traces:
-  Client Component Browser:
-    ./webui-devops/Naratel-Devops-Dashboard/src/app/manifest/page.js [Client Component Browser]
-    ./webui-devops/Naratel-Devops-Dashboard/src/app/manifest/page.js [Server Component]
-
-  Client Component SSR:
-    ./webui-devops/Naratel-Devops-Dashboard/src/app/manifest/page.js [Client Component SSR]
-    ./webui-devops/Naratel-Devops-Dashboard/src/app/manifest/page.js [Server Component]
-[02:39:00.993] Browser ERROR   ./webui-devops/Naratel-Devops-Dashboard/src/app/manifest/page.js:206:6
-Parsing ecmascript source code failed
-  204 |
-  205 |       </div>
-> 206 |     </DashboardLayout>
-      |      ^^^^^^^^^^^^^^^^^
-  207 |   );
-  208 | }
-
-Unterminated regexp literal
-
-Import traces:
-  Client Component Browser:
-    ./webui-devops/Naratel-Devops-Dashboard/src/app/manifest/page.js [Client Component Browser]
-    ./webui-devops/Naratel-Devops-Dashboard/src/app/manifest/page.js [Server Component]
-
-  Client Component SSR:
-    ./webui-devops/Naratel-Devops-Dashboard/src/app/manifest/page.js [Client Component SSR]
-    ./webui-devops/Naratel-Devops-Dashboard/src/app/manifest/page.js [Server Component]
-[02:39:01.210] Browser ERROR   ./webui-devops/Naratel-Devops-Dashboard/src/app/manifest/page.js:206:5
-Parsing ecmascript source code failed
-  204 |
-  205 |       </div>
-> 206 |     </DashboardLayout>
-      |     ^
-  207 |   );
-  208 | }
-
-Expression expected
-
-Import traces:
-  Client Component Browser:
-    ./webui-devops/Naratel-Devops-Dashboard/src/app/manifest/page.js [Client Component Browser]
-    ./webui-devops/Naratel-Devops-Dashboard/src/app/manifest/page.js [Server Component]
-
-  Client Component SSR:
-    ./webui-devops/Naratel-Devops-Dashboard/src/app/manifest/page.js [Client Component SSR]
-    ./webui-devops/Naratel-Devops-Dashboard/src/app/manifest/page.js [Server Component]
-[02:39:01.210] Browser ERROR   ./webui-devops/Naratel-Devops-Dashboard/src/app/manifest/page.js:206:6
-Parsing ecmascript source code failed
-  204 |
-  205 |       </div>
-> 206 |     </DashboardLayout>
-      |      ^^^^^^^^^^^^^^^^^
-  207 |   );
-  208 | }
-
-Unterminated regexp literal
-
-Import traces:
-  Client Component Browser:
-    ./webui-devops/Naratel-Devops-Dashboard/src/app/manifest/page.js [Client Component Browser]
-    ./webui-devops/Naratel-Devops-Dashboard/src/app/manifest/page.js [Server Component]
-
-  Client Component SSR:
-    ./webui-devops/Naratel-Devops-Dashboard/src/app/manifest/page.js [Client Component SSR]
-    ./webui-devops/Naratel-Devops-Dashboard/src/app/manifest/page.js [Server Component]
-[02:39:12.456] Server  LOG      ✓ Compiled in 28ms
-[02:39:12.562] Browser ERROR   ./webui-devops/Naratel-Devops-Dashboard/src/app/tools/page.js:278:9
-Parsing ecmascript source code failed
-  276 |                 </div>
-  277 |             </div>
-> 278 |         </DashboardLayout>
-      |         ^
-  279 |     );
-  280 | }
-  281 |
-
-Expression expected
-
-Import traces:
-  Client Component Browser:
-    ./webui-devops/Naratel-Devops-Dashboard/src/app/tools/page.js [Client Component Browser]
-    ./webui-devops/Naratel-Devops-Dashboard/src/app/tools/page.js [Server Component]
-
-  Client Component SSR:
-    ./webui-devops/Naratel-Devops-Dashboard/src/app/tools/page.js [Client Component SSR]
-    ./webui-devops/Naratel-Devops-Dashboard/src/app/tools/page.js [Server Component]
-[02:39:12.562] Browser ERROR   ./webui-devops/Naratel-Devops-Dashboard/src/app/tools/page.js:278:10
-Parsing ecmascript source code failed
-  276 |                 </div>
-  277 |             </div>
-> 278 |         </DashboardLayout>
-      |          ^^^^^^^^^^^^^^^^^
-  279 |     );
-  280 | }
-  281 |
-
-Unterminated regexp literal
-
-Import traces:
-  Client Component Browser:
-    ./webui-devops/Naratel-Devops-Dashboard/src/app/tools/page.js [Client Component Browser]
-    ./webui-devops/Naratel-Devops-Dashboard/src/app/tools/page.js [Server Component]
-
-  Client Component SSR:
-    ./webui-devops/Naratel-Devops-Dashboard/src/app/tools/page.js [Client Component SSR]
-    ./webui-devops/Naratel-Devops-Dashboard/src/app/tools/page.js [Server Component]
-[02:39:13.306] Browser ERROR   ./webui-devops/Naratel-Devops-Dashboard/src/app/tools/page.js:278:9
-Parsing ecmascript source code failed
-  276 |                 </div>
-  277 |             </div>
-> 278 |         </DashboardLayout>
-      |         ^
-  279 |     );
-  280 | }
-  281 |
-
-Expression expected
-
-Import traces:
-  Client Component Browser:
-    ./webui-devops/Naratel-Devops-Dashboard/src/app/tools/page.js [Client Component Browser]
-    ./webui-devops/Naratel-Devops-Dashboard/src/app/tools/page.js [Server Component]
-
-  Client Component SSR:
-    ./webui-devops/Naratel-Devops-Dashboard/src/app/tools/page.js [Client Component SSR]
-    ./webui-devops/Naratel-Devops-Dashboard/src/app/tools/page.js [Server Component]
-[02:39:13.306] Browser ERROR   ./webui-devops/Naratel-Devops-Dashboard/src/app/tools/page.js:278:10
-Parsing ecmascript source code failed
-  276 |                 </div>
-  277 |             </div>
-> 278 |         </DashboardLayout>
-      |          ^^^^^^^^^^^^^^^^^
-  279 |     );
-  280 | }
-  281 |
-
-Unterminated regexp literal
-
-Import traces:
-  Client Component Browser:
-    ./webui-devops/Naratel-Devops-Dashboard/src/app/tools/page.js [Client Component Browser]
-    ./webui-devops/Naratel-Devops-Dashboard/src/app/tools/page.js [Server Component]
-
-  Client Component SSR:
-    ./webui-devops/Naratel-Devops-Dashboard/src/app/tools/page.js [Client Component SSR]
-    ./webui-devops/Naratel-Devops-Dashboard/src/app/tools/page.js [Server Component]
-[02:39:17.954] Server  LOG      ✓ Compiled in 28ms
-[02:39:26.808] Server  LOG      ✓ Compiled in 23ms
-[02:39:26.910] Browser ERROR   ./webui-devops/Naratel-Devops-Dashboard/src/app/components/JenkinsDashboard.js:275:6
-Parsing ecmascript source code failed
-  273 |         </footer>
-  274 |       </div>
-> 275 |     </div>
-      |      ^^^^^
-  276 |   );
-  277 | }
-  278 |
-
-Unterminated regexp literal
-
-Import traces:
-  Client Component Browser:
-    ./webui-devops/Naratel-Devops-Dashboard/src/app/components/JenkinsDashboard.js [Client Component Browser]
-    ./webui-devops/Naratel-Devops-Dashboard/src/app/page.js [Client Component Browser]
-    ./webui-devops/Naratel-Devops-Dashboard/src/app/page.js [Server Component]
-
-  Client Component SSR:
-    ./webui-devops/Naratel-Devops-Dashboard/src/app/components/JenkinsDashboard.js [Client Component SSR]
-    ./webui-devops/Naratel-Devops-Dashboard/src/app/page.js [Client Component SSR]
-    ./webui-devops/Naratel-Devops-Dashboard/src/app/page.js [Server Component]
-[02:39:27.224] Browser ERROR   ./webui-devops/Naratel-Devops-Dashboard/src/app/components/JenkinsDashboard.js:275:6
-Parsing ecmascript source code failed
-  273 |         </footer>
-  274 |       </div>
-> 275 |     </div>
-      |      ^^^^^
-  276 |   );
-  277 | }
-  278 |
-
-Unterminated regexp literal
-
-Import traces:
-  Client Component Browser:
-    ./webui-devops/Naratel-Devops-Dashboard/src/app/components/JenkinsDashboard.js [Client Component Browser]
-    ./webui-devops/Naratel-Devops-Dashboard/src/app/page.js [Client Component Browser]
-    ./webui-devops/Naratel-Devops-Dashboard/src/app/page.js [Server Component]
-
-  Client Component SSR:
-    ./webui-devops/Naratel-Devops-Dashboard/src/app/components/JenkinsDashboard.js [Client Component SSR]
-    ./webui-devops/Naratel-Devops-Dashboard/src/app/page.js [Client Component SSR]
-    ./webui-devops/Naratel-Devops-Dashboard/src/app/page.js [Server Component]
-[02:39:31.948] Server  LOG      ✓ Compiled in 29ms
-[02:39:42.461] Server  LOG     Optimization: Processing 0 active jobs out of 6 total jobs.
-[02:39:42.581] Server  LOG     Optimization: Processing 0 active jobs out of 6 total jobs.
-[02:39:52.316] Server  LOG     Optimization: Processing 0 active jobs out of 6 total jobs.
-[02:39:52.518] Server  LOG     Optimization: Processing 0 active jobs out of 6 total jobs.
-[02:39:59.175] Server  LOG     Optimization: Processing 0 active jobs out of 6 total jobs.
-[02:39:59.253] Server  LOG     Optimization: Processing 0 active jobs out of 6 total jobs.
-[02:40:07.765] Server  LOG     Optimization: Processing 0 active jobs out of 6 total jobs.
-[02:40:07.882] Server  LOG     Optimization: Processing 0 active jobs out of 6 total jobs.
-[02:43:39.304] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[02:43:39.356] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[02:43:46.785] Server  LOG      ✓ Compiled in 49ms
-[02:44:27.323] Server  LOG     Optimization: Processing 0 active jobs out of 6 total jobs.
-[02:44:27.447] Server  LOG     Optimization: Processing 0 active jobs out of 6 total jobs.
-[02:44:32.178] Server  LOG     Optimization: Processing 0 active jobs out of 6 total jobs.
-[02:44:32.387] Server  LOG     Optimization: Processing 0 active jobs out of 6 total jobs.
-[02:44:37.093] Server  LOG     Optimization: Processing 0 active jobs out of 6 total jobs.
-[02:44:37.307] Server  LOG     Optimization: Processing 0 active jobs out of 6 total jobs.
-[02:44:40.411] Server  LOG     Optimization: Processing 0 active jobs out of 6 total jobs.
-[02:44:40.512] Server  LOG     Optimization: Processing 0 active jobs out of 6 total jobs.
-[02:44:43.987] Server  LOG     Optimization: Processing 0 active jobs out of 6 total jobs.
-[02:44:44.159] Server  LOG     Optimization: Processing 0 active jobs out of 6 total jobs.
-[02:46:05.221] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[02:46:44.963] Server  LOG      ✓ Compiled in 117ms
-[02:46:54.887] Server  LOG      ✓ Compiled in 20ms
-[02:47:01.546] Server  LOG      ✓ Compiled in 42ms
-[02:47:09.042] Server  LOG      ✓ Compiled in 31ms
-[02:47:17.396] Server  LOG      ✓ Compiled in 29ms
-[02:47:20.227] Server  LOG     Optimization: Processing 0 active jobs out of 6 total jobs.
-[02:47:20.302] Server  LOG     Optimization: Processing 0 active jobs out of 6 total jobs.
-[02:47:27.084] Server  LOG     Optimization: Processing 0 active jobs out of 6 total jobs.
-[02:47:27.500] Server  LOG     Optimization: Processing 0 active jobs out of 6 total jobs.
-[02:47:29.679] Server  LOG     Optimization: Processing 0 active jobs out of 6 total jobs.
-[02:47:29.795] Server  LOG     Optimization: Processing 0 active jobs out of 6 total jobs.
-[02:47:33.940] Server  LOG     Optimization: Processing 0 active jobs out of 6 total jobs.
-[02:47:34.000] Server  LOG     Optimization: Processing 0 active jobs out of 6 total jobs.
-[02:50:59.874] Server  LOG     Optimization: Processing 0 active jobs out of 6 total jobs.
-[02:50:59.876] Server  LOG     Optimization: Processing 0 active jobs out of 6 total jobs.
-[02:51:03.480] Server  LOG     Optimization: Processing 0 active jobs out of 6 total jobs.
-[02:51:03.660] Server  LOG     Optimization: Processing 0 active jobs out of 6 total jobs.
-[02:53:34.059] Server  LOG      ✓ Compiled in 27ms
-[02:53:38.012] Server  LOG      ✓ Compiled in 28ms
-[02:53:41.420] Server  LOG      ✓ Compiled in 24ms
-[02:53:52.192] Server  LOG     Optimization: Processing 0 active jobs out of 6 total jobs.
-[02:53:52.417] Server  LOG     Optimization: Processing 0 active jobs out of 6 total jobs.
-[02:53:55.057] Server  LOG     Optimization: Processing 0 active jobs out of 6 total jobs.
-[02:53:55.289] Server  LOG     Optimization: Processing 0 active jobs out of 6 total jobs.
-[02:54:04.998] Server  LOG     Optimization: Processing 0 active jobs out of 6 total jobs.
-[02:54:05.220] Server  LOG     Optimization: Processing 0 active jobs out of 6 total jobs.
-[02:54:13.122] Server  LOG     Optimization: Processing 0 active jobs out of 6 total jobs.
-[02:54:13.236] Server  LOG     Optimization: Processing 0 active jobs out of 6 total jobs.
-[02:54:23.187] Server  LOG     Optimization: Processing 0 active jobs out of 6 total jobs.
-[02:54:33.274] Server  LOG     Optimization: Processing 0 active jobs out of 6 total jobs.
-[02:54:59.411] Server  LOG     Optimization: Processing 0 active jobs out of 6 total jobs.
-[02:54:59.520] Server  LOG     Optimization: Processing 0 active jobs out of 6 total jobs.
-[02:55:47.975] Server  LOG     Optimization: Processing 0 active jobs out of 6 total jobs.
-[02:55:48.137] Server  LOG     Optimization: Processing 0 active jobs out of 6 total jobs.
-[02:56:04.842] Server  LOG     Optimization: Processing 0 active jobs out of 6 total jobs.
-[02:56:05.026] Server  LOG     Optimization: Processing 0 active jobs out of 6 total jobs.
-[02:56:45.388] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:00:08.116] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:28:57.410] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:28:57.991] Server  LOG     Optimization: Processing 1 active jobs out of 8 total jobs.
+[00:28:58.297] Server  LOG     Job laravel-diwa: 3 runs ditemukan
+[00:28:58.297] Server  LOG       - Run 3: status = PAUSED_PENDING_INPUT
+[00:28:58.298] Server  LOG       - Run 2: status = FAILED
+[00:28:58.298] Server  LOG       - Run 1: status = FAILED
+[00:28:58.298] Server  LOG     Job laravel-diwa: 1 pending approval ditemukan!
+[00:28:58.300] Server  LOG     Total pending builds: 1
+[00:29:04.956] Server  LOG     Optimization: Processing 1 active jobs out of 8 total jobs.
+[00:29:05.165] Server  LOG     Optimization: Processing 1 active jobs out of 8 total jobs.
+[00:29:05.671] Server  LOG     Job laravel-diwa: 3 runs ditemukan
+[00:29:05.672] Server  LOG       - Run 3: status = PAUSED_PENDING_INPUT
+[00:29:05.672] Server  LOG       - Run 2: status = FAILED
+[00:29:05.673] Server  LOG       - Run 1: status = FAILED
+[00:29:05.674] Server  LOG     Job laravel-diwa: 1 pending approval ditemukan!
+[00:29:05.674] Server  LOG     Total pending builds: 1
+[00:29:05.803] Server  LOG     Job laravel-diwa: 3 runs ditemukan
+[00:29:05.804] Server  LOG       - Run 3: status = PAUSED_PENDING_INPUT
+[00:29:05.804] Server  LOG       - Run 2: status = FAILED
+[00:29:05.805] Server  LOG       - Run 1: status = FAILED
+[00:29:05.806] Server  LOG     Job laravel-diwa: 1 pending approval ditemukan!
+[00:29:05.806] Server  LOG     Total pending builds: 1
+[00:29:14.888] Server  LOG     Optimization: Processing 1 active jobs out of 8 total jobs.
+[00:29:15.094] Server  LOG     Job laravel-diwa: 3 runs ditemukan
+[00:29:15.095] Server  LOG       - Run 3: status = PAUSED_PENDING_INPUT
+[00:29:15.095] Server  LOG       - Run 2: status = FAILED
+[00:29:15.096] Server  LOG       - Run 1: status = FAILED
+[00:29:15.096] Server  LOG     Job laravel-diwa: 1 pending approval ditemukan!
+[00:29:15.097] Server  LOG     Total pending builds: 1
+[00:29:25.027] Server  LOG     Optimization: Processing 1 active jobs out of 8 total jobs.
+[00:29:25.228] Server  LOG     Job laravel-diwa: 3 runs ditemukan
+[00:29:25.229] Server  LOG       - Run 3: status = PAUSED_PENDING_INPUT
+[00:29:25.229] Server  LOG       - Run 2: status = FAILED
+[00:29:25.230] Server  LOG       - Run 1: status = FAILED
+[00:29:25.230] Server  LOG     Job laravel-diwa: 1 pending approval ditemukan!
+[00:29:25.231] Server  LOG     Total pending builds: 1
+[00:29:34.955] Server  LOG     Optimization: Processing 1 active jobs out of 8 total jobs.
+[00:29:35.161] Server  LOG     Job laravel-diwa: 3 runs ditemukan
+[00:29:35.162] Server  LOG       - Run 3: status = PAUSED_PENDING_INPUT
+[00:29:35.163] Server  LOG       - Run 2: status = FAILED
+[00:29:35.163] Server  LOG       - Run 1: status = FAILED
+[00:29:35.164] Server  LOG     Job laravel-diwa: 1 pending approval ditemukan!
+[00:29:35.164] Server  LOG     Total pending builds: 1
+[00:29:44.868] Server  LOG     Optimization: Processing 1 active jobs out of 8 total jobs.
+[00:29:45.095] Server  LOG     Job laravel-diwa: 3 runs ditemukan
+[00:29:45.096] Server  LOG       - Run 3: status = PAUSED_PENDING_INPUT
+[00:29:45.096] Server  LOG       - Run 2: status = FAILED
+[00:29:45.097] Server  LOG       - Run 1: status = FAILED
+[00:29:45.098] Server  LOG     Job laravel-diwa: 1 pending approval ditemukan!
+[00:29:45.098] Server  LOG     Total pending builds: 1
+[00:29:55.027] Server  LOG     Optimization: Processing 1 active jobs out of 8 total jobs.
+[00:29:55.178] Server  LOG     Job laravel-diwa: 3 runs ditemukan
+[00:29:55.178] Server  LOG       - Run 3: status = PAUSED_PENDING_INPUT
+[00:29:55.179] Server  LOG       - Run 2: status = FAILED
+[00:29:55.180] Server  LOG       - Run 1: status = FAILED
+[00:29:55.180] Server  LOG     Job laravel-diwa: 1 pending approval ditemukan!
+[00:29:55.181] Server  LOG     Total pending builds: 1
+[00:30:05.062] Server  LOG     Optimization: Processing 1 active jobs out of 8 total jobs.
+[00:30:05.268] Server  LOG     Job laravel-diwa: 3 runs ditemukan
+[00:30:05.269] Server  LOG       - Run 3: status = PAUSED_PENDING_INPUT
+[00:30:05.270] Server  LOG       - Run 2: status = FAILED
+[00:30:05.271] Server  LOG       - Run 1: status = FAILED
+[00:30:05.272] Server  LOG     Job laravel-diwa: 1 pending approval ditemukan!
+[00:30:05.273] Server  LOG     Total pending builds: 1
+[00:30:15.200] Server  LOG     Optimization: Processing 1 active jobs out of 8 total jobs.
+[00:30:15.559] Server  LOG     Job laravel-diwa: 3 runs ditemukan
+[00:30:15.560] Server  LOG       - Run 3: status = PAUSED_PENDING_INPUT
+[00:30:15.561] Server  LOG       - Run 2: status = FAILED
+[00:30:15.561] Server  LOG       - Run 1: status = FAILED
+[00:30:15.562] Server  LOG     Job laravel-diwa: 1 pending approval ditemukan!
+[00:30:15.563] Server  LOG     Total pending builds: 1
+[00:30:25.031] Server  LOG     Optimization: Processing 1 active jobs out of 8 total jobs.
+[00:30:25.339] Server  LOG     Job laravel-diwa: 3 runs ditemukan
+[00:30:25.340] Server  LOG       - Run 3: status = PAUSED_PENDING_INPUT
+[00:30:25.340] Server  LOG       - Run 2: status = FAILED
+[00:30:25.341] Server  LOG       - Run 1: status = FAILED
+[00:30:25.342] Server  LOG     Job laravel-diwa: 1 pending approval ditemukan!
+[00:30:25.342] Server  LOG     Total pending builds: 1
+[00:30:34.838] Server  LOG     Optimization: Processing 1 active jobs out of 8 total jobs.
+[00:30:35.067] Server  LOG     Job laravel-diwa: 3 runs ditemukan
+[00:30:35.068] Server  LOG       - Run 3: status = PAUSED_PENDING_INPUT
+[00:30:35.068] Server  LOG       - Run 2: status = FAILED
+[00:30:35.069] Server  LOG       - Run 1: status = FAILED
+[00:30:35.069] Server  LOG     Job laravel-diwa: 1 pending approval ditemukan!
+[00:30:35.070] Server  LOG     Total pending builds: 1
+[00:30:44.999] Server  LOG     Optimization: Processing 1 active jobs out of 8 total jobs.
+[00:30:45.203] Server  LOG     Job laravel-diwa: 3 runs ditemukan
+[00:30:45.204] Server  LOG       - Run 3: status = PAUSED_PENDING_INPUT
+[00:30:45.205] Server  LOG       - Run 2: status = FAILED
+[00:30:45.205] Server  LOG       - Run 1: status = FAILED
+[00:30:45.206] Server  LOG     Job laravel-diwa: 1 pending approval ditemukan!
+[00:30:45.207] Server  LOG     Total pending builds: 1
+[00:30:54.932] Server  LOG     Optimization: Processing 1 active jobs out of 8 total jobs.
+[00:30:55.136] Server  LOG     Job laravel-diwa: 3 runs ditemukan
+[00:30:55.137] Server  LOG       - Run 3: status = PAUSED_PENDING_INPUT
+[00:30:55.137] Server  LOG       - Run 2: status = FAILED
+[00:30:55.138] Server  LOG       - Run 1: status = FAILED
+[00:30:55.138] Server  LOG     Job laravel-diwa: 1 pending approval ditemukan!
+[00:30:55.139] Server  LOG     Total pending builds: 1
+[00:31:04.852] Server  LOG     Optimization: Processing 1 active jobs out of 8 total jobs.
+[00:31:05.010] Server  LOG     Job laravel-diwa: 3 runs ditemukan
+[00:31:05.011] Server  LOG       - Run 3: status = PAUSED_PENDING_INPUT
+[00:31:05.012] Server  LOG       - Run 2: status = FAILED
+[00:31:05.012] Server  LOG       - Run 1: status = FAILED
+[00:31:05.013] Server  LOG     Job laravel-diwa: 1 pending approval ditemukan!
+[00:31:05.013] Server  LOG     Total pending builds: 1
+[00:31:15.003] Server  LOG     Optimization: Processing 1 active jobs out of 8 total jobs.
+[00:31:15.208] Server  LOG     Job laravel-diwa: 3 runs ditemukan
+[00:31:15.209] Server  LOG       - Run 3: status = PAUSED_PENDING_INPUT
+[00:31:15.210] Server  LOG       - Run 2: status = FAILED
+[00:31:15.210] Server  LOG       - Run 1: status = FAILED
+[00:31:15.211] Server  LOG     Job laravel-diwa: 1 pending approval ditemukan!
+[00:31:15.211] Server  LOG     Total pending builds: 1
+[00:31:24.885] Server  LOG     Optimization: Processing 1 active jobs out of 8 total jobs.
+[00:31:25.140] Server  LOG     Job laravel-diwa: 3 runs ditemukan
+[00:31:25.141] Server  LOG       - Run 3: status = PAUSED_PENDING_INPUT
+[00:31:25.141] Server  LOG       - Run 2: status = FAILED
+[00:31:25.142] Server  LOG       - Run 1: status = FAILED
+[00:31:25.142] Server  LOG     Job laravel-diwa: 1 pending approval ditemukan!
+[00:31:25.143] Server  LOG     Total pending builds: 1
+[00:31:34.846] Server  LOG     Optimization: Processing 1 active jobs out of 8 total jobs.
+[00:31:35.074] Server  LOG     Job laravel-diwa: 3 runs ditemukan
+[00:31:35.076] Server  LOG       - Run 3: status = PAUSED_PENDING_INPUT
+[00:31:35.076] Server  LOG       - Run 2: status = FAILED
+[00:31:35.077] Server  LOG       - Run 1: status = FAILED
+[00:31:35.077] Server  LOG     Job laravel-diwa: 1 pending approval ditemukan!
+[00:31:35.078] Server  LOG     Total pending builds: 1
+[00:31:44.904] Server  LOG     Optimization: Processing 1 active jobs out of 8 total jobs.
+[00:31:45.114] Server  LOG     Job laravel-diwa: 3 runs ditemukan
+[00:31:45.115] Server  LOG       - Run 3: status = PAUSED_PENDING_INPUT
+[00:31:45.115] Server  LOG       - Run 2: status = FAILED
+[00:31:45.116] Server  LOG       - Run 1: status = FAILED
+[00:31:45.116] Server  LOG     Job laravel-diwa: 1 pending approval ditemukan!
+[00:31:45.117] Server  LOG     Total pending builds: 1
+[00:31:55.554] Server  LOG     Optimization: Processing 1 active jobs out of 8 total jobs.
+[00:31:55.758] Server  LOG     Job laravel-diwa: 3 runs ditemukan
+[00:31:55.759] Server  LOG       - Run 3: status = PAUSED_PENDING_INPUT
+[00:31:55.760] Server  LOG       - Run 2: status = FAILED
+[00:31:55.760] Server  LOG       - Run 1: status = FAILED
+[00:31:55.761] Server  LOG     Job laravel-diwa: 1 pending approval ditemukan!
+[00:31:55.762] Server  LOG     Total pending builds: 1
+[00:32:06.813] Server  LOG     Optimization: Processing 1 active jobs out of 8 total jobs.
+[00:32:07.227] Server  LOG     Job laravel-diwa: 3 runs ditemukan
+[00:32:07.228] Server  LOG       - Run 3: status = PAUSED_PENDING_INPUT
+[00:32:07.228] Server  LOG       - Run 2: status = FAILED
+[00:32:07.229] Server  LOG       - Run 1: status = FAILED
+[00:32:07.229] Server  LOG     Job laravel-diwa: 1 pending approval ditemukan!
+[00:32:07.230] Server  LOG     Total pending builds: 1
+[00:32:15.010] Server  LOG     Optimization: Processing 1 active jobs out of 8 total jobs.
+[00:32:15.215] Server  LOG     Job laravel-diwa: 3 runs ditemukan
+[00:32:15.216] Server  LOG       - Run 3: status = PAUSED_PENDING_INPUT
+[00:32:15.217] Server  LOG       - Run 2: status = FAILED
+[00:32:15.217] Server  LOG       - Run 1: status = FAILED
+[00:32:15.218] Server  LOG     Job laravel-diwa: 1 pending approval ditemukan!
+[00:32:15.218] Server  LOG     Total pending builds: 1
+[00:32:24.942] Server  LOG     Optimization: Processing 1 active jobs out of 8 total jobs.
+[00:32:25.250] Server  LOG     Job laravel-diwa: 3 runs ditemukan
+[00:32:25.251] Server  LOG       - Run 3: status = PAUSED_PENDING_INPUT
+[00:32:25.251] Server  LOG       - Run 2: status = FAILED
+[00:32:25.252] Server  LOG       - Run 1: status = FAILED
+[00:32:25.252] Server  LOG     Job laravel-diwa: 1 pending approval ditemukan!
+[00:32:25.253] Server  LOG     Total pending builds: 1
+[00:32:35.286] Server  LOG     Optimization: Processing 1 active jobs out of 8 total jobs.
+[00:32:35.489] Server  LOG     Job laravel-diwa: 3 runs ditemukan
+[00:32:35.490] Server  LOG       - Run 3: status = PAUSED_PENDING_INPUT
+[00:32:35.491] Server  LOG       - Run 2: status = FAILED
+[00:32:35.491] Server  LOG       - Run 1: status = FAILED
+[00:32:35.492] Server  LOG     Job laravel-diwa: 1 pending approval ditemukan!
+[00:32:35.492] Server  LOG     Total pending builds: 1
+[00:32:46.203] Server  LOG     Optimization: Processing 1 active jobs out of 8 total jobs.
+[00:32:46.465] Server  LOG     Job laravel-diwa: 3 runs ditemukan
+[00:32:46.466] Server  LOG       - Run 3: status = PAUSED_PENDING_INPUT
+[00:32:46.466] Server  LOG       - Run 2: status = FAILED
+[00:32:46.467] Server  LOG       - Run 1: status = FAILED
+[00:32:46.467] Server  LOG     Job laravel-diwa: 1 pending approval ditemukan!
+[00:32:46.468] Server  LOG     Total pending builds: 1
+[00:33:36.502] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:33:45.235] Server  LOG     Optimization: Processing 1 active jobs out of 8 total jobs.
+[00:33:45.310] Server  LOG     Optimization: Processing 1 active jobs out of 8 total jobs.
+[00:33:45.534] Server  LOG     Job laravel-diwa: 3 runs ditemukan
+[00:33:45.535] Server  LOG       - Run 3: status = PAUSED_PENDING_INPUT
+[00:33:45.536] Server  LOG       - Run 2: status = FAILED
+[00:33:45.537] Server  LOG       - Run 1: status = FAILED
+[00:33:45.538] Server  LOG     Job laravel-diwa: 1 pending approval ditemukan!
+[00:33:45.539] Server  LOG     Total pending builds: 1
+[00:33:45.569] Server  LOG     Job laravel-diwa: 3 runs ditemukan
+[00:33:45.569] Server  LOG       - Run 3: status = PAUSED_PENDING_INPUT
+[00:33:45.570] Server  LOG       - Run 2: status = FAILED
+[00:33:45.570] Server  LOG       - Run 1: status = FAILED
+[00:33:45.571] Server  LOG     Job laravel-diwa: 1 pending approval ditemukan!
+[00:33:45.571] Server  LOG     Total pending builds: 1
+[00:36:00.795] Server  LOG      ✓ Compiled in 74ms
+[01:14:12.859] Server  LOG     Optimization: Processing 1 active jobs out of 8 total jobs.
+[01:14:12.958] Server  LOG     Optimization: Processing 1 active jobs out of 8 total jobs.
+[01:14:13.165] Server  LOG     Job laravel-diwa: 3 runs ditemukan
+[01:14:13.166] Server  LOG       - Run 3: status = PAUSED_PENDING_INPUT
+[01:14:13.167] Server  LOG       - Run 2: status = FAILED
+[01:14:13.167] Server  LOG       - Run 1: status = FAILED
+[01:14:13.168] Server  LOG     Job laravel-diwa: 1 pending approval ditemukan!
+[01:14:13.168] Server  LOG     Total pending builds: 1
+[01:14:13.184] Server  LOG     Job laravel-diwa: 3 runs ditemukan
+[01:14:13.185] Server  LOG       - Run 3: status = PAUSED_PENDING_INPUT
+[01:14:13.185] Server  LOG       - Run 2: status = FAILED
+[01:14:13.186] Server  LOG       - Run 1: status = FAILED
+[01:14:13.186] Server  LOG     Job laravel-diwa: 1 pending approval ditemukan!
+[01:14:13.187] Server  LOG     Total pending builds: 1
+[01:14:14.528] Server  LOG     🔍 Mencari Input ID untuk Job: laravel-diwa | Build: #3 | Action: abort...
+[01:14:14.704] Server  LOG     ✅ Input ID Ditemukan: ApproveDeploy
+[01:14:16.648] Server  LOG     Optimization: Processing 1 active jobs out of 8 total jobs.
+[01:14:17.056] Server  LOG     Job laravel-diwa: 3 runs ditemukan
+[01:14:17.056] Server  LOG       - Run 3: status = IN_PROGRESS
+[01:14:17.057] Server  LOG       - Run 2: status = FAILED
+[01:14:17.057] Server  LOG       - Run 1: status = FAILED
+[01:14:17.058] Server  LOG     Total pending builds: 0
+[01:14:23.097] Server  LOG     Optimization: Processing 1 active jobs out of 8 total jobs.
+[01:14:23.404] Server  LOG     Job laravel-diwa: 3 runs ditemukan
+[01:14:23.405] Server  LOG       - Run 3: status = IN_PROGRESS
+[01:14:23.406] Server  LOG       - Run 2: status = FAILED
+[01:14:23.407] Server  LOG       - Run 1: status = FAILED
+[01:14:23.408] Server  LOG     Total pending builds: 0
+[01:14:33.035] Server  LOG     Optimization: Processing 0 active jobs out of 8 total jobs.
+[01:14:42.815] Server  LOG     Optimization: Processing 1 active jobs out of 8 total jobs.
+[01:14:43.066] Server  LOG     Job laravel-diwa: 4 runs ditemukan
+[01:14:43.067] Server  LOG       - Run 4: status = IN_PROGRESS
+[01:14:43.067] Server  LOG       - Run 3: status = ABORTED
+[01:14:43.067] Server  LOG       - Run 2: status = FAILED
+[01:14:43.068] Server  LOG       - Run 1: status = FAILED
+[01:14:43.068] Server  LOG     Total pending builds: 0
+[01:31:10.733] Server  LOG     Optimization: Processing 1 active jobs out of 8 total jobs.
+[01:31:11.753] Server  LOG     Optimization: Processing 1 active jobs out of 8 total jobs.
+[01:31:12.779] Server  LOG     Job laravel-diwa: 5 runs ditemukan
+[01:31:12.779] Server  LOG       - Run 5: status = IN_PROGRESS
+[01:31:12.780] Server  LOG       - Run 4: status = FAILED
+[01:31:12.781] Server  LOG       - Run 3: status = ABORTED
+[01:31:12.781] Server  LOG       - Run 2: status = FAILED
+[01:31:12.782] Server  LOG       - Run 1: status = FAILED
+[01:31:12.782] Server  LOG     Total pending builds: 0
+[01:31:13.289] Server  LOG     Job laravel-diwa: 5 runs ditemukan
+[01:31:13.290] Server  LOG       - Run 5: status = IN_PROGRESS
+[01:31:13.291] Server  LOG       - Run 4: status = FAILED
+[01:31:13.291] Server  LOG       - Run 3: status = ABORTED
+[01:31:13.292] Server  LOG       - Run 2: status = FAILED
+[01:31:13.292] Server  LOG       - Run 1: status = FAILED
+[01:31:13.293] Server  LOG     Total pending builds: 0
+[01:46:35.369] Server  LOG     Optimization: Processing 1 active jobs out of 8 total jobs.
+[01:46:35.517] Server  LOG     Optimization: Processing 1 active jobs out of 8 total jobs.
+[01:46:35.719] Server  LOG     Job laravel-diwa: 6 runs ditemukan
+[01:46:35.719] Server  LOG       - Run 6: status = PAUSED_PENDING_INPUT
+[01:46:35.720] Server  LOG       - Run 5: status = FAILED
+[01:46:35.721] Server  LOG       - Run 4: status = FAILED
+[01:46:35.721] Server  LOG       - Run 3: status = ABORTED
+[01:46:35.721] Server  LOG       - Run 2: status = FAILED
+[01:46:35.722] Server  LOG       - Run 1: status = FAILED
+[01:46:35.722] Server  LOG     Job laravel-diwa: 1 pending approval ditemukan!
+[01:46:35.723] Server  LOG     Total pending builds: 1
+[01:46:36.131] Server  LOG     Job laravel-diwa: 6 runs ditemukan
+[01:46:36.132] Server  LOG       - Run 6: status = PAUSED_PENDING_INPUT
+[01:46:36.133] Server  LOG       - Run 5: status = FAILED
+[01:46:36.133] Server  LOG       - Run 4: status = FAILED
+[01:46:36.134] Server  LOG       - Run 3: status = ABORTED
+[01:46:36.134] Server  LOG       - Run 2: status = FAILED
+[01:46:36.134] Server  LOG       - Run 1: status = FAILED
+[01:46:36.135] Server  LOG     Job laravel-diwa: 1 pending approval ditemukan!
+[01:46:36.135] Server  LOG     Total pending builds: 1
+[01:46:46.269] Server  LOG     Optimization: Processing 1 active jobs out of 8 total jobs.
+[01:46:46.575] Server  LOG     Job laravel-diwa: 6 runs ditemukan
+[01:46:46.576] Server  LOG       - Run 6: status = PAUSED_PENDING_INPUT
+[01:46:46.577] Server  LOG       - Run 5: status = FAILED
+[01:46:46.577] Server  LOG       - Run 4: status = FAILED
+[01:46:46.578] Server  LOG       - Run 3: status = ABORTED
+[01:46:46.578] Server  LOG       - Run 2: status = FAILED
+[01:46:46.579] Server  LOG       - Run 1: status = FAILED
+[01:46:46.580] Server  LOG     Job laravel-diwa: 1 pending approval ditemukan!
+[01:46:46.581] Server  LOG     Total pending builds: 1
+[01:46:55.380] Server  LOG     Optimization: Processing 1 active jobs out of 8 total jobs.
+[01:46:55.589] Server  LOG     Job laravel-diwa: 6 runs ditemukan
+[01:46:55.590] Server  LOG       - Run 6: status = PAUSED_PENDING_INPUT
+[01:46:55.591] Server  LOG       - Run 5: status = FAILED
+[01:46:55.591] Server  LOG       - Run 4: status = FAILED
+[01:46:55.592] Server  LOG       - Run 3: status = ABORTED
+[01:46:55.593] Server  LOG       - Run 2: status = FAILED
+[01:46:55.593] Server  LOG       - Run 1: status = FAILED
+[01:46:55.594] Server  LOG     Job laravel-diwa: 1 pending approval ditemukan!
+[01:46:55.594] Server  LOG     Total pending builds: 1
+[01:47:05.376] Server  LOG     Optimization: Processing 1 active jobs out of 8 total jobs.
+[01:47:05.518] Server  LOG     Job laravel-diwa: 6 runs ditemukan
+[01:47:05.518] Server  LOG       - Run 6: status = PAUSED_PENDING_INPUT
+[01:47:05.519] Server  LOG       - Run 5: status = FAILED
+[01:47:05.519] Server  LOG       - Run 4: status = FAILED
+[01:47:05.520] Server  LOG       - Run 3: status = ABORTED
+[01:47:05.520] Server  LOG       - Run 2: status = FAILED
+[01:47:05.521] Server  LOG       - Run 1: status = FAILED
+[01:47:05.521] Server  LOG     Job laravel-diwa: 1 pending approval ditemukan!
+[01:47:05.522] Server  LOG     Total pending builds: 1
+[01:47:15.354] Server  LOG     Optimization: Processing 1 active jobs out of 8 total jobs.
+[01:47:15.656] Server  LOG     Job laravel-diwa: 6 runs ditemukan
+[01:47:15.657] Server  LOG       - Run 6: status = PAUSED_PENDING_INPUT
+[01:47:15.657] Server  LOG       - Run 5: status = FAILED
+[01:47:15.658] Server  LOG       - Run 4: status = FAILED
+[01:47:15.659] Server  LOG       - Run 3: status = ABORTED
+[01:47:15.660] Server  LOG       - Run 2: status = FAILED
+[01:47:15.660] Server  LOG       - Run 1: status = FAILED
+[01:47:15.661] Server  LOG     Job laravel-diwa: 1 pending approval ditemukan!
+[01:47:15.661] Server  LOG     Total pending builds: 1
+[01:47:25.487] Server  LOG     Optimization: Processing 1 active jobs out of 8 total jobs.
+[01:47:25.820] Server  LOG     Job laravel-diwa: 6 runs ditemukan
+[01:47:25.821] Server  LOG       - Run 6: status = PAUSED_PENDING_INPUT
+[01:47:25.821] Server  LOG       - Run 5: status = FAILED
+[01:47:25.822] Server  LOG       - Run 4: status = FAILED
+[01:47:25.822] Server  LOG       - Run 3: status = ABORTED
+[01:47:25.823] Server  LOG       - Run 2: status = FAILED
+[01:47:25.823] Server  LOG       - Run 1: status = FAILED
+[01:47:25.824] Server  LOG     Job laravel-diwa: 1 pending approval ditemukan!
+[01:47:25.824] Server  LOG     Total pending builds: 1
+[01:47:35.700] Server  LOG     Optimization: Processing 1 active jobs out of 8 total jobs.
+[01:47:35.932] Server  LOG     Job laravel-diwa: 6 runs ditemukan
+[01:47:35.932] Server  LOG       - Run 6: status = PAUSED_PENDING_INPUT
+[01:47:35.933] Server  LOG       - Run 5: status = FAILED
+[01:47:35.934] Server  LOG       - Run 4: status = FAILED
+[01:47:35.934] Server  LOG       - Run 3: status = ABORTED
+[01:47:35.934] Server  LOG       - Run 2: status = FAILED
+[01:47:35.935] Server  LOG       - Run 1: status = FAILED
+[01:47:35.935] Server  LOG     Job laravel-diwa: 1 pending approval ditemukan!
+[01:47:35.936] Server  LOG     Total pending builds: 1
+[01:47:45.906] Server  LOG     Optimization: Processing 1 active jobs out of 8 total jobs.
+[01:47:46.070] Server  LOG     Job laravel-diwa: 6 runs ditemukan
+[01:47:46.071] Server  LOG       - Run 6: status = PAUSED_PENDING_INPUT
+[01:47:46.072] Server  LOG       - Run 5: status = FAILED
+[01:47:46.072] Server  LOG       - Run 4: status = FAILED
+[01:47:46.072] Server  LOG       - Run 3: status = ABORTED
+[01:47:46.073] Server  LOG       - Run 2: status = FAILED
+[01:47:46.073] Server  LOG       - Run 1: status = FAILED
+[01:47:46.074] Server  LOG     Job laravel-diwa: 1 pending approval ditemukan!
+[01:47:46.074] Server  LOG     Total pending builds: 1
+[01:47:56.003] Server  LOG     Optimization: Processing 1 active jobs out of 8 total jobs.
+[01:47:56.309] Server  LOG     Job laravel-diwa: 6 runs ditemukan
+[01:47:56.310] Server  LOG       - Run 6: status = PAUSED_PENDING_INPUT
+[01:47:56.310] Server  LOG       - Run 5: status = FAILED
+[01:47:56.311] Server  LOG       - Run 4: status = FAILED
+[01:47:56.311] Server  LOG       - Run 3: status = ABORTED
+[01:47:56.312] Server  LOG       - Run 2: status = FAILED
+[01:47:56.312] Server  LOG       - Run 1: status = FAILED
+[01:47:56.312] Server  LOG     Job laravel-diwa: 1 pending approval ditemukan!
+[01:47:56.313] Server  LOG     Total pending builds: 1
+[01:48:06.037] Server  LOG     Optimization: Processing 1 active jobs out of 8 total jobs.
+[01:48:06.292] Server  LOG     Job laravel-diwa: 6 runs ditemukan
+[01:48:06.293] Server  LOG       - Run 6: status = PAUSED_PENDING_INPUT
+[01:48:06.294] Server  LOG       - Run 5: status = FAILED
+[01:48:06.294] Server  LOG       - Run 4: status = FAILED
+[01:48:06.295] Server  LOG       - Run 3: status = ABORTED
+[01:48:06.295] Server  LOG       - Run 2: status = FAILED
+[01:48:06.295] Server  LOG       - Run 1: status = FAILED
+[01:48:06.296] Server  LOG     Job laravel-diwa: 1 pending approval ditemukan!
+[01:48:06.296] Server  LOG     Total pending builds: 1
+[01:48:16.183] Server  LOG     Optimization: Processing 1 active jobs out of 8 total jobs.
+[01:48:16.327] Server  LOG     Job laravel-diwa: 6 runs ditemukan
+[01:48:16.328] Server  LOG       - Run 6: status = PAUSED_PENDING_INPUT
+[01:48:16.328] Server  LOG       - Run 5: status = FAILED
+[01:48:16.329] Server  LOG       - Run 4: status = FAILED
+[01:48:16.329] Server  LOG       - Run 3: status = ABORTED
+[01:48:16.330] Server  LOG       - Run 2: status = FAILED
+[01:48:16.330] Server  LOG       - Run 1: status = FAILED
+[01:48:16.330] Server  LOG     Job laravel-diwa: 1 pending approval ditemukan!
+[01:48:16.330] Server  LOG     Total pending builds: 1
+[01:48:26.313] Server  LOG     Optimization: Processing 1 active jobs out of 8 total jobs.
+[01:48:26.464] Server  LOG     Job laravel-diwa: 6 runs ditemukan
+[01:48:26.465] Server  LOG       - Run 6: status = PAUSED_PENDING_INPUT
+[01:48:26.465] Server  LOG       - Run 5: status = FAILED
+[01:48:26.466] Server  LOG       - Run 4: status = FAILED
+[01:48:26.467] Server  LOG       - Run 3: status = ABORTED
+[01:48:26.467] Server  LOG       - Run 2: status = FAILED
+[01:48:26.468] Server  LOG       - Run 1: status = FAILED
+[01:48:26.468] Server  LOG     Job laravel-diwa: 1 pending approval ditemukan!
+[01:48:26.469] Server  LOG     Total pending builds: 1
+[01:48:36.609] Server  LOG     Optimization: Processing 1 active jobs out of 8 total jobs.
+[01:48:36.764] Server  LOG     Job laravel-diwa: 6 runs ditemukan
+[01:48:36.765] Server  LOG       - Run 6: status = PAUSED_PENDING_INPUT
+[01:48:36.766] Server  LOG       - Run 5: status = FAILED
+[01:48:36.767] Server  LOG       - Run 4: status = FAILED
+[01:48:36.767] Server  LOG       - Run 3: status = ABORTED
+[01:48:36.767] Server  LOG       - Run 2: status = FAILED
+[01:48:36.768] Server  LOG       - Run 1: status = FAILED
+[01:48:36.768] Server  LOG     Job laravel-diwa: 1 pending approval ditemukan!
+[01:48:36.769] Server  LOG     Total pending builds: 1
+[01:48:46.585] Server  LOG     Optimization: Processing 1 active jobs out of 8 total jobs.
+[01:48:46.795] Server  LOG     Job laravel-diwa: 6 runs ditemukan
+[01:48:46.796] Server  LOG       - Run 6: status = PAUSED_PENDING_INPUT
+[01:48:46.796] Server  LOG       - Run 5: status = FAILED
+[01:48:46.797] Server  LOG       - Run 4: status = FAILED
+[01:48:46.797] Server  LOG       - Run 3: status = ABORTED
+[01:48:46.798] Server  LOG       - Run 2: status = FAILED
+[01:48:46.798] Server  LOG       - Run 1: status = FAILED
+[01:48:46.799] Server  LOG     Job laravel-diwa: 1 pending approval ditemukan!
+[01:48:46.799] Server  LOG     Total pending builds: 1
+[01:48:56.729] Server  LOG     Optimization: Processing 1 active jobs out of 8 total jobs.
+[01:48:57.045] Server  LOG     Job laravel-diwa: 6 runs ditemukan
+[01:48:57.046] Server  LOG       - Run 6: status = PAUSED_PENDING_INPUT
+[01:48:57.046] Server  LOG       - Run 5: status = FAILED
+[01:48:57.047] Server  LOG       - Run 4: status = FAILED
+[01:48:57.047] Server  LOG       - Run 3: status = ABORTED
+[01:48:57.047] Server  LOG       - Run 2: status = FAILED
+[01:48:57.048] Server  LOG       - Run 1: status = FAILED
+[01:48:57.048] Server  LOG     Job laravel-diwa: 1 pending approval ditemukan!
+[01:48:57.049] Server  LOG     Total pending builds: 1
+[01:49:06.621] Server  LOG     Optimization: Processing 1 active jobs out of 8 total jobs.
+[01:49:06.775] Server  LOG     Job laravel-diwa: 6 runs ditemukan
+[01:49:06.776] Server  LOG       - Run 6: status = PAUSED_PENDING_INPUT
+[01:49:06.777] Server  LOG       - Run 5: status = FAILED
+[01:49:06.778] Server  LOG       - Run 4: status = FAILED
+[01:49:06.779] Server  LOG       - Run 3: status = ABORTED
+[01:49:06.779] Server  LOG       - Run 2: status = FAILED
+[01:49:06.780] Server  LOG       - Run 1: status = FAILED
+[01:49:06.780] Server  LOG     Job laravel-diwa: 1 pending approval ditemukan!
+[01:49:06.781] Server  LOG     Total pending builds: 1
+[01:49:16.798] Server  LOG     Optimization: Processing 1 active jobs out of 8 total jobs.
+[01:49:17.001] Server  LOG     Job laravel-diwa: 6 runs ditemukan
+[01:49:17.002] Server  LOG       - Run 6: status = PAUSED_PENDING_INPUT
+[01:49:17.003] Server  LOG       - Run 5: status = FAILED
+[01:49:17.004] Server  LOG       - Run 4: status = FAILED
+[01:49:17.005] Server  LOG       - Run 3: status = ABORTED
+[01:49:17.005] Server  LOG       - Run 2: status = FAILED
+[01:49:17.006] Server  LOG       - Run 1: status = FAILED
+[01:49:17.007] Server  LOG     Job laravel-diwa: 1 pending approval ditemukan!
+[01:49:17.008] Server  LOG     Total pending builds: 1
+[01:49:26.584] Server  LOG     Optimization: Processing 1 active jobs out of 8 total jobs.
+[01:49:26.833] Server  LOG     Job laravel-diwa: 6 runs ditemukan
+[01:49:26.834] Server  LOG       - Run 6: status = PAUSED_PENDING_INPUT
+[01:49:26.835] Server  LOG       - Run 5: status = FAILED
+[01:49:26.836] Server  LOG       - Run 4: status = FAILED
+[01:49:26.836] Server  LOG       - Run 3: status = ABORTED
+[01:49:26.837] Server  LOG       - Run 2: status = FAILED
+[01:49:26.838] Server  LOG       - Run 1: status = FAILED
+[01:49:26.838] Server  LOG     Job laravel-diwa: 1 pending approval ditemukan!
+[01:49:26.839] Server  LOG     Total pending builds: 1
+[01:49:36.645] Server  LOG     Optimization: Processing 1 active jobs out of 8 total jobs.
+[01:49:36.871] Server  LOG     Job laravel-diwa: 6 runs ditemukan
+[01:49:36.872] Server  LOG       - Run 6: status = PAUSED_PENDING_INPUT
+[01:49:36.873] Server  LOG       - Run 5: status = FAILED
+[01:49:36.873] Server  LOG       - Run 4: status = FAILED
+[01:49:36.874] Server  LOG       - Run 3: status = ABORTED
+[01:49:36.874] Server  LOG       - Run 2: status = FAILED
+[01:49:36.875] Server  LOG       - Run 1: status = FAILED
+[01:49:36.875] Server  LOG     Job laravel-diwa: 1 pending approval ditemukan!
+[01:49:36.876] Server  LOG     Total pending builds: 1
+[01:49:46.576] Server  LOG     Optimization: Processing 1 active jobs out of 8 total jobs.
+[01:49:46.808] Server  LOG     Job laravel-diwa: 6 runs ditemukan
+[01:49:46.808] Server  LOG       - Run 6: status = PAUSED_PENDING_INPUT
+[01:49:46.809] Server  LOG       - Run 5: status = FAILED
+[01:49:46.809] Server  LOG       - Run 4: status = FAILED
+[01:49:46.810] Server  LOG       - Run 3: status = ABORTED
+[01:49:46.811] Server  LOG       - Run 2: status = FAILED
+[01:49:46.811] Server  LOG       - Run 1: status = FAILED
+[01:49:46.812] Server  LOG     Job laravel-diwa: 1 pending approval ditemukan!
+[01:49:46.812] Server  LOG     Total pending builds: 1
+[01:49:56.671] Server  LOG     Optimization: Processing 1 active jobs out of 8 total jobs.
+[01:49:57.145] Server  LOG     Job laravel-diwa: 6 runs ditemukan
+[01:49:57.145] Server  LOG       - Run 6: status = PAUSED_PENDING_INPUT
+[01:49:57.146] Server  LOG       - Run 5: status = FAILED
+[01:49:57.147] Server  LOG       - Run 4: status = FAILED
+[01:49:57.147] Server  LOG       - Run 3: status = ABORTED
+[01:49:57.148] Server  LOG       - Run 2: status = FAILED
+[01:49:57.148] Server  LOG       - Run 1: status = FAILED
+[01:49:57.149] Server  LOG     Job laravel-diwa: 1 pending approval ditemukan!
+[01:49:57.150] Server  LOG     Total pending builds: 1
+[01:50:06.775] Server  LOG     Optimization: Processing 1 active jobs out of 8 total jobs.
+[01:50:06.983] Server  LOG     Job laravel-diwa: 6 runs ditemukan
+[01:50:06.984] Server  LOG       - Run 6: status = PAUSED_PENDING_INPUT
+[01:50:06.984] Server  LOG       - Run 5: status = FAILED
+[01:50:06.985] Server  LOG       - Run 4: status = FAILED
+[01:50:06.985] Server  LOG       - Run 3: status = ABORTED
+[01:50:06.986] Server  LOG       - Run 2: status = FAILED
+[01:50:06.986] Server  LOG       - Run 1: status = FAILED
+[01:50:06.986] Server  LOG     Job laravel-diwa: 1 pending approval ditemukan!
+[01:50:06.987] Server  LOG     Total pending builds: 1
+[01:50:16.573] Server  LOG     Optimization: Processing 1 active jobs out of 8 total jobs.
+[01:50:16.710] Server  LOG     Job laravel-diwa: 6 runs ditemukan
+[01:50:16.711] Server  LOG       - Run 6: status = PAUSED_PENDING_INPUT
+[01:50:16.712] Server  LOG       - Run 5: status = FAILED
+[01:50:16.712] Server  LOG       - Run 4: status = FAILED
+[01:50:16.713] Server  LOG       - Run 3: status = ABORTED
+[01:50:16.713] Server  LOG       - Run 2: status = FAILED
+[01:50:16.714] Server  LOG       - Run 1: status = FAILED
+[01:50:16.715] Server  LOG     Job laravel-diwa: 1 pending approval ditemukan!
+[01:50:16.715] Server  LOG     Total pending builds: 1
+[01:50:26.888] Server  LOG     Optimization: Processing 1 active jobs out of 8 total jobs.
+[01:50:27.261] Server  LOG     Job laravel-diwa: 6 runs ditemukan
+[01:50:27.262] Server  LOG       - Run 6: status = PAUSED_PENDING_INPUT
+[01:50:27.263] Server  LOG       - Run 5: status = FAILED
+[01:50:27.264] Server  LOG       - Run 4: status = FAILED
+[01:50:27.265] Server  LOG       - Run 3: status = ABORTED
+[01:50:27.265] Server  LOG       - Run 2: status = FAILED
+[01:50:27.266] Server  LOG       - Run 1: status = FAILED
+[01:50:27.267] Server  LOG     Job laravel-diwa: 1 pending approval ditemukan!
+[01:50:27.268] Server  LOG     Total pending builds: 1
+[01:50:36.598] Server  LOG     Optimization: Processing 1 active jobs out of 8 total jobs.
+[01:50:36.734] Server  LOG     Job laravel-diwa: 6 runs ditemukan
+[01:50:36.735] Server  LOG       - Run 6: status = PAUSED_PENDING_INPUT
+[01:50:36.735] Server  LOG       - Run 5: status = FAILED
+[01:50:36.736] Server  LOG       - Run 4: status = FAILED
+[01:50:36.736] Server  LOG       - Run 3: status = ABORTED
+[01:50:36.737] Server  LOG       - Run 2: status = FAILED
+[01:50:36.737] Server  LOG       - Run 1: status = FAILED
+[01:50:36.738] Server  LOG     Job laravel-diwa: 1 pending approval ditemukan!
+[01:50:36.738] Server  LOG     Total pending builds: 1
+[01:50:46.707] Server  LOG     Optimization: Processing 1 active jobs out of 8 total jobs.
+[01:50:46.859] Server  LOG     Job laravel-diwa: 6 runs ditemukan
+[01:50:46.860] Server  LOG       - Run 6: status = PAUSED_PENDING_INPUT
+[01:50:46.860] Server  LOG       - Run 5: status = FAILED
+[01:50:46.861] Server  LOG       - Run 4: status = FAILED
+[01:50:46.861] Server  LOG       - Run 3: status = ABORTED
+[01:50:46.862] Server  LOG       - Run 2: status = FAILED
+[01:50:46.862] Server  LOG       - Run 1: status = FAILED
+[01:50:46.863] Server  LOG     Job laravel-diwa: 1 pending approval ditemukan!
+[01:50:46.864] Server  LOG     Total pending builds: 1
+[01:50:57.340] Server  LOG     Optimization: Processing 1 active jobs out of 8 total jobs.
+[01:50:57.563] Server  LOG     Job laravel-diwa: 6 runs ditemukan
+[01:50:57.564] Server  LOG       - Run 6: status = PAUSED_PENDING_INPUT
+[01:50:57.564] Server  LOG       - Run 5: status = FAILED
+[01:50:57.565] Server  LOG       - Run 4: status = FAILED
+[01:50:57.566] Server  LOG       - Run 3: status = ABORTED
+[01:50:57.566] Server  LOG       - Run 2: status = FAILED
+[01:50:57.567] Server  LOG       - Run 1: status = FAILED
+[01:50:57.567] Server  LOG     Job laravel-diwa: 1 pending approval ditemukan!
+[01:50:57.568] Server  LOG     Total pending builds: 1
+[01:51:06.675] Server  LOG     Optimization: Processing 1 active jobs out of 8 total jobs.
+[01:51:07.189] Server  LOG     Job laravel-diwa: 6 runs ditemukan
+[01:51:07.190] Server  LOG       - Run 6: status = PAUSED_PENDING_INPUT
+[01:51:07.190] Server  LOG       - Run 5: status = FAILED
+[01:51:07.191] Server  LOG       - Run 4: status = FAILED
+[01:51:07.191] Server  LOG       - Run 3: status = ABORTED
+[01:51:07.192] Server  LOG       - Run 2: status = FAILED
+[01:51:07.192] Server  LOG       - Run 1: status = FAILED
+[01:51:07.193] Server  LOG     Job laravel-diwa: 1 pending approval ditemukan!
+[01:51:07.193] Server  LOG     Total pending builds: 1
+[01:51:17.120] Server  LOG     Optimization: Processing 1 active jobs out of 8 total jobs.
+[01:51:17.324] Server  LOG     Job laravel-diwa: 6 runs ditemukan
+[01:51:17.325] Server  LOG       - Run 6: status = PAUSED_PENDING_INPUT
+[01:51:17.325] Server  LOG       - Run 5: status = FAILED
+[01:51:17.326] Server  LOG       - Run 4: status = FAILED
+[01:51:17.326] Server  LOG       - Run 3: status = ABORTED
+[01:51:17.327] Server  LOG       - Run 2: status = FAILED
+[01:51:17.327] Server  LOG       - Run 1: status = FAILED
+[01:51:17.327] Server  LOG     Job laravel-diwa: 1 pending approval ditemukan!
+[01:51:17.328] Server  LOG     Total pending builds: 1
+[01:51:26.729] Server  LOG     Optimization: Processing 1 active jobs out of 8 total jobs.
+[01:51:26.951] Server  LOG     Job laravel-diwa: 6 runs ditemukan
+[01:51:26.952] Server  LOG       - Run 6: status = PAUSED_PENDING_INPUT
+[01:51:26.952] Server  LOG       - Run 5: status = FAILED
+[01:51:26.953] Server  LOG       - Run 4: status = FAILED
+[01:51:26.953] Server  LOG       - Run 3: status = ABORTED
+[01:51:26.954] Server  LOG       - Run 2: status = FAILED
+[01:51:26.955] Server  LOG       - Run 1: status = FAILED
+[01:51:26.955] Server  LOG     Job laravel-diwa: 1 pending approval ditemukan!
+[01:51:26.956] Server  LOG     Total pending builds: 1
+[01:51:37.088] Server  LOG     Optimization: Processing 1 active jobs out of 8 total jobs.
+[01:51:37.292] Server  LOG     Job laravel-diwa: 6 runs ditemukan
+[01:51:37.293] Server  LOG       - Run 6: status = PAUSED_PENDING_INPUT
+[01:51:37.294] Server  LOG       - Run 5: status = FAILED
+[01:51:37.294] Server  LOG       - Run 4: status = FAILED
+[01:51:37.295] Server  LOG       - Run 3: status = ABORTED
+[01:51:37.295] Server  LOG       - Run 2: status = FAILED
+[01:51:37.296] Server  LOG       - Run 1: status = FAILED
+[01:51:37.296] Server  LOG     Job laravel-diwa: 1 pending approval ditemukan!
+[01:51:37.297] Server  LOG     Total pending builds: 1
+[01:51:46.685] Server  LOG     Optimization: Processing 1 active jobs out of 8 total jobs.
+[01:51:46.793] Server  LOG     Job laravel-diwa: 6 runs ditemukan
+[01:51:46.794] Server  LOG       - Run 6: status = PAUSED_PENDING_INPUT
+[01:51:46.794] Server  LOG       - Run 5: status = FAILED
+[01:51:46.795] Server  LOG       - Run 4: status = FAILED
+[01:51:46.795] Server  LOG       - Run 3: status = ABORTED
+[01:51:46.795] Server  LOG       - Run 2: status = FAILED
+[01:51:46.796] Server  LOG       - Run 1: status = FAILED
+[01:51:46.796] Server  LOG     Job laravel-diwa: 1 pending approval ditemukan!
+[01:51:46.797] Server  LOG     Total pending builds: 1
+[01:51:56.953] Server  LOG     Optimization: Processing 1 active jobs out of 8 total jobs.
+[01:51:57.157] Server  LOG     Job laravel-diwa: 6 runs ditemukan
+[01:51:57.158] Server  LOG       - Run 6: status = PAUSED_PENDING_INPUT
+[01:51:57.159] Server  LOG       - Run 5: status = FAILED
+[01:51:57.159] Server  LOG       - Run 4: status = FAILED
+[01:51:57.160] Server  LOG       - Run 3: status = ABORTED
+[01:51:57.160] Server  LOG       - Run 2: status = FAILED
+[01:51:57.160] Server  LOG       - Run 1: status = FAILED
+[01:51:57.161] Server  LOG     Job laravel-diwa: 1 pending approval ditemukan!
+[01:51:57.161] Server  LOG     Total pending builds: 1
+[01:52:06.700] Server  LOG     Optimization: Processing 1 active jobs out of 8 total jobs.
+[01:52:06.805] Server  LOG     Job laravel-diwa: 6 runs ditemukan
+[01:52:06.806] Server  LOG       - Run 6: status = PAUSED_PENDING_INPUT
+[01:52:06.807] Server  LOG       - Run 5: status = FAILED
+[01:52:06.807] Server  LOG       - Run 4: status = FAILED
+[01:52:06.808] Server  LOG       - Run 3: status = ABORTED
+[01:52:06.809] Server  LOG       - Run 2: status = FAILED
+[01:52:06.809] Server  LOG       - Run 1: status = FAILED
+[01:52:06.810] Server  LOG     Job laravel-diwa: 1 pending approval ditemukan!
+[01:52:06.810] Server  LOG     Total pending builds: 1
+[01:52:16.751] Server  LOG     Optimization: Processing 1 active jobs out of 8 total jobs.
+[01:52:16.921] Server  LOG     Job laravel-diwa: 6 runs ditemukan
+[01:52:16.922] Server  LOG       - Run 6: status = PAUSED_PENDING_INPUT
+[01:52:16.922] Server  LOG       - Run 5: status = FAILED
+[01:52:16.923] Server  LOG       - Run 4: status = FAILED
+[01:52:16.923] Server  LOG       - Run 3: status = ABORTED
+[01:52:16.924] Server  LOG       - Run 2: status = FAILED
+[01:52:16.924] Server  LOG       - Run 1: status = FAILED
+[01:52:16.925] Server  LOG     Job laravel-diwa: 1 pending approval ditemukan!
+[01:52:16.925] Server  LOG     Total pending builds: 1
+[01:52:26.718] Server  LOG     Optimization: Processing 1 active jobs out of 8 total jobs.
+[01:52:26.887] Server  LOG     Job laravel-diwa: 6 runs ditemukan
+[01:52:26.888] Server  LOG       - Run 6: status = PAUSED_PENDING_INPUT
+[01:52:26.889] Server  LOG       - Run 5: status = FAILED
+[01:52:26.889] Server  LOG       - Run 4: status = FAILED
+[01:52:26.890] Server  LOG       - Run 3: status = ABORTED
+[01:52:26.890] Server  LOG       - Run 2: status = FAILED
+[01:52:26.891] Server  LOG       - Run 1: status = FAILED
+[01:52:26.891] Server  LOG     Job laravel-diwa: 1 pending approval ditemukan!
+[01:52:26.892] Server  LOG     Total pending builds: 1
+[01:52:36.788] Server  LOG     Optimization: Processing 1 active jobs out of 8 total jobs.
+[01:52:36.992] Server  LOG     Job laravel-diwa: 6 runs ditemukan
+[01:52:36.993] Server  LOG       - Run 6: status = PAUSED_PENDING_INPUT
+[01:52:36.993] Server  LOG       - Run 5: status = FAILED
+[01:52:36.994] Server  LOG       - Run 4: status = FAILED
+[01:52:36.994] Server  LOG       - Run 3: status = ABORTED
+[01:52:36.995] Server  LOG       - Run 2: status = FAILED
+[01:52:36.996] Server  LOG       - Run 1: status = FAILED
+[01:52:36.997] Server  LOG     Job laravel-diwa: 1 pending approval ditemukan!
+[01:52:36.998] Server  LOG     Total pending builds: 1
+[01:52:46.797] Server  LOG     Optimization: Processing 1 active jobs out of 8 total jobs.
+[01:52:46.948] Server  LOG     Job laravel-diwa: 6 runs ditemukan
+[01:52:46.949] Server  LOG       - Run 6: status = PAUSED_PENDING_INPUT
+[01:52:46.949] Server  LOG       - Run 5: status = FAILED
+[01:52:46.949] Server  LOG       - Run 4: status = FAILED
+[01:52:46.949] Server  LOG       - Run 3: status = ABORTED
+[01:52:46.950] Server  LOG       - Run 2: status = FAILED
+[01:52:46.950] Server  LOG       - Run 1: status = FAILED
+[01:52:46.950] Server  LOG     Job laravel-diwa: 1 pending approval ditemukan!
+[01:52:46.950] Server  LOG     Total pending builds: 1
+[01:52:56.987] Server  LOG     Optimization: Processing 1 active jobs out of 8 total jobs.
+[01:52:57.166] Server  LOG     Job laravel-diwa: 6 runs ditemukan
+[01:52:57.166] Server  LOG       - Run 6: status = PAUSED_PENDING_INPUT
+[01:52:57.167] Server  LOG       - Run 5: status = FAILED
+[01:52:57.167] Server  LOG       - Run 4: status = FAILED
+[01:52:57.168] Server  LOG       - Run 3: status = ABORTED
+[01:52:57.168] Server  LOG       - Run 2: status = FAILED
+[01:52:57.169] Server  LOG       - Run 1: status = FAILED
+[01:52:57.169] Server  LOG     Job laravel-diwa: 1 pending approval ditemukan!
+[01:52:57.170] Server  LOG     Total pending builds: 1
+[01:53:06.952] Server  LOG     Optimization: Processing 1 active jobs out of 8 total jobs.
+[01:53:07.107] Server  LOG     Job laravel-diwa: 6 runs ditemukan
+[01:53:07.108] Server  LOG       - Run 6: status = PAUSED_PENDING_INPUT
+[01:53:07.109] Server  LOG       - Run 5: status = FAILED
+[01:53:07.109] Server  LOG       - Run 4: status = FAILED
+[01:53:07.110] Server  LOG       - Run 3: status = ABORTED
+[01:53:07.111] Server  LOG       - Run 2: status = FAILED
+[01:53:07.111] Server  LOG       - Run 1: status = FAILED
+[01:53:07.112] Server  LOG     Job laravel-diwa: 1 pending approval ditemukan!
+[01:53:07.112] Server  LOG     Total pending builds: 1
+[01:53:17.209] Server  LOG     Optimization: Processing 1 active jobs out of 8 total jobs.
+[01:53:17.340] Server  LOG     Job laravel-diwa: 6 runs ditemukan
+[01:53:17.341] Server  LOG       - Run 6: status = PAUSED_PENDING_INPUT
+[01:53:17.341] Server  LOG       - Run 5: status = FAILED
+[01:53:17.342] Server  LOG       - Run 4: status = FAILED
+[01:53:17.342] Server  LOG       - Run 3: status = ABORTED
+[01:53:17.343] Server  LOG       - Run 2: status = FAILED
+[01:53:17.344] Server  LOG       - Run 1: status = FAILED
+[01:53:17.344] Server  LOG     Job laravel-diwa: 1 pending approval ditemukan!
+[01:53:17.345] Server  LOG     Total pending builds: 1
+[01:53:27.974] Server  LOG     Optimization: Processing 1 active jobs out of 8 total jobs.
+[01:53:28.298] Server  LOG     Job laravel-diwa: 6 runs ditemukan
+[01:53:28.298] Server  LOG       - Run 6: status = PAUSED_PENDING_INPUT
+[01:53:28.299] Server  LOG       - Run 5: status = FAILED
+[01:53:28.300] Server  LOG       - Run 4: status = FAILED
+[01:53:28.300] Server  LOG       - Run 3: status = ABORTED
+[01:53:28.301] Server  LOG       - Run 2: status = FAILED
+[01:53:28.301] Server  LOG       - Run 1: status = FAILED
+[01:53:28.301] Server  LOG     Job laravel-diwa: 1 pending approval ditemukan!
+[01:53:28.302] Server  LOG     Total pending builds: 1
+[01:53:37.108] Server  LOG     Optimization: Processing 1 active jobs out of 8 total jobs.
+[01:53:38.026] Server  LOG     Job laravel-diwa: 6 runs ditemukan
+[01:53:38.027] Server  LOG       - Run 6: status = PAUSED_PENDING_INPUT
+[01:53:38.028] Server  LOG       - Run 5: status = FAILED
+[01:53:38.029] Server  LOG       - Run 4: status = FAILED
+[01:53:38.030] Server  LOG       - Run 3: status = ABORTED
+[01:53:38.031] Server  LOG       - Run 2: status = FAILED
+[01:53:38.032] Server  LOG       - Run 1: status = FAILED
+[01:53:38.032] Server  LOG     Job laravel-diwa: 1 pending approval ditemukan!
+[01:53:38.033] Server  LOG     Total pending builds: 1
+[01:53:46.994] Server  LOG     Optimization: Processing 1 active jobs out of 8 total jobs.
+[01:53:47.240] Server  LOG     Job laravel-diwa: 6 runs ditemukan
+[01:53:47.240] Server  LOG       - Run 6: status = PAUSED_PENDING_INPUT
+[01:53:47.241] Server  LOG       - Run 5: status = FAILED
+[01:53:47.241] Server  LOG       - Run 4: status = FAILED
+[01:53:47.242] Server  LOG       - Run 3: status = ABORTED
+[01:53:47.242] Server  LOG       - Run 2: status = FAILED
+[01:53:47.243] Server  LOG       - Run 1: status = FAILED
+[01:53:47.243] Server  LOG     Job laravel-diwa: 1 pending approval ditemukan!
+[01:53:47.244] Server  LOG     Total pending builds: 1
+[01:53:57.562] Server  LOG     Optimization: Processing 1 active jobs out of 8 total jobs.
+[01:53:57.890] Server  LOG     Job laravel-diwa: 6 runs ditemukan
+[01:53:57.891] Server  LOG       - Run 6: status = PAUSED_PENDING_INPUT
+[01:53:57.892] Server  LOG       - Run 5: status = FAILED
+[01:53:57.892] Server  LOG       - Run 4: status = FAILED
+[01:53:57.893] Server  LOG       - Run 3: status = ABORTED
+[01:53:57.893] Server  LOG       - Run 2: status = FAILED
+[01:53:57.893] Server  LOG       - Run 1: status = FAILED
+[01:53:57.894] Server  LOG     Job laravel-diwa: 1 pending approval ditemukan!
+[01:53:57.894] Server  LOG     Total pending builds: 1
+[01:54:07.101] Server  LOG     Optimization: Processing 1 active jobs out of 8 total jobs.
+[01:54:07.310] Server  LOG     Job laravel-diwa: 6 runs ditemukan
+[01:54:07.311] Server  LOG       - Run 6: status = PAUSED_PENDING_INPUT
+[01:54:07.312] Server  LOG       - Run 5: status = FAILED
+[01:54:07.312] Server  LOG       - Run 4: status = FAILED
+[01:54:07.313] Server  LOG       - Run 3: status = ABORTED
+[01:54:07.313] Server  LOG       - Run 2: status = FAILED
+[01:54:07.314] Server  LOG       - Run 1: status = FAILED
+[01:54:07.314] Server  LOG     Job laravel-diwa: 1 pending approval ditemukan!
+[01:54:07.314] Server  LOG     Total pending builds: 1
+[01:54:17.162] Server  LOG     Optimization: Processing 1 active jobs out of 8 total jobs.
+[01:54:17.346] Server  LOG     Job laravel-diwa: 6 runs ditemukan
+[01:54:17.347] Server  LOG       - Run 6: status = PAUSED_PENDING_INPUT
+[01:54:17.347] Server  LOG       - Run 5: status = FAILED
+[01:54:17.348] Server  LOG       - Run 4: status = FAILED
+[01:54:17.348] Server  LOG       - Run 3: status = ABORTED
+[01:54:17.349] Server  LOG       - Run 2: status = FAILED
+[01:54:17.349] Server  LOG       - Run 1: status = FAILED
+[01:54:17.350] Server  LOG     Job laravel-diwa: 1 pending approval ditemukan!
+[01:54:17.350] Server  LOG     Total pending builds: 1
+[01:54:27.178] Server  LOG     Optimization: Processing 1 active jobs out of 8 total jobs.
+[01:54:27.306] Server  LOG     Job laravel-diwa: 6 runs ditemukan
+[01:54:27.307] Server  LOG       - Run 6: status = PAUSED_PENDING_INPUT
+[01:54:27.308] Server  LOG       - Run 5: status = FAILED
+[01:54:27.309] Server  LOG       - Run 4: status = FAILED
+[01:54:27.310] Server  LOG       - Run 3: status = ABORTED
+[01:54:27.310] Server  LOG       - Run 2: status = FAILED
+[01:54:27.311] Server  LOG       - Run 1: status = FAILED
+[01:54:27.312] Server  LOG     Job laravel-diwa: 1 pending approval ditemukan!
+[01:54:27.313] Server  LOG     Total pending builds: 1
+[01:54:37.194] Server  LOG     Optimization: Processing 1 active jobs out of 8 total jobs.
+[01:54:37.332] Server  LOG     Job laravel-diwa: 6 runs ditemukan
+[01:54:37.333] Server  LOG       - Run 6: status = PAUSED_PENDING_INPUT
+[01:54:37.333] Server  LOG       - Run 5: status = FAILED
+[01:54:37.334] Server  LOG       - Run 4: status = FAILED
+[01:54:37.335] Server  LOG       - Run 3: status = ABORTED
+[01:54:37.335] Server  LOG       - Run 2: status = FAILED
+[01:54:37.336] Server  LOG       - Run 1: status = FAILED
+[01:54:37.336] Server  LOG     Job laravel-diwa: 1 pending approval ditemukan!
+[01:54:37.337] Server  LOG     Total pending builds: 1
+[01:54:47.148] Server  LOG     Optimization: Processing 1 active jobs out of 8 total jobs.
+[01:54:47.267] Server  LOG     Job laravel-diwa: 6 runs ditemukan
+[01:54:47.268] Server  LOG       - Run 6: status = PAUSED_PENDING_INPUT
+[01:54:47.269] Server  LOG       - Run 5: status = FAILED
+[01:54:47.269] Server  LOG       - Run 4: status = FAILED
+[01:54:47.270] Server  LOG       - Run 3: status = ABORTED
+[01:54:47.270] Server  LOG       - Run 2: status = FAILED
+[01:54:47.271] Server  LOG       - Run 1: status = FAILED
+[01:54:47.272] Server  LOG     Job laravel-diwa: 1 pending approval ditemukan!
+[01:54:47.272] Server  LOG     Total pending builds: 1
+[01:54:57.281] Server  LOG     Optimization: Processing 1 active jobs out of 8 total jobs.
+[01:54:57.487] Server  LOG     Job laravel-diwa: 6 runs ditemukan
+[01:54:57.488] Server  LOG       - Run 6: status = PAUSED_PENDING_INPUT
+[01:54:57.489] Server  LOG       - Run 5: status = FAILED
+[01:54:57.490] Server  LOG       - Run 4: status = FAILED
+[01:54:57.490] Server  LOG       - Run 3: status = ABORTED
+[01:54:57.491] Server  LOG       - Run 2: status = FAILED
+[01:54:57.491] Server  LOG       - Run 1: status = FAILED
+[01:54:57.492] Server  LOG     Job laravel-diwa: 1 pending approval ditemukan!
+[01:54:57.492] Server  LOG     Total pending builds: 1
+[01:55:07.316] Server  LOG     Optimization: Processing 1 active jobs out of 8 total jobs.
+[01:55:07.626] Server  LOG     Job laravel-diwa: 6 runs ditemukan
+[01:55:07.627] Server  LOG       - Run 6: status = PAUSED_PENDING_INPUT
+[01:55:07.627] Server  LOG       - Run 5: status = FAILED
+[01:55:07.628] Server  LOG       - Run 4: status = FAILED
+[01:55:07.628] Server  LOG       - Run 3: status = ABORTED
+[01:55:07.629] Server  LOG       - Run 2: status = FAILED
+[01:55:07.629] Server  LOG       - Run 1: status = FAILED
+[01:55:07.629] Server  LOG     Job laravel-diwa: 1 pending approval ditemukan!
+[01:55:07.630] Server  LOG     Total pending builds: 1
+[01:55:17.236] Server  LOG     Optimization: Processing 1 active jobs out of 8 total jobs.
+[01:55:17.461] Server  LOG     Job laravel-diwa: 6 runs ditemukan
+[01:55:17.462] Server  LOG       - Run 6: status = PAUSED_PENDING_INPUT
+[01:55:17.463] Server  LOG       - Run 5: status = FAILED
+[01:55:17.463] Server  LOG       - Run 4: status = FAILED
+[01:55:17.464] Server  LOG       - Run 3: status = ABORTED
+[01:55:17.464] Server  LOG       - Run 2: status = FAILED
+[01:55:17.465] Server  LOG       - Run 1: status = FAILED
+[01:55:17.465] Server  LOG     Job laravel-diwa: 1 pending approval ditemukan!
+[01:55:17.466] Server  LOG     Total pending builds: 1
+[01:55:27.349] Server  LOG     Optimization: Processing 1 active jobs out of 8 total jobs.
+[01:55:27.595] Server  LOG     Job laravel-diwa: 6 runs ditemukan
+[01:55:27.596] Server  LOG       - Run 6: status = PAUSED_PENDING_INPUT
+[01:55:27.597] Server  LOG       - Run 5: status = FAILED
+[01:55:27.597] Server  LOG       - Run 4: status = FAILED
+[01:55:27.598] Server  LOG       - Run 3: status = ABORTED
+[01:55:27.598] Server  LOG       - Run 2: status = FAILED
+[01:55:27.599] Server  LOG       - Run 1: status = FAILED
+[01:55:27.599] Server  LOG     Job laravel-diwa: 1 pending approval ditemukan!
+[01:55:27.600] Server  LOG     Total pending builds: 1
+[01:55:37.425] Server  LOG     Optimization: Processing 1 active jobs out of 8 total jobs.
+[01:55:37.602] Server  LOG     Job laravel-diwa: 6 runs ditemukan
+[01:55:37.603] Server  LOG       - Run 6: status = PAUSED_PENDING_INPUT
+[01:55:37.604] Server  LOG       - Run 5: status = FAILED
+[01:55:37.604] Server  LOG       - Run 4: status = FAILED
+[01:55:37.605] Server  LOG       - Run 3: status = ABORTED
+[01:55:37.605] Server  LOG       - Run 2: status = FAILED
+[01:55:37.606] Server  LOG       - Run 1: status = FAILED
+[01:55:37.606] Server  LOG     Job laravel-diwa: 1 pending approval ditemukan!
+[01:55:37.607] Server  LOG     Total pending builds: 1
+[01:55:47.253] Server  LOG     Optimization: Processing 1 active jobs out of 8 total jobs.
+[01:55:47.382] Server  LOG     Job laravel-diwa: 6 runs ditemukan
+[01:55:47.383] Server  LOG       - Run 6: status = PAUSED_PENDING_INPUT
+[01:55:47.384] Server  LOG       - Run 5: status = FAILED
+[01:55:47.384] Server  LOG       - Run 4: status = FAILED
+[01:55:47.385] Server  LOG       - Run 3: status = ABORTED
+[01:55:47.385] Server  LOG       - Run 2: status = FAILED
+[01:55:47.386] Server  LOG       - Run 1: status = FAILED
+[01:55:47.386] Server  LOG     Job laravel-diwa: 1 pending approval ditemukan!
+[01:55:47.387] Server  LOG     Total pending builds: 1
+[01:55:57.196] Server  LOG     Optimization: Processing 1 active jobs out of 8 total jobs.
+[01:55:57.393] Server  LOG     Job laravel-diwa: 6 runs ditemukan
+[01:55:57.394] Server  LOG       - Run 6: status = PAUSED_PENDING_INPUT
+[01:55:57.394] Server  LOG       - Run 5: status = FAILED
+[01:55:57.395] Server  LOG       - Run 4: status = FAILED
+[01:55:57.395] Server  LOG       - Run 3: status = ABORTED
+[01:55:57.395] Server  LOG       - Run 2: status = FAILED
+[01:55:57.396] Server  LOG       - Run 1: status = FAILED
+[01:55:57.396] Server  LOG     Job laravel-diwa: 1 pending approval ditemukan!
+[01:55:57.397] Server  LOG     Total pending builds: 1
+[01:56:07.211] Server  LOG     Optimization: Processing 1 active jobs out of 8 total jobs.
+[01:56:07.340] Server  LOG     Job laravel-diwa: 6 runs ditemukan
+[01:56:07.341] Server  LOG       - Run 6: status = PAUSED_PENDING_INPUT
+[01:56:07.341] Server  LOG       - Run 5: status = FAILED
+[01:56:07.341] Server  LOG       - Run 4: status = FAILED
+[01:56:07.342] Server  LOG       - Run 3: status = ABORTED
+[01:56:07.342] Server  LOG       - Run 2: status = FAILED
+[01:56:07.342] Server  LOG       - Run 1: status = FAILED
+[01:56:07.342] Server  LOG     Job laravel-diwa: 1 pending approval ditemukan!
+[01:56:07.342] Server  LOG     Total pending builds: 1
+[01:56:17.229] Server  LOG     Optimization: Processing 1 active jobs out of 8 total jobs.
+[01:56:17.382] Server  LOG     Job laravel-diwa: 6 runs ditemukan
+[01:56:17.382] Server  LOG       - Run 6: status = PAUSED_PENDING_INPUT
+[01:56:17.383] Server  LOG       - Run 5: status = FAILED
+[01:56:17.384] Server  LOG       - Run 4: status = FAILED
+[01:56:17.384] Server  LOG       - Run 3: status = ABORTED
+[01:56:17.385] Server  LOG       - Run 2: status = FAILED
+[01:56:17.385] Server  LOG       - Run 1: status = FAILED
+[01:56:17.386] Server  LOG     Job laravel-diwa: 1 pending approval ditemukan!
+[01:56:17.386] Server  LOG     Total pending builds: 1
+[01:56:27.206] Server  LOG     Optimization: Processing 1 active jobs out of 8 total jobs.
+[01:56:27.397] Server  LOG     Job laravel-diwa: 6 runs ditemukan
+[01:56:27.398] Server  LOG       - Run 6: status = PAUSED_PENDING_INPUT
+[01:56:27.398] Server  LOG       - Run 5: status = FAILED
+[01:56:27.399] Server  LOG       - Run 4: status = FAILED
+[01:56:27.399] Server  LOG       - Run 3: status = ABORTED
+[01:56:27.400] Server  LOG       - Run 2: status = FAILED
+[01:56:27.400] Server  LOG       - Run 1: status = FAILED
+[01:56:27.401] Server  LOG     Job laravel-diwa: 1 pending approval ditemukan!
+[01:56:27.401] Server  LOG     Total pending builds: 1
+[01:56:37.215] Server  LOG     Optimization: Processing 1 active jobs out of 8 total jobs.
+[01:56:37.430] Server  LOG     Job laravel-diwa: 6 runs ditemukan
+[01:56:37.431] Server  LOG       - Run 6: status = PAUSED_PENDING_INPUT
+[01:56:37.432] Server  LOG       - Run 5: status = FAILED
+[01:56:37.432] Server  LOG       - Run 4: status = FAILED
+[01:56:37.433] Server  LOG       - Run 3: status = ABORTED
+[01:56:37.433] Server  LOG       - Run 2: status = FAILED
+[01:56:37.434] Server  LOG       - Run 1: status = FAILED
+[01:56:37.434] Server  LOG     Job laravel-diwa: 1 pending approval ditemukan!
+[01:56:37.435] Server  LOG     Total pending builds: 1
+[01:56:47.203] Server  LOG     Optimization: Processing 1 active jobs out of 8 total jobs.
+[01:56:47.335] Server  LOG     Job laravel-diwa: 6 runs ditemukan
+[01:56:47.335] Server  LOG       - Run 6: status = PAUSED_PENDING_INPUT
+[01:56:47.336] Server  LOG       - Run 5: status = FAILED
+[01:56:47.337] Server  LOG       - Run 4: status = FAILED
+[01:56:47.337] Server  LOG       - Run 3: status = ABORTED
+[01:56:47.338] Server  LOG       - Run 2: status = FAILED
+[01:56:47.338] Server  LOG       - Run 1: status = FAILED
+[01:56:47.339] Server  LOG     Job laravel-diwa: 1 pending approval ditemukan!
+[01:56:47.339] Server  LOG     Total pending builds: 1
+[01:56:57.236] Server  LOG     Optimization: Processing 1 active jobs out of 8 total jobs.
+[01:56:57.358] Server  LOG     Job laravel-diwa: 6 runs ditemukan
+[01:56:57.359] Server  LOG       - Run 6: status = PAUSED_PENDING_INPUT
+[01:56:57.359] Server  LOG       - Run 5: status = FAILED
+[01:56:57.360] Server  LOG       - Run 4: status = FAILED
+[01:56:57.360] Server  LOG       - Run 3: status = ABORTED
+[01:56:57.361] Server  LOG       - Run 2: status = FAILED
+[01:56:57.361] Server  LOG       - Run 1: status = FAILED
+[01:56:57.362] Server  LOG     Job laravel-diwa: 1 pending approval ditemukan!
+[01:56:57.362] Server  LOG     Total pending builds: 1
+[01:57:07.374] Server  LOG     Optimization: Processing 1 active jobs out of 8 total jobs.
+[01:57:07.640] Server  LOG     Job laravel-diwa: 6 runs ditemukan
+[01:57:07.641] Server  LOG       - Run 6: status = PAUSED_PENDING_INPUT
+[01:57:07.642] Server  LOG       - Run 5: status = FAILED
+[01:57:07.642] Server  LOG       - Run 4: status = FAILED
+[01:57:07.643] Server  LOG       - Run 3: status = ABORTED
+[01:57:07.643] Server  LOG       - Run 2: status = FAILED
+[01:57:07.644] Server  LOG       - Run 1: status = FAILED
+[01:57:07.644] Server  LOG     Job laravel-diwa: 1 pending approval ditemukan!
+[01:57:07.645] Server  LOG     Total pending builds: 1
+[01:57:17.267] Server  LOG     Optimization: Processing 1 active jobs out of 8 total jobs.
+[01:57:17.471] Server  LOG     Job laravel-diwa: 6 runs ditemukan
+[01:57:17.472] Server  LOG       - Run 6: status = PAUSED_PENDING_INPUT
+[01:57:17.472] Server  LOG       - Run 5: status = FAILED
+[01:57:17.473] Server  LOG       - Run 4: status = FAILED
+[01:57:17.474] Server  LOG       - Run 3: status = ABORTED
+[01:57:17.474] Server  LOG       - Run 2: status = FAILED
+[01:57:17.475] Server  LOG       - Run 1: status = FAILED
+[01:57:17.475] Server  LOG     Job laravel-diwa: 1 pending approval ditemukan!
+[01:57:17.476] Server  LOG     Total pending builds: 1
+[01:57:27.300] Server  LOG     Optimization: Processing 1 active jobs out of 8 total jobs.
+[01:57:27.510] Server  LOG     Job laravel-diwa: 6 runs ditemukan
+[01:57:27.510] Server  LOG       - Run 6: status = PAUSED_PENDING_INPUT
+[01:57:27.511] Server  LOG       - Run 5: status = FAILED
+[01:57:27.511] Server  LOG       - Run 4: status = FAILED
+[01:57:27.511] Server  LOG       - Run 3: status = ABORTED
+[01:57:27.511] Server  LOG       - Run 2: status = FAILED
+[01:57:27.511] Server  LOG       - Run 1: status = FAILED
+[01:57:27.512] Server  LOG     Job laravel-diwa: 1 pending approval ditemukan!
+[01:57:27.512] Server  LOG     Total pending builds: 1
+[01:57:37.287] Server  LOG     Optimization: Processing 1 active jobs out of 8 total jobs.
+[01:57:37.431] Server  LOG     Job laravel-diwa: 6 runs ditemukan
+[01:57:37.432] Server  LOG       - Run 6: status = PAUSED_PENDING_INPUT
+[01:57:37.432] Server  LOG       - Run 5: status = FAILED
+[01:57:37.433] Server  LOG       - Run 4: status = FAILED
+[01:57:37.433] Server  LOG       - Run 3: status = ABORTED
+[01:57:37.434] Server  LOG       - Run 2: status = FAILED
+[01:57:37.434] Server  LOG       - Run 1: status = FAILED
+[01:57:37.434] Server  LOG     Job laravel-diwa: 1 pending approval ditemukan!
+[01:57:37.435] Server  LOG     Total pending builds: 1
+[01:57:47.371] Server  LOG     Optimization: Processing 1 active jobs out of 8 total jobs.
+[01:57:47.575] Server  LOG     Job laravel-diwa: 6 runs ditemukan
+[01:57:47.576] Server  LOG       - Run 6: status = PAUSED_PENDING_INPUT
+[01:57:47.576] Server  LOG       - Run 5: status = FAILED
+[01:57:47.577] Server  LOG       - Run 4: status = FAILED
+[01:57:47.577] Server  LOG       - Run 3: status = ABORTED
+[01:57:47.578] Server  LOG       - Run 2: status = FAILED
+[01:57:47.578] Server  LOG       - Run 1: status = FAILED
+[01:57:47.578] Server  LOG     Job laravel-diwa: 1 pending approval ditemukan!
+[01:57:47.579] Server  LOG     Total pending builds: 1
+[01:57:57.286] Server  LOG     Optimization: Processing 1 active jobs out of 8 total jobs.
+[01:57:57.509] Server  LOG     Job laravel-diwa: 6 runs ditemukan
+[01:57:57.510] Server  LOG       - Run 6: status = PAUSED_PENDING_INPUT
+[01:57:57.511] Server  LOG       - Run 5: status = FAILED
+[01:57:57.512] Server  LOG       - Run 4: status = FAILED
+[01:57:57.512] Server  LOG       - Run 3: status = ABORTED
+[01:57:57.513] Server  LOG       - Run 2: status = FAILED
+[01:57:57.513] Server  LOG       - Run 1: status = FAILED
+[01:57:57.514] Server  LOG     Job laravel-diwa: 1 pending approval ditemukan!
+[01:57:57.514] Server  LOG     Total pending builds: 1
+[01:58:07.227] Server  LOG     Optimization: Processing 1 active jobs out of 8 total jobs.
+[01:58:07.408] Server  LOG     Job laravel-diwa: 6 runs ditemukan
+[01:58:07.409] Server  LOG       - Run 6: status = PAUSED_PENDING_INPUT
+[01:58:07.409] Server  LOG       - Run 5: status = FAILED
+[01:58:07.410] Server  LOG       - Run 4: status = FAILED
+[01:58:07.410] Server  LOG       - Run 3: status = ABORTED
+[01:58:07.411] Server  LOG       - Run 2: status = FAILED
+[01:58:07.411] Server  LOG       - Run 1: status = FAILED
+[01:58:07.412] Server  LOG     Job laravel-diwa: 1 pending approval ditemukan!
+[01:58:07.412] Server  LOG     Total pending builds: 1
+[01:58:17.273] Server  LOG     Optimization: Processing 1 active jobs out of 8 total jobs.
+[01:58:17.478] Server  LOG     Job laravel-diwa: 6 runs ditemukan
+[01:58:17.479] Server  LOG       - Run 6: status = PAUSED_PENDING_INPUT
+[01:58:17.479] Server  LOG       - Run 5: status = FAILED
+[01:58:17.480] Server  LOG       - Run 4: status = FAILED
+[01:58:17.480] Server  LOG       - Run 3: status = ABORTED
+[01:58:17.481] Server  LOG       - Run 2: status = FAILED
+[01:58:17.481] Server  LOG       - Run 1: status = FAILED
+[01:58:17.482] Server  LOG     Job laravel-diwa: 1 pending approval ditemukan!
+[01:58:17.482] Server  LOG     Total pending builds: 1
+[01:58:27.231] Server  LOG     Optimization: Processing 1 active jobs out of 8 total jobs.
+[01:58:27.394] Server  LOG     Job laravel-diwa: 6 runs ditemukan
+[01:58:27.395] Server  LOG       - Run 6: status = PAUSED_PENDING_INPUT
+[01:58:27.395] Server  LOG       - Run 5: status = FAILED
+[01:58:27.396] Server  LOG       - Run 4: status = FAILED
+[01:58:27.396] Server  LOG       - Run 3: status = ABORTED
+[01:58:27.397] Server  LOG       - Run 2: status = FAILED
+[01:58:27.397] Server  LOG       - Run 1: status = FAILED
+[01:58:27.398] Server  LOG     Job laravel-diwa: 1 pending approval ditemukan!
+[01:58:27.398] Server  LOG     Total pending builds: 1
+[01:58:37.272] Server  LOG     Optimization: Processing 1 active jobs out of 8 total jobs.
+[01:58:37.413] Server  LOG     Job laravel-diwa: 6 runs ditemukan
+[01:58:37.414] Server  LOG       - Run 6: status = PAUSED_PENDING_INPUT
+[01:58:37.415] Server  LOG       - Run 5: status = FAILED
+[01:58:37.415] Server  LOG       - Run 4: status = FAILED
+[01:58:37.416] Server  LOG       - Run 3: status = ABORTED
+[01:58:37.417] Server  LOG       - Run 2: status = FAILED
+[01:58:37.417] Server  LOG       - Run 1: status = FAILED
+[01:58:37.417] Server  LOG     Job laravel-diwa: 1 pending approval ditemukan!
+[01:58:37.418] Server  LOG     Total pending builds: 1
+[01:58:47.238] Server  LOG     Optimization: Processing 1 active jobs out of 8 total jobs.
+[01:58:47.481] Server  LOG     Job laravel-diwa: 6 runs ditemukan
+[01:58:47.482] Server  LOG       - Run 6: status = PAUSED_PENDING_INPUT
+[01:58:47.482] Server  LOG       - Run 5: status = FAILED
+[01:58:47.483] Server  LOG       - Run 4: status = FAILED
+[01:58:47.483] Server  LOG       - Run 3: status = ABORTED
+[01:58:47.484] Server  LOG       - Run 2: status = FAILED
+[01:58:47.484] Server  LOG       - Run 1: status = FAILED
+[01:58:47.485] Server  LOG     Job laravel-diwa: 1 pending approval ditemukan!
+[01:58:47.485] Server  LOG     Total pending builds: 1
+[01:58:57.264] Server  LOG     Optimization: Processing 1 active jobs out of 8 total jobs.
+[01:58:57.419] Server  LOG     Job laravel-diwa: 6 runs ditemukan
+[01:58:57.420] Server  LOG       - Run 6: status = PAUSED_PENDING_INPUT
+[01:58:57.420] Server  LOG       - Run 5: status = FAILED
+[01:58:57.421] Server  LOG       - Run 4: status = FAILED
+[01:58:57.421] Server  LOG       - Run 3: status = ABORTED
+[01:58:57.422] Server  LOG       - Run 2: status = FAILED
+[01:58:57.422] Server  LOG       - Run 1: status = FAILED
+[01:58:57.423] Server  LOG     Job laravel-diwa: 1 pending approval ditemukan!
+[01:58:57.423] Server  LOG     Total pending builds: 1
+[01:59:07.551] Server  LOG     Optimization: Processing 1 active jobs out of 8 total jobs.
+[01:59:07.715] Server  LOG     Job laravel-diwa: 6 runs ditemukan
+[01:59:07.716] Server  LOG       - Run 6: status = PAUSED_PENDING_INPUT
+[01:59:07.717] Server  LOG       - Run 5: status = FAILED
+[01:59:07.718] Server  LOG       - Run 4: status = FAILED
+[01:59:07.718] Server  LOG       - Run 3: status = ABORTED
+[01:59:07.719] Server  LOG       - Run 2: status = FAILED
+[01:59:07.719] Server  LOG       - Run 1: status = FAILED
+[01:59:07.720] Server  LOG     Job laravel-diwa: 1 pending approval ditemukan!
+[01:59:07.720] Server  LOG     Total pending builds: 1
+[01:59:17.290] Server  LOG     Optimization: Processing 1 active jobs out of 8 total jobs.
+[01:59:17.484] Server  LOG     Job laravel-diwa: 6 runs ditemukan
+[01:59:17.484] Server  LOG       - Run 6: status = PAUSED_PENDING_INPUT
+[01:59:17.485] Server  LOG       - Run 5: status = FAILED
+[01:59:17.485] Server  LOG       - Run 4: status = FAILED
+[01:59:17.486] Server  LOG       - Run 3: status = ABORTED
+[01:59:17.486] Server  LOG       - Run 2: status = FAILED
+[01:59:17.487] Server  LOG       - Run 1: status = FAILED
+[01:59:17.487] Server  LOG     Job laravel-diwa: 1 pending approval ditemukan!
+[01:59:17.488] Server  LOG     Total pending builds: 1
+[01:59:27.418] Server  LOG     Optimization: Processing 1 active jobs out of 8 total jobs.
+[01:59:27.549] Server  LOG     Job laravel-diwa: 6 runs ditemukan
+[01:59:27.550] Server  LOG       - Run 6: status = PAUSED_PENDING_INPUT
+[01:59:27.550] Server  LOG       - Run 5: status = FAILED
+[01:59:27.551] Server  LOG       - Run 4: status = FAILED
+[01:59:27.551] Server  LOG       - Run 3: status = ABORTED
+[01:59:27.552] Server  LOG       - Run 2: status = FAILED
+[01:59:27.552] Server  LOG       - Run 1: status = FAILED
+[01:59:27.553] Server  LOG     Job laravel-diwa: 1 pending approval ditemukan!
+[01:59:27.553] Server  LOG     Total pending builds: 1
+[01:59:37.761] Server  LOG     Optimization: Processing 1 active jobs out of 8 total jobs.
+[01:59:37.964] Server  LOG     Job laravel-diwa: 6 runs ditemukan
+[01:59:37.964] Server  LOG       - Run 6: status = PAUSED_PENDING_INPUT
+[01:59:37.965] Server  LOG       - Run 5: status = FAILED
+[01:59:37.966] Server  LOG       - Run 4: status = FAILED
+[01:59:37.966] Server  LOG       - Run 3: status = ABORTED
+[01:59:37.967] Server  LOG       - Run 2: status = FAILED
+[01:59:37.967] Server  LOG       - Run 1: status = FAILED
+[01:59:37.968] Server  LOG     Job laravel-diwa: 1 pending approval ditemukan!
+[01:59:37.968] Server  LOG     Total pending builds: 1
+[01:59:47.435] Server  LOG     Optimization: Processing 1 active jobs out of 8 total jobs.
+[01:59:47.593] Server  LOG     Job laravel-diwa: 6 runs ditemukan
+[01:59:47.594] Server  LOG       - Run 6: status = PAUSED_PENDING_INPUT
+[01:59:47.594] Server  LOG       - Run 5: status = FAILED
+[01:59:47.595] Server  LOG       - Run 4: status = FAILED
+[01:59:47.595] Server  LOG       - Run 3: status = ABORTED
+[01:59:47.596] Server  LOG       - Run 2: status = FAILED
+[01:59:47.596] Server  LOG       - Run 1: status = FAILED
+[01:59:47.597] Server  LOG     Job laravel-diwa: 1 pending approval ditemukan!
+[01:59:47.597] Server  LOG     Total pending builds: 1
+[01:59:57.619] Server  LOG     Optimization: Processing 1 active jobs out of 8 total jobs.
+[01:59:57.833] Server  LOG     Job laravel-diwa: 6 runs ditemukan
+[01:59:57.833] Server  LOG       - Run 6: status = PAUSED_PENDING_INPUT
+[01:59:57.834] Server  LOG       - Run 5: status = FAILED
+[01:59:57.834] Server  LOG       - Run 4: status = FAILED
+[01:59:57.835] Server  LOG       - Run 3: status = ABORTED
+[01:59:57.835] Server  LOG       - Run 2: status = FAILED
+[01:59:57.836] Server  LOG       - Run 1: status = FAILED
+[01:59:57.836] Server  LOG     Job laravel-diwa: 1 pending approval ditemukan!
+[01:59:57.837] Server  LOG     Total pending builds: 1
+[02:00:09.097] Server  LOG     Optimization: Processing 1 active jobs out of 8 total jobs.
+[02:00:09.301] Server  LOG     Job laravel-diwa: 6 runs ditemukan
+[02:00:09.302] Server  LOG       - Run 6: status = PAUSED_PENDING_INPUT
+[02:00:09.303] Server  LOG       - Run 5: status = FAILED
+[02:00:09.303] Server  LOG       - Run 4: status = FAILED
+[02:00:09.304] Server  LOG       - Run 3: status = ABORTED
+[02:00:09.304] Server  LOG       - Run 2: status = FAILED
+[02:00:09.305] Server  LOG       - Run 1: status = FAILED
+[02:00:09.305] Server  LOG     Job laravel-diwa: 1 pending approval ditemukan!
+[02:00:09.306] Server  LOG     Total pending builds: 1
+[02:00:17.594] Server  LOG     Optimization: Processing 1 active jobs out of 8 total jobs.
+[02:00:17.799] Server  LOG     Job laravel-diwa: 6 runs ditemukan
+[02:00:17.800] Server  LOG       - Run 6: status = PAUSED_PENDING_INPUT
+[02:00:17.801] Server  LOG       - Run 5: status = FAILED
+[02:00:17.801] Server  LOG       - Run 4: status = FAILED
+[02:00:17.802] Server  LOG       - Run 3: status = ABORTED
+[02:00:17.802] Server  LOG       - Run 2: status = FAILED
+[02:00:17.802] Server  LOG       - Run 1: status = FAILED
+[02:00:17.803] Server  LOG     Job laravel-diwa: 1 pending approval ditemukan!
+[02:00:17.804] Server  LOG     Total pending builds: 1
+[02:00:27.663] Server  LOG     Optimization: Processing 1 active jobs out of 8 total jobs.
+[02:00:27.830] Server  LOG     Job laravel-diwa: 6 runs ditemukan
+[02:00:27.831] Server  LOG       - Run 6: status = PAUSED_PENDING_INPUT
+[02:00:27.832] Server  LOG       - Run 5: status = FAILED
+[02:00:27.832] Server  LOG       - Run 4: status = FAILED
+[02:00:27.833] Server  LOG       - Run 3: status = ABORTED
+[02:00:27.833] Server  LOG       - Run 2: status = FAILED
+[02:00:27.834] Server  LOG       - Run 1: status = FAILED
+[02:00:27.834] Server  LOG     Job laravel-diwa: 1 pending approval ditemukan!
+[02:00:27.835] Server  LOG     Total pending builds: 1
+[02:00:38.082] Server  LOG     Optimization: Processing 1 active jobs out of 8 total jobs.
+[02:00:38.280] Server  LOG     Job laravel-diwa: 6 runs ditemukan
+[02:00:38.281] Server  LOG       - Run 6: status = PAUSED_PENDING_INPUT
+[02:00:38.281] Server  LOG       - Run 5: status = FAILED
+[02:00:38.282] Server  LOG       - Run 4: status = FAILED
+[02:00:38.282] Server  LOG       - Run 3: status = ABORTED
+[02:00:38.283] Server  LOG       - Run 2: status = FAILED
+[02:00:38.283] Server  LOG       - Run 1: status = FAILED
+[02:00:38.284] Server  LOG     Job laravel-diwa: 1 pending approval ditemukan!
+[02:00:38.284] Server  LOG     Total pending builds: 1
+[02:00:48.109] Server  LOG     Optimization: Processing 1 active jobs out of 8 total jobs.
+[02:00:48.239] Server  LOG     Job laravel-diwa: 6 runs ditemukan
+[02:00:48.240] Server  LOG       - Run 6: status = PAUSED_PENDING_INPUT
+[02:00:48.240] Server  LOG       - Run 5: status = FAILED
+[02:00:48.241] Server  LOG       - Run 4: status = FAILED
+[02:00:48.241] Server  LOG       - Run 3: status = ABORTED
+[02:00:48.242] Server  LOG       - Run 2: status = FAILED
+[02:00:48.242] Server  LOG       - Run 1: status = FAILED
+[02:00:48.243] Server  LOG     Job laravel-diwa: 1 pending approval ditemukan!
+[02:00:48.243] Server  LOG     Total pending builds: 1
+[02:00:58.041] Server  LOG     Optimization: Processing 1 active jobs out of 8 total jobs.
+[02:00:58.247] Server  LOG     Job laravel-diwa: 6 runs ditemukan
+[02:00:58.248] Server  LOG       - Run 6: status = PAUSED_PENDING_INPUT
+[02:00:58.248] Server  LOG       - Run 5: status = FAILED
+[02:00:58.249] Server  LOG       - Run 4: status = FAILED
+[02:00:58.249] Server  LOG       - Run 3: status = ABORTED
+[02:00:58.250] Server  LOG       - Run 2: status = FAILED
+[02:00:58.250] Server  LOG       - Run 1: status = FAILED
+[02:00:58.251] Server  LOG     Job laravel-diwa: 1 pending approval ditemukan!
+[02:00:58.251] Server  LOG     Total pending builds: 1
+[02:01:08.081] Server  LOG     Optimization: Processing 1 active jobs out of 8 total jobs.
+[02:01:08.386] Server  LOG     Job laravel-diwa: 6 runs ditemukan
+[02:01:08.387] Server  LOG       - Run 6: status = PAUSED_PENDING_INPUT
+[02:01:08.387] Server  LOG       - Run 5: status = FAILED
+[02:01:08.388] Server  LOG       - Run 4: status = FAILED
+[02:01:08.388] Server  LOG       - Run 3: status = ABORTED
+[02:01:08.389] Server  LOG       - Run 2: status = FAILED
+[02:01:08.389] Server  LOG       - Run 1: status = FAILED
+[02:01:08.390] Server  LOG     Job laravel-diwa: 1 pending approval ditemukan!
+[02:01:08.390] Server  LOG     Total pending builds: 1
+[02:01:18.215] Server  LOG     Optimization: Processing 1 active jobs out of 8 total jobs.
+[02:01:18.648] Server  LOG     Job laravel-diwa: 6 runs ditemukan
+[02:01:18.648] Server  LOG       - Run 6: status = PAUSED_PENDING_INPUT
+[02:01:18.649] Server  LOG       - Run 5: status = FAILED
+[02:01:18.650] Server  LOG       - Run 4: status = FAILED
+[02:01:18.650] Server  LOG       - Run 3: status = ABORTED
+[02:01:18.650] Server  LOG       - Run 2: status = FAILED
+[02:01:18.651] Server  LOG       - Run 1: status = FAILED
+[02:01:18.651] Server  LOG     Job laravel-diwa: 1 pending approval ditemukan!
+[02:01:18.652] Server  LOG     Total pending builds: 1
+[02:01:28.149] Server  LOG     Optimization: Processing 1 active jobs out of 8 total jobs.
+[02:01:28.354] Server  LOG     Job laravel-diwa: 6 runs ditemukan
+[02:01:28.355] Server  LOG       - Run 6: status = PAUSED_PENDING_INPUT
+[02:01:28.355] Server  LOG       - Run 5: status = FAILED
+[02:01:28.356] Server  LOG       - Run 4: status = FAILED
+[02:01:28.357] Server  LOG       - Run 3: status = ABORTED
+[02:01:28.357] Server  LOG       - Run 2: status = FAILED
+[02:01:28.358] Server  LOG       - Run 1: status = FAILED
+[02:01:28.358] Server  LOG     Job laravel-diwa: 1 pending approval ditemukan!
+[02:01:28.359] Server  LOG     Total pending builds: 1
+[02:01:38.088] Server  LOG     Optimization: Processing 1 active jobs out of 8 total jobs.
+[02:01:38.286] Server  LOG     Job laravel-diwa: 6 runs ditemukan
+[02:01:38.287] Server  LOG       - Run 6: status = PAUSED_PENDING_INPUT
+[02:01:38.288] Server  LOG       - Run 5: status = FAILED
+[02:01:38.288] Server  LOG       - Run 4: status = FAILED
+[02:01:38.289] Server  LOG       - Run 3: status = ABORTED
+[02:01:38.289] Server  LOG       - Run 2: status = FAILED
+[02:01:38.290] Server  LOG       - Run 1: status = FAILED
+[02:01:38.290] Server  LOG     Job laravel-diwa: 1 pending approval ditemukan!
+[02:01:38.291] Server  LOG     Total pending builds: 1
+[02:01:48.101] Server  LOG     Optimization: Processing 1 active jobs out of 8 total jobs.
+[02:01:48.233] Server  LOG     Job laravel-diwa: 6 runs ditemukan
+[02:01:48.234] Server  LOG       - Run 6: status = PAUSED_PENDING_INPUT
+[02:01:48.234] Server  LOG       - Run 5: status = FAILED
+[02:01:48.235] Server  LOG       - Run 4: status = FAILED
+[02:01:48.235] Server  LOG       - Run 3: status = ABORTED
+[02:01:48.236] Server  LOG       - Run 2: status = FAILED
+[02:01:48.236] Server  LOG       - Run 1: status = FAILED
+[02:01:48.236] Server  LOG     Job laravel-diwa: 1 pending approval ditemukan!
+[02:01:48.237] Server  LOG     Total pending builds: 1
+[02:01:58.152] Server  LOG     Optimization: Processing 1 active jobs out of 8 total jobs.
+[02:01:58.453] Server  LOG     Job laravel-diwa: 6 runs ditemukan
+[02:01:58.454] Server  LOG       - Run 6: status = PAUSED_PENDING_INPUT
+[02:01:58.455] Server  LOG       - Run 5: status = FAILED
+[02:01:58.455] Server  LOG       - Run 4: status = FAILED
+[02:01:58.456] Server  LOG       - Run 3: status = ABORTED
+[02:01:58.456] Server  LOG       - Run 2: status = FAILED
+[02:01:58.457] Server  LOG       - Run 1: status = FAILED
+[02:01:58.457] Server  LOG     Job laravel-diwa: 1 pending approval ditemukan!
+[02:01:58.458] Server  LOG     Total pending builds: 1
+[02:02:08.289] Server  LOG     Optimization: Processing 1 active jobs out of 8 total jobs.
+[02:02:08.493] Server  LOG     Job laravel-diwa: 6 runs ditemukan
+[02:02:08.493] Server  LOG       - Run 6: status = PAUSED_PENDING_INPUT
+[02:02:08.494] Server  LOG       - Run 5: status = FAILED
+[02:02:08.494] Server  LOG       - Run 4: status = FAILED
+[02:02:08.495] Server  LOG       - Run 3: status = ABORTED
+[02:02:08.496] Server  LOG       - Run 2: status = FAILED
+[02:02:08.496] Server  LOG       - Run 1: status = FAILED
+[02:02:08.496] Server  LOG     Job laravel-diwa: 1 pending approval ditemukan!
+[02:02:08.497] Server  LOG     Total pending builds: 1
+[02:02:18.103] Server  LOG     Optimization: Processing 1 active jobs out of 8 total jobs.
+[02:02:18.428] Server  LOG     Job laravel-diwa: 6 runs ditemukan
+[02:02:18.429] Server  LOG       - Run 6: status = PAUSED_PENDING_INPUT
+[02:02:18.429] Server  LOG       - Run 5: status = FAILED
+[02:02:18.430] Server  LOG       - Run 4: status = FAILED
+[02:02:18.430] Server  LOG       - Run 3: status = ABORTED
+[02:02:18.431] Server  LOG       - Run 2: status = FAILED
+[02:02:18.431] Server  LOG       - Run 1: status = FAILED
+[02:02:18.432] Server  LOG     Job laravel-diwa: 1 pending approval ditemukan!
+[02:02:18.432] Server  LOG     Total pending builds: 1
+[02:02:28.259] Server  LOG     Optimization: Processing 1 active jobs out of 8 total jobs.
+[02:02:28.873] Server  LOG     Job laravel-diwa: 6 runs ditemukan
+[02:02:28.874] Server  LOG       - Run 6: status = PAUSED_PENDING_INPUT
+[02:02:28.874] Server  LOG       - Run 5: status = FAILED
+[02:02:28.875] Server  LOG       - Run 4: status = FAILED
+[02:02:28.875] Server  LOG       - Run 3: status = ABORTED
+[02:02:28.876] Server  LOG       - Run 2: status = FAILED
+[02:02:28.876] Server  LOG       - Run 1: status = FAILED
+[02:02:28.876] Server  LOG     Job laravel-diwa: 1 pending approval ditemukan!
+[02:02:28.877] Server  LOG     Total pending builds: 1
+[02:02:38.704] Server  LOG     Optimization: Processing 1 active jobs out of 8 total jobs.
+[02:02:40.008] Server  LOG     Job laravel-diwa: 6 runs ditemukan
+[02:02:40.009] Server  LOG       - Run 6: status = PAUSED_PENDING_INPUT
+[02:02:40.010] Server  LOG       - Run 5: status = FAILED
+[02:02:40.010] Server  LOG       - Run 4: status = FAILED
+[02:02:40.011] Server  LOG       - Run 3: status = ABORTED
+[02:02:40.011] Server  LOG       - Run 2: status = FAILED
+[02:02:40.012] Server  LOG       - Run 1: status = FAILED
+[02:02:40.012] Server  LOG     Job laravel-diwa: 1 pending approval ditemukan!
+[02:02:40.013] Server  LOG     Total pending builds: 1
+[02:02:48.470] Server  LOG     Optimization: Processing 1 active jobs out of 8 total jobs.
+[02:02:48.739] Server  LOG     Job laravel-diwa: 6 runs ditemukan
+[02:02:48.739] Server  LOG       - Run 6: status = PAUSED_PENDING_INPUT
+[02:02:48.740] Server  LOG       - Run 5: status = FAILED
+[02:02:48.741] Server  LOG       - Run 4: status = FAILED
+[02:02:48.741] Server  LOG       - Run 3: status = ABORTED
+[02:02:48.742] Server  LOG       - Run 2: status = FAILED
+[02:02:48.742] Server  LOG       - Run 1: status = FAILED
+[02:02:48.743] Server  LOG     Job laravel-diwa: 1 pending approval ditemukan!
+[02:02:48.743] Server  LOG     Total pending builds: 1
+[02:02:58.466] Server  LOG     Optimization: Processing 1 active jobs out of 8 total jobs.
+[02:02:58.776] Server  LOG     Job laravel-diwa: 6 runs ditemukan
+[02:02:58.777] Server  LOG       - Run 6: status = PAUSED_PENDING_INPUT
+[02:02:58.778] Server  LOG       - Run 5: status = FAILED
+[02:02:58.779] Server  LOG       - Run 4: status = FAILED
+[02:02:58.779] Server  LOG       - Run 3: status = ABORTED
+[02:02:58.780] Server  LOG       - Run 2: status = FAILED
+[02:02:58.781] Server  LOG       - Run 1: status = FAILED
+[02:02:58.781] Server  LOG     Job laravel-diwa: 1 pending approval ditemukan!
+[02:02:58.782] Server  LOG     Total pending builds: 1
+[02:03:08.714] Server  LOG     Optimization: Processing 1 active jobs out of 8 total jobs.
+[02:03:08.850] Server  LOG     Job laravel-diwa: 6 runs ditemukan
+[02:03:08.851] Server  LOG       - Run 6: status = PAUSED_PENDING_INPUT
+[02:03:08.851] Server  LOG       - Run 5: status = FAILED
+[02:03:08.852] Server  LOG       - Run 4: status = FAILED
+[02:03:08.852] Server  LOG       - Run 3: status = ABORTED
+[02:03:08.853] Server  LOG       - Run 2: status = FAILED
+[02:03:08.853] Server  LOG       - Run 1: status = FAILED
+[02:03:08.854] Server  LOG     Job laravel-diwa: 1 pending approval ditemukan!
+[02:03:08.854] Server  LOG     Total pending builds: 1
+[02:03:19.356] Server  LOG     Optimization: Processing 1 active jobs out of 8 total jobs.
+[02:03:19.664] Server  LOG     Job laravel-diwa: 6 runs ditemukan
+[02:03:19.665] Server  LOG       - Run 6: status = PAUSED_PENDING_INPUT
+[02:03:19.666] Server  LOG       - Run 5: status = FAILED
+[02:03:19.667] Server  LOG       - Run 4: status = FAILED
+[02:03:19.667] Server  LOG       - Run 3: status = ABORTED
+[02:03:19.668] Server  LOG       - Run 2: status = FAILED
+[02:03:19.668] Server  LOG       - Run 1: status = FAILED
+[02:03:19.668] Server  LOG     Job laravel-diwa: 1 pending approval ditemukan!
+[02:03:19.669] Server  LOG     Total pending builds: 1
+[02:03:28.367] Server  LOG     Optimization: Processing 1 active jobs out of 8 total jobs.
+[02:03:28.649] Server  LOG     Job laravel-diwa: 6 runs ditemukan
+[02:03:28.649] Server  LOG       - Run 6: status = PAUSED_PENDING_INPUT
+[02:03:28.650] Server  LOG       - Run 5: status = FAILED
+[02:03:28.650] Server  LOG       - Run 4: status = FAILED
+[02:03:28.651] Server  LOG       - Run 3: status = ABORTED
+[02:03:28.651] Server  LOG       - Run 2: status = FAILED
+[02:03:28.652] Server  LOG       - Run 1: status = FAILED
+[02:03:28.652] Server  LOG     Job laravel-diwa: 1 pending approval ditemukan!
+[02:03:28.653] Server  LOG     Total pending builds: 1
+[02:03:38.309] Server  LOG     Optimization: Processing 1 active jobs out of 8 total jobs.
+[02:03:38.507] Server  LOG     Job laravel-diwa: 6 runs ditemukan
+[02:03:38.508] Server  LOG       - Run 6: status = PAUSED_PENDING_INPUT
+[02:03:38.509] Server  LOG       - Run 5: status = FAILED
+[02:03:38.509] Server  LOG       - Run 4: status = FAILED
+[02:03:38.510] Server  LOG       - Run 3: status = ABORTED
+[02:03:38.510] Server  LOG       - Run 2: status = FAILED
+[02:03:38.511] Server  LOG       - Run 1: status = FAILED
+[02:03:38.511] Server  LOG     Job laravel-diwa: 1 pending approval ditemukan!
+[02:03:38.511] Server  LOG     Total pending builds: 1
+[02:03:48.338] Server  LOG     Optimization: Processing 1 active jobs out of 8 total jobs.
+[02:03:48.457] Server  LOG     Job laravel-diwa: 6 runs ditemukan
+[02:03:48.458] Server  LOG       - Run 6: status = PAUSED_PENDING_INPUT
+[02:03:48.458] Server  LOG       - Run 5: status = FAILED
+[02:03:48.459] Server  LOG       - Run 4: status = FAILED
+[02:03:48.459] Server  LOG       - Run 3: status = ABORTED
+[02:03:48.459] Server  LOG       - Run 2: status = FAILED
+[02:03:48.460] Server  LOG       - Run 1: status = FAILED
+[02:03:48.460] Server  LOG     Job laravel-diwa: 1 pending approval ditemukan!
+[02:03:48.461] Server  LOG     Total pending builds: 1
+[02:03:58.255] Server  LOG     Optimization: Processing 1 active jobs out of 8 total jobs.
+[02:03:58.474] Server  LOG     Job laravel-diwa: 6 runs ditemukan
+[02:03:58.475] Server  LOG       - Run 6: status = PAUSED_PENDING_INPUT
+[02:03:58.476] Server  LOG       - Run 5: status = FAILED
+[02:03:58.476] Server  LOG       - Run 4: status = FAILED
+[02:03:58.477] Server  LOG       - Run 3: status = ABORTED
+[02:03:58.477] Server  LOG       - Run 2: status = FAILED
+[02:03:58.478] Server  LOG       - Run 1: status = FAILED
+[02:03:58.478] Server  LOG     Job laravel-diwa: 1 pending approval ditemukan!
+[02:03:58.479] Server  LOG     Total pending builds: 1
+[02:04:08.408] Server  LOG     Optimization: Processing 1 active jobs out of 8 total jobs.
+[02:04:08.612] Server  LOG     Job laravel-diwa: 6 runs ditemukan
+[02:04:08.613] Server  LOG       - Run 6: status = PAUSED_PENDING_INPUT
+[02:04:08.613] Server  LOG       - Run 5: status = FAILED
+[02:04:08.614] Server  LOG       - Run 4: status = FAILED
+[02:04:08.614] Server  LOG       - Run 3: status = ABORTED
+[02:04:08.615] Server  LOG       - Run 2: status = FAILED
+[02:04:08.615] Server  LOG       - Run 1: status = FAILED
+[02:04:08.616] Server  LOG     Job laravel-diwa: 1 pending approval ditemukan!
+[02:04:08.616] Server  LOG     Total pending builds: 1
+[02:04:18.341] Server  LOG     Optimization: Processing 1 active jobs out of 8 total jobs.
+[02:04:18.545] Server  LOG     Job laravel-diwa: 6 runs ditemukan
+[02:04:18.546] Server  LOG       - Run 6: status = PAUSED_PENDING_INPUT
+[02:04:18.546] Server  LOG       - Run 5: status = FAILED
+[02:04:18.547] Server  LOG       - Run 4: status = FAILED
+[02:04:18.547] Server  LOG       - Run 3: status = ABORTED
+[02:04:18.548] Server  LOG       - Run 2: status = FAILED
+[02:04:18.548] Server  LOG       - Run 1: status = FAILED
+[02:04:18.549] Server  LOG     Job laravel-diwa: 1 pending approval ditemukan!
+[02:04:18.549] Server  LOG     Total pending builds: 1
+[02:04:28.375] Server  LOG     Optimization: Processing 1 active jobs out of 8 total jobs.
+[02:04:28.479] Server  LOG     Job laravel-diwa: 6 runs ditemukan
+[02:04:28.480] Server  LOG       - Run 6: status = PAUSED_PENDING_INPUT
+[02:04:28.480] Server  LOG       - Run 5: status = FAILED
+[02:04:28.481] Server  LOG       - Run 4: status = FAILED
+[02:04:28.481] Server  LOG       - Run 3: status = ABORTED
+[02:04:28.482] Server  LOG       - Run 2: status = FAILED
+[02:04:28.482] Server  LOG       - Run 1: status = FAILED
+[02:04:28.483] Server  LOG     Job laravel-diwa: 1 pending approval ditemukan!
+[02:04:28.483] Server  LOG     Total pending builds: 1
+[02:04:38.301] Server  LOG     Optimization: Processing 1 active jobs out of 8 total jobs.
+[02:04:38.516] Server  LOG     Job laravel-diwa: 6 runs ditemukan
+[02:04:38.517] Server  LOG       - Run 6: status = PAUSED_PENDING_INPUT
+[02:04:38.517] Server  LOG       - Run 5: status = FAILED
+[02:04:38.518] Server  LOG       - Run 4: status = FAILED
+[02:04:38.518] Server  LOG       - Run 3: status = ABORTED
+[02:04:38.519] Server  LOG       - Run 2: status = FAILED
+[02:04:38.519] Server  LOG       - Run 1: status = FAILED
+[02:04:38.519] Server  LOG     Job laravel-diwa: 1 pending approval ditemukan!
+[02:04:38.520] Server  LOG     Total pending builds: 1
+[02:04:48.346] Server  LOG     Optimization: Processing 1 active jobs out of 8 total jobs.
+[02:04:48.650] Server  LOG     Job laravel-diwa: 6 runs ditemukan
+[02:04:48.651] Server  LOG       - Run 6: status = PAUSED_PENDING_INPUT
+[02:04:48.651] Server  LOG       - Run 5: status = FAILED
+[02:04:48.651] Server  LOG       - Run 4: status = FAILED
+[02:04:48.651] Server  LOG       - Run 3: status = ABORTED
+[02:04:48.652] Server  LOG       - Run 2: status = FAILED
+[02:04:48.652] Server  LOG       - Run 1: status = FAILED
+[02:04:48.652] Server  LOG     Job laravel-diwa: 1 pending approval ditemukan!
+[02:04:48.653] Server  LOG     Total pending builds: 1
+[02:04:58.378] Server  LOG     Optimization: Processing 1 active jobs out of 8 total jobs.
+[02:04:58.647] Server  LOG     Job laravel-diwa: 6 runs ditemukan
+[02:04:58.648] Server  LOG       - Run 6: status = PAUSED_PENDING_INPUT
+[02:04:58.648] Server  LOG       - Run 5: status = FAILED
+[02:04:58.648] Server  LOG       - Run 4: status = FAILED
+[02:04:58.649] Server  LOG       - Run 3: status = ABORTED
+[02:04:58.650] Server  LOG       - Run 2: status = FAILED
+[02:04:58.651] Server  LOG       - Run 1: status = FAILED
+[02:04:58.651] Server  LOG     Job laravel-diwa: 1 pending approval ditemukan!
+[02:04:58.652] Server  LOG     Total pending builds: 1
+[02:05:08.313] Server  LOG     Optimization: Processing 1 active jobs out of 8 total jobs.
+[02:05:08.517] Server  LOG     Job laravel-diwa: 6 runs ditemukan
+[02:05:08.518] Server  LOG       - Run 6: status = PAUSED_PENDING_INPUT
+[02:05:08.519] Server  LOG       - Run 5: status = FAILED
+[02:05:08.520] Server  LOG       - Run 4: status = FAILED
+[02:05:08.520] Server  LOG       - Run 3: status = ABORTED
+[02:05:08.521] Server  LOG       - Run 2: status = FAILED
+[02:05:08.521] Server  LOG       - Run 1: status = FAILED
+[02:05:08.522] Server  LOG     Job laravel-diwa: 1 pending approval ditemukan!
+[02:05:08.522] Server  LOG     Total pending builds: 1
+[02:05:18.262] Server  LOG     Optimization: Processing 1 active jobs out of 8 total jobs.
+[02:05:18.449] Server  LOG     Job laravel-diwa: 6 runs ditemukan
+[02:05:18.450] Server  LOG       - Run 6: status = PAUSED_PENDING_INPUT
+[02:05:18.451] Server  LOG       - Run 5: status = FAILED
+[02:05:18.452] Server  LOG       - Run 4: status = FAILED
+[02:05:18.452] Server  LOG       - Run 3: status = ABORTED
+[02:05:18.453] Server  LOG       - Run 2: status = FAILED
+[02:05:18.453] Server  LOG       - Run 1: status = FAILED
+[02:05:18.454] Server  LOG     Job laravel-diwa: 1 pending approval ditemukan!
+[02:05:18.454] Server  LOG     Total pending builds: 1
+[02:05:28.256] Server  LOG     Optimization: Processing 1 active jobs out of 8 total jobs.
+[02:05:28.377] Server  LOG     Job laravel-diwa: 6 runs ditemukan
+[02:05:28.378] Server  LOG       - Run 6: status = PAUSED_PENDING_INPUT
+[02:05:28.379] Server  LOG       - Run 5: status = FAILED
+[02:05:28.379] Server  LOG       - Run 4: status = FAILED
+[02:05:28.380] Server  LOG       - Run 3: status = ABORTED
+[02:05:28.380] Server  LOG       - Run 2: status = FAILED
+[02:05:28.381] Server  LOG       - Run 1: status = FAILED
+[02:05:28.381] Server  LOG     Job laravel-diwa: 1 pending approval ditemukan!
+[02:05:28.382] Server  LOG     Total pending builds: 1
+[02:05:38.267] Server  LOG     Optimization: Processing 1 active jobs out of 8 total jobs.
+[02:05:38.473] Server  LOG     Job laravel-diwa: 6 runs ditemukan
+[02:05:38.474] Server  LOG       - Run 6: status = PAUSED_PENDING_INPUT
+[02:05:38.475] Server  LOG       - Run 5: status = FAILED
+[02:05:38.475] Server  LOG       - Run 4: status = FAILED
+[02:05:38.476] Server  LOG       - Run 3: status = ABORTED
+[02:05:38.476] Server  LOG       - Run 2: status = FAILED
+[02:05:38.477] Server  LOG       - Run 1: status = FAILED
+[02:05:38.477] Server  LOG     Job laravel-diwa: 1 pending approval ditemukan!
+[02:05:38.478] Server  LOG     Total pending builds: 1
+[02:05:48.453] Server  LOG     Optimization: Processing 1 active jobs out of 8 total jobs.
+[02:05:48.614] Server  LOG     Job laravel-diwa: 6 runs ditemukan
+[02:05:48.615] Server  LOG       - Run 6: status = PAUSED_PENDING_INPUT
+[02:05:48.616] Server  LOG       - Run 5: status = FAILED
+[02:05:48.617] Server  LOG       - Run 4: status = FAILED
+[02:05:48.617] Server  LOG       - Run 3: status = ABORTED
+[02:05:48.618] Server  LOG       - Run 2: status = FAILED
+[02:05:48.618] Server  LOG       - Run 1: status = FAILED
+[02:05:48.619] Server  LOG     Job laravel-diwa: 1 pending approval ditemukan!
+[02:05:48.620] Server  LOG     Total pending builds: 1
+[02:05:58.289] Server  LOG     Optimization: Processing 1 active jobs out of 8 total jobs.
+[02:05:58.594] Server  LOG     Job laravel-diwa: 6 runs ditemukan
+[02:05:58.595] Server  LOG       - Run 6: status = PAUSED_PENDING_INPUT
+[02:05:58.596] Server  LOG       - Run 5: status = FAILED
+[02:05:58.597] Server  LOG       - Run 4: status = FAILED
+[02:05:58.597] Server  LOG       - Run 3: status = ABORTED
+[02:05:58.598] Server  LOG       - Run 2: status = FAILED
+[02:05:58.598] Server  LOG       - Run 1: status = FAILED
+[02:05:58.599] Server  LOG     Job laravel-diwa: 1 pending approval ditemukan!
+[02:05:58.599] Server  LOG     Total pending builds: 1
+[02:06:08.256] Server  LOG     Optimization: Processing 1 active jobs out of 8 total jobs.
+[02:06:08.427] Server  LOG     Job laravel-diwa: 6 runs ditemukan
+[02:06:08.428] Server  LOG       - Run 6: status = PAUSED_PENDING_INPUT
+[02:06:08.429] Server  LOG       - Run 5: status = FAILED
+[02:06:08.429] Server  LOG       - Run 4: status = FAILED
+[02:06:08.430] Server  LOG       - Run 3: status = ABORTED
+[02:06:08.430] Server  LOG       - Run 2: status = FAILED
+[02:06:08.430] Server  LOG       - Run 1: status = FAILED
+[02:06:08.431] Server  LOG     Job laravel-diwa: 1 pending approval ditemukan!
+[02:06:08.431] Server  LOG     Total pending builds: 1
+[02:06:18.351] Server  LOG     Optimization: Processing 1 active jobs out of 8 total jobs.
+[02:06:18.528] Server  LOG     Job laravel-diwa: 6 runs ditemukan
+[02:06:18.529] Server  LOG       - Run 6: status = PAUSED_PENDING_INPUT
+[02:06:18.530] Server  LOG       - Run 5: status = FAILED
+[02:06:18.530] Server  LOG       - Run 4: status = FAILED
+[02:06:18.530] Server  LOG       - Run 3: status = ABORTED
+[02:06:18.531] Server  LOG       - Run 2: status = FAILED
+[02:06:18.531] Server  LOG       - Run 1: status = FAILED
+[02:06:18.532] Server  LOG     Job laravel-diwa: 1 pending approval ditemukan!
+[02:06:18.532] Server  LOG     Total pending builds: 1
+[02:06:28.932] Server  LOG     Optimization: Processing 1 active jobs out of 8 total jobs.
+[02:06:29.505] Server  LOG     Job laravel-diwa: 6 runs ditemukan
+[02:06:29.505] Server  LOG       - Run 6: status = PAUSED_PENDING_INPUT
+[02:06:29.506] Server  LOG       - Run 5: status = FAILED
+[02:06:29.507] Server  LOG       - Run 4: status = FAILED
+[02:06:29.507] Server  LOG       - Run 3: status = ABORTED
+[02:06:29.507] Server  LOG       - Run 2: status = FAILED
+[02:06:29.508] Server  LOG       - Run 1: status = FAILED
+[02:06:29.508] Server  LOG     Job laravel-diwa: 1 pending approval ditemukan!
+[02:06:29.509] Server  LOG     Total pending builds: 1
+[02:06:38.441] Server  LOG     Optimization: Processing 1 active jobs out of 8 total jobs.
+[02:06:38.627] Server  LOG     Job laravel-diwa: 6 runs ditemukan
+[02:06:38.628] Server  LOG       - Run 6: status = PAUSED_PENDING_INPUT
+[02:06:38.629] Server  LOG       - Run 5: status = FAILED
+[02:06:38.629] Server  LOG       - Run 4: status = FAILED
+[02:06:38.630] Server  LOG       - Run 3: status = ABORTED
+[02:06:38.630] Server  LOG       - Run 2: status = FAILED
+[02:06:38.631] Server  LOG       - Run 1: status = FAILED
+[02:06:38.631] Server  LOG     Job laravel-diwa: 1 pending approval ditemukan!
+[02:06:38.632] Server  LOG     Total pending builds: 1
+[02:06:48.466] Server  LOG     Optimization: Processing 1 active jobs out of 8 total jobs.
+[02:06:48.665] Server  LOG     Job laravel-diwa: 6 runs ditemukan
+[02:06:48.666] Server  LOG       - Run 6: status = PAUSED_PENDING_INPUT
+[02:06:48.666] Server  LOG       - Run 5: status = FAILED
+[02:06:48.667] Server  LOG       - Run 4: status = FAILED
+[02:06:48.667] Server  LOG       - Run 3: status = ABORTED
+[02:06:48.668] Server  LOG       - Run 2: status = FAILED
+[02:06:48.668] Server  LOG       - Run 1: status = FAILED
+[02:06:48.669] Server  LOG     Job laravel-diwa: 1 pending approval ditemukan!
+[02:06:48.670] Server  LOG     Total pending builds: 1
+[02:06:58.436] Server  LOG     Optimization: Processing 1 active jobs out of 8 total jobs.
+[02:06:58.598] Server  LOG     Job laravel-diwa: 6 runs ditemukan
+[02:06:58.599] Server  LOG       - Run 6: status = PAUSED_PENDING_INPUT
+[02:06:58.599] Server  LOG       - Run 5: status = FAILED
+[02:06:58.600] Server  LOG       - Run 4: status = FAILED
+[02:06:58.600] Server  LOG       - Run 3: status = ABORTED
+[02:06:58.600] Server  LOG       - Run 2: status = FAILED
+[02:06:58.601] Server  LOG       - Run 1: status = FAILED
+[02:06:58.601] Server  LOG     Job laravel-diwa: 1 pending approval ditemukan!
+[02:06:58.602] Server  LOG     Total pending builds: 1
+[02:07:08.367] Server  LOG     Optimization: Processing 1 active jobs out of 8 total jobs.
+[02:07:08.474] Server  LOG     Job laravel-diwa: 6 runs ditemukan
+[02:07:08.475] Server  LOG       - Run 6: status = PAUSED_PENDING_INPUT
+[02:07:08.475] Server  LOG       - Run 5: status = FAILED
+[02:07:08.476] Server  LOG       - Run 4: status = FAILED
+[02:07:08.476] Server  LOG       - Run 3: status = ABORTED
+[02:07:08.477] Server  LOG       - Run 2: status = FAILED
+[02:07:08.477] Server  LOG       - Run 1: status = FAILED
+[02:07:08.478] Server  LOG     Job laravel-diwa: 1 pending approval ditemukan!
+[02:07:08.478] Server  LOG     Total pending builds: 1
+[02:07:18.488] Server  LOG     Optimization: Processing 1 active jobs out of 8 total jobs.
+[02:07:18.668] Server  LOG     Job laravel-diwa: 6 runs ditemukan
+[02:07:18.669] Server  LOG       - Run 6: status = PAUSED_PENDING_INPUT
+[02:07:18.670] Server  LOG       - Run 5: status = FAILED
+[02:07:18.670] Server  LOG       - Run 4: status = FAILED
+[02:07:18.671] Server  LOG       - Run 3: status = ABORTED
+[02:07:18.671] Server  LOG       - Run 2: status = FAILED
+[02:07:18.672] Server  LOG       - Run 1: status = FAILED
+[02:07:18.672] Server  LOG     Job laravel-diwa: 1 pending approval ditemukan!
+[02:07:18.673] Server  LOG     Total pending builds: 1
+[02:07:28.500] Server  LOG     Optimization: Processing 1 active jobs out of 8 total jobs.
+[02:07:28.775] Server  LOG     Job laravel-diwa: 6 runs ditemukan
+[02:07:28.776] Server  LOG       - Run 6: status = PAUSED_PENDING_INPUT
+[02:07:28.776] Server  LOG       - Run 5: status = FAILED
+[02:07:28.777] Server  LOG       - Run 4: status = FAILED
+[02:07:28.777] Server  LOG       - Run 3: status = ABORTED
+[02:07:28.778] Server  LOG       - Run 2: status = FAILED
+[02:07:28.778] Server  LOG       - Run 1: status = FAILED
+[02:07:28.779] Server  LOG     Job laravel-diwa: 1 pending approval ditemukan!
+[02:07:28.780] Server  LOG     Total pending builds: 1
+[02:07:38.848] Server  LOG     Optimization: Processing 1 active jobs out of 8 total jobs.
+[02:07:39.120] Server  LOG     Job laravel-diwa: 6 runs ditemukan
+[02:07:39.121] Server  LOG       - Run 6: status = PAUSED_PENDING_INPUT
+[02:07:39.122] Server  LOG       - Run 5: status = FAILED
+[02:07:39.122] Server  LOG       - Run 4: status = FAILED
+[02:07:39.123] Server  LOG       - Run 3: status = ABORTED
+[02:07:39.123] Server  LOG       - Run 2: status = FAILED
+[02:07:39.124] Server  LOG       - Run 1: status = FAILED
+[02:07:39.124] Server  LOG     Job laravel-diwa: 1 pending approval ditemukan!
+[02:07:39.125] Server  LOG     Total pending builds: 1
+[02:07:48.468] Server  LOG     Optimization: Processing 1 active jobs out of 8 total jobs.
+[02:07:48.674] Server  LOG     Job laravel-diwa: 6 runs ditemukan
+[02:07:48.675] Server  LOG       - Run 6: status = PAUSED_PENDING_INPUT
+[02:07:48.676] Server  LOG       - Run 5: status = FAILED
+[02:07:48.676] Server  LOG       - Run 4: status = FAILED
+[02:07:48.677] Server  LOG       - Run 3: status = ABORTED
+[02:07:48.677] Server  LOG       - Run 2: status = FAILED
+[02:07:48.677] Server  LOG       - Run 1: status = FAILED
+[02:07:48.678] Server  LOG     Job laravel-diwa: 1 pending approval ditemukan!
+[02:07:48.679] Server  LOG     Total pending builds: 1
+[02:07:58.498] Server  LOG     Optimization: Processing 1 active jobs out of 8 total jobs.
+[02:07:58.812] Server  LOG     Job laravel-diwa: 6 runs ditemukan
+[02:07:58.813] Server  LOG       - Run 6: status = PAUSED_PENDING_INPUT
+[02:07:58.813] Server  LOG       - Run 5: status = FAILED
+[02:07:58.814] Server  LOG       - Run 4: status = FAILED
+[02:07:58.815] Server  LOG       - Run 3: status = ABORTED
+[02:07:58.815] Server  LOG       - Run 2: status = FAILED
+[02:07:58.816] Server  LOG       - Run 1: status = FAILED
+[02:07:58.816] Server  LOG     Job laravel-diwa: 1 pending approval ditemukan!
+[02:07:58.817] Server  LOG     Total pending builds: 1
+[02:08:08.436] Server  LOG     Optimization: Processing 1 active jobs out of 8 total jobs.
+[02:08:08.744] Server  LOG     Job laravel-diwa: 6 runs ditemukan
+[02:08:08.745] Server  LOG       - Run 6: status = PAUSED_PENDING_INPUT
+[02:08:08.746] Server  LOG       - Run 5: status = FAILED
+[02:08:08.746] Server  LOG       - Run 4: status = FAILED
+[02:08:08.747] Server  LOG       - Run 3: status = ABORTED
+[02:08:08.747] Server  LOG       - Run 2: status = FAILED
+[02:08:08.748] Server  LOG       - Run 1: status = FAILED
+[02:08:08.748] Server  LOG     Job laravel-diwa: 1 pending approval ditemukan!
+[02:08:08.749] Server  LOG     Total pending builds: 1
+[02:08:18.471] Server  LOG     Optimization: Processing 1 active jobs out of 8 total jobs.
+[02:08:18.676] Server  LOG     Job laravel-diwa: 6 runs ditemukan
+[02:08:18.677] Server  LOG       - Run 6: status = PAUSED_PENDING_INPUT
+[02:08:18.678] Server  LOG       - Run 5: status = FAILED
+[02:08:18.679] Server  LOG       - Run 4: status = FAILED
+[02:08:18.679] Server  LOG       - Run 3: status = ABORTED
+[02:08:18.679] Server  LOG       - Run 2: status = FAILED
+[02:08:18.680] Server  LOG       - Run 1: status = FAILED
+[02:08:18.680] Server  LOG     Job laravel-diwa: 1 pending approval ditemukan!
+[02:08:18.681] Server  LOG     Total pending builds: 1
+[02:08:28.609] Server  LOG     Optimization: Processing 1 active jobs out of 8 total jobs.
+[02:08:28.772] Server  LOG     Job laravel-diwa: 6 runs ditemukan
+[02:08:28.773] Server  LOG       - Run 6: status = PAUSED_PENDING_INPUT
+[02:08:28.774] Server  LOG       - Run 5: status = FAILED
+[02:08:28.774] Server  LOG       - Run 4: status = FAILED
+[02:08:28.775] Server  LOG       - Run 3: status = ABORTED
+[02:08:28.775] Server  LOG       - Run 2: status = FAILED
+[02:08:28.776] Server  LOG       - Run 1: status = FAILED
+[02:08:28.776] Server  LOG     Job laravel-diwa: 1 pending approval ditemukan!
+[02:08:28.777] Server  LOG     Total pending builds: 1
+[02:08:38.555] Server  LOG     Optimization: Processing 1 active jobs out of 8 total jobs.
+[02:08:38.746] Server  LOG     Job laravel-diwa: 6 runs ditemukan
+[02:08:38.747] Server  LOG       - Run 6: status = PAUSED_PENDING_INPUT
+[02:08:38.748] Server  LOG       - Run 5: status = FAILED
+[02:08:38.748] Server  LOG       - Run 4: status = FAILED
+[02:08:38.749] Server  LOG       - Run 3: status = ABORTED
+[02:08:38.749] Server  LOG       - Run 2: status = FAILED
+[02:08:38.749] Server  LOG       - Run 1: status = FAILED
+[02:08:38.750] Server  LOG     Job laravel-diwa: 1 pending approval ditemukan!
+[02:08:38.750] Server  LOG     Total pending builds: 1
+[02:08:48.604] Server  LOG     Optimization: Processing 1 active jobs out of 8 total jobs.
+[02:08:48.791] Server  LOG     Job laravel-diwa: 6 runs ditemukan
+[02:08:48.792] Server  LOG       - Run 6: status = PAUSED_PENDING_INPUT
+[02:08:48.792] Server  LOG       - Run 5: status = FAILED
+[02:08:48.793] Server  LOG       - Run 4: status = FAILED
+[02:08:48.793] Server  LOG       - Run 3: status = ABORTED
+[02:08:48.794] Server  LOG       - Run 2: status = FAILED
+[02:08:48.794] Server  LOG       - Run 1: status = FAILED
+[02:08:48.795] Server  LOG     Job laravel-diwa: 1 pending approval ditemukan!
+[02:08:48.795] Server  LOG     Total pending builds: 1
+[02:08:58.510] Server  LOG     Optimization: Processing 1 active jobs out of 8 total jobs.
+[02:08:58.714] Server  LOG     Job laravel-diwa: 6 runs ditemukan
+[02:08:58.715] Server  LOG       - Run 6: status = PAUSED_PENDING_INPUT
+[02:08:58.715] Server  LOG       - Run 5: status = FAILED
+[02:08:58.715] Server  LOG       - Run 4: status = FAILED
+[02:08:58.715] Server  LOG       - Run 3: status = ABORTED
+[02:08:58.716] Server  LOG       - Run 2: status = FAILED
+[02:08:58.716] Server  LOG       - Run 1: status = FAILED
+[02:08:58.716] Server  LOG     Job laravel-diwa: 1 pending approval ditemukan!
+[02:08:58.716] Server  LOG     Total pending builds: 1
+[02:09:08.547] Server  LOG     Optimization: Processing 1 active jobs out of 8 total jobs.
+[02:09:08.751] Server  LOG     Job laravel-diwa: 6 runs ditemukan
+[02:09:08.751] Server  LOG       - Run 6: status = PAUSED_PENDING_INPUT
+[02:09:08.752] Server  LOG       - Run 5: status = FAILED
+[02:09:08.752] Server  LOG       - Run 4: status = FAILED
+[02:09:08.753] Server  LOG       - Run 3: status = ABORTED
+[02:09:08.753] Server  LOG       - Run 2: status = FAILED
+[02:09:08.754] Server  LOG       - Run 1: status = FAILED
+[02:09:08.754] Server  LOG     Job laravel-diwa: 1 pending approval ditemukan!
+[02:09:08.755] Server  LOG     Total pending builds: 1
+[02:09:18.542] Server  LOG     Optimization: Processing 1 active jobs out of 8 total jobs.
+[02:09:18.888] Server  LOG     Job laravel-diwa: 6 runs ditemukan
+[02:09:18.889] Server  LOG       - Run 6: status = PAUSED_PENDING_INPUT
+[02:09:18.889] Server  LOG       - Run 5: status = FAILED
+[02:09:18.890] Server  LOG       - Run 4: status = FAILED
+[02:09:18.890] Server  LOG       - Run 3: status = ABORTED
+[02:09:18.891] Server  LOG       - Run 2: status = FAILED
+[02:09:18.891] Server  LOG       - Run 1: status = FAILED
+[02:09:18.892] Server  LOG     Job laravel-diwa: 1 pending approval ditemukan!
+[02:09:18.892] Server  LOG     Total pending builds: 1
+[02:09:28.549] Server  LOG     Optimization: Processing 1 active jobs out of 8 total jobs.
+[02:09:28.822] Server  LOG     Job laravel-diwa: 6 runs ditemukan
+[02:09:28.822] Server  LOG       - Run 6: status = PAUSED_PENDING_INPUT
+[02:09:28.823] Server  LOG       - Run 5: status = FAILED
+[02:09:28.823] Server  LOG       - Run 4: status = FAILED
+[02:09:28.824] Server  LOG       - Run 3: status = ABORTED
+[02:09:28.824] Server  LOG       - Run 2: status = FAILED
+[02:09:28.825] Server  LOG       - Run 1: status = FAILED
+[02:09:28.825] Server  LOG     Job laravel-diwa: 1 pending approval ditemukan!
+[02:09:28.826] Server  LOG     Total pending builds: 1
+[02:09:38.905] Server  LOG     🔍 Mencari Input ID untuk Job: laravel-diwa | Build: #6 | Action: approve...
+[02:09:39.471] Server  LOG     Optimization: Processing 1 active jobs out of 8 total jobs.
+[02:09:39.983] Server  LOG     ✅ Input ID Ditemukan: ApproveDeploy
+[02:09:40.170] Server  LOG     Job laravel-diwa: 6 runs ditemukan
+[02:09:40.171] Server  LOG       - Run 6: status = PAUSED_PENDING_INPUT
+[02:09:40.172] Server  LOG       - Run 5: status = FAILED
+[02:09:40.173] Server  LOG       - Run 4: status = FAILED
+[02:09:40.174] Server  LOG       - Run 3: status = ABORTED
+[02:09:40.174] Server  LOG       - Run 2: status = FAILED
+[02:09:40.175] Server  LOG       - Run 1: status = FAILED
+[02:09:40.175] Server  LOG     Job laravel-diwa: 1 pending approval ditemukan!
+[02:09:40.175] Server  LOG     Total pending builds: 1
+[02:09:42.646] Server  LOG     Optimization: Processing 1 active jobs out of 8 total jobs.
+[02:09:42.851] Server  LOG     Job laravel-diwa: 6 runs ditemukan
+[02:09:42.852] Server  LOG       - Run 6: status = IN_PROGRESS
+[02:09:42.853] Server  LOG       - Run 5: status = FAILED
+[02:09:42.853] Server  LOG       - Run 4: status = FAILED
+[02:09:42.854] Server  LOG       - Run 3: status = ABORTED
+[02:09:42.854] Server  LOG       - Run 2: status = FAILED
+[02:09:42.855] Server  LOG       - Run 1: status = FAILED
+[02:09:42.855] Server  LOG     Total pending builds: 0
+[02:28:05.101] Server  LOG     Optimization: Processing 1 active jobs out of 8 total jobs.
+[02:28:05.244] Server  LOG     Optimization: Processing 1 active jobs out of 8 total jobs.
+[02:28:05.379] Server  LOG     Job laravel-diwa: 7 runs ditemukan
+[02:28:05.380] Server  LOG       - Run 7: status = IN_PROGRESS
+[02:28:05.381] Server  LOG       - Run 6: status = SUCCESS
+[02:28:05.382] Server  LOG       - Run 5: status = FAILED
+[02:28:05.383] Server  LOG       - Run 4: status = FAILED
+[02:28:05.383] Server  LOG       - Run 3: status = ABORTED
+[02:28:05.383] Server  LOG       - Run 2: status = FAILED
+[02:28:05.384] Server  LOG       - Run 1: status = FAILED
+[02:28:05.385] Server  LOG     Total pending builds: 0
+[02:28:05.476] Server  LOG     Job laravel-diwa: 7 runs ditemukan
+[02:28:05.476] Server  LOG       - Run 7: status = IN_PROGRESS
+[02:28:05.477] Server  LOG       - Run 6: status = SUCCESS
+[02:28:05.478] Server  LOG       - Run 5: status = FAILED
+[02:28:05.478] Server  LOG       - Run 4: status = FAILED
+[02:28:05.479] Server  LOG       - Run 3: status = ABORTED
+[02:28:05.480] Server  LOG       - Run 2: status = FAILED
+[02:28:05.481] Server  LOG       - Run 1: status = FAILED
+[02:28:05.482] Server  LOG     Total pending builds: 0
+[02:33:17.065] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[02:35:48.781] Server  LOG     Optimization: Processing 1 active jobs out of 8 total jobs.
+[02:35:49.388] Server  LOG     Optimization: Processing 1 active jobs out of 8 total jobs.
+[02:35:50.005] Server  LOG     Job laravel-diwa: 7 runs ditemukan
+[02:35:50.005] Server  LOG       - Run 7: status = PAUSED_PENDING_INPUT
+[02:35:50.006] Server  LOG       - Run 6: status = SUCCESS
+[02:35:50.006] Server  LOG       - Run 5: status = FAILED
+[02:35:50.007] Server  LOG       - Run 4: status = FAILED
+[02:35:50.007] Server  LOG       - Run 3: status = ABORTED
+[02:35:50.008] Server  LOG       - Run 2: status = FAILED
+[02:35:50.008] Server  LOG       - Run 1: status = FAILED
+[02:35:50.009] Server  LOG     Job laravel-diwa: 1 pending approval ditemukan!
+[02:35:50.009] Server  LOG     Total pending builds: 1
+[02:35:51.798] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[02:35:52.566] Server  LOG     Job laravel-diwa: 7 runs ditemukan
+[02:35:52.566] Server  LOG       - Run 7: status = PAUSED_PENDING_INPUT
+[02:35:52.567] Server  LOG       - Run 6: status = SUCCESS
+[02:35:52.567] Server  LOG       - Run 5: status = FAILED
+[02:35:52.567] Server  LOG       - Run 4: status = FAILED
+[02:35:52.567] Server  LOG       - Run 3: status = ABORTED
+[02:35:52.568] Server  LOG       - Run 2: status = FAILED
+[02:35:52.568] Server  LOG       - Run 1: status = FAILED
+[02:35:52.568] Server  LOG     Job laravel-diwa: 1 pending approval ditemukan!
+[02:35:52.568] Server  LOG     Total pending builds: 1
+[02:35:53.792] Server  LOG     Optimization: Processing 1 active jobs out of 8 total jobs.
+[02:35:55.634] Server  LOG     Job laravel-diwa: 7 runs ditemukan
+[02:35:55.635] Server  LOG       - Run 7: status = PAUSED_PENDING_INPUT
+[02:35:55.636] Server  LOG       - Run 6: status = SUCCESS
+[02:35:55.636] Server  LOG       - Run 5: status = FAILED
+[02:35:55.637] Server  LOG       - Run 4: status = FAILED
+[02:35:55.637] Server  LOG       - Run 3: status = ABORTED
+[02:35:55.637] Server  LOG       - Run 2: status = FAILED
+[02:35:55.638] Server  LOG       - Run 1: status = FAILED
+[02:35:55.638] Server  LOG     Job laravel-diwa: 1 pending approval ditemukan!
+[02:35:55.639] Server  LOG     Total pending builds: 1
+[02:36:03.115] Server  LOG     Optimization: Processing 1 active jobs out of 8 total jobs.
+[02:36:04.953] Server  LOG     Job laravel-diwa: 7 runs ditemukan
+[02:36:04.954] Server  LOG       - Run 7: status = PAUSED_PENDING_INPUT
+[02:36:04.955] Server  LOG       - Run 6: status = SUCCESS
+[02:36:04.956] Server  LOG       - Run 5: status = FAILED
+[02:36:04.957] Server  LOG       - Run 4: status = FAILED
+[02:36:04.958] Server  LOG       - Run 3: status = ABORTED
+[02:36:04.958] Server  LOG       - Run 2: status = FAILED
+[02:36:04.959] Server  LOG       - Run 1: status = FAILED
+[02:36:04.960] Server  LOG     Job laravel-diwa: 1 pending approval ditemukan!
+[02:36:04.961] Server  LOG     Total pending builds: 1
+[02:36:10.647] Server  LOG     🔍 Mencari Input ID untuk Job: laravel-diwa | Build: #7 | Action: abort...
+[02:36:12.940] Server  LOG     ✅ Input ID Ditemukan: ApproveDeploy
+[02:36:13.761] Server  LOG     Optimization: Processing 1 active jobs out of 8 total jobs.
+[02:36:19.929] Browser ERROR   Fetch Error: {}
+[02:36:22.261] Server  LOG     Job laravel-diwa: 7 runs ditemukan
+[02:36:22.262] Server  LOG       - Run 7: status = IN_PROGRESS
+[02:36:22.263] Server  LOG       - Run 6: status = SUCCESS
+[02:36:22.263] Server  LOG       - Run 5: status = FAILED
+[02:36:22.264] Server  LOG       - Run 4: status = FAILED
+[02:36:22.264] Server  LOG       - Run 3: status = ABORTED
+[02:36:22.265] Server  LOG       - Run 2: status = FAILED
+[02:36:22.266] Server  LOG       - Run 1: status = FAILED
+[02:36:22.266] Server  LOG     Total pending builds: 0
+[02:36:25.741] Server  LOG     Optimization: Processing 1 active jobs out of 8 total jobs.
+[02:36:26.365] Server  LOG     Optimization: Processing 1 active jobs out of 8 total jobs.
+[02:36:28.508] Server  LOG     Job laravel-diwa: 7 runs ditemukan
+[02:36:28.509] Server  LOG       - Run 7: status = IN_PROGRESS
+[02:36:28.510] Server  LOG       - Run 6: status = SUCCESS
+[02:36:28.510] Server  LOG       - Run 5: status = FAILED
+[02:36:28.510] Server  LOG       - Run 4: status = FAILED
+[02:36:28.511] Server  LOG       - Run 3: status = ABORTED
+[02:36:28.511] Server  LOG       - Run 2: status = FAILED
+[02:36:28.512] Server  LOG       - Run 1: status = FAILED
+[02:36:28.512] Server  LOG     Total pending builds: 0
+[02:36:29.075] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[02:36:29.188] Server  LOG     Optimization: Processing 1 active jobs out of 8 total jobs.
+[02:36:31.487] Server  LOG     Job laravel-diwa: 7 runs ditemukan
+[02:36:31.489] Server  LOG       - Run 7: status = IN_PROGRESS
+[02:36:31.490] Server  LOG       - Run 6: status = SUCCESS
+[02:36:31.490] Server  LOG       - Run 5: status = FAILED
+[02:36:31.491] Server  LOG       - Run 4: status = FAILED
+[02:36:31.491] Server  LOG       - Run 3: status = ABORTED
+[02:36:31.492] Server  LOG       - Run 2: status = FAILED
+[02:36:31.492] Server  LOG       - Run 1: status = FAILED
+[02:36:31.493] Server  LOG     Total pending builds: 0
+[02:36:32.296] Server  LOG     Optimization: Processing 1 active jobs out of 8 total jobs.
+[02:36:33.423] Server  LOG     Job laravel-diwa: 7 runs ditemukan
+[02:36:33.424] Server  LOG       - Run 7: status = IN_PROGRESS
+[02:36:33.424] Server  LOG       - Run 6: status = SUCCESS
+[02:36:33.425] Server  LOG       - Run 5: status = FAILED
+[02:36:33.425] Server  LOG       - Run 4: status = FAILED
+[02:36:33.426] Server  LOG       - Run 3: status = ABORTED
+[02:36:33.426] Server  LOG       - Run 2: status = FAILED
+[02:36:33.426] Server  LOG       - Run 1: status = FAILED
+[02:36:33.427] Server  LOG     Total pending builds: 0
+[02:36:36.290] Server  LOG     Optimization: Processing 1 active jobs out of 8 total jobs.
+[02:36:38.137] Browser ERROR   Fetch Error: {}
+[02:36:39.171] Server  LOG     Job laravel-diwa: 7 runs ditemukan
+[02:36:39.172] Server  LOG       - Run 7: status = IN_PROGRESS
+[02:36:39.173] Server  LOG       - Run 6: status = SUCCESS
+[02:36:39.173] Server  LOG       - Run 5: status = FAILED
+[02:36:39.174] Server  LOG       - Run 4: status = FAILED
+[02:36:39.174] Server  LOG       - Run 3: status = ABORTED
+[02:36:39.175] Server  LOG       - Run 2: status = FAILED
+[02:36:39.175] Server  LOG       - Run 1: status = FAILED
+[02:36:39.176] Server  LOG     Total pending builds: 0
+[02:36:40.277] Server  LOG     Job laravel-diwa: 7 runs ditemukan
+[02:36:40.278] Server  LOG       - Run 7: status = IN_PROGRESS
+[02:36:40.279] Server  LOG       - Run 6: status = SUCCESS
+[02:36:40.279] Server  LOG       - Run 5: status = FAILED
+[02:36:40.280] Server  LOG       - Run 4: status = FAILED
+[02:36:40.280] Server  LOG       - Run 3: status = ABORTED
+[02:36:40.281] Server  LOG       - Run 2: status = FAILED
+[02:36:40.281] Server  LOG       - Run 1: status = FAILED
+[02:36:40.282] Server  LOG     Total pending builds: 0
+[02:36:41.920] Server  LOG     Optimization: Processing 1 active jobs out of 8 total jobs.
+[02:36:43.046] Server  LOG     Job laravel-diwa: 7 runs ditemukan
+[02:36:43.046] Server  LOG       - Run 7: status = IN_PROGRESS
+[02:36:43.047] Server  LOG       - Run 6: status = SUCCESS
+[02:36:43.047] Server  LOG       - Run 5: status = FAILED
+[02:36:43.047] Server  LOG       - Run 4: status = FAILED
+[02:36:43.047] Server  LOG       - Run 3: status = ABORTED
+[02:36:43.048] Server  LOG       - Run 2: status = FAILED
+[02:36:43.048] Server  LOG       - Run 1: status = FAILED
+[02:36:43.048] Server  LOG     Total pending builds: 0
+[02:36:48.187] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[02:36:49.293] Server  LOG     Optimization: Processing 1 active jobs out of 8 total jobs.
+[02:36:51.510] Server  LOG     Job laravel-diwa: 7 runs ditemukan
+[02:36:51.511] Server  LOG       - Run 7: status = IN_PROGRESS
+[02:36:51.511] Server  LOG       - Run 6: status = SUCCESS
+[02:36:51.512] Server  LOG       - Run 5: status = FAILED
+[02:36:51.512] Server  LOG       - Run 4: status = FAILED
+[02:36:51.513] Server  LOG       - Run 3: status = ABORTED
+[02:36:51.513] Server  LOG       - Run 2: status = FAILED
+[02:36:51.514] Server  LOG       - Run 1: status = FAILED
+[02:36:51.515] Server  LOG     Total pending builds: 0
+[02:36:51.751] Server  LOG     Optimization: Processing 1 active jobs out of 8 total jobs.
+[02:36:52.160] Server  LOG     Optimization: Processing 1 active jobs out of 8 total jobs.
+[02:36:52.364] Server  LOG     Job laravel-diwa: 7 runs ditemukan
+[02:36:52.365] Server  LOG       - Run 7: status = IN_PROGRESS
+[02:36:52.366] Server  LOG       - Run 6: status = SUCCESS
+[02:36:52.366] Server  LOG       - Run 5: status = FAILED
+[02:36:52.367] Server  LOG       - Run 4: status = FAILED
+[02:36:52.367] Server  LOG       - Run 3: status = ABORTED
+[02:36:52.368] Server  LOG       - Run 2: status = FAILED
+[02:36:52.368] Server  LOG       - Run 1: status = FAILED
+[02:36:52.369] Server  LOG     Total pending builds: 0
+[02:36:52.672] Server  LOG     Job laravel-diwa: 7 runs ditemukan
+[02:36:52.673] Server  LOG       - Run 7: status = IN_PROGRESS
+[02:36:52.674] Server  LOG       - Run 6: status = SUCCESS
+[02:36:52.674] Server  LOG       - Run 5: status = FAILED
+[02:36:52.675] Server  LOG       - Run 4: status = FAILED
+[02:36:52.675] Server  LOG       - Run 3: status = ABORTED
+[02:36:52.676] Server  LOG       - Run 2: status = FAILED
+[02:36:52.676] Server  LOG       - Run 1: status = FAILED
+[02:36:52.677] Server  LOG     Total pending builds: 0
+[02:37:02.609] Server  LOG     Optimization: Processing 1 active jobs out of 8 total jobs.
+[02:37:03.017] Server  LOG     Job laravel-diwa: 7 runs ditemukan
+[02:37:03.018] Server  LOG       - Run 7: status = IN_PROGRESS
+[02:37:03.019] Server  LOG       - Run 6: status = SUCCESS
+[02:37:03.020] Server  LOG       - Run 5: status = FAILED
+[02:37:03.020] Server  LOG       - Run 4: status = FAILED
+[02:37:03.021] Server  LOG       - Run 3: status = ABORTED
+[02:37:03.022] Server  LOG       - Run 2: status = FAILED
+[02:37:03.023] Server  LOG       - Run 1: status = FAILED
+[02:37:03.023] Server  LOG     Total pending builds: 0
+[02:37:14.383] Server  LOG     Optimization: Processing 1 active jobs out of 8 total jobs.
+[02:37:16.304] Server  LOG     Job laravel-diwa: 7 runs ditemukan
+[02:37:16.304] Server  LOG       - Run 7: status = IN_PROGRESS
+[02:37:16.305] Server  LOG       - Run 6: status = SUCCESS
+[02:37:16.306] Server  LOG       - Run 5: status = FAILED
+[02:37:16.306] Server  LOG       - Run 4: status = FAILED
+[02:37:16.307] Server  LOG       - Run 3: status = ABORTED
+[02:37:16.307] Server  LOG       - Run 2: status = FAILED
+[02:37:16.308] Server  LOG       - Run 1: status = FAILED
+[02:37:16.308] Server  LOG     Total pending builds: 0
+[02:37:22.983] Server  LOG     Optimization: Processing 1 active jobs out of 8 total jobs.
+[02:37:24.525] Server  LOG     Job laravel-diwa: 7 runs ditemukan
+[02:37:24.526] Server  LOG       - Run 7: status = IN_PROGRESS
+[02:37:24.526] Server  LOG       - Run 6: status = SUCCESS
+[02:37:24.527] Server  LOG       - Run 5: status = FAILED
+[02:37:24.527] Server  LOG       - Run 4: status = FAILED
+[02:37:24.528] Server  LOG       - Run 3: status = ABORTED
+[02:37:24.528] Server  LOG       - Run 2: status = FAILED
+[02:37:24.528] Server  LOG       - Run 1: status = FAILED
+[02:37:24.529] Server  LOG     Total pending builds: 0
+[02:37:32.014] Server  LOG     Optimization: Processing 1 active jobs out of 8 total jobs.
+[02:37:33.066] Server  LOG     Job laravel-diwa: 7 runs ditemukan
+[02:37:33.067] Server  LOG       - Run 7: status = IN_PROGRESS
+[02:37:33.067] Server  LOG       - Run 6: status = SUCCESS
+[02:37:33.068] Server  LOG       - Run 5: status = FAILED
+[02:37:33.068] Server  LOG       - Run 4: status = FAILED
+[02:37:33.069] Server  LOG       - Run 3: status = ABORTED
+[02:37:33.070] Server  LOG       - Run 2: status = FAILED
+[02:37:33.071] Server  LOG       - Run 1: status = FAILED
+[02:37:33.071] Server  LOG     Total pending builds: 0
+[02:37:41.982] Server  LOG     Optimization: Processing 0 active jobs out of 8 total jobs.
+[02:37:52.272] Server  LOG     Optimization: Processing 0 active jobs out of 8 total jobs.
+[02:38:01.957] Server  LOG     Optimization: Processing 0 active jobs out of 8 total jobs.
+[02:38:11.855] Server  LOG     Optimization: Processing 0 active jobs out of 8 total jobs.
+[02:38:22.070] Server  LOG     Optimization: Processing 0 active jobs out of 8 total jobs.
+[02:38:31.894] Server  LOG     Optimization: Processing 0 active jobs out of 8 total jobs.
+[02:38:42.433] Server  LOG     Optimization: Processing 0 active jobs out of 8 total jobs.
+[02:38:52.585] Server  LOG     Optimization: Processing 0 active jobs out of 8 total jobs.
+[02:39:02.521] Server  LOG     Optimization: Processing 0 active jobs out of 8 total jobs.
+[02:39:12.577] Server  LOG     Optimization: Processing 0 active jobs out of 8 total jobs.
+[02:39:22.631] Server  LOG     Optimization: Processing 0 active jobs out of 8 total jobs.
+[02:39:25.662] Server  LOG     Optimization: Processing 0 active jobs out of 8 total jobs.
+[02:39:25.866] Server  LOG     Optimization: Processing 0 active jobs out of 8 total jobs.
+[02:40:38.911] Server  LOG      ✓ Compiled in 165ms
+[02:43:07.070] Server  LOG      ✓ Compiled in 72ms
+[02:44:38.619] Server  LOG     Optimization: Processing 0 active jobs out of 8 total jobs.
+[02:44:38.762] Server  LOG     Optimization: Processing 0 active jobs out of 8 total jobs.
+[02:45:47.108] Server  LOG     Optimization: Processing 0 active jobs out of 8 total jobs.
+[02:45:47.191] Server  LOG     Optimization: Processing 0 active jobs out of 8 total jobs.
+[02:45:57.558] Server  LOG     Optimization: Processing 0 active jobs out of 8 total jobs.
+[02:45:57.655] Server  LOG     Optimization: Processing 0 active jobs out of 8 total jobs.
+[02:46:07.642] Server  LOG     Optimization: Processing 0 active jobs out of 8 total jobs.
+[02:46:14.026] Server  LOG      ✓ Compiled in 89ms
+[02:46:44.349] Server  LOG     Optimization: Processing 0 active jobs out of 8 total jobs.
+[02:46:44.558] Server  LOG     Optimization: Processing 0 active jobs out of 8 total jobs.
+[02:47:32.829] Server  LOG      ✓ Compiled in 31ms
+[02:47:32.940] Server  LOG      ✓ Compiled in 99ms

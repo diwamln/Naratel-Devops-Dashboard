@@ -147,7 +147,7 @@ export default function ManifestPage() {
 
           {isCreating ? (
               /* Create App View (Replaces AppList) */
-              <div className="flex-1 flex justify-center items-start pt-6 animate-in fade-in slide-in-from-bottom-4">
+              <div className="animate-in fade-in slide-in-from-bottom-4">
                   <ManifestForm 
                       onClose={() => setIsCreating(false)} 
                       onSuccess={handleFormSuccess} 
