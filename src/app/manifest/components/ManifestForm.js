@@ -80,22 +80,6 @@ export default function ManifestForm({ onClose, onSuccess }) {
       .catch(err => console.error("Failed to fetch next ID:", err));
   }, []);
   
-  // --- Auto-Update DB_HOST when App Name/ID changes ---
-  useEffect(() => {
-    if (form.dbType === 'none') return;
-    const dbHostValue = `svc-${form.appName || 'app'}-db-${form.appId || nextId}`;
-    setForm(prev => {
-        const newAppSecrets = [...prev.appSecrets];
-        const hostIndex = newAppSecrets.findIndex(s => s.key === 'DB_HOST');
-        if (hostIndex >= 0) {
-             newAppSecrets[hostIndex] = { ...newAppSecrets[hostIndex], value: dbHostValue, valueProd: dbHostValue, valueTest: dbHostValue };
-        } else {
-             newAppSecrets.unshift({ key: "DB_HOST", value: dbHostValue, valueProd: dbHostValue, valueTest: dbHostValue });
-        }
-        return { ...prev, appSecrets: newAppSecrets };
-    });
-  }, [form.appName, form.appId, form.dbType, nextId]);
-
   // --- Helper: Parse .env ---
   const parseEnvFile = (content) => {
     const lines = content.split('\n');
@@ -195,15 +179,8 @@ export default function ManifestForm({ onClose, onSuccess }) {
         ];
      }
      setDbFileName('');
-     let newAppSecrets = [...form.appSecrets];
-     if (type !== 'none') {
-        const dbHostValue = `svc-${form.appName || 'app'}-db-${form.appId || nextId}`;
-        newAppSecrets = newAppSecrets.filter(s => s.key !== 'DB_HOST');
-        newAppSecrets.unshift({ key: "DB_HOST", value: dbHostValue, valueProd: dbHostValue, valueTest: dbHostValue });
-     } else {
-        newAppSecrets = newAppSecrets.filter(s => s.key !== 'DB_HOST');
-     }
-     setForm(prev => ({ ...prev, dbType: type, dbSecrets: newDbSecrets, appSecrets: newAppSecrets }));
+     
+     setForm(prev => ({ ...prev, dbType: type, dbSecrets: newDbSecrets }));
   };
 
   const copyToClipboard = (text) => {
