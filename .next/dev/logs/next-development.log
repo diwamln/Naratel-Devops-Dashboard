@@ -1909,3 +1909,70 @@ Read more: https://nextjs.org/docs/app/api-reference/config/next-config-js/allow
 [02:46:44.558] Server  LOG     Optimization: Processing 0 active jobs out of 8 total jobs.
 [02:47:32.829] Server  LOG      ✓ Compiled in 31ms
 [02:47:32.940] Server  LOG      ✓ Compiled in 99ms
+[02:49:22.533] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[02:49:56.413] Server  LOG      ✓ Compiled in 47ms
+[02:50:22.654] Server  LOG     Updating repository at /tmp/manifest-repo-workdir...
+[02:50:23.860] Server  LOG     [DEBUG] Generating diwapp-prod (prod):
+[02:50:23.863] Server  LOG     App Secret Keys: []
+[02:50:24.023] Server  ERROR   Encryption failed for diwapp-prod Error: Command failed: sops --encrypt --age age1ywhtcmyuhmfa32kfaaxcak4dvq27q9g6m55gqlzu2vlwkgfj24wq3g4ejx --encrypted-regex '^(secretData)$' --in-place /tmp/manifest-repo-workdir/apps/diwapp-prod/secrets.yaml
+Error unmarshalling file: Error unmarshaling input YAML: yaml: line 2: could not find expected ':'
+
+[02:50:24.023] Server  LOG     [DEBUG] Generating diwapp-testing (testing):
+[02:50:24.023] Server  LOG     App Secret Keys: []
+[02:50:24.080] Server  ERROR   Encryption failed for diwapp-testing Error: Command failed: sops --encrypt --age age1ywhtcmyuhmfa32kfaaxcak4dvq27q9g6m55gqlzu2vlwkgfj24wq3g4ejx --encrypted-regex '^(secretData)$' --in-place /tmp/manifest-repo-workdir/apps/diwapp-testing/secrets.yaml
+Error unmarshalling file: Error unmarshaling input YAML: yaml: line 2: could not find expected ':'
+
+[02:50:54.204] Server  LOG     Updating repository at /tmp/manifest-repo-workdir...
+[02:50:55.084] Server  LOG     Folder diwapp-prod exists, updating...
+[02:50:55.086] Server  LOG     [DEBUG] Mapping DB Secrets for type: "postgres"
+[02:50:55.086] Server  LOG     [DEBUG] Initial dbSecretObj: "{\n  \"POSTGRES_DB\": \"\",\n  \"POSTGRES_USER\": \"\",\n  \"POSTGRES_PASSWORD\": \"\"\n}"
+[02:50:55.087] Server  LOG     [DEBUG] Final dbSecretObj: "{\n  \"POSTGRES_DB\": \"diwapp\",\n  \"POSTGRES_USER\": \"admin\",\n  \"POSTGRES_PASSWORD\": \"changeme_securely\"\n}"
+[02:50:55.087] Server  LOG     [DEBUG] Generating diwapp-prod (prod):
+[02:50:55.089] Server  LOG     App Secret Keys: ["DB_HOST","DB_PORT","DB_DATABASE","DB_USERNAME","DB_PASSWORD"]
+[02:50:55.141] Server  LOG     Folder diwapp-testing exists, updating...
+[02:50:55.142] Server  LOG     [DEBUG] Mapping DB Secrets for type: "postgres"
+[02:50:55.142] Server  LOG     [DEBUG] Initial dbSecretObj: "{\n  \"POSTGRES_DB\": \"\",\n  \"POSTGRES_USER\": \"\",\n  \"POSTGRES_PASSWORD\": \"\"\n}"
+[02:50:55.142] Server  LOG     [DEBUG] Final dbSecretObj: "{\n  \"POSTGRES_DB\": \"diwapp\",\n  \"POSTGRES_USER\": \"admin\",\n  \"POSTGRES_PASSWORD\": \"changeme_securely\"\n}"
+[02:50:55.143] Server  LOG     [DEBUG] Generating diwapp-testing (testing):
+[02:50:55.143] Server  LOG     App Secret Keys: ["DB_HOST","DB_PORT","DB_DATABASE","DB_USERNAME","DB_PASSWORD"]
+[02:50:55.190] Server  LOG     [DEBUG] Mapping DB Secrets for type: "postgres"
+[02:50:55.191] Server  LOG     [DEBUG] Initial dbSecretObj: "{\n  \"POSTGRES_DB\": \"\",\n  \"POSTGRES_USER\": \"\",\n  \"POSTGRES_PASSWORD\": \"\"\n}"
+[02:50:55.191] Server  LOG     [DEBUG] Final dbSecretObj: "{\n  \"POSTGRES_DB\": \"diwapp\",\n  \"POSTGRES_USER\": \"admin\",\n  \"POSTGRES_PASSWORD\": \"changeme_securely\"\n}"
+[02:50:55.191] Server  LOG     [DEBUG] Generating diwapp-db-prod (prod):
+[02:50:55.192] Server  LOG     DB Secret Keys: ["POSTGRES_DB","POSTGRES_USER","POSTGRES_PASSWORD"]
+[02:50:55.244] Server  LOG     [DEBUG] Mapping DB Secrets for type: "postgres"
+[02:50:55.244] Server  LOG     [DEBUG] Initial dbSecretObj: "{\n  \"POSTGRES_DB\": \"\",\n  \"POSTGRES_USER\": \"\",\n  \"POSTGRES_PASSWORD\": \"\"\n}"
+[02:50:55.244] Server  LOG     [DEBUG] Final dbSecretObj: "{\n  \"POSTGRES_DB\": \"diwapp\",\n  \"POSTGRES_USER\": \"admin\",\n  \"POSTGRES_PASSWORD\": \"changeme_securely\"\n}"
+[02:50:55.245] Server  LOG     [DEBUG] Generating diwapp-db-testing (testing):
+[02:50:55.245] Server  LOG     DB Secret Keys: ["POSTGRES_DB","POSTGRES_USER","POSTGRES_PASSWORD"]
+[02:53:09.583] Server  LOG      ✓ Compiled in 69ms
+[02:53:10.304] Server  LOG     Optimization: Processing 0 active jobs out of 8 total jobs.
+[02:53:10.608] Server  LOG     Optimization: Processing 0 active jobs out of 8 total jobs.
+[02:53:16.646] Server  LOG     Optimization: Processing 0 active jobs out of 8 total jobs.
+[02:53:16.654] Server  LOG     Optimization: Processing 0 active jobs out of 8 total jobs.
+[02:54:04.118] Server  LOG     Optimization: Processing 0 active jobs out of 8 total jobs.
+[02:54:04.217] Server  LOG     Optimization: Processing 0 active jobs out of 8 total jobs.
+[02:54:32.367] Server  LOG     Optimization: Processing 0 active jobs out of 8 total jobs.
+[02:54:32.528] Server  LOG     Optimization: Processing 0 active jobs out of 8 total jobs.
+[02:55:07.119] Server  LOG     Updating repository at /tmp/manifest-repo-workdir...
+[02:55:07.915] Server  LOG     [DEBUG] Mapping DB Secrets for type: "mariadb"
+[02:55:07.916] Server  LOG     [DEBUG] Initial dbSecretObj: "{\n  \"MYSQL_DATABASE\": \"\",\n  \"MYSQL_USER\": \"\",\n  \"MYSQL_PASSWORD\": \"\",\n  \"MYSQL_ROOT_PASSWORD\": \"\"\n}"
+[02:55:07.916] Server  LOG     [DEBUG] Final dbSecretObj: "{\n  \"MYSQL_DATABASE\": \"diwapp\",\n  \"MYSQL_USER\": \"admin\",\n  \"MYSQL_PASSWORD\": \"changeme_securely\",\n  \"MYSQL_ROOT_PASSWORD\": \"changeme_root\"\n}"
+[02:55:07.917] Server  LOG     [DEBUG] Generating diwapp-prod (prod):
+[02:55:07.918] Server  LOG     App Secret Keys: ["DB_HOST","DB_PORT","DB_DATABASE","DB_USERNAME","DB_PASSWORD"]
+[02:55:07.981] Server  LOG     [DEBUG] Mapping DB Secrets for type: "mariadb"
+[02:55:07.981] Server  LOG     [DEBUG] Initial dbSecretObj: "{\n  \"MYSQL_DATABASE\": \"\",\n  \"MYSQL_USER\": \"\",\n  \"MYSQL_PASSWORD\": \"\",\n  \"MYSQL_ROOT_PASSWORD\": \"\"\n}"
+[02:55:07.981] Server  LOG     [DEBUG] Final dbSecretObj: "{\n  \"MYSQL_DATABASE\": \"diwapp\",\n  \"MYSQL_USER\": \"admin\",\n  \"MYSQL_PASSWORD\": \"changeme_securely\",\n  \"MYSQL_ROOT_PASSWORD\": \"changeme_root\"\n}"
+[02:55:07.981] Server  LOG     [DEBUG] Generating diwapp-testing (testing):
+[02:55:07.982] Server  LOG     App Secret Keys: ["DB_HOST","DB_PORT","DB_DATABASE","DB_USERNAME","DB_PASSWORD"]
+[02:55:08.033] Server  LOG     [DEBUG] Mapping DB Secrets for type: "mariadb"
+[02:55:08.033] Server  LOG     [DEBUG] Initial dbSecretObj: "{\n  \"MYSQL_DATABASE\": \"\",\n  \"MYSQL_USER\": \"\",\n  \"MYSQL_PASSWORD\": \"\",\n  \"MYSQL_ROOT_PASSWORD\": \"\"\n}"
+[02:55:08.034] Server  LOG     [DEBUG] Final dbSecretObj: "{\n  \"MYSQL_DATABASE\": \"diwapp\",\n  \"MYSQL_USER\": \"admin\",\n  \"MYSQL_PASSWORD\": \"changeme_securely\",\n  \"MYSQL_ROOT_PASSWORD\": \"changeme_root\"\n}"
+[02:55:08.034] Server  LOG     [DEBUG] Generating diwapp-db-prod (prod):
+[02:55:08.034] Server  LOG     DB Secret Keys: ["MYSQL_DATABASE","MYSQL_USER","MYSQL_PASSWORD","MYSQL_ROOT_PASSWORD"]
+[02:55:08.083] Server  LOG     [DEBUG] Mapping DB Secrets for type: "mariadb"
+[02:55:08.083] Server  LOG     [DEBUG] Initial dbSecretObj: "{\n  \"MYSQL_DATABASE\": \"\",\n  \"MYSQL_USER\": \"\",\n  \"MYSQL_PASSWORD\": \"\",\n  \"MYSQL_ROOT_PASSWORD\": \"\"\n}"
+[02:55:08.083] Server  LOG     [DEBUG] Final dbSecretObj: "{\n  \"MYSQL_DATABASE\": \"diwapp\",\n  \"MYSQL_USER\": \"admin\",\n  \"MYSQL_PASSWORD\": \"changeme_securely\",\n  \"MYSQL_ROOT_PASSWORD\": \"changeme_root\"\n}"
+[02:55:08.084] Server  LOG     [DEBUG] Generating diwapp-db-testing (testing):
+[02:55:08.084] Server  LOG     DB Secret Keys: ["MYSQL_DATABASE","MYSQL_USER","MYSQL_PASSWORD","MYSQL_ROOT_PASSWORD"]
+[02:55:52.493] Server  LOG      ✓ Compiled in 93ms
