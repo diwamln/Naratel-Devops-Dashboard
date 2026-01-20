@@ -502,15 +502,22 @@ export default function ManifestForm({ onClose, onSuccess }) {
   );
 
   return (
-    <div className="bg-white dark:bg-neutral-900 w-full max-w-4xl h-[650px] rounded-2xl shadow-2xl relative flex flex-col overflow-hidden">
+    <div className="bg-white dark:bg-neutral-900 w-full h-full flex flex-col relative">
        {/* Sticky Header */}
-       <div className="bg-white dark:bg-neutral-900 px-6 py-4 border-b border-neutral-200 dark:border-neutral-800 flex justify-between items-center z-10">
-          <h2 className="text-lg font-bold flex items-center gap-2 text-neutral-800 dark:text-white">
-            <FilePlus className="text-[#FFA500]" size={20} /> New App Wizard
-          </h2>
-          <button onClick={onClose} className="p-2 hover:bg-neutral-100 dark:hover:bg-neutral-800 rounded-lg text-neutral-500">
-             <X size={20} />
-          </button>
+       <div className="bg-white dark:bg-neutral-900 px-8 py-6 border-b border-neutral-200 dark:border-neutral-800 flex justify-between items-center z-10 sticky top-0">
+          <div className="flex items-center gap-4">
+             <button 
+                onClick={onClose} 
+                className="flex items-center gap-2 text-neutral-500 hover:text-neutral-800 dark:hover:text-neutral-200 transition-colors"
+                title="Back to App List"
+             >
+                <ChevronLeft size={24} />
+             </button>
+             <div className="h-6 w-px bg-neutral-200 dark:bg-neutral-800"></div>
+             <h2 className="text-xl font-bold flex items-center gap-3 text-neutral-800 dark:text-white">
+                <FilePlus className="text-[#FFA500]" size={24} /> New App Wizard
+             </h2>
+          </div>
        </div>
 
        {/* Progress Stepper */}
