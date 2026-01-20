@@ -25,6 +25,10 @@ import {
   Info
 } from "lucide-react";
 
+import { motion } from "framer-motion";
+
+const steps = ["Identity", "Database", "Architecture", "Configuration"];
+
 export default function ManifestForm({ onClose, onSuccess }) {
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState({ text: '', type: '' });
@@ -520,31 +524,21 @@ export default function ManifestForm({ onClose, onSuccess }) {
           </div>
        </div>
 
-       {/* Progress Stepper */}
-       <div className="bg-neutral-50 dark:bg-neutral-950/50 px-8 py-4 border-b border-neutral-200 dark:border-neutral-800">
-           <div className="flex items-center justify-between relative">
-               {/* Line */}
-               <div className="absolute left-0 right-0 top-1/2 h-0.5 bg-neutral-200 dark:bg-neutral-800 -z-0"></div>
-               
-               {[1, 2, 3, 4].map((s) => (
-                   <div key={s} className={`relative z-10 flex flex-col items-center gap-2 transition-all ${step >= s ? 'opacity-100' : 'opacity-40'}`}>
-                       <div className={`w-8 h-8 rounded-full flex items-center justify-center font-bold text-xs border-2 transition-all ${ 
-                           step === s 
-                             ? 'bg-[#FFA500] border-[#FFA500] text-white scale-110 shadow-lg shadow-orange-500/20' 
-                             : step > s 
-                               ? 'bg-green-500 border-green-500 text-white' 
-                               : 'bg-white dark:bg-neutral-900 border-neutral-300 dark:border-neutral-700 text-neutral-500'
-                       }`}>
-                           {step > s ? <CheckCircle size={16} /> : s}
-                       </div>
-                       <span className="text-[10px] font-bold uppercase tracking-wider text-neutral-500 dark:text-neutral-400 bg-neutral-50 dark:bg-neutral-900 px-1">
-                           {s === 1 && "Identity"}
-                           {s === 2 && "Database"}
-                           {s === 3 && "Type"}
-                           {s === 4 && "Config"}
-                       </span>
-                   </div>
-               ))}
+       {/* Progress Bar (Framer Motion) */}
+       <div className="px-6 py-4 border-b border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-900">
+           <div className="flex items-center justify-between mb-2">
+               <span className="text-xs font-bold text-neutral-500 dark:text-neutral-400 uppercase tracking-wider">
+                   Step {step} of 4: <span className="text-neutral-900 dark:text-white ml-1">{steps[step-1]}</span>
+               </span>
+               <span className="text-xs font-mono font-bold text-[#FFA500]">{Math.round((step / 4) * 100)}%</span>
+           </div>
+           <div className="h-1.5 w-full bg-neutral-100 dark:bg-neutral-800 rounded-full overflow-hidden">
+               <motion.div 
+                   className="h-full bg-[#FFA500]"
+                   initial={{ width: 0 }}
+                   animate={{ width: `${(step / 4) * 100}%` }}
+                   transition={{ duration: 0.4, ease: "easeInOut" }}
+               />
            </div>
        </div>
 
