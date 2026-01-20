@@ -230,6 +230,13 @@ export default function ManifestForm({ onClose, onSuccess }) {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    
+    // Safety check: Prevent submission on earlier steps (e.g. via Enter key)
+    if (step < 4) {
+        nextStep();
+        return;
+    }
+
     setLoading(true);
     setMessage({ text: '', type: '' });
     try {
