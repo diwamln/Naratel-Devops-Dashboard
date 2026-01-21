@@ -192,6 +192,11 @@ export default function JenkinsDashboard() {
                     const version = extractVersion(build.name);
                     const isProcessing = actionLoading && actionLoading.startsWith(build.id);
                     
+                    // Prioritize fetched tag, then extracted version, then build name
+                    const displayVersion = build.tag 
+                        ? (build.tag.startsWith('v') ? build.tag : `v${build.tag}`) 
+                        : (version ? `v${version.full}` : build.name);
+
                     return (
                       <div key={build.id} className="bg-white dark:bg-neutral-900 rounded-xl border border-neutral-200 dark:border-neutral-800 shadow-sm hover:shadow-md transition-all group overflow-hidden">
                         <div className="p-6 flex flex-col md:flex-row md:items-center justify-between gap-6">
@@ -204,11 +209,16 @@ export default function JenkinsDashboard() {
                                 <span className="bg-neutral-100 dark:bg-neutral-800 text-neutral-500 dark:text-neutral-400 text-[10px] font-mono font-bold px-2 py-0.5 rounded-full border border-neutral-200 dark:border-neutral-700">
                                     ID: {build.id}
                                 </span>
+                                {build.tag && (
+                                   <span className="bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-400 text-[10px] font-mono font-bold px-2 py-0.5 rounded-full border border-blue-200 dark:border-blue-700 flex items-center gap-1">
+                                      TAG: {build.tag}
+                                   </span>
+                                )}
                             </div>
                             
                             <h3 className="text-xl font-bold text-neutral-900 dark:text-white flex items-center gap-2">
                                 <GitBranch className="text-neutral-400" size={20} />
-                                {version ? `v${version.full}` : build.name}
+                                {displayVersion}
                             </h3>
                             
                             <div className="flex items-center gap-4 mt-2 text-xs text-neutral-500 font-mono">

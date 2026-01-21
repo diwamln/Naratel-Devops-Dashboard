@@ -26,7 +26,7 @@ import {
 } from "lucide-react";
 import { motion } from "framer-motion";
 
-const steps = ["Architecture", "Identity", "Database", "Configuration"];
+const steps = ["Architecture", "Identity", "Database", "Access", "Configuration"];
 
 export default function ManifestForm({ onClose, onSuccess }) {
   const [loading, setLoading] = useState(false);
@@ -64,7 +64,11 @@ export default function ManifestForm({ onClose, onSuccess }) {
     // Ingress
     ingressEnabled: false,
     ingressHost: "",
-    tlsEnabled: false
+    tlsEnabled: false,
+
+    // Database Migration
+    migrationEnabled: false,
+    migrationCommand: "php artisan migrate --force"
   });
 
   // Fetch Next ID on Mount
@@ -120,6 +124,10 @@ export default function ManifestForm({ onClose, onSuccess }) {
   const updateAppSecret = (index, field, value) => {
     const updated = [...form.appSecrets];
     updated[index][field] = value;
+    if (field === 'value') {
+        updated[index]['valueProd'] = value;
+        updated[index]['valueTest'] = value;
+    }
     setForm(prev => ({ ...prev, appSecrets: updated }));
   };
   
@@ -144,6 +152,10 @@ export default function ManifestForm({ onClose, onSuccess }) {
   const updateDbSecret = (index, field, value) => {
     const updated = [...form.dbSecrets];
     updated[index][field] = value;
+    if (field === 'value') {
+        updated[index]['valueProd'] = value;
+        updated[index]['valueTest'] = value;
+    }
     setForm(prev => ({ ...prev, dbSecrets: updated }));
   };
 
@@ -151,16 +163,16 @@ export default function ManifestForm({ onClose, onSuccess }) {
      let newDbSecrets = [];
      if (type === 'postgres') {
         newDbSecrets = [
-           { key: "POSTGRES_DB", value: "", valueProd: "", valueTest: "" },
-           { key: "POSTGRES_USER", value: "", valueProd: "", valueTest: "" },
-           { key: "POSTGRES_PASSWORD", value: "", valueProd: "", valueTest: "" }
+           { key: "POSTGRESQL_DATABASE", value: "", valueProd: "", valueTest: "" },
+           { key: "POSTGRESQL_USERNAME", value: "", valueProd: "", valueTest: "" },
+           { key: "POSTGRESQL_PASSWORD", value: "", valueProd: "", valueTest: "" }
         ];
      } else if (type === 'mariadb') {
         newDbSecrets = [
-           { key: "MYSQL_DATABASE", value: "", valueProd: "", valueTest: "" },
-           { key: "MYSQL_USER", value: "", valueProd: "", valueTest: "" },
-           { key: "MYSQL_PASSWORD", value: "", valueProd: "", valueTest: "" },
-           { key: "MYSQL_ROOT_PASSWORD", value: "", valueProd: "", valueTest: "" }
+           { key: "MARIADB_DATABASE", value: "", valueProd: "", valueTest: "" },
+           { key: "MARIADB_USER", value: "", valueProd: "", valueTest: "" },
+           { key: "MARIADB_PASSWORD", value: "", valueProd: "", valueTest: "" },
+           { key: "MARIADB_ROOT_PASSWORD", value: "", valueProd: "", valueTest: "" }
         ];
      }
      setDbFileName('');
@@ -181,12 +193,22 @@ export default function ManifestForm({ onClose, onSuccess }) {
               return false;
           }
       }
+      if (currentStep === 4) {
+          if (!form.servicePort || !form.targetPort) {
+              setMessage({ text: 'Please specify Service and Target ports', type: 'error' });
+              return false;
+          }
+          if (form.ingressEnabled && !form.ingressHost) {
+              setMessage({ text: 'Please specify Ingress Hostname', type: 'error' });
+              return false;
+          }
+      }
       setMessage({ text: '', type: '' });
       return true;
   };
 
   const nextStep = () => {
-      if (validateStep(step)) setStep(prev => Math.min(prev + 1, 4));
+      if (validateStep(step)) setStep(prev => Math.min(prev + 1, 5));
   };
   const prevStep = () => setStep(prev => Math.max(prev - 1, 1));
 
@@ -206,7 +228,7 @@ export default function ManifestForm({ onClose, onSuccess }) {
 
   const handleFormSubmit = (e) => {
     e.preventDefault();
-    if (step < 4) {
+    if (step < 5) {
         nextStep();
     }
   };
@@ -272,13 +294,45 @@ export default function ManifestForm({ onClose, onSuccess }) {
     </div>
   );
 
-  const renderConfigStep = () => (
+  const renderAccessStep = () => (
     <div className="space-y-8 animate-in fade-in slide-in-from-right-4 duration-300">
-         <div className="flex items-center gap-2 mb-4 text-[#FFA500]"><Server size={24} /><h2 className="font-bold uppercase text-sm tracking-wider text-neutral-500 dark:text-neutral-400">Deployment Configuration</h2></div>
+         <div className="flex items-center gap-2 mb-4 text-[#FFA500]"><Network size={24} /><h2 className="font-bold uppercase text-sm tracking-wider text-neutral-500 dark:text-neutral-400">Network Access</h2></div>
+        
         <div className="grid grid-cols-2 gap-4">
              <div><label className="block text-xs font-bold text-neutral-500 uppercase mb-1">Service Port</label><input type="number" required className="w-full p-2 text-sm border rounded dark:bg-neutral-950 dark:border-neutral-800 focus:ring-1 focus:ring-[#FFA500] outline-none" value={form.servicePort} onChange={e => setForm({...form, servicePort: parseInt(e.target.value)})} /><p className="text-[10px] text-neutral-400 mt-1">Exposed internal port (e.g. 80)</p></div>
             <div><label className="block text-xs font-bold text-neutral-500 uppercase mb-1">Target Port</label><input type="number" required className="w-full p-2 text-sm border rounded dark:bg-neutral-950 dark:border-neutral-800 focus:ring-1 focus:ring-[#FFA500] outline-none" value={form.targetPort} onChange={e => setForm({...form, targetPort: parseInt(e.target.value)})} /><p className="text-[10px] text-neutral-400 mt-1">Container listening port (e.g. 3000, 8080)</p></div>
         </div>
+
+        <div className="p-6 rounded-xl border border-neutral-200 dark:border-neutral-800 bg-gray-50/50 dark:bg-neutral-900/50 space-y-4">
+            <label className="flex items-center gap-3 cursor-pointer">
+                <input type="checkbox" className="w-5 h-5 rounded border-neutral-300 text-[#FFA500] focus:ring-[#FFA500]" checked={form.ingressEnabled} onChange={e => setForm({...form, ingressEnabled: e.target.checked})} />
+                <span className="font-bold text-sm text-neutral-700 dark:text-neutral-300">Enable Ingress (Public Access)</span>
+            </label>
+
+            <div className={`transition-all duration-300 space-y-4 ${form.ingressEnabled ? 'opacity-100' : 'opacity-50 pointer-events-none'}`}>
+                <div>
+                    <label className="block text-xs font-bold text-neutral-500 uppercase mb-1">Hostname</label>
+                    <div className="relative">
+                        <Globe className="absolute left-3 top-2.5 text-neutral-400" size={16} />
+                        <input required={form.ingressEnabled} disabled={!form.ingressEnabled} className="w-full pl-9 p-2 text-sm border rounded dark:bg-neutral-950 dark:border-neutral-800 focus:ring-1 focus:ring-[#FFA500] outline-none" placeholder="e.g. app.naratel.id" value={form.ingressHost} onChange={e => setForm({...form, ingressHost: e.target.value})} />
+                    </div>
+                    <p className="text-[10px] text-neutral-400 mt-1">Testing env will automatically use <code>test-{form.ingressHost || '...'}</code></p>
+                </div>
+
+                <div>
+                    <label className="flex items-center gap-2 cursor-pointer">
+                        <input type="checkbox" checked={form.tlsEnabled} disabled={!form.ingressEnabled} onChange={e => setForm({...form, tlsEnabled: e.target.checked})} className="rounded border-neutral-300 text-[#FFA500] focus:ring-[#FFA500]" />
+                        <span className="text-sm text-neutral-600 dark:text-neutral-400">Enable HTTPS / TLS</span>
+                    </label>
+                </div>
+            </div>
+        </div>
+    </div>
+  );
+
+  const renderConfigStep = () => (
+    <div className="space-y-8 animate-in fade-in slide-in-from-right-4 duration-300">
+         <div className="flex items-center gap-2 mb-4 text-[#FFA500]"><Server size={24} /><h2 className="font-bold uppercase text-sm tracking-wider text-neutral-500 dark:text-neutral-400">Deployment Configuration</h2></div>
         
         {form.dbType !== 'none' && (
             <div className="p-4 rounded-xl bg-neutral-900 text-neutral-200 border border-neutral-700 shadow-inner">
@@ -287,6 +341,33 @@ export default function ManifestForm({ onClose, onSuccess }) {
                 <p className="text-[10px] text-neutral-500 mt-2">Use this hostname to connect to your database from within the cluster. Port: <strong>{form.dbType === 'postgres' ? '5432' : '3306'}</strong>.</p>
             </div>
         )}
+
+        <div className="border-t border-neutral-200 dark:border-neutral-800 pt-6">
+             <div className="flex items-center justify-between mb-4"><h3 className="font-bold text-sm text-neutral-600 dark:text-neutral-300">Database Automation</h3></div>
+             
+             <div className="bg-neutral-50 dark:bg-neutral-900/50 p-4 rounded-xl border border-neutral-200 dark:border-neutral-800 space-y-4">
+                 <div className="flex items-center justify-between">
+                    <div>
+                        <h4 className="font-bold text-sm text-neutral-800 dark:text-neutral-200">Auto-Migration</h4>
+                        <p className="text-xs text-neutral-500 mt-1">Run database migration before every deployment.</p>
+                    </div>
+                    <label className="relative inline-flex items-center cursor-pointer">
+                        <input type="checkbox" className="sr-only peer" checked={form.migrationEnabled} onChange={e => setForm({...form, migrationEnabled: e.target.checked})} />
+                        <div className="w-11 h-6 bg-neutral-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-orange-300 dark:peer-focus:ring-orange-800 rounded-full peer dark:bg-neutral-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-neutral-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-neutral-600 peer-checked:bg-[#FFA500]"></div>
+                    </label>
+                 </div>
+
+                 {form.migrationEnabled && (
+                     <div className="animate-in fade-in slide-in-from-top-2">
+                        <label className="block text-xs font-bold text-neutral-500 uppercase mb-2">Migration Command</label>
+                        <div className="flex items-center gap-2 bg-neutral-900 text-neutral-200 p-2 rounded-lg border border-neutral-700 font-mono text-xs">
+                            <span className="text-[#FFA500]">$</span>
+                            <input type="text" className="bg-transparent border-none outline-none w-full text-neutral-200 placeholder-neutral-600" value={form.migrationCommand} onChange={e => setForm({...form, migrationCommand: e.target.value})} placeholder="e.g. php artisan migrate --force" />
+                        </div>
+                     </div>
+                 )}
+             </div>
+        </div>
 
         <div className="border-t border-neutral-200 dark:border-neutral-800 pt-6">
              <div className="flex items-center justify-between mb-4"><h3 className="font-bold text-sm text-neutral-600 dark:text-neutral-300">Application Secrets</h3><button type="button" onClick={addAppSecret} className="text-xs font-bold text-[#FFA500] flex items-center gap-1"><Plus size={12}/> Add</button></div>
@@ -380,11 +461,11 @@ export default function ManifestForm({ onClose, onSuccess }) {
        {/* Progress Bar (Framer Motion) */}
        <div className="px-6 py-4 border-b border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-900">
            <div className="flex items-center justify-between mb-2">
-               <span className="text-xs font-bold text-neutral-500 dark:text-neutral-400 uppercase tracking-wider">Step {step} of 4: <span className="text-neutral-900 dark:text-white ml-1">{steps[step-1]}</span></span>
-               <span className="text-xs font-mono font-bold text-[#FFA500]">{Math.round((step / 4) * 100)}%</span>
+               <span className="text-xs font-bold text-neutral-500 dark:text-neutral-400 uppercase tracking-wider">Step {step} of 5: <span className="text-neutral-900 dark:text-white ml-1">{steps[step-1]}</span></span>
+               <span className="text-xs font-mono font-bold text-[#FFA500]">{Math.round((step / 5) * 100)}%</span>
            </div>
            <div className="h-1.5 w-full bg-neutral-100 dark:bg-neutral-800 rounded-full overflow-hidden">
-               <motion.div className="h-full bg-[#FFA500]" initial={{ width: 0 }} animate={{ width: `${(step / 4) * 100}%` }} transition={{ duration: 0.4, ease: "easeInOut" }} />
+               <motion.div className="h-full bg-[#FFA500]" initial={{ width: 0 }} animate={{ width: `${(step / 5) * 100}%` }} transition={{ duration: 0.4, ease: "easeInOut" }} />
            </div>
        </div>
 
@@ -394,13 +475,14 @@ export default function ManifestForm({ onClose, onSuccess }) {
                {step === 1 && renderArchitectureStep()}
                {step === 2 && renderIdentityStep()}
                {step === 3 && renderDatabaseStep()}
-               {step === 4 && renderConfigStep()}
+               {step === 4 && renderAccessStep()}
+               {step === 5 && renderConfigStep()}
            </form>
        </div>
 
        <div className="p-6 bg-white dark:bg-neutral-900 border-t border-neutral-200 dark:border-neutral-800 flex justify-between items-center z-10">
            <button type="button" onClick={prevStep} disabled={step === 1} className="flex items-center gap-2 px-6 py-2.5 rounded-lg text-sm font-bold text-neutral-600 hover:bg-neutral-100 dark:text-neutral-300 dark:hover:bg-neutral-800 disabled:opacity-30 disabled:cursor-not-allowed transition-all"><ChevronLeft size={16} /> Back</button>
-           {step < 4 ? (<button type="button" onClick={nextStep} className="flex items-center gap-2 px-8 py-2.5 rounded-lg text-sm font-bold bg-neutral-900 text-white hover:bg-neutral-800 dark:bg-white dark:text-neutral-900 dark:hover:bg-neutral-200 shadow-md transition-all transform active:scale-95">Next Step <ChevronRight size={16} /></button>) : (<button type="button" onClick={handleDeploy} disabled={loading} className="flex items-center gap-2 bg-[#FFA500] hover:bg-[#FFA500]/90 text-white font-bold py-2.5 px-8 rounded-lg shadow-lg shadow-orange-500/20 transition-all transform active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed">{loading ? (<><Loader2 size={18} className="animate-spin" />Creating...</>) : (<><Server size={18} />Deploy App</>)}</button>)}
+           {step < 5 ? (<button type="button" onClick={nextStep} className="flex items-center gap-2 px-8 py-2.5 rounded-lg text-sm font-bold bg-neutral-900 text-white hover:bg-neutral-800 dark:bg-white dark:text-neutral-900 dark:hover:bg-neutral-200 shadow-md transition-all transform active:scale-95">Next Step <ChevronRight size={16} /></button>) : (<button type="button" onClick={handleDeploy} disabled={loading} className="flex items-center gap-2 bg-[#FFA500] hover:bg-[#FFA500]/90 text-white font-bold py-2.5 px-8 rounded-lg shadow-lg shadow-orange-500/20 transition-all transform active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed">{loading ? (<><Loader2 size={18} className="animate-spin" />Creating...</>) : (<><Server size={18} />Deploy App</>)}</button>)}
        </div>
     </div>
   );

@@ -10,7 +10,7 @@ import {
   Loader2
 } from "lucide-react";
 import DashboardLayout from "../components/DashboardLayout";
-import { useRouter, useSearchParams } from "next/navigation";
+import { useRouter, useSearchParams, usePathname } from "next/navigation";
 import ManifestForm from "./components/ManifestForm";
 import AppList from "./components/AppList";
 import EditAppSecretsForm from "./components/EditAppSecretsForm";
@@ -19,15 +19,23 @@ import EditIngressForm from "./components/EditIngressForm";
 
 export default function ManifestPage() {
   const router = useRouter();
+  const pathname = usePathname();
   const searchParams = useSearchParams();
   const searchQuery = searchParams.get('search')?.toLowerCase() || '';
+  const action = searchParams.get('action');
 
   const [existingApps, setExistingApps] = useState([]);
   const [isLoadingRegistry, setIsLoadingRegistry] = useState(true);
   const [isDeleting, setIsDeleting] = useState(null);
   
   // View State
-  const [isCreating, setIsCreating] = useState(false);
+  const isCreating = action === 'create';
+
+  const handleCloseCreate = () => {
+    const params = new URLSearchParams(searchParams);
+    params.delete('action');
+    router.push(`${pathname}?${params.toString()}`);
+  };
   
   const [isEditAppSecretsOpen, setIsEditAppSecretsOpen] = useState(false);
   const [isEditDbSecretsOpen, setIsEditDbSecretsOpen] = useState(false);
@@ -90,7 +98,7 @@ export default function ManifestPage() {
   };
 
   const handleFormSuccess = (msg) => {
-    setIsCreating(false);
+    handleCloseCreate();
     setMessage({ text: msg, type: 'success' });
     fetchRegistry();
   };
@@ -149,7 +157,7 @@ export default function ManifestPage() {
               /* Create App View (Replaces AppList) */
               <div className="animate-in fade-in slide-in-from-bottom-4">
                   <ManifestForm 
-                      onClose={() => setIsCreating(false)} 
+                      onClose={handleCloseCreate} 
                       onSuccess={handleFormSuccess} 
                   />
               </div>
@@ -169,19 +177,13 @@ export default function ManifestPage() {
                     onEditDbSecrets={handleEditDbSecrets}
                     onEditIngress={handleEditIngress}
                     isDeleting={isDeleting}
-                    onCreate={() => setIsCreating(true)}
+                    onCreate={() => {
+                        const params = new URLSearchParams(searchParams);
+                        params.set('action', 'create');
+                        router.push(`${pathname}?${params.toString()}`);
+                    }}
                 />
               )}
-
-              {/* Floating Action Button */}
-              <button
-                  onClick={() => setIsCreating(true)}
-                  className="fixed bottom-8 right-8 bg-[#FFA500] hover:bg-[#FFA500]/90 text-white p-4 rounded-full shadow-lg shadow-orange-500/30 hover:shadow-orange-500/50 transition-all transform hover:scale-105 z-40 flex items-center gap-2"
-                  title="Add New Application"
-              >
-                  <Plus size={24} />
-                  <span className="font-bold pr-2 hidden md:inline">Add Application</span>
-              </button>
             </>
           )}
         </div>

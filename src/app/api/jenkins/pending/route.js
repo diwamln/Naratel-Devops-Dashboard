@@ -69,23 +69,64 @@ export async function GET() {
         const runs = await res.json();
         console.log(`Job ${jobName}: ${runs.length} runs ditemukan`);
 
-        // Filter & Map data
-        const pending = runs
-          .filter((run) => {
+        // Filter pending runs
+        const pendingRuns = runs.filter(run => {
             console.log(`  - Run ${run.id}: status = ${run.status}`);
             return run.status === 'PAUSED_PENDING_INPUT';
-          })
-          .map((run) => ({
-            id: run.id,
-            name: run.name,
-            status: run.status,
-            timestamp: run.startTimeMillis,
-            jobName: jobName
-          }));
+        });
 
-        if (pending.length > 0) {
-          console.log(`Job ${jobName}: ${pending.length} pending approval ditemukan!`);
+        if (pendingRuns.length > 0) {
+          console.log(`Job ${jobName}: ${pendingRuns.length} pending approval ditemukan!`);
         }
+
+        // Map & Fetch Details (Parameters) secara paralel
+        const pending = await Promise.all(pendingRuns.map(async (run) => {
+            let tag = null;
+            try {
+                const detailsRes = await fetch(`${JENKINS_URL}/job/${jobName}/${run.id}/api/json?tree=actions[parameters[name,value]]`, {
+                    headers: { 'Authorization': `Basic ${auth}` },
+                    cache: 'no-store'
+                });
+
+                if (detailsRes.ok) {
+                    const details = await detailsRes.json();
+                    
+                    // Collect all parameters from all actions
+                    let allParams = [];
+                    const actions = details.actions || [];
+                    
+                    actions.forEach(action => {
+                        if (action.parameters && Array.isArray(action.parameters)) {
+                            allParams = [...allParams, ...action.parameters];
+                        }
+                    });
+
+                    console.log(`[DEBUG] Job ${jobName} #${run.id} Params:`, JSON.stringify(allParams.map(p => `${p.name}=${p.value}`)));
+                    
+                    // Case-insensitive search for Tag/Version
+                    const tagParam = allParams.find(p => {
+                        const name = p.name.toUpperCase();
+                        return ['TAG', 'IMAGE_TAG', 'VERSION', 'DOCKER_TAG', 'RELEASE_TAG', 'BUILD_TAG'].includes(name);
+                    });
+
+                    if (tagParam) {
+                        tag = tagParam.value;
+                        console.log(`[DEBUG] Found Tag: ${tag}`);
+                    }
+                }
+            } catch (e) {
+                console.warn(`Gagal fetch parameters untuk ${jobName} #${run.id}:`, e.message);
+            }
+
+            return {
+                id: run.id,
+                name: run.name,
+                status: run.status,
+                timestamp: run.startTimeMillis,
+                jobName: jobName,
+                tag: tag
+            };
+        }));
 
         return pending;
       } catch (err) {

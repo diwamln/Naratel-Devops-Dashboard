@@ -159,21 +159,25 @@ export async function POST(req) {
              if (data.dbType === 'postgres') {
                 // STRICT CLEANUP: Remove any MySQL keys that might have slipped in
                 Object.keys(dbSecretObj).forEach(k => {
-                    if (k.startsWith('MYSQL_')) delete dbSecretObj[k];
+                    if (k.startsWith('MYSQL_') || k.startsWith('MARIADB_')) delete dbSecretObj[k];
                 });
 
-                // FORCE: Gunakan Key standar PostgreSQL (POSTGRES_*)
+                // FORCE: Gunakan Key standar Bitnami PostgreSQL (POSTGRESQL_*)
                 // Prioritaskan input dari dbSecretObj (Form DB Secrets), fallback ke appSecretObj (Form App Secrets)
                 
-                const userDbName = dbSecretObj["DB_NAME"] || appSecretObj["DB_NAME"] || dbName;
-                const userDbUser = dbSecretObj["DB_USER"] || appSecretObj["DB_USER"] || "admin";
-                const userDbPass = dbSecretObj["DB_PASS"] || appSecretObj["DB_PASS"] || "changeme_securely";
+                const userDbName = dbSecretObj["POSTGRESQL_DATABASE"] || dbSecretObj["POSTGRES_DB"] || dbSecretObj["DB_NAME"] || appSecretObj["DB_NAME"] || dbName;
+                const userDbUser = dbSecretObj["POSTGRESQL_USERNAME"] || dbSecretObj["POSTGRES_USER"] || dbSecretObj["DB_USER"] || appSecretObj["DB_USER"] || "admin";
+                const userDbPass = dbSecretObj["POSTGRESQL_PASSWORD"] || dbSecretObj["POSTGRES_PASSWORD"] || dbSecretObj["DB_PASS"] || appSecretObj["DB_PASS"] || "changeme_securely";
 
-                dbSecretObj["POSTGRES_DB"] = userDbName;
-                dbSecretObj["POSTGRES_USER"] = userDbUser;
-                dbSecretObj["POSTGRES_PASSWORD"] = userDbPass;
+                dbSecretObj["POSTGRESQL_DATABASE"] = userDbName;
+                dbSecretObj["POSTGRESQL_USERNAME"] = userDbUser;
+                dbSecretObj["POSTGRESQL_PASSWORD"] = userDbPass;
+                dbSecretObj["POSTGRESQL_POSTGRES_PASSWORD"] = userDbPass; // Set postgres root pass
                 
-                // Cleanup non-standard keys from dbSecretObj
+                // Cleanup non-standard/old keys
+                delete dbSecretObj["POSTGRES_DB"];
+                delete dbSecretObj["POSTGRES_USER"];
+                delete dbSecretObj["POSTGRES_PASSWORD"];
                 delete dbSecretObj["DB_NAME"];
                 delete dbSecretObj["DB_USER"];
                 delete dbSecretObj["DB_PASS"];
@@ -184,20 +188,24 @@ export async function POST(req) {
              } else {
                 // STRICT CLEANUP: Remove any Postgres keys that might have slipped in
                 Object.keys(dbSecretObj).forEach(k => {
-                    if (k.startsWith('POSTGRES_')) delete dbSecretObj[k];
+                    if (k.startsWith('POSTGRES_') || k.startsWith('POSTGRESQL_')) delete dbSecretObj[k];
                 });
 
-                // FORCE: Gunakan Key standar MySQL (MYSQL_*)
-                const userDbName = dbSecretObj["DB_NAME"] || appSecretObj["DB_NAME"] || dbName;
-                const userDbUser = dbSecretObj["DB_USER"] || appSecretObj["DB_USER"] || "admin";
-                const userDbPass = dbSecretObj["DB_PASS"] || appSecretObj["DB_PASS"] || "changeme_securely";
+                // FORCE: Gunakan Key standar Bitnami MariaDB (MARIADB_*)
+                const userDbName = dbSecretObj["MARIADB_DATABASE"] || dbSecretObj["MYSQL_DATABASE"] || dbSecretObj["DB_NAME"] || appSecretObj["DB_NAME"] || dbName;
+                const userDbUser = dbSecretObj["MARIADB_USER"] || dbSecretObj["MYSQL_USER"] || dbSecretObj["DB_USER"] || appSecretObj["DB_USER"] || "admin";
+                const userDbPass = dbSecretObj["MARIADB_PASSWORD"] || dbSecretObj["MYSQL_PASSWORD"] || dbSecretObj["DB_PASS"] || appSecretObj["DB_PASS"] || "changeme_securely";
 
-                dbSecretObj["MYSQL_DATABASE"] = userDbName;
-                dbSecretObj["MYSQL_USER"] = userDbUser;
-                dbSecretObj["MYSQL_PASSWORD"] = userDbPass;
-                dbSecretObj["MYSQL_ROOT_PASSWORD"] = "changeme_root";
+                dbSecretObj["MARIADB_DATABASE"] = userDbName;
+                dbSecretObj["MARIADB_USER"] = userDbUser;
+                dbSecretObj["MARIADB_PASSWORD"] = userDbPass;
+                dbSecretObj["MARIADB_ROOT_PASSWORD"] = dbSecretObj["MARIADB_ROOT_PASSWORD"] || dbSecretObj["MYSQL_ROOT_PASSWORD"] || "changeme_root";
                 
                 // Cleanup
+                delete dbSecretObj["MYSQL_DATABASE"];
+                delete dbSecretObj["MYSQL_USER"];
+                delete dbSecretObj["MYSQL_PASSWORD"];
+                delete dbSecretObj["MYSQL_ROOT_PASSWORD"];
                 delete dbSecretObj["DB_NAME"];
                 delete dbSecretObj["DB_USER"];
                 delete dbSecretObj["DB_PASS"];
@@ -238,6 +246,14 @@ service:
   port: ${data.servicePort}
   targetPort: ${data.targetPort}
 `.trim();
+
+            if (data.migrationEnabled) {
+                values += `
+
+migration:
+  enabled: true
+  command: "${data.migrationCommand}"`;
+            }
 
             if (data.dbType !== 'none') {
                 values += `
@@ -288,6 +304,14 @@ service:
   targetPort: ${data.targetPort}
 `.trim();
 
+            if (data.migrationEnabled) {
+                values += `
+
+migration:
+  enabled: true
+  command: "${data.migrationCommand}"`;
+            }
+
             if (data.dbType !== 'none') {
                 values += `
 
@@ -311,8 +335,8 @@ ingress:
 
         // C. DB PRODUCTION
         if (templateType === 'db-prod') {
-            const dbImage = data.dbType === 'postgres' ? 'postgres' : 'mariadb';
-            const dbTag = data.dbType === 'postgres' ? '15-alpine' : '10.11'; 
+            const dbImage = data.dbType === 'postgres' ? 'devopsnaratel/postgresql' : 'devopsnaratel/mariadb';
+            const dbTag = data.dbType === 'postgres' ? '18.1' : '12.1.2'; 
             const dbPort = data.dbType === 'postgres' ? 5432 : 3306;
 
             secrets = `secretData:\n${formatSecrets(dbSecretObj)}`;
@@ -341,8 +365,8 @@ backup:
 
         // D. DB TESTING
         if (templateType === 'db-testing') {
-            const dbImage = data.dbType === 'postgres' ? 'postgres' : 'mariadb';
-            const dbTag = data.dbType === 'postgres' ? '15-alpine' : '10.11';
+            const dbImage = data.dbType === 'postgres' ? 'devopsnaratel/postgresql' : 'devopsnaratel/mariadb';
+            const dbTag = data.dbType === 'postgres' ? '18.1' : '12.1.2';
             const dbPort = data.dbType === 'postgres' ? 5432 : 3306;
 
             secrets = `secretData:\n${formatSecrets(dbSecretObj)}`;
