@@ -57,9 +57,7 @@ export default function ManifestForm({ onClose, onSuccess }) {
 
     // Secrets
     appSecrets: [], 
-    separateAppSecrets: false,
     dbSecrets: [],  
-    separateDbSecrets: false,
 
     // Ingress
     ingressEnabled: false,
@@ -110,8 +108,8 @@ export default function ManifestForm({ onClose, onSuccess }) {
       try {
         const parsed = parseEnvFile(e.target.result);
         if (parsed.length === 0) { setMessage({ text: 'File is empty or invalid', type: 'error' }); return; }
-        const richParsed = parsed.map(p => ({ ...p, valueProd: p.value, valueTest: p.value }));
-        setForm(prev => ({ ...prev, appSecrets: richParsed }));
+        // Simplify: Just use key-value. Testing env will inherit these or be overridden by ephemeral logic if needed.
+        setForm(prev => ({ ...prev, appSecrets: parsed }));
         setAppFileName(file.name);
         setMessage({ text: `Loaded ${parsed.length} variables for App from ${file.name}`, type: 'success' });
       } catch (err) { setMessage({ text: 'Failed to read file', type: 'error' }); }
@@ -119,15 +117,11 @@ export default function ManifestForm({ onClose, onSuccess }) {
     reader.readAsText(file);
   };
   const clearAppEnv = () => { setAppFileName(''); setForm(prev => ({ ...prev, appSecrets: [] })); };
-  const addAppSecret = () => { setForm(prev => ({ ...prev, appSecrets: [...prev.appSecrets, { key: "", value: "", valueProd: "", valueTest: "" }] })); };
+  const addAppSecret = () => { setForm(prev => ({ ...prev, appSecrets: [...prev.appSecrets, { key: "", value: "" }] })); };
   
   const updateAppSecret = (index, field, value) => {
     const updated = [...form.appSecrets];
     updated[index][field] = value;
-    if (field === 'value') {
-        updated[index]['valueProd'] = value;
-        updated[index]['valueTest'] = value;
-    }
     setForm(prev => ({ ...prev, appSecrets: updated }));
   };
   
@@ -139,8 +133,8 @@ export default function ManifestForm({ onClose, onSuccess }) {
       try {
         const parsed = parseEnvFile(e.target.result);
         if (parsed.length === 0) { setMessage({ text: 'File is empty or invalid', type: 'error' }); return; }
-        const richParsed = parsed.map(p => ({ ...p, valueProd: p.value, valueTest: p.value }));
-        setForm(prev => ({ ...prev, dbSecrets: richParsed }));
+        // Simplify for ephemeral flow
+        setForm(prev => ({ ...prev, dbSecrets: parsed }));
         setDbFileName(file.name);
         setMessage({ text: `Loaded ${parsed.length} variables for DB from ${file.name}`, type: 'success' });
       } catch (err) { setMessage({ text: 'Failed to read file', type: 'error' }); }
@@ -152,10 +146,6 @@ export default function ManifestForm({ onClose, onSuccess }) {
   const updateDbSecret = (index, field, value) => {
     const updated = [...form.dbSecrets];
     updated[index][field] = value;
-    if (field === 'value') {
-        updated[index]['valueProd'] = value;
-        updated[index]['valueTest'] = value;
-    }
     setForm(prev => ({ ...prev, dbSecrets: updated }));
   };
 
@@ -163,16 +153,16 @@ export default function ManifestForm({ onClose, onSuccess }) {
      let newDbSecrets = [];
      if (type === 'postgres') {
         newDbSecrets = [
-           { key: "POSTGRESQL_DATABASE", value: "", valueProd: "", valueTest: "" },
-           { key: "POSTGRESQL_USERNAME", value: "", valueProd: "", valueTest: "" },
-           { key: "POSTGRESQL_PASSWORD", value: "", valueProd: "", valueTest: "" }
+           { key: "POSTGRESQL_DATABASE", value: "" },
+           { key: "POSTGRESQL_USERNAME", value: "postgres" }, // Default safer
+           { key: "POSTGRESQL_PASSWORD", value: "" }
         ];
      } else if (type === 'mariadb') {
         newDbSecrets = [
-           { key: "MARIADB_DATABASE", value: "", valueProd: "", valueTest: "" },
-           { key: "MARIADB_USER", value: "", valueProd: "", valueTest: "" },
-           { key: "MARIADB_PASSWORD", value: "", valueProd: "", valueTest: "" },
-           { key: "MARIADB_ROOT_PASSWORD", value: "", valueProd: "", valueTest: "" }
+           { key: "MARIADB_DATABASE", value: "" },
+           { key: "MARIADB_USER", value: "app_user" },
+           { key: "MARIADB_PASSWORD", value: "" },
+           { key: "MARIADB_ROOT_PASSWORD", value: "" }
         ];
      }
      setDbFileName('');
@@ -337,8 +327,13 @@ export default function ManifestForm({ onClose, onSuccess }) {
         {form.dbType !== 'none' && (
             <div className="p-4 rounded-xl bg-neutral-900 text-neutral-200 border border-neutral-700 shadow-inner">
                 <div className="flex items-center gap-2 mb-2 text-green-400"><Database size={16} /><span className="text-xs font-bold uppercase tracking-wider">Internal Database DNS</span></div>
-                <div className="flex items-center gap-2 bg-black/30 p-2 rounded border border-white/10"><code className="text-sm font-mono flex-1 text-white">svc-{form.appName}-db-{nextId}</code><button type="button" onClick={() => copyToClipboard(`svc-${form.appName}-db-${nextId}`)} className="p-1.5 hover:bg-white/10 rounded-md transition-colors text-neutral-400 hover:text-white" title="Copy DNS"><Copy size={14} /></button></div>
-                <p className="text-[10px] text-neutral-500 mt-2">Use this hostname to connect to your database from within the cluster. Port: <strong>{form.dbType === 'postgres' ? '5432' : '3306'}</strong>.</p>
+                <div className="flex items-center gap-2 bg-black/30 p-2 rounded border border-white/10">
+                    <code className="text-[10px] md:text-xs font-mono flex-1 text-white break-all">
+                        svc-db-{form.appName}-{nextId}.{nextId}-db-{form.appName}-prod.svc.cluster.local
+                    </code>
+                    <button type="button" onClick={() => copyToClipboard(`svc-db-${form.appName}-${nextId}.${nextId}-db-${form.appName}-prod.svc.cluster.local`)} className="p-1.5 hover:bg-white/10 rounded-md transition-colors text-neutral-400 hover:text-white shrink-0" title="Copy DNS"><Copy size={14} /></button>
+                </div>
+                <p className="text-[10px] text-neutral-500 mt-2">Use this hostname to connect to your database from your application.</p>
             </div>
         )}
 
@@ -480,8 +475,15 @@ export default function ManifestForm({ onClose, onSuccess }) {
            </form>
        </div>
 
-       <div className="p-6 bg-white dark:bg-neutral-900 border-t border-neutral-200 dark:border-neutral-800 flex justify-between items-center z-10">
+       <div className="p-6 bg-white dark:bg-neutral-900 border-t border-neutral-200 dark:border-neutral-800 flex justify-between items-center z-10 flex-wrap gap-4">
            <button type="button" onClick={prevStep} disabled={step === 1} className="flex items-center gap-2 px-6 py-2.5 rounded-lg text-sm font-bold text-neutral-600 hover:bg-neutral-100 dark:text-neutral-300 dark:hover:bg-neutral-800 disabled:opacity-30 disabled:cursor-not-allowed transition-all"><ChevronLeft size={16} /> Back</button>
+           
+           {step === 5 && (
+               <div className="text-xs text-neutral-500 max-w-xs text-right hidden md:block leading-tight">
+                   Generating <strong>Production</strong> manifests. Testing environments are ephemeral and created on-demand via Jenkins.
+               </div>
+           )}
+
            {step < 5 ? (<button type="button" onClick={nextStep} className="flex items-center gap-2 px-8 py-2.5 rounded-lg text-sm font-bold bg-neutral-900 text-white hover:bg-neutral-800 dark:bg-white dark:text-neutral-900 dark:hover:bg-neutral-200 shadow-md transition-all transform active:scale-95">Next Step <ChevronRight size={16} /></button>) : (<button type="button" onClick={handleDeploy} disabled={loading} className="flex items-center gap-2 bg-[#FFA500] hover:bg-[#FFA500]/90 text-white font-bold py-2.5 px-8 rounded-lg shadow-lg shadow-orange-500/20 transition-all transform active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed">{loading ? (<><Loader2 size={18} className="animate-spin" />Creating...</>) : (<><Server size={18} />Deploy App</>)}</button>)}
        </div>
     </div>

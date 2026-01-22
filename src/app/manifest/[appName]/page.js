@@ -118,6 +118,7 @@ export default function AppDetailsPage({ params }) {
   
   const [app, setApp] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [testEnvExists, setTestEnvExists] = useState(false);
   const [message, setMessage] = useState(null);
   
   const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
@@ -162,6 +163,17 @@ export default function AppDetailsPage({ params }) {
 
         if (found) {
             setApp(found);
+            
+            // CHECK TESTING ENVIRONMENT AVAILABILITY
+            try {
+                const testArgoRes = await fetch(`/api/manifest/argo-status?appName=${decodedName}-testing`);
+                const testArgoData = await testArgoRes.json();
+                if (testArgoData.health && testArgoData.health !== 'MissingConfig' && testArgoData.status !== 'NotFound') {
+                    setTestEnvExists(true);
+                }
+            } catch (e) {
+                console.warn("Failed to check testing env status", e);
+            }
         } else if (!message) {
             setMessage({ text: `Application "${decodedName}" not found in registry and couldn't be reached in ArgoCD.`, type: "error" });
         }
@@ -317,38 +329,40 @@ export default function AppDetailsPage({ params }) {
                 </div>
 
                 {/* Testing Flow */}
-                <div>
-                    <h3 className="text-xs font-bold text-neutral-400 uppercase tracking-wider mb-3 ml-1">Testing Environment</h3>
-                    <div className="flex flex-col md:flex-row items-stretch md:items-center gap-4">
-                        <div className="flex-1 min-w-0">
-                            <DeploymentCard 
-                                title="Application" 
-                                type="app" 
-                                env="TESTING" 
-                                argoAppName={`${app.name}-testing`} 
-                                nodePort={true}
-                            />
+                {testEnvExists && (
+                    <div>
+                        <h3 className="text-xs font-bold text-neutral-400 uppercase tracking-wider mb-3 ml-1">Testing Environment (Ephemeral)</h3>
+                        <div className="flex flex-col md:flex-row items-stretch md:items-center gap-4 animate-in fade-in slide-in-from-top-2">
+                            <div className="flex-1 min-w-0">
+                                <DeploymentCard 
+                                    title="Application" 
+                                    type="app" 
+                                    env="TESTING" 
+                                    argoAppName={`${app.name}-testing`} 
+                                    nodePort={true}
+                                />
+                            </div>
+                            
+                            {app.db !== 'none' && (
+                                <>
+                                    <div className="flex items-center justify-center text-neutral-300 dark:text-neutral-700">
+                                        <ArrowRight size={24} strokeWidth={1.5} className="hidden md:block" />
+                                        <ArrowDown size={24} strokeWidth={1.5} className="md:hidden" />
+                                    </div>
+                                    <div className="flex-1 min-w-0">
+                                        <DeploymentCard 
+                                            title="Database" 
+                                            type="db" 
+                                            env="TESTING" 
+                                            argoAppName={`${app.name}-db-testing`} 
+                                            internalDns={`svc-${app.name}-db-${app.id}.${app.id}-${app.name}-db-testing.svc.cluster.local`} 
+                                        />
+                                    </div>
+                                </>
+                            )}
                         </div>
-                        
-                        {app.db !== 'none' && (
-                            <>
-                                <div className="flex items-center justify-center text-neutral-300 dark:text-neutral-700">
-                                    <ArrowRight size={24} strokeWidth={1.5} className="hidden md:block" />
-                                    <ArrowDown size={24} strokeWidth={1.5} className="md:hidden" />
-                                </div>
-                                <div className="flex-1 min-w-0">
-                                    <DeploymentCard 
-                                        title="Database" 
-                                        type="db" 
-                                        env="TESTING" 
-                                        argoAppName={`${app.name}-db-testing`} 
-                                        internalDns={`svc-${app.name}-db-${app.id}`} 
-                                    />
-                                </div>
-                            </>
-                        )}
                     </div>
-                </div>
+                )}
             </div>
         </div>
 

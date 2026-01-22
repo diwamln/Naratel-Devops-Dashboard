@@ -115,7 +115,9 @@ export async function POST(req) {
             const dbName = data.appName.replace(/-/g, '_'); 
             
             // FORCE overwrite DB_HOST and DB_PORT to match the Service we are generating
-            appSecretObj["DB_HOST"] = `svc-${data.appName}-db-${data.appId}`;
+            // FIX: Using FQDN because DB is in a separate isolated namespace now
+            // Format: svc-db-{appName}-{id}.{id}-db-{appName}-{env}.svc.cluster.local
+            appSecretObj["DB_HOST"] = `svc-db-${data.appName}-${data.appId}.${data.appId}-db-${data.appName}-${env}.svc.cluster.local`;
             appSecretObj["DB_PORT"] = dbPort;
             
             // --- Standardize Keys (Map DB_USER -> DB_USERNAME, etc.) ---
@@ -346,7 +348,7 @@ controllerType: StatefulSet
 
 app:
   id: "${appId}"
-  name: "${appName}-db"
+  name: "db-${appName}"
   env: "prod"
 
 image:
@@ -437,12 +439,11 @@ backup:
 
 
       try {
+          // GENERATE PROD ONLY (Testing is now Ephemeral/On-Demand via Jenkins)
           processManifest(`${data.appName}-prod`, 'app-prod', 'prod');
-          processManifest(`${data.appName}-testing`, 'app-testing', 'testing');
 
           if (data.dbType !== 'none') {
               processManifest(`${data.appName}-db-prod`, 'db-prod', 'prod');
-              processManifest(`${data.appName}-db-testing`, 'db-testing', 'testing');
           }
 
           // Update Registry

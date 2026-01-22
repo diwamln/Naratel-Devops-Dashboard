@@ -135,7 +135,7 @@ export async function POST(req) {
             const config = { enabled, host, tls };
 
             updateIngressConfig(prodPath, config, false, appName);
-            updateIngressConfig(testPath, config, true, appName);
+            // Testing ingress config is handled during ephemeral deployment copy logic
 
             // Update Registry to sync ingressHost
             const registryPath = path.join(repoPath, 'registry.json');

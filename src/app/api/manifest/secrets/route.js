@@ -64,33 +64,29 @@ export async function GET(req) {
 
             const appsPath = path.join(repoPath, 'apps');
             
-            // TARGET secrets.yaml
+            // TARGET secrets.yaml (PROD ONLY)
             const appProdPath = path.join(appsPath, `${appName}-prod`, 'secrets.yaml');
-            const appTestPath = path.join(appsPath, `${appName}-testing`, 'secrets.yaml');
             const dbProdPath = path.join(appsPath, `${appName}-db-prod`, 'secrets.yaml');
-            const dbTestPath = path.join(appsPath, `${appName}-db-testing`, 'secrets.yaml');
 
             const appProdKeys = readSecretKeys(appProdPath);
-            const appTestKeys = readSecretKeys(appTestPath);
             
             // Check based on folder existence, assuming db folder implies db exists
             const dbProdFolder = path.dirname(dbProdPath);
             const dbExists = fs.existsSync(dbProdFolder);
             
             const dbProdKeys = dbExists ? readSecretKeys(dbProdPath) : {};
-            const dbTestKeys = dbExists ? readSecretKeys(dbTestPath) : {};
 
-            const mergeSecrets = (prodObj, testObj) => {
-                const keys = new Set([...Object.keys(prodObj), ...Object.keys(testObj)]);
+            const mapKeys = (prodObj) => {
+                const keys = Object.keys(prodObj);
                 const result = [];
                 keys.forEach(key => {
-                    result.push({ key, valueProd: "", valueTest: "" });
+                    result.push({ key, valueProd: "" });
                 });
                 return result;
             };
 
-            const appSecretsMerged = mergeSecrets(appProdKeys, appTestKeys);
-            const dbSecretsMerged = mergeSecrets(dbProdKeys, dbTestKeys);
+            const appSecretsMerged = mapKeys(appProdKeys);
+            const dbSecretsMerged = mapKeys(dbProdKeys);
 
             return NextResponse.json({
                 appSecrets: appSecretsMerged,
@@ -161,41 +157,31 @@ export async function POST(req) {
 
             const appsPath = path.join(repoPath, 'apps');
             
-            // --- PROCESS APP SECRETS ---
+            // --- PROCESS APP SECRETS (PROD ONLY) ---
             if (appSecrets && Array.isArray(appSecrets)) {
                 const appProdObj = {};
-                const appTestObj = {};
                 appSecrets.forEach(s => {
                     if (s.key) {
                         if (s.valueProd !== undefined && s.valueProd !== null) appProdObj[s.key] = s.valueProd;
-                        if (s.valueTest !== undefined && s.valueTest !== null) appTestObj[s.key] = s.valueTest;
                     }
                 });
 
                 const appProdPath = path.join(appsPath, `${appName}-prod`, 'secrets.yaml');
-                const appTestPath = path.join(appsPath, `${appName}-testing`, 'secrets.yaml');
-                
                 overwriteSecretFile(appProdPath, appProdObj, agePubKey);
-                overwriteSecretFile(appTestPath, appTestObj, agePubKey);
             }
 
-            // --- PROCESS DB SECRETS ---
+            // --- PROCESS DB SECRETS (PROD ONLY) ---
             if (dbSecrets && Array.isArray(dbSecrets)) {
                 const dbProdObj = {};
-                const dbTestObj = {};
                 dbSecrets.forEach(s => {
                     if (s.key) {
                         if (s.valueProd !== undefined && s.valueProd !== null) dbProdObj[s.key] = s.valueProd;
-                        if (s.valueTest !== undefined && s.valueTest !== null) dbTestObj[s.key] = s.valueTest;
                     }
                 });
 
                 const dbProdPath = path.join(appsPath, `${appName}-db-prod`, 'secrets.yaml');
-                const dbTestPath = path.join(appsPath, `${appName}-db-testing`, 'secrets.yaml');
-                
                 // Only overwrite if paths exist (or just try, the helper handles check)
                 overwriteSecretFile(dbProdPath, dbProdObj, agePubKey);
-                overwriteSecretFile(dbTestPath, dbTestObj, agePubKey);
             }
 
             execSync(`git add .`, { cwd: repoPath });

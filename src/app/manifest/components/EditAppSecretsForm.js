@@ -67,7 +67,8 @@ export default function EditAppSecretsForm({ appName, onClose, onSuccess }) {
     const reader = new FileReader();
     reader.onload = (e) => {
       const parsed = parseEnvFile(e.target.result);
-      const newSecrets = parsed.map(p => ({ key: p.key, valueProd: p.value, valueTest: p.value }));
+      // Simplify logic
+      const newSecrets = parsed.map(p => ({ key: p.key, valueProd: p.value }));
       setAppSecrets(prev => {
           const merged = [...prev];
           newSecrets.forEach(ns => {
@@ -177,17 +178,10 @@ export default function EditAppSecretsForm({ appName, onClose, onSuccess }) {
                           </div>
                           <div className="w-full md:w-2/3 flex flex-col md:flex-row gap-2">
                              <input 
-                                placeholder="Value (Production)"
+                                placeholder="Value (Will be encrypted)"
                                 className="flex-1 p-2 text-xs border border-neutral-200 dark:border-neutral-800 rounded bg-neutral-50 dark:bg-neutral-950 focus:ring-1 focus:ring-neutral-900 dark:focus:ring-white outline-none transition-all placeholder-neutral-400"
                                 value={secret.valueProd}
                                 onChange={e => updateAppSecret(idx, 'valueProd', e.target.value)}
-                                autoComplete="off"
-                             />
-                             <input 
-                                placeholder="Value (Testing)"
-                                className="flex-1 p-2 text-xs border border-neutral-200 dark:border-neutral-800 rounded bg-neutral-50 dark:bg-neutral-950 focus:ring-1 focus:ring-neutral-900 dark:focus:ring-white outline-none transition-all placeholder-neutral-400"
-                                value={secret.valueTest}
-                                onChange={e => updateAppSecret(idx, 'valueTest', e.target.value)}
                                 autoComplete="off"
                              />
                              <button type="button" onClick={() => setAppSecrets(prev => prev.filter((_, i) => i !== idx))} className="p-2 text-neutral-400 hover:text-red-500 hover:bg-red-50 dark:hover:bg-red-900/10 rounded transition-colors">
@@ -205,7 +199,7 @@ export default function EditAppSecretsForm({ appName, onClose, onSuccess }) {
 
                   <button 
                     type="button" 
-                    onClick={() => setAppSecrets([...appSecrets, {key: "NEW_KEY", valueProd: "", valueTest: ""}])} 
+                    onClick={() => setAppSecrets([...appSecrets, {key: "NEW_KEY", valueProd: ""}])} 
                     className="w-full py-2 flex items-center justify-center gap-2 text-xs font-medium text-neutral-500 hover:text-neutral-900 dark:hover:text-white border border-dashed border-neutral-200 dark:border-neutral-800 hover:border-neutral-300 dark:hover:border-neutral-600 rounded-md transition-all"
                   >
                       <Plus size={14} /> Add Secret

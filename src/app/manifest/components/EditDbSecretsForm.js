@@ -67,7 +67,8 @@ export default function EditDbSecretsForm({ appName, onClose, onSuccess }) {
     const reader = new FileReader();
     reader.onload = (e) => {
       const parsed = parseEnvFile(e.target.result);
-      const newSecrets = parsed.map(p => ({ key: p.key, valueProd: p.value, valueTest: p.value }));
+      // Simplify logic
+      const newSecrets = parsed.map(p => ({ key: p.key, valueProd: p.value }));
       setDbSecrets(prev => {
           const merged = [...prev];
           newSecrets.forEach(ns => {
@@ -177,17 +178,10 @@ export default function EditDbSecretsForm({ appName, onClose, onSuccess }) {
                             </div>
                             <div className="w-full md:w-2/3 flex flex-col md:flex-row gap-2">
                                 <input 
-                                    placeholder="Value (Prod)"
+                                    placeholder="Value (Will be encrypted)"
                                     className="flex-1 p-2 text-xs border border-neutral-200 dark:border-neutral-800 rounded bg-neutral-50 dark:bg-neutral-950 focus:ring-1 focus:ring-neutral-900 dark:focus:ring-white outline-none transition-all placeholder-neutral-400"
                                     value={secret.valueProd}
                                     onChange={e => updateDbSecret(idx, 'valueProd', e.target.value)}
-                                    autoComplete="off"
-                                />
-                                <input 
-                                    placeholder="Value (Test)"
-                                    className="flex-1 p-2 text-xs border border-neutral-200 dark:border-neutral-800 rounded bg-neutral-50 dark:bg-neutral-950 focus:ring-1 focus:ring-neutral-900 dark:focus:ring-white outline-none transition-all placeholder-neutral-400"
-                                    value={secret.valueTest}
-                                    onChange={e => updateDbSecret(idx, 'valueTest', e.target.value)}
                                     autoComplete="off"
                                 />
                             </div>
