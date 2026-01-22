@@ -2,20 +2,16 @@
 
 import { useState, useEffect } from "react";
 import {
-  Server,
-  CheckCircle,
-  AlertCircle,
   Plus,
   X,
-  Loader2
+  Loader2,
+  CheckCircle,
+  AlertCircle
 } from "lucide-react";
 import DashboardLayout from "../components/DashboardLayout";
 import { useRouter, useSearchParams, usePathname } from "next/navigation";
 import ManifestForm from "./components/ManifestForm";
 import AppList from "./components/AppList";
-import EditAppSecretsForm from "./components/EditAppSecretsForm";
-import EditDbSecretsForm from "./components/EditDbSecretsForm";
-import EditIngressForm from "./components/EditIngressForm";
 
 export default function ManifestPage() {
   const router = useRouter();
@@ -23,11 +19,14 @@ export default function ManifestPage() {
   const searchParams = useSearchParams();
   const searchQuery = searchParams.get('search')?.toLowerCase() || '';
   const action = searchParams.get('action');
+  const messageParam = searchParams.get('message');
 
   const [existingApps, setExistingApps] = useState([]);
   const [isLoadingRegistry, setIsLoadingRegistry] = useState(true);
-  const [isDeleting, setIsDeleting] = useState(null);
   
+  // Feedback Message
+  const [message, setMessage] = useState(null);
+
   // View State
   const isCreating = action === 'create';
 
@@ -36,15 +35,6 @@ export default function ManifestPage() {
     params.delete('action');
     router.push(`${pathname}?${params.toString()}`);
   };
-  
-  const [isEditAppSecretsOpen, setIsEditAppSecretsOpen] = useState(false);
-  const [isEditDbSecretsOpen, setIsEditDbSecretsOpen] = useState(false);
-  const [editingAppName, setEditingAppName] = useState(null);
-
-  const [isIngressModalOpen, setIsIngressModalOpen] = useState(false);
-  const [ingressAppName, setIngressAppName] = useState(null);
-
-  const [message, setMessage] = useState(null);
 
   const fetchRegistry = () => {
     setIsLoadingRegistry(true);
@@ -61,7 +51,14 @@ export default function ManifestPage() {
 
   useEffect(() => {
     fetchRegistry();
-  }, []);
+    if (messageParam) {
+        setMessage({ text: messageParam, type: 'success' });
+        // Clean URL
+        const params = new URLSearchParams(searchParams);
+        params.delete('message');
+        window.history.replaceState(null, '', `${pathname}?${params.toString()}`);
+    }
+  }, [messageParam]);
 
   const filteredApps = existingApps.filter(app => 
     app.name.toLowerCase().includes(searchQuery) ||
@@ -70,70 +67,10 @@ export default function ManifestPage() {
     (app.liveIngressProd && app.liveIngressProd.toLowerCase().includes(searchQuery))
   );
 
-  const handleDelete = async (appId, appName) => {
-    if(!confirm(`Are you sure you want to delete ${appName} (ID: ${appId})? This will remove all manifests from the repository.`)) return;
-    
-    setIsDeleting(appId);
-    setMessage(null);
-
-    try {
-        const res = await fetch("/api/manifest/delete", {
-            method: "POST",
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ appId, appName })
-        });
-        const result = await res.json();
-
-        if (res.ok) {
-            setMessage({ text: result.message, type: 'success' });
-            fetchRegistry();
-        } else {
-            throw new Error(result.error || "Failed to delete app");
-        }
-    } catch (err) {
-        setMessage({ text: err.message, type: 'error' });
-    } finally {
-        setIsDeleting(null);
-    }
-  };
-
   const handleFormSuccess = (msg) => {
     handleCloseCreate();
     setMessage({ text: msg, type: 'success' });
     fetchRegistry();
-  };
-
-  const handleEditAppSecrets = (appName) => {
-      setEditingAppName(appName);
-      setIsEditAppSecretsOpen(true);
-  };
-
-  const handleEditDbSecrets = (appName) => {
-      setEditingAppName(appName);
-      setIsEditDbSecretsOpen(true);
-  };
-
-  const handleEditAppSecretsSuccess = (msg) => {
-      setIsEditAppSecretsOpen(false);
-      setEditingAppName(null);
-      setMessage({ text: msg, type: 'success' });
-  };
-
-  const handleEditDbSecretsSuccess = (msg) => {
-      setIsEditDbSecretsOpen(false);
-      setEditingAppName(null);
-      setMessage({ text: msg, type: 'success' });
-  };
-
-  const handleEditIngress = (appName) => {
-      setIngressAppName(appName);
-      setIsIngressModalOpen(true);
-  };
-
-  const handleIngressSuccess = (msg) => {
-      setIsIngressModalOpen(false);
-      setIngressAppName(null);
-      setMessage({ text: msg, type: 'success' });
   };
 
   return (
@@ -172,55 +109,11 @@ export default function ManifestPage() {
               ) : (
                 <AppList 
                     apps={filteredApps}
-                    onDelete={handleDelete}
-                    onEditAppSecrets={handleEditAppSecrets}
-                    onEditDbSecrets={handleEditDbSecrets}
-                    onEditIngress={handleEditIngress}
-                    isDeleting={isDeleting}
-                    onCreate={() => {
-                        const params = new URLSearchParams(searchParams);
-                        params.set('action', 'create');
-                        router.push(`${pathname}?${params.toString()}`);
-                    }}
                 />
               )}
             </>
           )}
         </div>
-
-        {/* Modal Edit App Secrets Overlay */}
-        {isEditAppSecretsOpen && editingAppName && (
-            <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50 animate-in fade-in">
-                <EditAppSecretsForm 
-                    appName={editingAppName}
-                    onClose={() => { setIsEditAppSecretsOpen(false); setEditingAppName(null); }} 
-                    onSuccess={handleEditAppSecretsSuccess} 
-                />
-            </div>
-        )}
-
-        {/* Modal Edit DB Secrets Overlay */}
-        {isEditDbSecretsOpen && editingAppName && (
-            <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50 animate-in fade-in">
-                <EditDbSecretsForm 
-                    appName={editingAppName}
-                    onClose={() => { setIsEditDbSecretsOpen(false); setEditingAppName(null); }} 
-                    onSuccess={handleEditDbSecretsSuccess} 
-                />
-            </div>
-        )}
-
-        {/* Modal Edit Ingress Overlay */}
-        {isIngressModalOpen && ingressAppName && (
-            <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50 animate-in fade-in">
-                <EditIngressForm
-                    appName={ingressAppName}
-                    onClose={() => { setIsIngressModalOpen(false); setIngressAppName(null); }} 
-                    onSuccess={handleIngressSuccess} 
-                />
-            </div>
-        )}
-
     </DashboardLayout>
   );
 }

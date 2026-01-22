@@ -17,12 +17,14 @@ export default function DashboardLayout({ children }) {
 
       {/* Main Content Wrapper with Dynamic Margin */}
       <main 
-        className={`transition-all duration-300 ease-in-out min-h-screen p-6 text-neutral-900 dark:text-white ${
+        className={`transition-all duration-300 ease-in-out min-h-screen text-neutral-900 dark:text-white ${
             isCollapsed ? 'md:ml-20' : 'md:ml-60'
         }`}
       >
         <TopBar />
-        {children}
+        <div className="p-8">
+          {children}
+        </div>
       </main>
     </div>
   );

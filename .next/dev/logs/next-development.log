@@ -1,5 +1,5 @@
-[00:00:01.239] Server  WARN     ⚠ The "middleware" file convention is deprecated. Please use "proxy" instead. Learn more: https://nextjs.org/docs/messages/middleware-to-proxy
-[00:00:01.242] Server  ERROR    ⨯ The file "./src/middleware.js" must export a function, either as a default export or as a named "middleware" export.
+[00:00:01.034] Server  WARN     ⚠ The "middleware" file convention is deprecated. Please use "proxy" instead. Learn more: https://nextjs.org/docs/messages/middleware-to-proxy
+[00:00:01.038] Server  ERROR    ⨯ The file "./src/middleware.js" must export a function, either as a default export or as a named "middleware" export.
 This function is what Next.js runs for every request handled by this middleware.
 
 Why this happens:
@@ -11,211 +11,53 @@ To fix it:
 - Ensure this file has either a default or "middleware" function export.
 
 Learn more: https://nextjs.org/docs/messages/middleware-to-proxy
-[00:00:01.378] Server  LOG      ✓ Ready in 1000ms
-[00:00:08.933] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:00:09.538] Server  LOG     Optimization: Processing 0 active jobs out of 8 total jobs.
-[00:00:19.163] Server  LOG     Optimization: Processing 0 active jobs out of 8 total jobs.
-[00:00:29.493] Server  LOG     Optimization: Processing 0 active jobs out of 8 total jobs.
-[00:18:47.967] Server  LOG     Optimization: Processing 0 active jobs out of 8 total jobs.
-[00:18:48.050] Server  LOG     Optimization: Processing 0 active jobs out of 8 total jobs.
-[00:19:52.568] Server  LOG      ✓ Compiled in 56ms
-[00:19:52.613] Server  LOG      ✓ Compiled in 39ms
-[00:19:52.676] Server  LOG      ✓ Compiled in 31ms
-[00:19:52.881] Server  LOG      ✓ Compiled in 204ms
-[00:23:10.870] Server  LOG      ✓ Compiled in 24ms
-[00:23:10.902] Server  LOG      ✓ Compiled in 29ms
-[00:25:17.313] Server  WARN     ⚠ Cross origin request detected from 192.168.89.127 to /_next/* resource. In a future major version of Next.js, you will need to explicitly configure "allowedDevOrigins" in next.config to allow this.
+[00:00:01.161] Server  LOG      ✓ Ready in 835ms
+[00:01:09.730] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:01:10.262] Server  LOG     Optimization: Processing 0 active jobs out of 8 total jobs.
+[00:01:19.903] Server  LOG     Optimization: Processing 0 active jobs out of 8 total jobs.
+[00:01:28.863] Server  LOG     [ArgoCD] Attempting login to http://117.103.71.154:32081...
+[00:01:28.870] Server  LOG     [ArgoCD] Attempting login to http://117.103.71.154:32081...
+[00:01:28.875] Server  LOG     [ArgoCD] Attempting login to http://117.103.71.154:32081...
+[00:01:28.881] Server  LOG     [ArgoCD] Attempting login to http://117.103.71.154:32081...
+[00:01:29.713] Server  LOG     [ArgoCD] Login successful, token cached.
+[00:01:29.716] Server  LOG     [ArgoCD] Login successful, token cached.
+[00:01:29.858] Server  LOG     [ArgoCD] Login successful, token cached.
+[00:01:29.860] Server  LOG     [ArgoCD] Login successful, token cached.
+[00:19:52.083] Server  WARN     ⚠ Cross origin request detected from 192.168.89.127 to /_next/* resource. In a future major version of Next.js, you will need to explicitly configure "allowedDevOrigins" in next.config to allow this.
 Read more: https://nextjs.org/docs/app/api-reference/config/next-config-js/allowedDevOrigins
-[00:25:17.335] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:30:45.523] Server  LOG     Optimization: Processing 0 active jobs out of 8 total jobs.
-[00:30:45.698] Server  LOG     Optimization: Processing 0 active jobs out of 8 total jobs.
-[00:31:36.046] Server  LOG      ✓ Compiled in 95ms
-[00:31:50.042] Server  LOG      ✓ Compiled in 35ms
-[00:32:01.434] Server  LOG      ✓ Compiled in 126ms
-[00:32:12.166] Server  LOG     Optimization: Processing 0 active jobs out of 8 total jobs.
-[00:32:12.255] Server  LOG     Optimization: Processing 0 active jobs out of 8 total jobs.
-[00:32:41.764] Server  LOG      ✓ Compiled in 75ms
-[00:33:23.915] Server  LOG     Optimization: Processing 0 active jobs out of 8 total jobs.
-[00:33:23.991] Server  LOG     Optimization: Processing 0 active jobs out of 8 total jobs.
-[00:40:20.351] Server  LOG     Updating repository at /tmp/manifest-repo-workdir...
-[00:40:21.129] Server  LOG     [DEBUG] Mapping DB Secrets for type: "mariadb"
-[00:40:21.129] Server  LOG     [DEBUG] Initial dbSecretObj: "{\n  \"MYSQL_DATABASE\": \"laravel_fullstack_app\",\n  \"MYSQL_USER\": \"diwa\",\n  \"MYSQL_PASSWORD\": \"password\",\n  \"MYSQL_ROOT_PASSWORD\": \"password\"\n}"
-[00:40:21.130] Server  LOG     [DEBUG] Final dbSecretObj: "{\n  \"MYSQL_DATABASE\": \"laravel_fullstack_app\",\n  \"MYSQL_USER\": \"diwa\",\n  \"MYSQL_PASSWORD\": \"password\",\n  \"MYSQL_ROOT_PASSWORD\": \"password\"\n}"
-[00:40:21.130] Server  LOG     [DEBUG] Generating laravel-diwaw-prod (prod):
-[00:40:21.134] Server  LOG     App Secret Keys: ["APP_NAME","APP_ENV","APP_KEY","APP_DEBUG","APP_URL","LOG_CHANNEL","LOG_LEVEL","DB_CONNECTION","DB_HOST","DB_PORT","DB_DATABASE","DB_USERNAME","DB_PASSWORD","BROADCAST_DRIVER","CACHE_DRIVER","FILESYSTEM_DRIVER","QUEUE_CONNECTION","SESSION_DRIVER","SESSION_LIFETIME","MEMCACHED_HOST","REDIS_HOST","REDIS_PASSWORD","REDIS_PORT","MAIL_MAILER","MAIL_HOST","MAIL_PORT","MAIL_USERNAME","MAIL_PASSWORD","MAIL_ENCRYPTION","MAIL_FROM_ADDRESS","MAIL_FROM_NAME","AWS_ACCESS_KEY_ID","AWS_SECRET_ACCESS_KEY","AWS_DEFAULT_REGION","AWS_BUCKET","AWS_USE_PATH_STYLE_ENDPOINT","PUSHER_APP_ID","PUSHER_APP_KEY","PUSHER_APP_SECRET","PUSHER_APP_CLUSTER","MIX_PUSHER_APP_KEY","MIX_PUSHER_APP_CLUSTER"]
-[00:40:21.196] Server  LOG     [DEBUG] Mapping DB Secrets for type: "mariadb"
-[00:40:21.197] Server  LOG     [DEBUG] Initial dbSecretObj: "{\n  \"MYSQL_DATABASE\": \"laravel_fullstack_app\",\n  \"MYSQL_USER\": \"diwa\",\n  \"MYSQL_PASSWORD\": \"password\",\n  \"MYSQL_ROOT_PASSWORD\": \"password\"\n}"
-[00:40:21.197] Server  LOG     [DEBUG] Final dbSecretObj: "{\n  \"MYSQL_DATABASE\": \"laravel_fullstack_app\",\n  \"MYSQL_USER\": \"diwa\",\n  \"MYSQL_PASSWORD\": \"password\",\n  \"MYSQL_ROOT_PASSWORD\": \"password\"\n}"
-[00:40:21.197] Server  LOG     [DEBUG] Generating laravel-diwaw-testing (testing):
-[00:40:21.197] Server  LOG     App Secret Keys: ["APP_NAME","APP_ENV","APP_KEY","APP_DEBUG","APP_URL","LOG_CHANNEL","LOG_LEVEL","DB_CONNECTION","DB_HOST","DB_PORT","DB_DATABASE","DB_USERNAME","DB_PASSWORD","BROADCAST_DRIVER","CACHE_DRIVER","FILESYSTEM_DRIVER","QUEUE_CONNECTION","SESSION_DRIVER","SESSION_LIFETIME","MEMCACHED_HOST","REDIS_HOST","REDIS_PASSWORD","REDIS_PORT","MAIL_MAILER","MAIL_HOST","MAIL_PORT","MAIL_USERNAME","MAIL_PASSWORD","MAIL_ENCRYPTION","MAIL_FROM_ADDRESS","MAIL_FROM_NAME","AWS_ACCESS_KEY_ID","AWS_SECRET_ACCESS_KEY","AWS_DEFAULT_REGION","AWS_BUCKET","AWS_USE_PATH_STYLE_ENDPOINT","PUSHER_APP_ID","PUSHER_APP_KEY","PUSHER_APP_SECRET","PUSHER_APP_CLUSTER","MIX_PUSHER_APP_KEY","MIX_PUSHER_APP_CLUSTER"]
-[00:40:21.221] Server  LOG     [DEBUG] Mapping DB Secrets for type: "mariadb"
-[00:40:21.222] Server  LOG     [DEBUG] Initial dbSecretObj: "{\n  \"MYSQL_DATABASE\": \"laravel_fullstack_app\",\n  \"MYSQL_USER\": \"diwa\",\n  \"MYSQL_PASSWORD\": \"password\",\n  \"MYSQL_ROOT_PASSWORD\": \"password\"\n}"
-[00:40:21.222] Server  LOG     [DEBUG] Final dbSecretObj: "{\n  \"MYSQL_DATABASE\": \"laravel_fullstack_app\",\n  \"MYSQL_USER\": \"diwa\",\n  \"MYSQL_PASSWORD\": \"password\",\n  \"MYSQL_ROOT_PASSWORD\": \"password\"\n}"
-[00:40:21.222] Server  LOG     [DEBUG] Generating laravel-diwaw-db-prod (prod):
-[00:40:21.223] Server  LOG     DB Secret Keys: ["MYSQL_DATABASE","MYSQL_USER","MYSQL_PASSWORD","MYSQL_ROOT_PASSWORD"]
-[00:40:21.246] Server  LOG     [DEBUG] Mapping DB Secrets for type: "mariadb"
-[00:40:21.246] Server  LOG     [DEBUG] Initial dbSecretObj: "{\n  \"MYSQL_DATABASE\": \"laravel_fullstack_app\",\n  \"MYSQL_USER\": \"diwa\",\n  \"MYSQL_PASSWORD\": \"password\",\n  \"MYSQL_ROOT_PASSWORD\": \"password\"\n}"
-[00:40:21.246] Server  LOG     [DEBUG] Final dbSecretObj: "{\n  \"MYSQL_DATABASE\": \"laravel_fullstack_app\",\n  \"MYSQL_USER\": \"diwa\",\n  \"MYSQL_PASSWORD\": \"password\",\n  \"MYSQL_ROOT_PASSWORD\": \"password\"\n}"
-[00:40:21.246] Server  LOG     [DEBUG] Generating laravel-diwaw-db-testing (testing):
-[00:40:21.246] Server  LOG     DB Secret Keys: ["MYSQL_DATABASE","MYSQL_USER","MYSQL_PASSWORD","MYSQL_ROOT_PASSWORD"]
-[01:14:23.270] Server  LOG      ✓ Compiled in 25ms
-[01:16:08.633] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[01:19:34.445] Server  LOG     Updating repository at /tmp/manifest-repo-workdir...
-[01:19:35.223] Server  LOG     [DEBUG] Mapping DB Secrets for type: "mariadb"
-[01:19:35.223] Server  LOG     [DEBUG] Initial dbSecretObj: "{\n  \"MARIADB_DATABASE\": \"laravel_fullstack_app\",\n  \"MARIADB_USER\": \"diwa\",\n  \"MARIADB_PASSWORD\": \"password\",\n  \"MARIADB_ROOT_PASSWORD\": \"password\"\n}"
-[01:19:35.224] Server  LOG     [DEBUG] Final dbSecretObj: "{\n  \"MARIADB_DATABASE\": \"laravel_fullstack_app\",\n  \"MARIADB_USER\": \"diwa\",\n  \"MARIADB_PASSWORD\": \"password\",\n  \"MARIADB_ROOT_PASSWORD\": \"password\"\n}"
-[01:19:35.225] Server  LOG     [DEBUG] Generating contoh-prod (prod):
-[01:19:35.226] Server  LOG     App Secret Keys: ["APP_NAME","APP_ENV","APP_KEY","APP_DEBUG","APP_URL","LOG_CHANNEL","LOG_LEVEL","DB_CONNECTION","DB_HOST","DB_PORT","DB_DATABASE","DB_USERNAME","DB_PASSWORD","BROADCAST_DRIVER","CACHE_DRIVER","FILESYSTEM_DRIVER","QUEUE_CONNECTION","SESSION_DRIVER","SESSION_LIFETIME","MEMCACHED_HOST","REDIS_HOST","REDIS_PASSWORD","REDIS_PORT","MAIL_MAILER","MAIL_HOST","MAIL_PORT","MAIL_USERNAME","MAIL_PASSWORD","MAIL_ENCRYPTION","MAIL_FROM_ADDRESS","MAIL_FROM_NAME","AWS_ACCESS_KEY_ID","AWS_SECRET_ACCESS_KEY","AWS_DEFAULT_REGION","AWS_BUCKET","AWS_USE_PATH_STYLE_ENDPOINT","PUSHER_APP_ID","PUSHER_APP_KEY","PUSHER_APP_SECRET","PUSHER_APP_CLUSTER","MIX_PUSHER_APP_KEY","MIX_PUSHER_APP_CLUSTER"]
-[01:19:35.252] Server  LOG     [DEBUG] Mapping DB Secrets for type: "mariadb"
-[01:19:35.252] Server  LOG     [DEBUG] Initial dbSecretObj: "{\n  \"MARIADB_DATABASE\": \"laravel_fullstack_app\",\n  \"MARIADB_USER\": \"diwa\",\n  \"MARIADB_PASSWORD\": \"password\",\n  \"MARIADB_ROOT_PASSWORD\": \"password\"\n}"
-[01:19:35.253] Server  LOG     [DEBUG] Final dbSecretObj: "{\n  \"MARIADB_DATABASE\": \"laravel_fullstack_app\",\n  \"MARIADB_USER\": \"diwa\",\n  \"MARIADB_PASSWORD\": \"password\",\n  \"MARIADB_ROOT_PASSWORD\": \"password\"\n}"
-[01:19:35.253] Server  LOG     [DEBUG] Generating contoh-testing (testing):
-[01:19:35.253] Server  LOG     App Secret Keys: ["APP_NAME","APP_ENV","APP_KEY","APP_DEBUG","APP_URL","LOG_CHANNEL","LOG_LEVEL","DB_CONNECTION","DB_HOST","DB_PORT","DB_DATABASE","DB_USERNAME","DB_PASSWORD","BROADCAST_DRIVER","CACHE_DRIVER","FILESYSTEM_DRIVER","QUEUE_CONNECTION","SESSION_DRIVER","SESSION_LIFETIME","MEMCACHED_HOST","REDIS_HOST","REDIS_PASSWORD","REDIS_PORT","MAIL_MAILER","MAIL_HOST","MAIL_PORT","MAIL_USERNAME","MAIL_PASSWORD","MAIL_ENCRYPTION","MAIL_FROM_ADDRESS","MAIL_FROM_NAME","AWS_ACCESS_KEY_ID","AWS_SECRET_ACCESS_KEY","AWS_DEFAULT_REGION","AWS_BUCKET","AWS_USE_PATH_STYLE_ENDPOINT","PUSHER_APP_ID","PUSHER_APP_KEY","PUSHER_APP_SECRET","PUSHER_APP_CLUSTER","MIX_PUSHER_APP_KEY","MIX_PUSHER_APP_CLUSTER"]
-[01:19:35.278] Server  LOG     [DEBUG] Mapping DB Secrets for type: "mariadb"
-[01:19:35.278] Server  LOG     [DEBUG] Initial dbSecretObj: "{\n  \"MARIADB_DATABASE\": \"laravel_fullstack_app\",\n  \"MARIADB_USER\": \"diwa\",\n  \"MARIADB_PASSWORD\": \"password\",\n  \"MARIADB_ROOT_PASSWORD\": \"password\"\n}"
-[01:19:35.279] Server  LOG     [DEBUG] Final dbSecretObj: "{\n  \"MARIADB_DATABASE\": \"laravel_fullstack_app\",\n  \"MARIADB_USER\": \"diwa\",\n  \"MARIADB_PASSWORD\": \"password\",\n  \"MARIADB_ROOT_PASSWORD\": \"password\"\n}"
-[01:19:35.279] Server  LOG     [DEBUG] Generating contoh-db-prod (prod):
-[01:19:35.279] Server  LOG     DB Secret Keys: ["MARIADB_DATABASE","MARIADB_USER","MARIADB_PASSWORD","MARIADB_ROOT_PASSWORD"]
-[01:19:35.304] Server  LOG     [DEBUG] Mapping DB Secrets for type: "mariadb"
-[01:19:35.304] Server  LOG     [DEBUG] Initial dbSecretObj: "{\n  \"MARIADB_DATABASE\": \"laravel_fullstack_app\",\n  \"MARIADB_USER\": \"diwa\",\n  \"MARIADB_PASSWORD\": \"password\",\n  \"MARIADB_ROOT_PASSWORD\": \"password\"\n}"
-[01:19:35.304] Server  LOG     [DEBUG] Final dbSecretObj: "{\n  \"MARIADB_DATABASE\": \"laravel_fullstack_app\",\n  \"MARIADB_USER\": \"diwa\",\n  \"MARIADB_PASSWORD\": \"password\",\n  \"MARIADB_ROOT_PASSWORD\": \"password\"\n}"
-[01:19:35.305] Server  LOG     [DEBUG] Generating contoh-db-testing (testing):
-[01:19:35.305] Server  LOG     DB Secret Keys: ["MARIADB_DATABASE","MARIADB_USER","MARIADB_PASSWORD","MARIADB_ROOT_PASSWORD"]
-[01:46:13.776] Server  LOG     Updating repository at /tmp/manifest-repo-workdir...
-[01:46:14.541] Server  LOG     [DEBUG] Mapping DB Secrets for type: "mariadb"
-[01:46:14.542] Server  LOG     [DEBUG] Initial dbSecretObj: "{\n  \"MARIADB_DATABASE\": \"laravel_fullstack_app\",\n  \"MARIADB_USER\": \"diwa\",\n  \"MARIADB_PASSWORD\": \"password\",\n  \"MARIADB_ROOT_PASSWORD\": \"password\"\n}"
-[01:46:14.542] Server  LOG     [DEBUG] Final dbSecretObj: "{\n  \"MARIADB_DATABASE\": \"laravel_fullstack_app\",\n  \"MARIADB_USER\": \"diwa\",\n  \"MARIADB_PASSWORD\": \"password\",\n  \"MARIADB_ROOT_PASSWORD\": \"password\"\n}"
-[01:46:14.542] Server  LOG     [DEBUG] Generating sybau-prod (prod):
-[01:46:14.543] Server  LOG     App Secret Keys: ["APP_NAME","APP_ENV","APP_KEY","APP_DEBUG","APP_URL","LOG_CHANNEL","LOG_LEVEL","DB_CONNECTION","DB_HOST","DB_PORT","DB_DATABASE","DB_USERNAME","DB_PASSWORD","BROADCAST_DRIVER","CACHE_DRIVER","FILESYSTEM_DRIVER","QUEUE_CONNECTION","SESSION_DRIVER","SESSION_LIFETIME","MEMCACHED_HOST","REDIS_HOST","REDIS_PASSWORD","REDIS_PORT","MAIL_MAILER","MAIL_HOST","MAIL_PORT","MAIL_USERNAME","MAIL_PASSWORD","MAIL_ENCRYPTION","MAIL_FROM_ADDRESS","MAIL_FROM_NAME","AWS_ACCESS_KEY_ID","AWS_SECRET_ACCESS_KEY","AWS_DEFAULT_REGION","AWS_BUCKET","AWS_USE_PATH_STYLE_ENDPOINT","PUSHER_APP_ID","PUSHER_APP_KEY","PUSHER_APP_SECRET","PUSHER_APP_CLUSTER","MIX_PUSHER_APP_KEY","MIX_PUSHER_APP_CLUSTER"]
-[01:46:14.570] Server  LOG     [DEBUG] Mapping DB Secrets for type: "mariadb"
-[01:46:14.571] Server  LOG     [DEBUG] Initial dbSecretObj: "{\n  \"MARIADB_DATABASE\": \"laravel_fullstack_app\",\n  \"MARIADB_USER\": \"diwa\",\n  \"MARIADB_PASSWORD\": \"password\",\n  \"MARIADB_ROOT_PASSWORD\": \"password\"\n}"
-[01:46:14.571] Server  LOG     [DEBUG] Final dbSecretObj: "{\n  \"MARIADB_DATABASE\": \"laravel_fullstack_app\",\n  \"MARIADB_USER\": \"diwa\",\n  \"MARIADB_PASSWORD\": \"password\",\n  \"MARIADB_ROOT_PASSWORD\": \"password\"\n}"
-[01:46:14.571] Server  LOG     [DEBUG] Generating sybau-testing (testing):
-[01:46:14.571] Server  LOG     App Secret Keys: ["APP_NAME","APP_ENV","APP_KEY","APP_DEBUG","APP_URL","LOG_CHANNEL","LOG_LEVEL","DB_CONNECTION","DB_HOST","DB_PORT","DB_DATABASE","DB_USERNAME","DB_PASSWORD","BROADCAST_DRIVER","CACHE_DRIVER","FILESYSTEM_DRIVER","QUEUE_CONNECTION","SESSION_DRIVER","SESSION_LIFETIME","MEMCACHED_HOST","REDIS_HOST","REDIS_PASSWORD","REDIS_PORT","MAIL_MAILER","MAIL_HOST","MAIL_PORT","MAIL_USERNAME","MAIL_PASSWORD","MAIL_ENCRYPTION","MAIL_FROM_ADDRESS","MAIL_FROM_NAME","AWS_ACCESS_KEY_ID","AWS_SECRET_ACCESS_KEY","AWS_DEFAULT_REGION","AWS_BUCKET","AWS_USE_PATH_STYLE_ENDPOINT","PUSHER_APP_ID","PUSHER_APP_KEY","PUSHER_APP_SECRET","PUSHER_APP_CLUSTER","MIX_PUSHER_APP_KEY","MIX_PUSHER_APP_CLUSTER"]
-[01:46:14.596] Server  LOG     [DEBUG] Mapping DB Secrets for type: "mariadb"
-[01:46:14.597] Server  LOG     [DEBUG] Initial dbSecretObj: "{\n  \"MARIADB_DATABASE\": \"laravel_fullstack_app\",\n  \"MARIADB_USER\": \"diwa\",\n  \"MARIADB_PASSWORD\": \"password\",\n  \"MARIADB_ROOT_PASSWORD\": \"password\"\n}"
-[01:46:14.597] Server  LOG     [DEBUG] Final dbSecretObj: "{\n  \"MARIADB_DATABASE\": \"laravel_fullstack_app\",\n  \"MARIADB_USER\": \"diwa\",\n  \"MARIADB_PASSWORD\": \"password\",\n  \"MARIADB_ROOT_PASSWORD\": \"password\"\n}"
-[01:46:14.597] Server  LOG     [DEBUG] Generating sybau-db-prod (prod):
-[01:46:14.597] Server  LOG     DB Secret Keys: ["MARIADB_DATABASE","MARIADB_USER","MARIADB_PASSWORD","MARIADB_ROOT_PASSWORD"]
-[01:46:14.621] Server  LOG     [DEBUG] Mapping DB Secrets for type: "mariadb"
-[01:46:14.621] Server  LOG     [DEBUG] Initial dbSecretObj: "{\n  \"MARIADB_DATABASE\": \"laravel_fullstack_app\",\n  \"MARIADB_USER\": \"diwa\",\n  \"MARIADB_PASSWORD\": \"password\",\n  \"MARIADB_ROOT_PASSWORD\": \"password\"\n}"
-[01:46:14.621] Server  LOG     [DEBUG] Final dbSecretObj: "{\n  \"MARIADB_DATABASE\": \"laravel_fullstack_app\",\n  \"MARIADB_USER\": \"diwa\",\n  \"MARIADB_PASSWORD\": \"password\",\n  \"MARIADB_ROOT_PASSWORD\": \"password\"\n}"
-[01:46:14.621] Server  LOG     [DEBUG] Generating sybau-db-testing (testing):
-[01:46:14.621] Server  LOG     DB Secret Keys: ["MARIADB_DATABASE","MARIADB_USER","MARIADB_PASSWORD","MARIADB_ROOT_PASSWORD"]
-[02:26:17.851] Server  LOG     Updating repository at /tmp/manifest-repo-workdir...
-[02:26:18.736] Server  LOG     [DEBUG] Mapping DB Secrets for type: "mariadb"
-[02:26:18.736] Server  LOG     [DEBUG] Initial dbSecretObj: "{\n  \"MARIADB_DATABASE\": \"laravel_fullstack_app\",\n  \"MARIADB_USER\": \"diwa\",\n  \"MARIADB_PASSWORD\": \"password\",\n  \"MARIADB_ROOT_PASSWORD\": \"password\"\n}"
-[02:26:18.736] Server  LOG     [DEBUG] Final dbSecretObj: "{\n  \"MARIADB_DATABASE\": \"laravel_fullstack_app\",\n  \"MARIADB_USER\": \"diwa\",\n  \"MARIADB_PASSWORD\": \"password\",\n  \"MARIADB_ROOT_PASSWORD\": \"password\"\n}"
-[02:26:18.737] Server  LOG     [DEBUG] Generating sybau-prod (prod):
-[02:26:18.737] Server  LOG     App Secret Keys: ["APP_NAME","APP_ENV","APP_KEY","APP_DEBUG","APP_URL","LOG_CHANNEL","LOG_LEVEL","DB_CONNECTION","DB_HOST","DB_PORT","DB_DATABASE","DB_USERNAME","DB_PASSWORD","BROADCAST_DRIVER","CACHE_DRIVER","FILESYSTEM_DRIVER","QUEUE_CONNECTION","SESSION_DRIVER","SESSION_LIFETIME","MEMCACHED_HOST","REDIS_HOST","REDIS_PASSWORD","REDIS_PORT","MAIL_MAILER","MAIL_HOST","MAIL_PORT","MAIL_USERNAME","MAIL_PASSWORD","MAIL_ENCRYPTION","MAIL_FROM_ADDRESS","MAIL_FROM_NAME","AWS_ACCESS_KEY_ID","AWS_SECRET_ACCESS_KEY","AWS_DEFAULT_REGION","AWS_BUCKET","AWS_USE_PATH_STYLE_ENDPOINT","PUSHER_APP_ID","PUSHER_APP_KEY","PUSHER_APP_SECRET","PUSHER_APP_CLUSTER","MIX_PUSHER_APP_KEY","MIX_PUSHER_APP_CLUSTER"]
-[02:26:18.762] Server  LOG     [DEBUG] Mapping DB Secrets for type: "mariadb"
-[02:26:18.762] Server  LOG     [DEBUG] Initial dbSecretObj: "{\n  \"MARIADB_DATABASE\": \"laravel_fullstack_app\",\n  \"MARIADB_USER\": \"diwa\",\n  \"MARIADB_PASSWORD\": \"password\",\n  \"MARIADB_ROOT_PASSWORD\": \"password\"\n}"
-[02:26:18.762] Server  LOG     [DEBUG] Final dbSecretObj: "{\n  \"MARIADB_DATABASE\": \"laravel_fullstack_app\",\n  \"MARIADB_USER\": \"diwa\",\n  \"MARIADB_PASSWORD\": \"password\",\n  \"MARIADB_ROOT_PASSWORD\": \"password\"\n}"
-[02:26:18.762] Server  LOG     [DEBUG] Generating sybau-testing (testing):
-[02:26:18.763] Server  LOG     App Secret Keys: ["APP_NAME","APP_ENV","APP_KEY","APP_DEBUG","APP_URL","LOG_CHANNEL","LOG_LEVEL","DB_CONNECTION","DB_HOST","DB_PORT","DB_DATABASE","DB_USERNAME","DB_PASSWORD","BROADCAST_DRIVER","CACHE_DRIVER","FILESYSTEM_DRIVER","QUEUE_CONNECTION","SESSION_DRIVER","SESSION_LIFETIME","MEMCACHED_HOST","REDIS_HOST","REDIS_PASSWORD","REDIS_PORT","MAIL_MAILER","MAIL_HOST","MAIL_PORT","MAIL_USERNAME","MAIL_PASSWORD","MAIL_ENCRYPTION","MAIL_FROM_ADDRESS","MAIL_FROM_NAME","AWS_ACCESS_KEY_ID","AWS_SECRET_ACCESS_KEY","AWS_DEFAULT_REGION","AWS_BUCKET","AWS_USE_PATH_STYLE_ENDPOINT","PUSHER_APP_ID","PUSHER_APP_KEY","PUSHER_APP_SECRET","PUSHER_APP_CLUSTER","MIX_PUSHER_APP_KEY","MIX_PUSHER_APP_CLUSTER"]
-[02:26:18.788] Server  LOG     [DEBUG] Mapping DB Secrets for type: "mariadb"
-[02:26:18.788] Server  LOG     [DEBUG] Initial dbSecretObj: "{\n  \"MARIADB_DATABASE\": \"laravel_fullstack_app\",\n  \"MARIADB_USER\": \"diwa\",\n  \"MARIADB_PASSWORD\": \"password\",\n  \"MARIADB_ROOT_PASSWORD\": \"password\"\n}"
-[02:26:18.788] Server  LOG     [DEBUG] Final dbSecretObj: "{\n  \"MARIADB_DATABASE\": \"laravel_fullstack_app\",\n  \"MARIADB_USER\": \"diwa\",\n  \"MARIADB_PASSWORD\": \"password\",\n  \"MARIADB_ROOT_PASSWORD\": \"password\"\n}"
-[02:26:18.788] Server  LOG     [DEBUG] Generating sybau-db-prod (prod):
-[02:26:18.789] Server  LOG     DB Secret Keys: ["MARIADB_DATABASE","MARIADB_USER","MARIADB_PASSWORD","MARIADB_ROOT_PASSWORD"]
-[02:26:18.813] Server  LOG     [DEBUG] Mapping DB Secrets for type: "mariadb"
-[02:26:18.814] Server  LOG     [DEBUG] Initial dbSecretObj: "{\n  \"MARIADB_DATABASE\": \"laravel_fullstack_app\",\n  \"MARIADB_USER\": \"diwa\",\n  \"MARIADB_PASSWORD\": \"password\",\n  \"MARIADB_ROOT_PASSWORD\": \"password\"\n}"
-[02:26:18.814] Server  LOG     [DEBUG] Final dbSecretObj: "{\n  \"MARIADB_DATABASE\": \"laravel_fullstack_app\",\n  \"MARIADB_USER\": \"diwa\",\n  \"MARIADB_PASSWORD\": \"password\",\n  \"MARIADB_ROOT_PASSWORD\": \"password\"\n}"
-[02:26:18.814] Server  LOG     [DEBUG] Generating sybau-db-testing (testing):
-[02:26:18.814] Server  LOG     DB Secret Keys: ["MARIADB_DATABASE","MARIADB_USER","MARIADB_PASSWORD","MARIADB_ROOT_PASSWORD"]
-[02:39:17.543] Server  WARN     ⚠ Cross origin request detected from nonfortifiable-mandie-uncontradictablely.ngrok-free.dev to /_next/* resource. In a future major version of Next.js, you will need to explicitly configure "allowedDevOrigins" in next.config to allow this.
-Read more: https://nextjs.org/docs/app/api-reference/config/next-config-js/allowedDevOrigins
-[02:39:17.603] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[02:39:32.923] Server  LOG     Optimization: Processing 0 active jobs out of 8 total jobs.
-[02:39:34.248] Server  LOG     Optimization: Processing 0 active jobs out of 8 total jobs.
-[02:39:40.767] Server  LOG     Optimization: Processing 0 active jobs out of 8 total jobs.
-[02:39:43.460] Server  LOG     Optimization: Processing 0 active jobs out of 8 total jobs.
-[02:39:52.252] Server  LOG     Optimization: Processing 0 active jobs out of 8 total jobs.
-[02:40:00.358] Server  LOG     Optimization: Processing 0 active jobs out of 8 total jobs.
-[02:40:11.294] Server  LOG     Optimization: Processing 0 active jobs out of 8 total jobs.
-[02:40:20.944] Server  LOG     Optimization: Processing 0 active jobs out of 8 total jobs.
-[02:40:33.636] Server  LOG     Optimization: Processing 0 active jobs out of 8 total jobs.
-[02:40:42.141] Server  LOG     Optimization: Processing 0 active jobs out of 8 total jobs.
-[02:40:56.266] Server  LOG     Optimization: Processing 0 active jobs out of 8 total jobs.
-[02:41:02.842] Server  LOG     Optimization: Processing 0 active jobs out of 8 total jobs.
-[02:41:11.832] Server  LOG     Optimization: Processing 0 active jobs out of 8 total jobs.
-[02:41:21.774] Server  LOG     Optimization: Processing 0 active jobs out of 8 total jobs.
-[02:41:31.082] Server  LOG     Optimization: Processing 0 active jobs out of 8 total jobs.
-[02:41:41.426] Server  LOG     Optimization: Processing 0 active jobs out of 8 total jobs.
-[02:41:50.938] Server  LOG     Optimization: Processing 0 active jobs out of 8 total jobs.
-[02:42:00.837] Server  LOG     Optimization: Processing 0 active jobs out of 8 total jobs.
-[02:42:10.834] Server  LOG     Optimization: Processing 0 active jobs out of 8 total jobs.
-[02:42:20.893] Server  LOG     Optimization: Processing 0 active jobs out of 8 total jobs.
-[02:42:30.971] Server  LOG     Optimization: Processing 0 active jobs out of 8 total jobs.
-[02:42:40.908] Server  LOG     Optimization: Processing 0 active jobs out of 8 total jobs.
-[02:42:52.007] Server  LOG     Optimization: Processing 0 active jobs out of 8 total jobs.
-[02:43:01.814] Server  LOG     Optimization: Processing 0 active jobs out of 8 total jobs.
-[02:43:11.732] Server  LOG     Optimization: Processing 0 active jobs out of 8 total jobs.
-[02:43:21.883] Server  LOG     Optimization: Processing 0 active jobs out of 8 total jobs.
-[02:43:33.965] Server  LOG     Optimization: Processing 0 active jobs out of 8 total jobs.
-[02:43:41.953] Server  LOG     Optimization: Processing 0 active jobs out of 8 total jobs.
-[02:43:51.654] Server  LOG     Optimization: Processing 0 active jobs out of 8 total jobs.
-[02:44:01.698] Server  LOG     Optimization: Processing 0 active jobs out of 8 total jobs.
-[02:44:11.970] Server  LOG     Optimization: Processing 0 active jobs out of 8 total jobs.
-[02:44:22.198] Server  LOG     Optimization: Processing 0 active jobs out of 8 total jobs.
-[02:44:31.763] Server  LOG     Optimization: Processing 0 active jobs out of 8 total jobs.
-[02:44:41.768] Server  LOG     Optimization: Processing 0 active jobs out of 8 total jobs.
-[02:44:51.724] Server  LOG     Optimization: Processing 0 active jobs out of 8 total jobs.
-[02:45:01.683] Server  LOG     Optimization: Processing 0 active jobs out of 8 total jobs.
-[02:45:11.676] Server  LOG     Optimization: Processing 0 active jobs out of 8 total jobs.
-[02:45:21.659] Server  LOG     Optimization: Processing 0 active jobs out of 8 total jobs.
-[02:45:31.647] Server  LOG     Optimization: Processing 0 active jobs out of 8 total jobs.
-[02:45:42.838] Server  LOG     Optimization: Processing 0 active jobs out of 8 total jobs.
-[02:45:51.817] Server  LOG     Optimization: Processing 0 active jobs out of 8 total jobs.
-[02:46:02.042] Server  LOG     Optimization: Processing 0 active jobs out of 8 total jobs.
-[02:46:11.745] Server  LOG     Optimization: Processing 0 active jobs out of 8 total jobs.
-[02:46:21.785] Server  LOG     Optimization: Processing 0 active jobs out of 8 total jobs.
-[02:46:31.891] Server  LOG     Optimization: Processing 0 active jobs out of 8 total jobs.
-[02:46:41.798] Server  LOG     Optimization: Processing 0 active jobs out of 8 total jobs.
-[02:46:51.819] Server  LOG     Optimization: Processing 0 active jobs out of 8 total jobs.
-[02:47:01.740] Server  LOG     Optimization: Processing 0 active jobs out of 8 total jobs.
-[02:47:11.762] Server  LOG     Optimization: Processing 0 active jobs out of 8 total jobs.
-[02:47:22.090] Server  LOG     Optimization: Processing 0 active jobs out of 8 total jobs.
-[02:47:32.159] Server  LOG     Optimization: Processing 0 active jobs out of 8 total jobs.
-[02:47:41.942] Server  LOG     Optimization: Processing 0 active jobs out of 8 total jobs.
-[02:47:52.000] Server  LOG     Optimization: Processing 0 active jobs out of 8 total jobs.
-[02:48:02.763] Server  LOG     Optimization: Processing 0 active jobs out of 8 total jobs.
-[02:48:12.190] Server  LOG     Optimization: Processing 0 active jobs out of 8 total jobs.
-[02:48:18.314] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[02:48:22.075] Server  LOG     Optimization: Processing 0 active jobs out of 8 total jobs.
-[02:48:32.055] Server  LOG     Optimization: Processing 0 active jobs out of 8 total jobs.
-[02:48:42.043] Server  LOG     Optimization: Processing 0 active jobs out of 8 total jobs.
-[02:48:53.765] Server  LOG     Optimization: Processing 0 active jobs out of 8 total jobs.
-[02:49:02.057] Server  LOG     Optimization: Processing 0 active jobs out of 8 total jobs.
-[02:49:07.835] Server  LOG     Optimization: Processing 0 active jobs out of 8 total jobs.
-[02:49:08.007] Server  LOG     Optimization: Processing 0 active jobs out of 8 total jobs.
-[02:49:12.066] Server  LOG     Optimization: Processing 0 active jobs out of 8 total jobs.
-[02:49:22.298] Server  LOG     Optimization: Processing 0 active jobs out of 8 total jobs.
-[02:49:32.180] Server  LOG     Optimization: Processing 0 active jobs out of 8 total jobs.
-[02:49:42.065] Server  LOG     Optimization: Processing 0 active jobs out of 8 total jobs.
-[02:49:52.095] Server  LOG     Optimization: Processing 0 active jobs out of 8 total jobs.
-[02:50:02.324] Server  LOG     Optimization: Processing 0 active jobs out of 8 total jobs.
-[02:50:12.060] Server  LOG     Optimization: Processing 0 active jobs out of 8 total jobs.
-[02:50:22.234] Server  LOG     Optimization: Processing 0 active jobs out of 8 total jobs.
-[02:50:32.804] Server  LOG     Optimization: Processing 0 active jobs out of 8 total jobs.
-[02:58:51.549] Server  LOG     Updating repository at /tmp/manifest-repo-workdir...
-[02:58:52.291] Server  LOG     [DEBUG] Mapping DB Secrets for type: "mariadb"
-[02:58:52.291] Server  LOG     [DEBUG] Initial dbSecretObj: "{\n  \"MARIADB_DATABASE\": \"laravel_fullstack_app\",\n  \"MARIADB_USER\": \"diwa\",\n  \"MARIADB_PASSWORD\": \"password\",\n  \"MARIADB_ROOT_PASSWORD\": \"password\"\n}"
-[02:58:52.292] Server  LOG     [DEBUG] Final dbSecretObj: "{\n  \"MARIADB_DATABASE\": \"laravel_fullstack_app\",\n  \"MARIADB_USER\": \"diwa\",\n  \"MARIADB_PASSWORD\": \"password\",\n  \"MARIADB_ROOT_PASSWORD\": \"password\"\n}"
-[02:58:52.292] Server  LOG     [DEBUG] Generating sybau-prod (prod):
-[02:58:52.292] Server  LOG     App Secret Keys: ["APP_NAME","APP_ENV","APP_KEY","APP_DEBUG","APP_URL","LOG_CHANNEL","LOG_LEVEL","DB_CONNECTION","DB_HOST","DB_PORT","DB_DATABASE","DB_USERNAME","DB_PASSWORD","BROADCAST_DRIVER","CACHE_DRIVER","FILESYSTEM_DRIVER","QUEUE_CONNECTION","SESSION_DRIVER","SESSION_LIFETIME","MEMCACHED_HOST","REDIS_HOST","REDIS_PASSWORD","REDIS_PORT","MAIL_MAILER","MAIL_HOST","MAIL_PORT","MAIL_USERNAME","MAIL_PASSWORD","MAIL_ENCRYPTION","MAIL_FROM_ADDRESS","MAIL_FROM_NAME","AWS_ACCESS_KEY_ID","AWS_SECRET_ACCESS_KEY","AWS_DEFAULT_REGION","AWS_BUCKET","AWS_USE_PATH_STYLE_ENDPOINT","PUSHER_APP_ID","PUSHER_APP_KEY","PUSHER_APP_SECRET","PUSHER_APP_CLUSTER","MIX_PUSHER_APP_KEY","MIX_PUSHER_APP_CLUSTER"]
-[02:58:52.318] Server  LOG     [DEBUG] Mapping DB Secrets for type: "mariadb"
-[02:58:52.318] Server  LOG     [DEBUG] Initial dbSecretObj: "{\n  \"MARIADB_DATABASE\": \"laravel_fullstack_app\",\n  \"MARIADB_USER\": \"diwa\",\n  \"MARIADB_PASSWORD\": \"password\",\n  \"MARIADB_ROOT_PASSWORD\": \"password\"\n}"
-[02:58:52.318] Server  LOG     [DEBUG] Final dbSecretObj: "{\n  \"MARIADB_DATABASE\": \"laravel_fullstack_app\",\n  \"MARIADB_USER\": \"diwa\",\n  \"MARIADB_PASSWORD\": \"password\",\n  \"MARIADB_ROOT_PASSWORD\": \"password\"\n}"
-[02:58:52.319] Server  LOG     [DEBUG] Generating sybau-testing (testing):
-[02:58:52.319] Server  LOG     App Secret Keys: ["APP_NAME","APP_ENV","APP_KEY","APP_DEBUG","APP_URL","LOG_CHANNEL","LOG_LEVEL","DB_CONNECTION","DB_HOST","DB_PORT","DB_DATABASE","DB_USERNAME","DB_PASSWORD","BROADCAST_DRIVER","CACHE_DRIVER","FILESYSTEM_DRIVER","QUEUE_CONNECTION","SESSION_DRIVER","SESSION_LIFETIME","MEMCACHED_HOST","REDIS_HOST","REDIS_PASSWORD","REDIS_PORT","MAIL_MAILER","MAIL_HOST","MAIL_PORT","MAIL_USERNAME","MAIL_PASSWORD","MAIL_ENCRYPTION","MAIL_FROM_ADDRESS","MAIL_FROM_NAME","AWS_ACCESS_KEY_ID","AWS_SECRET_ACCESS_KEY","AWS_DEFAULT_REGION","AWS_BUCKET","AWS_USE_PATH_STYLE_ENDPOINT","PUSHER_APP_ID","PUSHER_APP_KEY","PUSHER_APP_SECRET","PUSHER_APP_CLUSTER","MIX_PUSHER_APP_KEY","MIX_PUSHER_APP_CLUSTER"]
-[02:58:52.344] Server  LOG     [DEBUG] Mapping DB Secrets for type: "mariadb"
-[02:58:52.344] Server  LOG     [DEBUG] Initial dbSecretObj: "{\n  \"MARIADB_DATABASE\": \"laravel_fullstack_app\",\n  \"MARIADB_USER\": \"diwa\",\n  \"MARIADB_PASSWORD\": \"password\",\n  \"MARIADB_ROOT_PASSWORD\": \"password\"\n}"
-[02:58:52.344] Server  LOG     [DEBUG] Final dbSecretObj: "{\n  \"MARIADB_DATABASE\": \"laravel_fullstack_app\",\n  \"MARIADB_USER\": \"diwa\",\n  \"MARIADB_PASSWORD\": \"password\",\n  \"MARIADB_ROOT_PASSWORD\": \"password\"\n}"
-[02:58:52.345] Server  LOG     [DEBUG] Generating sybau-db-prod (prod):
-[02:58:52.345] Server  LOG     DB Secret Keys: ["MARIADB_DATABASE","MARIADB_USER","MARIADB_PASSWORD","MARIADB_ROOT_PASSWORD"]
-[02:58:52.370] Server  LOG     [DEBUG] Mapping DB Secrets for type: "mariadb"
-[02:58:52.370] Server  LOG     [DEBUG] Initial dbSecretObj: "{\n  \"MARIADB_DATABASE\": \"laravel_fullstack_app\",\n  \"MARIADB_USER\": \"diwa\",\n  \"MARIADB_PASSWORD\": \"password\",\n  \"MARIADB_ROOT_PASSWORD\": \"password\"\n}"
-[02:58:52.370] Server  LOG     [DEBUG] Final dbSecretObj: "{\n  \"MARIADB_DATABASE\": \"laravel_fullstack_app\",\n  \"MARIADB_USER\": \"diwa\",\n  \"MARIADB_PASSWORD\": \"password\",\n  \"MARIADB_ROOT_PASSWORD\": \"password\"\n}"
-[02:58:52.370] Server  LOG     [DEBUG] Generating sybau-db-testing (testing):
-[02:58:52.370] Server  LOG     DB Secret Keys: ["MARIADB_DATABASE","MARIADB_USER","MARIADB_PASSWORD","MARIADB_ROOT_PASSWORD"]
+[00:19:52.095] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:33:40.163] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:34:15.007] Server  ERROR   [ArgoCD] Fetch Error for laravel-diwaw-prod: "fetch failed"
+[00:34:15.010] Server  ERROR   [ArgoCD] Fetch Error for laravel-diwaw-testing: "fetch failed"
+[00:34:15.012] Server  ERROR   [ArgoCD] Fetch Error for laravel-diwaw-db-prod: "fetch failed"
+[00:34:15.014] Server  ERROR   [ArgoCD] Fetch Error for laravel-diwaw-db-testing: "fetch failed"
+[00:44:45.014] Server  LOG      ✓ Compiled in 171ms
+[01:00:00.484] Server  LOG     Updating repository at /tmp/manifest-repo-workdir...
+[01:00:01.294] Server  LOG     [DEBUG] Mapping DB Secrets for type: "mariadb"
+[01:00:01.294] Server  LOG     [DEBUG] Initial dbSecretObj: "{\n  \"MARIADB_DATABASE\": \"sybaupmo\",\n  \"MARIADB_USER\": \"diwa\",\n  \"MARIADB_PASSWORD\": \"password\",\n  \"MARIADB_ROOT_PASSWORD\": \"password\"\n}"
+[01:00:01.294] Server  LOG     [DEBUG] Final dbSecretObj: "{\n  \"MARIADB_DATABASE\": \"sybaupmo\",\n  \"MARIADB_USER\": \"diwa\",\n  \"MARIADB_PASSWORD\": \"password\",\n  \"MARIADB_ROOT_PASSWORD\": \"password\"\n}"
+[01:00:01.295] Server  LOG     [DEBUG] Generating sybaupmo-prod (prod):
+[01:00:01.298] Server  LOG     App Secret Keys: ["APP_NAME","APP_ENV","APP_KEY","APP_DEBUG","APP_URL","LOG_CHANNEL","LOG_LEVEL","DB_CONNECTION","DB_HOST","DB_PORT","DB_DATABASE","DB_USERNAME","DB_PASSWORD","BROADCAST_DRIVER","CACHE_DRIVER","FILESYSTEM_DRIVER","QUEUE_CONNECTION","SESSION_DRIVER","SESSION_LIFETIME","MEMCACHED_HOST","REDIS_HOST","REDIS_PASSWORD","REDIS_PORT","MAIL_MAILER","MAIL_HOST","MAIL_PORT","MAIL_USERNAME","MAIL_PASSWORD","MAIL_ENCRYPTION","MAIL_FROM_ADDRESS","MAIL_FROM_NAME","AWS_ACCESS_KEY_ID","AWS_SECRET_ACCESS_KEY","AWS_DEFAULT_REGION","AWS_BUCKET","AWS_USE_PATH_STYLE_ENDPOINT","PUSHER_APP_ID","PUSHER_APP_KEY","PUSHER_APP_SECRET","PUSHER_APP_CLUSTER","MIX_PUSHER_APP_KEY","MIX_PUSHER_APP_CLUSTER"]
+[01:00:01.353] Server  LOG     [DEBUG] Mapping DB Secrets for type: "mariadb"
+[01:00:01.353] Server  LOG     [DEBUG] Initial dbSecretObj: "{\n  \"MARIADB_DATABASE\": \"sybaupmo\",\n  \"MARIADB_USER\": \"diwa\",\n  \"MARIADB_PASSWORD\": \"password\",\n  \"MARIADB_ROOT_PASSWORD\": \"password\"\n}"
+[01:00:01.353] Server  LOG     [DEBUG] Final dbSecretObj: "{\n  \"MARIADB_DATABASE\": \"sybaupmo\",\n  \"MARIADB_USER\": \"diwa\",\n  \"MARIADB_PASSWORD\": \"password\",\n  \"MARIADB_ROOT_PASSWORD\": \"password\"\n}"
+[01:00:01.353] Server  LOG     [DEBUG] Generating sybaupmo-testing (testing):
+[01:00:01.354] Server  LOG     App Secret Keys: ["APP_NAME","APP_ENV","APP_KEY","APP_DEBUG","APP_URL","LOG_CHANNEL","LOG_LEVEL","DB_CONNECTION","DB_HOST","DB_PORT","DB_DATABASE","DB_USERNAME","DB_PASSWORD","BROADCAST_DRIVER","CACHE_DRIVER","FILESYSTEM_DRIVER","QUEUE_CONNECTION","SESSION_DRIVER","SESSION_LIFETIME","MEMCACHED_HOST","REDIS_HOST","REDIS_PASSWORD","REDIS_PORT","MAIL_MAILER","MAIL_HOST","MAIL_PORT","MAIL_USERNAME","MAIL_PASSWORD","MAIL_ENCRYPTION","MAIL_FROM_ADDRESS","MAIL_FROM_NAME","AWS_ACCESS_KEY_ID","AWS_SECRET_ACCESS_KEY","AWS_DEFAULT_REGION","AWS_BUCKET","AWS_USE_PATH_STYLE_ENDPOINT","PUSHER_APP_ID","PUSHER_APP_KEY","PUSHER_APP_SECRET","PUSHER_APP_CLUSTER","MIX_PUSHER_APP_KEY","MIX_PUSHER_APP_CLUSTER"]
+[01:00:01.380] Server  LOG     [DEBUG] Mapping DB Secrets for type: "mariadb"
+[01:00:01.380] Server  LOG     [DEBUG] Initial dbSecretObj: "{\n  \"MARIADB_DATABASE\": \"sybaupmo\",\n  \"MARIADB_USER\": \"diwa\",\n  \"MARIADB_PASSWORD\": \"password\",\n  \"MARIADB_ROOT_PASSWORD\": \"password\"\n}"
+[01:00:01.381] Server  LOG     [DEBUG] Final dbSecretObj: "{\n  \"MARIADB_DATABASE\": \"sybaupmo\",\n  \"MARIADB_USER\": \"diwa\",\n  \"MARIADB_PASSWORD\": \"password\",\n  \"MARIADB_ROOT_PASSWORD\": \"password\"\n}"
+[01:00:01.381] Server  LOG     [DEBUG] Generating sybaupmo-db-prod (prod):
+[01:00:01.381] Server  LOG     DB Secret Keys: ["MARIADB_DATABASE","MARIADB_USER","MARIADB_PASSWORD","MARIADB_ROOT_PASSWORD"]
+[01:00:01.405] Server  LOG     [DEBUG] Mapping DB Secrets for type: "mariadb"
+[01:00:01.405] Server  LOG     [DEBUG] Initial dbSecretObj: "{\n  \"MARIADB_DATABASE\": \"sybaupmo\",\n  \"MARIADB_USER\": \"diwa\",\n  \"MARIADB_PASSWORD\": \"password\",\n  \"MARIADB_ROOT_PASSWORD\": \"password\"\n}"
+[01:00:01.406] Server  LOG     [DEBUG] Final dbSecretObj: "{\n  \"MARIADB_DATABASE\": \"sybaupmo\",\n  \"MARIADB_USER\": \"diwa\",\n  \"MARIADB_PASSWORD\": \"password\",\n  \"MARIADB_ROOT_PASSWORD\": \"password\"\n}"
+[01:00:01.406] Server  LOG     [DEBUG] Generating sybaupmo-db-testing (testing):
+[01:00:01.406] Server  LOG     DB Secret Keys: ["MARIADB_DATABASE","MARIADB_USER","MARIADB_PASSWORD","MARIADB_ROOT_PASSWORD"]
+[01:00:03.853] Server  ERROR   [ArgoCD] Fetch Error for sybaupmo-db-prod: "ArgoCD API Error (403): {\"error\":\"permission denied\",\"code\":7,\"message\":\"permission denied\"}"
+[01:00:03.856] Server  ERROR   [ArgoCD] Fetch Error for sybaupmo-prod: "ArgoCD API Error (403): {\"error\":\"permission denied\",\"code\":7,\"message\":\"permission denied\"}"
+[01:00:36.378] Server  LOG     Optimization: Processing 0 active jobs out of 8 total jobs.
+[01:00:36.450] Server  LOG     Optimization: Processing 0 active jobs out of 8 total jobs.
+[01:01:33.325] Server  LOG     [ArgoCD] Attempting login to http://117.103.71.154:32081...
+[01:01:33.333] Server  LOG     [ArgoCD] Attempting login to http://117.103.71.154:32081...
+[01:01:34.028] Server  LOG     [ArgoCD] Login successful, token cached.
+[01:01:34.152] Server  LOG     [ArgoCD] Login successful, token cached.

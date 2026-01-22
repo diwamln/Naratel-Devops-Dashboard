@@ -115,141 +115,123 @@ export default function EditAppSecretsForm({ appName, onClose, onSuccess }) {
 
   if (loading) {
       return (
-          <div className="bg-white dark:bg-neutral-900 p-8 rounded-xl shadow-2xl flex flex-col items-center justify-center min-w-[300px]">
-              <Loader2 size={32} className="animate-spin text-[#FFA500] mb-4" />
-              <p className="text-sm font-semibold text-neutral-500">Reading config...</p>
+          <div className="flex flex-col items-center justify-center p-8 text-neutral-400">
+              <Loader2 size={24} className="animate-spin mb-2" />
+              <p className="text-xs">Loading...</p>
           </div>
       );
   }
 
   return (
-    <div className="bg-white dark:bg-neutral-900 w-full max-w-4xl max-h-[90vh] overflow-y-auto rounded-xl shadow-2xl relative flex flex-col">
-       {/* Header */}
-       <div className="sticky top-0 z-10 bg-white/95 dark:bg-neutral-900/95 backdrop-blur-sm p-4 border-b border-neutral-200 dark:border-neutral-800 flex justify-between items-center">
-          <h2 className="text-lg font-bold flex items-center gap-2">
-            <Lock className="text-[#FFA500]" /> App Secrets: <span className="text-neutral-500">{appName}</span>
-          </h2>
-          <button onClick={onClose} className="p-2 hover:bg-neutral-100 dark:hover:bg-neutral-800 rounded-lg">
-             <X size={20} />
-          </button>
-       </div>
-
-       <div className="p-6">        
-        {/* Warning Banner */}
-        <div className="bg-amber-50 dark:bg-amber-900/20 border border-amber-200 dark:border-amber-800 p-4 rounded-lg mb-6 flex items-start gap-3">
-            <AlertTriangle className="text-amber-600 dark:text-amber-400 shrink-0 mt-0.5" size={20} />
-            <div className="text-sm text-amber-800 dark:text-amber-200">
-                <p className="font-bold">Write-Only Mode (Secure)</p>
-                <p>Values are encrypted. Enter new values to overwrite. Empty fields will be skipped/unchanged.</p>
+    <div className="w-full">
+        {/* Helper Text */}
+        <div className="mb-6 flex items-start gap-3 p-3 bg-neutral-50 dark:bg-neutral-900 rounded-md border border-neutral-100 dark:border-neutral-800">
+            <AlertTriangle className="text-amber-500 shrink-0 mt-0.5" size={16} />
+            <div className="text-xs text-neutral-500">
+                <span className="font-semibold text-neutral-700 dark:text-neutral-300">Secure Write-Only Mode:</span> Existing values are encrypted and cannot be displayed. Entering a new value will overwrite the existing one. Empty fields will be ignored.
             </div>
         </div>
 
         {message.text && (
-          <div className={`mb-6 p-4 rounded-lg border flex items-center gap-3 text-sm ${ 
+          <div className={`mb-6 p-3 rounded-md border text-sm flex items-center gap-2 ${ 
             message.type === 'success' 
-              ? 'bg-green-50 dark:bg-green-900/20 border-green-200 dark:border-green-800 text-green-700 dark:text-green-300' 
-              : 'bg-red-50 dark:bg-red-900/20 border-red-200 dark:border-red-800 text-red-700 dark:text-red-300'
+              ? 'bg-green-50 border-green-200 text-green-700 dark:bg-green-900/20 dark:border-green-800 dark:text-green-400' 
+              : 'bg-red-50 border-red-200 text-red-700 dark:bg-red-900/20 dark:border-red-800 dark:text-red-400'
           }`}>
-            {message.type === 'success' ? <CheckCircle size={18} /> : <AlertCircle size={18} />}
+            {message.type === 'success' ? <CheckCircle size={14} /> : <AlertCircle size={14} />}
             <span>{message.text}</span>
           </div>
         )}
 
         <form onSubmit={handleSubmit} className="space-y-6">
             
-            {/* APP SECRETS */}
-            <div className="p-4 rounded-xl border border-neutral-200 dark:border-neutral-800 bg-gray-50/50 dark:bg-neutral-950/50">
-               <div className="flex items-center gap-2 mb-4 text-[#FFA500]">
-                  <Key size={20} />
-                  <h3 className="font-bold uppercase text-sm tracking-wider text-neutral-500">Application Environment Variables</h3>
-               </div>
-
-                {/* Drag & Drop */}
-                <div
-                    onDragOver={(e) => { e.preventDefault(); setIsDraggingApp(true); }}
-                    onDragLeave={(e) => { e.preventDefault(); setIsDraggingApp(false); }}
-                    onDrop={(e) => {
-                        e.preventDefault();
-                        setIsDraggingApp(false);
-                        if(e.dataTransfer.files.length > 0) handleAppFile(e.dataTransfer.files[0]);
-                    }}
-                    className={`mb-4 border border-dashed rounded-lg p-4 text-center transition-all cursor-pointer ${ 
-                    isDraggingApp
-                        ? 'border-[#FFA500] bg-[#FFA500]/10'
-                        : 'border-neutral-300 dark:border-neutral-700 bg-white dark:bg-neutral-900 hover:border-neutral-400'
-                    }`}
-                >
-                    <input type="file" accept=".env" className="hidden" id="edit-app-env" onChange={(e) => e.target.files.length && handleAppFile(e.target.files[0])} />
-                    <label htmlFor="edit-app-env" className="cursor-pointer block">
-                         <div className="flex items-center justify-center gap-2 text-sm text-neutral-500">
-                             <Upload size={16} /> <span>Import .env to Populate</span>
-                         </div>
-                         {appFileName && <p className="text-xs text-green-600 mt-1">{appFileName} loaded</p>}
-                    </label>
+            <div>
+                <div className="flex items-center justify-between mb-4">
+                    <h3 className="text-sm font-medium text-neutral-900 dark:text-white">Environment Variables</h3>
+                    
+                    {/* Import Button / Area */}
+                    <div className="relative">
+                        <input type="file" accept=".env" className="hidden" id="edit-app-env" onChange={(e) => e.target.files.length && handleAppFile(e.target.files[0])} />
+                        <label 
+                            htmlFor="edit-app-env" 
+                            className="cursor-pointer flex items-center gap-2 text-xs font-medium text-neutral-600 hover:text-neutral-900 dark:text-neutral-400 dark:hover:text-white bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 hover:border-neutral-300 dark:hover:border-neutral-700 px-3 py-1.5 rounded transition-all"
+                        >
+                            <Upload size={12} /> 
+                            {appFileName ? <span>Loaded: {appFileName}</span> : <span>Import .env</span>}
+                        </label>
+                    </div>
                 </div>
 
-               <div className="space-y-3">
+               <div className="space-y-2">
                   {appSecrets.map((secret, idx) => (
-                      <div key={idx} className="flex gap-2 items-start">
-                          <input 
-                             placeholder="KEY"
-                             className="flex-[0.5] p-2 text-xs border rounded dark:bg-neutral-950 dark:border-neutral-800 font-mono font-bold text-neutral-600 dark:text-neutral-400"
-                             value={secret.key}
-                             readOnly
-                             title="Key cannot be changed in Edit Mode (delete and add new if needed)"
-                             autoComplete="off"
-                             name={`edit-app-key-${idx}`}
-                          />
-                          <div className="flex-1 flex flex-col gap-1">
+                      <div key={idx} className="flex flex-col md:flex-row gap-2 items-start md:items-center p-3 rounded-md bg-white dark:bg-neutral-900 border border-neutral-100 dark:border-neutral-800 hover:border-neutral-200 dark:hover:border-neutral-700 transition-colors">
+                          <div className="w-full md:w-1/3 flex items-center gap-2">
+                              <Key size={14} className="text-neutral-300 shrink-0" />
+                              <input 
+                                 placeholder="KEY_NAME"
+                                 className="w-full bg-transparent text-xs font-mono font-medium text-neutral-700 dark:text-neutral-300 outline-none"
+                                 value={secret.key}
+                                 readOnly
+                                 title="Key cannot be changed"
+                              />
+                          </div>
+                          <div className="w-full md:w-2/3 flex flex-col md:flex-row gap-2">
                              <input 
-                                placeholder="New Value (Production)"
-                                className="w-full p-2 text-xs border border-orange-200 dark:border-orange-900/50 rounded dark:bg-neutral-950"
+                                placeholder="Value (Production)"
+                                className="flex-1 p-2 text-xs border border-neutral-200 dark:border-neutral-800 rounded bg-neutral-50 dark:bg-neutral-950 focus:ring-1 focus:ring-neutral-900 dark:focus:ring-white outline-none transition-all placeholder-neutral-400"
                                 value={secret.valueProd}
                                 onChange={e => updateAppSecret(idx, 'valueProd', e.target.value)}
                                 autoComplete="off"
-                                name={`edit-app-prod-${idx}`}
                              />
                              <input 
-                                placeholder="New Value (Testing)"
-                                className="w-full p-2 text-xs border border-blue-200 dark:border-blue-900/50 rounded dark:bg-neutral-950"
+                                placeholder="Value (Testing)"
+                                className="flex-1 p-2 text-xs border border-neutral-200 dark:border-neutral-800 rounded bg-neutral-50 dark:bg-neutral-950 focus:ring-1 focus:ring-neutral-900 dark:focus:ring-white outline-none transition-all placeholder-neutral-400"
                                 value={secret.valueTest}
                                 onChange={e => updateAppSecret(idx, 'valueTest', e.target.value)}
                                 autoComplete="off"
-                                name={`edit-app-test-${idx}`}
                              />
+                             <button type="button" onClick={() => setAppSecrets(prev => prev.filter((_, i) => i !== idx))} className="p-2 text-neutral-400 hover:text-red-500 hover:bg-red-50 dark:hover:bg-red-900/10 rounded transition-colors">
+                                <Trash2 size={14} />
+                             </button>
                           </div>
-                          <button type="button" onClick={() => setAppSecrets(prev => prev.filter((_, i) => i !== idx))} className="p-2 text-red-500 hover:bg-red-500/10 rounded">
-                              <Trash2 size={16} />
-                          </button>
                       </div>
                   ))}
-                  <button type="button" onClick={() => setAppSecrets([...appSecrets, {key: "NEW_KEY", valueProd: "", valueTest: ""}])} className="text-sm flex items-center gap-1 text-[#FFA500] font-bold mt-2 hover:opacity-80">
-                      <Plus size={16} /> Add New Key
+                  
+                  {appSecrets.length === 0 && (
+                      <div className="text-center py-8 text-neutral-400 text-xs italic border border-dashed border-neutral-200 dark:border-neutral-800 rounded-md">
+                          No secrets defined.
+                      </div>
+                  )}
+
+                  <button 
+                    type="button" 
+                    onClick={() => setAppSecrets([...appSecrets, {key: "NEW_KEY", valueProd: "", valueTest: ""}])} 
+                    className="w-full py-2 flex items-center justify-center gap-2 text-xs font-medium text-neutral-500 hover:text-neutral-900 dark:hover:text-white border border-dashed border-neutral-200 dark:border-neutral-800 hover:border-neutral-300 dark:hover:border-neutral-600 rounded-md transition-all"
+                  >
+                      <Plus size={14} /> Add Secret
                   </button>
                </div>
             </div>
 
-            <div className="flex justify-end pt-4">
+            <div className="pt-4 border-t border-neutral-100 dark:border-neutral-800">
               <button
                   type="submit"
                   disabled={saving}
-                  className="flex items-center gap-2 bg-[#FFA500] hover:bg-[#FFA500]/90 text-white font-bold py-3 px-8 rounded-lg shadow-lg transition-all transform active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed"
+                  className="w-full md:w-auto flex items-center justify-center gap-2 bg-neutral-900 hover:bg-neutral-800 dark:bg-white dark:text-neutral-900 dark:hover:bg-neutral-200 text-white font-medium py-2 px-6 rounded-md transition-all disabled:opacity-50 disabled:cursor-not-allowed text-sm ml-auto"
                 >
                   {saving ? (
                     <>
-                      <Loader2 size={20} className="animate-spin" />
-                      Encrypting...
+                      <Loader2 size={14} className="animate-spin" />
+                      Encrypting & Saving...
                     </>
                   ) : (
                     <>
-                      <Save size={20} />
-                      Save App Secrets
+                      Save Secrets
                     </>
                   )}
                 </button>
             </div>
         </form>
-       </div>
     </div>
   );
 }

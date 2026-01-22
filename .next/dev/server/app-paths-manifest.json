@@ -1,11 +1,12 @@
 {
   "/api/auth/[...nextauth]/route": "app/api/auth/[...nextauth]/route.js",
   "/api/jenkins/pending/route": "app/api/jenkins/pending/route.js",
+  "/api/manifest/argo-status/route": "app/api/manifest/argo-status/route.js",
   "/api/manifest/delete/route": "app/api/manifest/delete/route.js",
   "/api/manifest/generate/route": "app/api/manifest/generate/route.js",
+  "/api/manifest/ingress/route": "app/api/manifest/ingress/route.js",
   "/api/manifest/next-id/route": "app/api/manifest/next-id/route.js",
-  "/login/page": "app/login/page.js",
+  "/manifest/[appName]/page": "app/manifest/[appName]/page.js",
   "/manifest/page": "app/manifest/page.js",
-  "/page": "app/page.js",
-  "/tools/page": "app/tools/page.js"
+  "/page": "app/page.js"
 }
