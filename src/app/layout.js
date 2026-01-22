@@ -1,6 +1,6 @@
 // src/app/layout.js
 
-import { Inter } from 'next/font/google';
+import { Poppins, Montserrat } from 'next/font/google';
 import './globals.css';
 import AuthProvider from './components/AuthProvider';
 import ThemeProvider from './providers/ThemeProvider';
@@ -14,12 +14,22 @@ export const metadata = {
   },
 };
 
-const inter = Inter({ subsets: ['latin'] });
+const poppins = Poppins({
+  subsets: ['latin'],
+  weight: ['400', '500', '600', '700'],
+  variable: '--font-poppins',
+});
+
+const montserrat = Montserrat({
+  subsets: ['latin'],
+  weight: ['300', '400', '500', '600'],
+  variable: '--font-montserrat',
+});
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" suppressHydrationWarning>
-      <body className={inter.className}>
+    <html lang="en" suppressHydrationWarning className={`${poppins.variable} ${montserrat.variable}`}>
+      <body className={montserrat.className}>
         <AuthProvider>
           <SidebarProvider>
             <ThemeProvider>
