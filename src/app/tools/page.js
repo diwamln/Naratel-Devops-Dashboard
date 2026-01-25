@@ -121,6 +121,7 @@ export default function ToolsPage() {
                 const parsed = JSON.parse(savedTools);
                 // Merge with initial to ensure structure, but respect saved values
                 // This is a simple overwrite for now
+                // eslint-disable-next-line
                 setTools(parsed);
             } catch (e) {
                 console.error("Failed to parse saved tools", e);

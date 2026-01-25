@@ -13,6 +13,7 @@ export function SidebarProvider({ children }) {
     // Hanya berjalan di client side sekali saat mount
     const saved = localStorage.getItem('sidebar_collapsed');
     if (saved !== null) {
+      // eslint-disable-next-line
       setIsCollapsed(JSON.parse(saved));
     }
     setIsInitialized(true);

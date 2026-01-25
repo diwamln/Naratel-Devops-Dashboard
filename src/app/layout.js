@@ -5,6 +5,7 @@ import './globals.css';
 import AuthProvider from './components/AuthProvider';
 import ThemeProvider from './providers/ThemeProvider';
 import { SidebarProvider } from './providers/SidebarProvider';
+import SWRProvider from './providers/SWRProvider';
 
 export const metadata = {
   title: 'Naratel Dashboard',
@@ -31,11 +32,13 @@ export default function RootLayout({ children }) {
     <html lang="en" suppressHydrationWarning className={`${poppins.variable} ${montserrat.variable}`}>
       <body className={montserrat.className}>
         <AuthProvider>
-          <SidebarProvider>
-            <ThemeProvider>
-              {children}
-            </ThemeProvider>
-          </SidebarProvider>
+          <SWRProvider>
+            <SidebarProvider>
+              <ThemeProvider>
+                {children}
+              </ThemeProvider>
+            </SidebarProvider>
+          </SWRProvider>
         </AuthProvider>
       </body>
     </html>

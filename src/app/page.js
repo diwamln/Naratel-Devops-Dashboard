@@ -2,13 +2,10 @@
 
 'use client';
 
-import DashboardLayout from './components/DashboardLayout';
-import JenkinsDashboard from './components/JenkinsDashboard';
+import ManifestPage from './manifest/page';
 
 export default function DashboardPage() {
   return (
-    <DashboardLayout>
-      <JenkinsDashboard />
-    </DashboardLayout>
+    <ManifestPage />
   );
 }

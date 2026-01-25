@@ -30,6 +30,7 @@ export default function LoginPage() {
     const [quote, setQuote] = useState('');
 
     useEffect(() => {
+        // eslint-disable-next-line
         setQuote(quotes[Math.floor(Math.random() * quotes.length)]);
     }, []);
 
@@ -155,7 +156,7 @@ export default function LoginPage() {
                     </div>
 
                     <blockquote className="text-xl font-medium text-neutral-600 dark:text-neutral-400 leading-relaxed italic">
-                        "{quote}"
+                        &quot;{quote}&quot;
                     </blockquote>
                 </div>
 

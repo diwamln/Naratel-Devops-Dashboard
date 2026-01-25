@@ -14,7 +14,8 @@ import {
   ChevronRight,
   LayoutGrid,
   PanelLeftClose,
-  PanelRightClose
+  PanelRightClose,
+  GitBranch
 } from 'lucide-react';
 import { signOut } from 'next-auth/react';
 import { useTheme } from 'next-themes';
@@ -29,24 +30,25 @@ export default function Navigation({ isCollapsed = false, toggleCollapse }) {
 
   // Mencegah hydration mismatch
   useEffect(() => {
+    // eslint-disable-next-line
     setMounted(true);
   }, []);
 
   const menuItems = [
     {
-      label: 'Approval Gateway',
+      label: 'App List',
       href: '/',
-      icon: Activity,
+      icon: LayoutGrid,
     },
     {
-      label: 'App Deployment',
-      href: '/manifest',
-      icon: FilePlus,
+      label: 'Approval Gateway',
+      href: '/approval',
+      icon: GitBranch,
     },
     {
       label: 'Tools & Services',
       href: '/tools',
-      icon: LayoutGrid,
+      icon: Activity,
     }
   ];
 
@@ -132,10 +134,9 @@ export default function Navigation({ isCollapsed = false, toggleCollapse }) {
       </nav>
 
       {/* Desktop Sidebar */}
-      <aside 
-        className={`hidden md:flex md:flex-col md:fixed md:inset-y-0 md:left-0 bg-white dark:bg-neutral-900 border-r border-neutral-200 dark:border-neutral-800 z-50 transition-all duration-300 ease-in-out ${
-          isCollapsed ? 'md:w-20' : 'md:w-60'
-        }`}
+      <aside
+        className={`hidden md:flex md:flex-col md:fixed md:inset-y-0 md:left-0 bg-white dark:bg-neutral-900 border-r border-neutral-200 dark:border-neutral-800 z-50 transition-all duration-300 ease-in-out ${isCollapsed ? 'md:w-20' : 'md:w-60'
+          }`}
       >
         {/* Logo Section */}
         <div className={`flex items-center p-6 mb-2 ${isCollapsed ? 'justify-center px-2' : 'justify-start px-6 gap-3'}`}>
@@ -166,10 +167,9 @@ export default function Navigation({ isCollapsed = false, toggleCollapse }) {
                 key={item.href}
                 href={item.href}
                 title={isCollapsed ? item.label : ''}
-                className={`w-full group flex items-center px-4 py-3 rounded-xl transition-all duration-200 ${
-                  isActive
-                    ? 'bg-[#FFA500] text-white shadow-lg shadow-[#FFA500]/20'
-                    : 'text-neutral-500 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-white hover:bg-neutral-100 dark:hover:bg-neutral-800'
+                className={`w-full group flex items-center px-4 py-3 rounded-xl transition-all duration-200 ${isActive
+                  ? 'bg-[#FFA500] text-white shadow-lg shadow-[#FFA500]/20'
+                  : 'text-neutral-500 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-white hover:bg-neutral-100 dark:hover:bg-neutral-800'
                   } ${isCollapsed ? 'justify-center px-0' : 'justify-between'}`}
               >
                 <div className={`flex items-center gap-3 ${isCollapsed ? 'justify-center' : ''}`}>
@@ -188,9 +188,8 @@ export default function Navigation({ isCollapsed = false, toggleCollapse }) {
             <button
               onClick={toggleTheme}
               title={isCollapsed ? (theme === 'dark' ? 'Switch to Light Mode' : 'Switch to Dark Mode') : ''}
-              className={`w-full flex items-center px-4 py-3 text-neutral-500 dark:text-neutral-400 hover:text-[#FFA500] rounded-xl transition-all text-xs font-bold uppercase tracking-wider ${
-                isCollapsed ? 'justify-center px-0' : 'gap-3'
-              }`}
+              className={`w-full flex items-center px-4 py-3 text-neutral-500 dark:text-neutral-400 hover:text-[#FFA500] rounded-xl transition-all text-xs font-bold uppercase tracking-wider ${isCollapsed ? 'justify-center px-0' : 'gap-3'
+                }`}
             >
               {theme === 'dark' ? <Sun size={18} /> : <Moon size={18} />}
               {!isCollapsed && <span>{theme === 'dark' ? 'Light Mode' : 'Dark Mode'}</span>}
@@ -200,9 +199,8 @@ export default function Navigation({ isCollapsed = false, toggleCollapse }) {
           <button
             onClick={handleLogout}
             title={isCollapsed ? "Logout" : ""}
-            className={`w-full flex items-center px-4 py-3 text-red-500 dark:text-red-400 hover:bg-red-50 dark:hover:bg-red-500/10 rounded-xl transition-all text-xs font-bold uppercase tracking-wider ${
-              isCollapsed ? 'justify-center px-0' : 'gap-3'
-            }`}
+            className={`w-full flex items-center px-4 py-3 text-red-500 dark:text-red-400 hover:bg-red-50 dark:hover:bg-red-500/10 rounded-xl transition-all text-xs font-bold uppercase tracking-wider ${isCollapsed ? 'justify-center px-0' : 'gap-3'
+              }`}
           >
             <LogOut size={18} />
             {!isCollapsed && <span>Logout System</span>}
@@ -211,7 +209,7 @@ export default function Navigation({ isCollapsed = false, toggleCollapse }) {
 
         {/* Floating Sidebar Toggle (Bottom) */}
         <div className="p-4 border-t border-neutral-100 dark:border-neutral-800/50 flex justify-center">
-          <button 
+          <button
             onClick={toggleCollapse}
             className="flex items-center justify-center w-full py-2.5 rounded-xl bg-neutral-50 dark:bg-neutral-950 border border-neutral-200 dark:border-neutral-800 text-neutral-400 hover:text-[#FFA500] hover:border-[#FFA500]/50 transition-all duration-300 shadow-sm group"
             title={isCollapsed ? "Expand Sidebar" : "Collapse Sidebar"}
