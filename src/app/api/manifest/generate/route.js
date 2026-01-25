@@ -78,13 +78,29 @@ export async function POST(req) {
                     data.appId = newId; // Override the ID
                 }
                 // --- DYNAMIC DOMAIN ALLOCATION (TESTING ONLY) ---
-                const TEST_DOMAIN_POOL = [
-                    "test-env-1.roomify3.my.id",
-                    "test-env-2.roomify3.my.id",
-                    "test-env-3.roomify3.my.id",
-                    "test-env-4.roomify3.my.id",
-                    "test-env-5.roomify3.my.id"
-                ];
+                // Load domain pool from config.json in the repo
+                const configPath = path.join(repoPath, 'config.json');
+                let TEST_DOMAIN_POOL = [];
+
+                try {
+                    if (fs.existsSync(configPath)) {
+                        const configContent = fs.readFileSync(configPath, 'utf8');
+                        const configData = JSON.parse(configContent);
+                        if (configData.testDomains && Array.isArray(configData.testDomains)) {
+                            TEST_DOMAIN_POOL = configData.testDomains;
+                            console.log(`[CONFIG] Loaded ${TEST_DOMAIN_POOL.length} testing domains from config.json`);
+                        }
+                    } else {
+                        console.warn("[CONFIG] config.json not found, using default empty pool.");
+                    }
+                } catch (cfgErr) {
+                    console.error("[CONFIG] Failed to load config.json:", cfgErr.message);
+                }
+
+                // Fallback (Optional) - Remove if you want to strictly enforce config.json
+                if (TEST_DOMAIN_POOL.length === 0) {
+                     // Leave empty to fail fast if config is missing, or add default here
+                }
 
                 const usedDomains = currentRegistry
                     .map(app => app.ingressHost)
