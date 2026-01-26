@@ -263,14 +263,21 @@ export default function AppDetailsPage({ params }) {
                 </div>
 
                 {/* Deployments Section */}
-                <div>
-                    <h2 className="text-lg font-semibold text-neutral-900 dark:text-white mb-6">Environment Topology</h2>
+                <div className="space-y-6">
+                    <h2 className="text-lg font-semibold text-neutral-900 dark:text-white">Environment Topology</h2>
 
-                    <div className="space-y-8">
-                        {/* Production Flow */}
-                        <div>
-                            <h3 className="text-xs font-bold text-neutral-400 uppercase tracking-wider mb-3 ml-1">Production Environment</h3>
-                            <div className="flex flex-col md:flex-row items-stretch md:items-center gap-4">
+                    <div className="grid grid-cols-1 gap-8">
+                        {/* Production Card */}
+                        <div className="bg-neutral-50/50 dark:bg-neutral-900/50 border border-neutral-200 dark:border-neutral-800 rounded-2xl p-6 relative overflow-hidden">
+                            <div className="flex items-center justify-between mb-6">
+                                <div className="flex items-center gap-2">
+                                    <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
+                                    <h3 className="text-sm font-bold text-neutral-900 dark:text-white uppercase tracking-wider">Production Environment</h3>
+                                </div>
+                                <span className="text-[10px] font-bold text-neutral-400 bg-white dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 px-2 py-1 rounded-md uppercase">Stable</span>
+                            </div>
+
+                            <div className="flex flex-col md:flex-row items-stretch md:items-center gap-4 relative z-10">
                                 <div className="flex-1 min-w-0">
                                     <DeploymentCard
                                         title="Application"
@@ -284,8 +291,8 @@ export default function AppDetailsPage({ params }) {
                                 {app.db !== 'none' && (
                                     <>
                                         <div className="flex items-center justify-center text-neutral-300 dark:text-neutral-700">
-                                            <ArrowRight size={24} strokeWidth={1.5} className="hidden md:block" />
-                                            <ArrowDown size={24} strokeWidth={1.5} className="md:hidden" />
+                                            <ArrowRight size={20} strokeWidth={2} className="hidden md:block" />
+                                            <ArrowDown size={20} strokeWidth={2} className="md:hidden" />
                                         </div>
                                         <div className="flex-1 min-w-0">
                                             <DeploymentCard
@@ -293,7 +300,7 @@ export default function AppDetailsPage({ params }) {
                                                 type="db"
                                                 env="PRODUCTION"
                                                 argoAppName={`${app.name}-db-prod`}
-                                                internalDns={`svc-${app.name}-db-${app.id}`}
+                                                internalDns={`svc-db-${app.name}-${app.id}.${app.id}-db-${app.name}-prod.svc.cluster.local`}
                                             />
                                         </div>
                                     </>
@@ -301,11 +308,18 @@ export default function AppDetailsPage({ params }) {
                             </div>
                         </div>
 
-                        {/* Testing Flow */}
+                        {/* Testing Card */}
                         {testEnvExists && (
-                            <div>
-                                <h3 className="text-xs font-bold text-neutral-400 uppercase tracking-wider mb-3 ml-1">Testing Environment (Ephemeral)</h3>
-                                <div className="flex flex-col md:flex-row items-stretch md:items-center gap-4 animate-in fade-in slide-in-from-top-2">
+                            <div className="bg-neutral-50/50 dark:bg-neutral-900/50 border border-neutral-200 dark:border-neutral-800 rounded-2xl p-6 relative overflow-hidden animate-in fade-in slide-in-from-top-2">
+                                <div className="flex items-center justify-between mb-6">
+                                    <div className="flex items-center gap-2">
+                                        <div className="w-2 h-2 rounded-full bg-orange-500" />
+                                        <h3 className="text-sm font-bold text-neutral-900 dark:text-white uppercase tracking-wider">Testing Environment</h3>
+                                    </div>
+                                    <span className="text-[10px] font-bold text-orange-500 bg-orange-50 dark:bg-orange-900/20 border border-orange-100 dark:border-orange-800/50 px-2 py-1 rounded-md uppercase">Ephemeral</span>
+                                </div>
+
+                                <div className="flex flex-col md:flex-row items-stretch md:items-center gap-4 relative z-10">
                                     <div className="flex-1 min-w-0">
                                         <DeploymentCard
                                             title="Application"
@@ -319,8 +333,8 @@ export default function AppDetailsPage({ params }) {
                                     {app.db !== 'none' && (
                                         <>
                                             <div className="flex items-center justify-center text-neutral-300 dark:text-neutral-700">
-                                                <ArrowRight size={24} strokeWidth={1.5} className="hidden md:block" />
-                                                <ArrowDown size={24} strokeWidth={1.5} className="md:hidden" />
+                                                <ArrowRight size={20} strokeWidth={2} className="hidden md:block" />
+                                                <ArrowDown size={20} strokeWidth={2} className="md:hidden" />
                                             </div>
                                             <div className="flex-1 min-w-0">
                                                 <DeploymentCard
@@ -328,7 +342,7 @@ export default function AppDetailsPage({ params }) {
                                                     type="db"
                                                     env="TESTING"
                                                     argoAppName={`${app.name}-db-testing`}
-                                                    internalDns={`svc-${app.name}-db-${app.id}.${app.id}-${app.name}-db-testing.svc.cluster.local`}
+                                                    internalDns={`svc-db-${app.name}-${app.id}.${app.id}-db-${app.name}-testing.svc.cluster.local`}
                                                 />
                                             </div>
                                         </>
