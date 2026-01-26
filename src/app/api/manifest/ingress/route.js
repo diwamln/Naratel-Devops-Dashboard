@@ -63,8 +63,6 @@ const updateIngressConfig = (filePath, config, isTesting, appName) => {
 
         const newYaml = yaml.dump(doc, { lineWidth: -1 });
         fs.writeFileSync(filePath, newYaml);
-        // NO ENCRYPTION NEEDED for values.yaml
-
     } catch (e) {
         throw new Error(`Failed to update ${path.basename(filePath)}: ${e.message}`);
     }
@@ -111,7 +109,6 @@ export async function GET(req) {
             }
             
             const config = readIngressConfig(prodPath);
-
             return NextResponse.json(config || { enabled: false, host: "", tls: false });
 
         } catch (err) {
@@ -161,9 +158,7 @@ export async function POST(req) {
             }
 
             const config = { enabled, host, tls };
-
             updateIngressConfig(prodPath, config, false, appName);
-            // Testing ingress config is handled during ephemeral deployment copy logic
 
             // Update Registry to sync ingressHost
             if (fs.existsSync(regPath)) {
