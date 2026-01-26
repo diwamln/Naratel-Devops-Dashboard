@@ -356,9 +356,9 @@ export default function ManifestForm({ onClose, onSuccess }) {
             <div className="flex items-center gap-2 bg-neutral-900 text-neutral-200 p-2 rounded-lg border border-neutral-700 font-mono text-xs">
               <span className="text-[#FFA500]">$</span>
               <code className="flex-1 break-all">
-                svc-db-{form.appName}-{nextId}.{nextId}-db-{form.appName}-prod.svc.cluster.local
+                svc-db-{form.appName}-{form.appId}.{form.appId}-db-{form.appName}-prod.svc.cluster.local
               </code>
-              <button type="button" onClick={() => copyToClipboard(`svc-db-${form.appName}-${nextId}.${nextId}-db-${form.appName}-prod.svc.cluster.local`)} className="p-1.5 hover:bg-white/10 rounded-md transition-colors text-neutral-400 hover:text-white shrink-0" title="Copy DNS"><Copy size={14} /></button>
+              <button type="button" onClick={() => copyToClipboard(`svc-db-${form.appName}-${form.appId}.${form.appId}-db-${form.appName}-prod.svc.cluster.local`)} className="p-1.5 hover:bg-white/10 rounded-md transition-colors text-neutral-400 hover:text-white shrink-0" title="Copy DNS"><Copy size={14} /></button>
             </div>
             <p className="text-[10px] text-neutral-500">Use this hostname to connect to your database from your application.</p>
           </div>
