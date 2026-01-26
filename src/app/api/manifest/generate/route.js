@@ -77,21 +77,29 @@ export async function POST(req) {
                     console.log(`[RESOLVED] Auto-assigning new ID: ${newId}`);
                     data.appId = newId; // Override the ID
                 }
-                // --- DYNAMIC DOMAIN ALLOCATION (TESTING ONLY) ---
-                // Load domain pool from config.json in the repo
+                // --- DYNAMIC DOMAIN & CREDENTIALS ALLOCATION ---
+                // Load domain pool and credentials from config.json in the repo
                 const configPath = path.join(repoPath, 'config.json');
                 let TEST_DOMAIN_POOL = [];
+                let S3_CREDENTIALS = { accessKey: "", secretKey: "" };
 
                 try {
                     if (fs.existsSync(configPath)) {
                         const configContent = fs.readFileSync(configPath, 'utf8');
                         const configData = JSON.parse(configContent);
+                        
                         if (configData.testDomains && Array.isArray(configData.testDomains)) {
                             TEST_DOMAIN_POOL = configData.testDomains;
-                            console.log(`[CONFIG] Loaded ${TEST_DOMAIN_POOL.length} testing domains from config.json`);
+                            console.log(`[CONFIG] Loaded ${TEST_DOMAIN_POOL.length} testing domains`);
+                        }
+
+                        if (configData.s3Credentials) {
+                            S3_CREDENTIALS = configData.s3Credentials;
+                            data.s3Credentials = S3_CREDENTIALS; // Attach to data for use in generateYaml
+                            console.log(`[CONFIG] Loaded S3 Credentials template from config.json`);
                         }
                     } else {
-                        console.warn("[CONFIG] config.json not found, using default empty pool.");
+                        console.warn("[CONFIG] config.json not found, using default empty values.");
                     }
                 } catch (cfgErr) {
                     console.error("[CONFIG] Failed to load config.json:", cfgErr.message);
@@ -390,9 +398,9 @@ ingress:
                 const dbImage = dbType === 'postgres' ? 'devopsnaratel/postgresql' : 'devopsnaratel/mariadb';
                 const dbTag = dbType === 'postgres' ? '18.1' : '12.1.2';
 
-                // SECURE: Add S3 Credentials to Encrypted Secrets
-                dbSecretObj["S3_ACCESS_KEY"] = "shared:Ia4U4eL13OjFmG78JmSQ";
-                dbSecretObj["S3_SECRET_KEY"] = "ikLEM6nPQRRpfwbE6r3ViaEbRWW5hMLK";
+                // SECURE: Add S3 Credentials from template (loaded from config.json)
+                dbSecretObj["S3_ACCESS_KEY"] = data.s3Credentials?.accessKey || "shared:Ia4U4eL13OjFmG78JmSQ";
+                dbSecretObj["S3_SECRET_KEY"] = data.s3Credentials?.secretKey || "ikLEM6nPQRRpfwbE6r3ViaEbRWW5hMLK";
 
                 secrets = `secretData:\n${formatSecrets(dbSecretObj)}`;
 
@@ -455,9 +463,9 @@ podAnnotations:
                 const dbImage = dbType === 'postgres' ? 'devopsnaratel/postgresql' : 'devopsnaratel/mariadb';
                 const dbTag = dbType === 'postgres' ? '18.1' : '12.1.2';
 
-                // SECURE: Add S3 Credentials to Encrypted Secrets
-                dbSecretObj["S3_ACCESS_KEY"] = "shared:Ia4U4eL13OjFmG78JmSQ";
-                dbSecretObj["S3_SECRET_KEY"] = "ikLEM6nPQRRpfwbE6r3ViaEbRWW5hMLK";
+                // SECURE: Add S3 Credentials from template (loaded from config.json)
+                dbSecretObj["S3_ACCESS_KEY"] = data.s3Credentials?.accessKey || "shared:Ia4U4eL13OjFmG78JmSQ";
+                dbSecretObj["S3_SECRET_KEY"] = data.s3Credentials?.secretKey || "ikLEM6nPQRRpfwbE6r3ViaEbRWW5hMLK";
 
                 secrets = `secretData:\n${formatSecrets(dbSecretObj)}`;
 
