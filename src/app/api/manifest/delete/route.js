@@ -36,45 +36,41 @@ export async function POST(req) {
 
             if (!fs.existsSync(repoPath)) {
                 execSync(`git clone ${authenticatedUrl} ${repoPath}`);
-                execSync(`git config user.name "${userName}"`, { cwd: repoPath });
-                execSync(`git config user.email "${userEmail}"`, { cwd: repoPath });
             } else {
                 try {
                     execSync(`git fetch origin`, { cwd: repoPath });
                     execSync(`git reset --hard origin/main`, { cwd: repoPath });
                 } catch (e) {
-                    // Re-clone if corrupt
                     fs.rmSync(repoPath, { recursive: true, force: true });
                     execSync(`git clone ${authenticatedUrl} ${repoPath}`);
-                    execSync(`git config user.name "${userName}"`, { cwd: repoPath });
-                    execSync(`git config user.email "${userEmail}"`, { cwd: repoPath });
                 }
             }
+            execSync(`git config user.name "${userName}"`, { cwd: repoPath });
+            execSync(`git config user.email "${userEmail}"`, { cwd: repoPath });
 
             // --- 2. Remove Folders ---
-            // We look for folders starting with appName inside 'apps/'
-            // Expected patterns: {appName}-prod, {appName}-testing, {appName}-db-prod, {appName}-db-testing
-
             const foldersToDelete = [];
             if (fs.existsSync(appsPath)) {
                 const files = fs.readdirSync(appsPath);
-                files.forEach(file => {
-                    // Match either legacy format (appName-env) or new format (appId-appName-env)
-                    // and also DB variants
-                    const isLegacy = file === `${appName}-prod` ||
-                                     file === `${appName}-testing` ||
-                                     file === `${appName}-db-prod` ||
-                                     file === `${appName}-db-testing`;
-                    
-                    const isNewFormat = file === `${appId}-${appName}-prod` ||
-                                        file === `${appId}-${appName}-testing` ||
-                                        file === `${appId}-db-${appName}-prod` ||
-                                        file === `${appId}-db-${appName}-testing`;
+                
+                // Construct search patterns for this app
+                const targetPatterns = [
+                    `${appName}-prod`,
+                    `${appName}-testing`,
+                    `${appName}-db-prod`,
+                    `${appName}-db-testing`,
+                    `${appId}-${appName}-prod`,
+                    `${appId}-${appName}-testing`,
+                    `${appId}-db-${appName}-prod`,
+                    `${appId}-db-${appName}-testing`
+                ];
 
-                    if (isLegacy || isNewFormat) {
+                files.forEach(file => {
+                    if (targetPatterns.includes(file)) {
                         const fullPath = path.join(appsPath, file);
                         fs.rmSync(fullPath, { recursive: true, force: true });
                         foldersToDelete.push(file);
+                        console.log(`[DELETE] Removed folder: ${file}`);
                     }
                 });
             }
