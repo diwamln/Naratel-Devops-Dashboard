@@ -58,6 +58,7 @@ export default function ManifestForm({ onClose, onSuccess }) {
 
     // Database Add-on
     dbType: "none", // none, postgres, mariadb
+    storageClass: "longhorn", // Default storage class
 
     // Secrets
     appSecrets: [],
@@ -273,7 +274,30 @@ export default function ManifestForm({ onClose, onSuccess }) {
           </div>
         ))}
       </div>
-      {form.dbType !== 'none' && <div className="p-4 bg-blue-50 dark:bg-blue-900/20 text-blue-800 dark:text-blue-200 rounded-lg text-sm flex items-start gap-3"><Info size={18} className="mt-0.5 shrink-0" /><div><p className="font-bold">Database Credentials</p><p className="text-xs opacity-90 mt-1">We will automatically generate a StatefulSet for your database. You can configure passwords and secrets in the final step.</p></div></div>}
+      
+      {form.dbType !== 'none' && (
+        <div className="space-y-4">
+          <div>
+            <label className="block text-xs font-bold text-neutral-500 uppercase mb-2">Storage Class</label>
+            <input 
+              required 
+              className="w-full p-3 text-sm border rounded-lg dark:bg-neutral-950 dark:border-neutral-800 focus:ring-2 focus:ring-[#FFA500] outline-none transition-all" 
+              placeholder="e.g. longhorn, standard, gp2" 
+              value={form.storageClass} 
+              onChange={e => setForm({ ...form, storageClass: e.target.value })} 
+            />
+            <p className="text-[10px] text-neutral-400 mt-1">Specify the Kubernetes StorageClass for database persistence.</p>
+          </div>
+          
+          <div className="p-4 bg-blue-50 dark:bg-blue-900/20 text-blue-800 dark:text-blue-200 rounded-lg text-sm flex items-start gap-3">
+            <Info size={18} className="mt-0.5 shrink-0" />
+            <div>
+              <p className="font-bold">Database Credentials</p>
+              <p className="text-xs opacity-90 mt-1">We will automatically generate a StatefulSet for your database. You can configure passwords and secrets in the final step.</p>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 

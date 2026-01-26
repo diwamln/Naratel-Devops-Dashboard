@@ -433,7 +433,7 @@ s3:
   # Credentials are now handled via encrypted secrets.yaml
 
 storage:
-  className: "longhorn"
+  className: "${data.storageClass || 'longhorn'}"
   size: "10Gi"
 
 serviceAccount:
@@ -498,7 +498,7 @@ s3:
   # Credentials are now handled via encrypted secrets.yaml
 
 storage:
-  className: "longhorn"
+  className: "${data.storageClass || 'longhorn'}"
   size: "5Gi" # Smaller size for testing
 
 serviceAccount:
