@@ -166,7 +166,6 @@ export async function POST(req) {
             // Testing ingress config is handled during ephemeral deployment copy logic
 
             // Update Registry to sync ingressHost
-            const registryPath = path.join(repoPath, 'registry.json');
             if (fs.existsSync(registryPath)) {
                 try {
                     let registry = JSON.parse(fs.readFileSync(registryPath, 'utf8'));
