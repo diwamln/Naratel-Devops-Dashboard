@@ -404,8 +404,6 @@ mariadb:
   image:
     repository: "${dbImage}"
     tag: "${dbTag}"
-  rootPassword: "changeme_root"
-  database: "${data.appName.replace(/-/g, '_')}"
   backup:
     schedule: "0 1 * * *"`;
                 } else {
@@ -414,8 +412,6 @@ postgres:
   image:
     repository: "${dbImage}"
     tag: "${dbTag}"
-  user: "admin"
-  password: "changeme_securely"
   backup:
     schedule: "0 1 * * *"`;
                 }
@@ -468,8 +464,6 @@ mariadb:
   image:
     repository: "${dbImage}"
     tag: "${dbTag}"
-  rootPassword: "changeme_test"
-  database: "${data.appName.replace(/-/g, '_')}_test"
   backup:
     schedule: "0 1 * * *"`;
                 } else {
@@ -478,8 +472,6 @@ postgres:
   image:
     repository: "${dbImage}"
     tag: "${dbTag}"
-  user: "admin"
-  password: "changeme_test"
   backup:
     schedule: "0 1 * * *"`;
                 }
