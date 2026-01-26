@@ -144,11 +144,11 @@ export async function POST(req) {
             execSync(`git config user.name "${userName}"`, { cwd: repoPath });
             execSync(`git config user.email "${userEmail}"`, { cwd: repoPath });
 
-            const registryPath = path.join(repoPath, 'registry.json');
+            const regPath = path.join(repoPath, 'registry.json');
             let appId = null;
-            if (fs.existsSync(registryPath)) {
+            if (fs.existsSync(regPath)) {
                 try {
-                    const registry = JSON.parse(fs.readFileSync(registryPath, 'utf8'));
+                    const registry = JSON.parse(fs.readFileSync(regPath, 'utf8'));
                     const appEntry = registry.find(a => a.name === appName);
                     if (appEntry) appId = appEntry.id;
                 } catch (e) { console.error("Failed to parse registry", e); }
@@ -166,13 +166,12 @@ export async function POST(req) {
             // Testing ingress config is handled during ephemeral deployment copy logic
 
             // Update Registry to sync ingressHost
-            if (fs.existsSync(registryPath)) {
                 try {
-                    let registry = JSON.parse(fs.readFileSync(registryPath, 'utf8'));
+                    let registry = JSON.parse(fs.readFileSync(regPath, 'utf8'));
                     const idx = registry.findIndex(r => r.name === appName);
                     if (idx >= 0) {
                         registry[idx].ingressHost = enabled ? host : null;
-                        fs.writeFileSync(registryPath, JSON.stringify(registry, null, 2));
+                        fs.writeFileSync(regPath, JSON.stringify(registry, null, 2));
                     }
                 } catch (regErr) {
                     console.error("Registry sync failed:", regErr.message);
