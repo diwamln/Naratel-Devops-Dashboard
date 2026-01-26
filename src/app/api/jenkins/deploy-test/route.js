@@ -61,17 +61,18 @@ export async function POST(req) {
 
         // --- HELPER: Deploy Component (App or DB) ---
         const deployComponent = (role, suffixProd, suffixTest) => {
-            let prodFolder = path.join(repoPath, 'apps', `${appId}-${appName}${suffixProd}`);
-            let testFolder = path.join(repoPath, 'apps', `${appId}-${appName}${suffixTest}`);
+            const isDb = role === 'db';
+            const dbPrefix = isDb ? 'db-' : '';
+            
+            let prodFolder = path.join(repoPath, 'apps', `${appId}-${dbPrefix}${appName}${suffixProd}`);
+            let testFolder = path.join(repoPath, 'apps', `${appId}-${dbPrefix}${appName}${suffixTest}`);
             
             if (!fs.existsSync(prodFolder)) {
-                // Legacy Fallback
-                const legacyProdFolder = path.join(repoPath, 'apps', `${appName}${suffixProd}`);
+                // Legacy Fallback (without ID prefix)
+                const legacyProdFolder = path.join(repoPath, 'apps', `${dbPrefix}${appName}${suffixProd}`);
                 if (fs.existsSync(legacyProdFolder)) {
                     prodFolder = legacyProdFolder;
-                    // If prod was legacy, keep test legacy too for simplicity, 
-                    // or better: move test to new format
-                    testFolder = path.join(repoPath, 'apps', `${appName}${suffixTest}`);
+                    testFolder = path.join(repoPath, 'apps', `${dbPrefix}${appName}${suffixTest}`);
                 } else {
                     console.warn(`Prod folder not found: ${prodFolder}`);
                     return;
@@ -95,9 +96,9 @@ export async function POST(req) {
                 let values = yaml.load(prodValContent);
 
                 // Modify for Testing
-                const isDb = suffixProd.includes('db');
+                const isDbComp = role === 'db';
                 // Format: ID-db-APPNAME-testing OR ID-APPNAME-testing
-                values.namespace = `${appId}-${isDb ? 'db-' : ''}${appName}-testing`; 
+                values.namespace = `${appId}-${isDbComp ? 'db-' : ''}${appName}-testing`; 
                 values.app.env = 'testing';
                 
                 // Override Image Tag if provided (Only for App)
