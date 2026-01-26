@@ -268,13 +268,13 @@ export default function AppDetailsPage({ params }) {
 
                     <div className="grid grid-cols-1 gap-8">
                         {/* Production Card */}
-                        <div className="bg-neutral-50/50 dark:bg-neutral-900/50 border border-neutral-200 dark:border-neutral-800 rounded-2xl p-6 relative overflow-hidden">
+                        <div className="bg-gradient-to-br from-orange-50/80 via-white to-white dark:from-orange-950/20 dark:via-neutral-900/80 dark:to-neutral-900/80 border border-orange-100 dark:border-orange-900/20 rounded-2xl p-6 relative overflow-hidden">
                             <div className="flex items-center justify-between mb-6">
                                 <div className="flex items-center gap-2">
                                     <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
                                     <h3 className="text-sm font-bold text-neutral-900 dark:text-white uppercase tracking-wider">Production Environment</h3>
                                 </div>
-                                <span className="text-[10px] font-bold text-neutral-400 bg-white dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 px-2 py-1 rounded-md uppercase">Stable</span>
+                                <span className="text-[10px] font-bold text-orange-600 dark:text-orange-400 bg-orange-50/50 dark:bg-orange-900/20 border border-orange-100 dark:border-orange-800/50 px-2 py-1 rounded-md uppercase">Stable</span>
                             </div>
 
                             <div className="flex flex-col md:flex-row items-stretch md:items-center gap-4 relative z-10">
@@ -310,7 +310,7 @@ export default function AppDetailsPage({ params }) {
 
                         {/* Testing Card */}
                         {testEnvExists && (
-                            <div className="bg-neutral-50/50 dark:bg-neutral-900/50 border border-neutral-200 dark:border-neutral-800 rounded-2xl p-6 relative overflow-hidden animate-in fade-in slide-in-from-top-2">
+                            <div className="bg-gradient-to-br from-amber-50/80 via-white to-white dark:from-amber-950/10 dark:via-neutral-900/80 dark:to-neutral-900/80 border border-amber-100 dark:border-amber-900/20 rounded-2xl p-6 relative overflow-hidden animate-in fade-in slide-in-from-top-2">
                                 <div className="flex items-center justify-between mb-6">
                                     <div className="flex items-center gap-2">
                                         <div className="w-2 h-2 rounded-full bg-orange-500" />
