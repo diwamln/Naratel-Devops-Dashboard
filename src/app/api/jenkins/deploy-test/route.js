@@ -61,12 +61,21 @@ export async function POST(req) {
 
         // --- HELPER: Deploy Component (App or DB) ---
         const deployComponent = (role, suffixProd, suffixTest) => {
-            const prodFolder = path.join(repoPath, 'apps', `${appName}${suffixProd}`);
-            const testFolder = path.join(repoPath, 'apps', `${appName}${suffixTest}`);
+            let prodFolder = path.join(repoPath, 'apps', `${appId}-${appName}${suffixProd}`);
+            let testFolder = path.join(repoPath, 'apps', `${appId}-${appName}${suffixTest}`);
             
             if (!fs.existsSync(prodFolder)) {
-                console.warn(`Prod folder not found: ${prodFolder}`);
-                return;
+                // Legacy Fallback
+                const legacyProdFolder = path.join(repoPath, 'apps', `${appName}${suffixProd}`);
+                if (fs.existsSync(legacyProdFolder)) {
+                    prodFolder = legacyProdFolder;
+                    // If prod was legacy, keep test legacy too for simplicity, 
+                    // or better: move test to new format
+                    testFolder = path.join(repoPath, 'apps', `${appName}${suffixTest}`);
+                } else {
+                    console.warn(`Prod folder not found: ${prodFolder}`);
+                    return;
+                }
             }
 
             if (!fs.existsSync(testFolder)) {

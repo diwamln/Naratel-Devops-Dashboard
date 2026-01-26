@@ -39,7 +39,22 @@ export async function POST(req) {
             execSync(`git reset --hard origin/main`, { cwd: repoPath });
         }
 
-        const targetFolder = path.join(repoPath, 'apps', `${appName}-${env}`);
+        const registryPath = path.join(repoPath, 'registry.json');
+        let appId = null;
+        if (fs.existsSync(registryPath)) {
+            try {
+                const registry = JSON.parse(fs.readFileSync(registryPath, 'utf8'));
+                const appEntry = registry.find(a => a.name === appName);
+                if (appEntry) appId = appEntry.id;
+            } catch (e) { console.error("Failed to parse registry", e); }
+        }
+
+        let targetFolder = path.join(repoPath, 'apps', `${appId}-${appName}-${env}`);
+        if (!fs.existsSync(targetFolder)) {
+            const legacyFolder = path.join(repoPath, 'apps', `${appName}-${env}`);
+            if (fs.existsSync(legacyFolder)) targetFolder = legacyFolder;
+        }
+        
         const valuesPath = path.join(targetFolder, 'values.yaml');
 
         if (!fs.existsSync(valuesPath)) {

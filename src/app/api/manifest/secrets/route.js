@@ -63,10 +63,30 @@ export async function GET(req) {
             execSync(`git config user.email "${userEmail}"`, { cwd: repoPath });
 
             const appsPath = path.join(repoPath, 'apps');
+            const registryPath = path.join(repoPath, 'registry.json');
             
+            let appId = null;
+            if (fs.existsSync(registryPath)) {
+                try {
+                    const registry = JSON.parse(fs.readFileSync(registryPath, 'utf8'));
+                    const appEntry = registry.find(a => a.name === appName);
+                    if (appEntry) appId = appEntry.id;
+                } catch (e) { console.error("Failed to parse registry", e); }
+            }
+
             // TARGET secrets.yaml (PROD ONLY)
-            const appProdPath = path.join(appsPath, `${appName}-prod`, 'secrets.yaml');
-            const dbProdPath = path.join(appsPath, `${appName}-db-prod`, 'secrets.yaml');
+            let appProdPath = path.join(appsPath, `${appId}-${appName}-prod`, 'secrets.yaml');
+            let dbProdPath = path.join(appsPath, `${appId}-db-${appName}-prod`, 'secrets.yaml');
+
+            // Legacy Fallback
+            if (!fs.existsSync(path.dirname(appProdPath))) {
+                const legacyPath = path.join(appsPath, `${appName}-prod`, 'secrets.yaml');
+                if (fs.existsSync(path.dirname(legacyPath))) appProdPath = legacyPath;
+            }
+            if (!fs.existsSync(path.dirname(dbProdPath))) {
+                const legacyPath = path.join(appsPath, `${appName}-db-prod`, 'secrets.yaml');
+                if (fs.existsSync(path.dirname(legacyPath))) dbProdPath = legacyPath;
+            }
 
             const appProdKeys = readSecretKeys(appProdPath);
             
@@ -156,6 +176,16 @@ export async function POST(req) {
             execSync(`git config user.email "${userEmail}"`, { cwd: repoPath });
 
             const appsPath = path.join(repoPath, 'apps');
+            const registryPath = path.join(repoPath, 'registry.json');
+            
+            let appId = null;
+            if (fs.existsSync(registryPath)) {
+                try {
+                    const registry = JSON.parse(fs.readFileSync(registryPath, 'utf8'));
+                    const appEntry = registry.find(a => a.name === appName);
+                    if (appEntry) appId = appEntry.id;
+                } catch (e) { console.error("Failed to parse registry", e); }
+            }
             
             // --- PROCESS APP SECRETS (PROD ONLY) ---
             if (appSecrets && Array.isArray(appSecrets)) {
@@ -166,7 +196,11 @@ export async function POST(req) {
                     }
                 });
 
-                const appProdPath = path.join(appsPath, `${appName}-prod`, 'secrets.yaml');
+                let appProdPath = path.join(appsPath, `${appId}-${appName}-prod`, 'secrets.yaml');
+                if (!fs.existsSync(path.dirname(appProdPath))) {
+                    const legacyPath = path.join(appsPath, `${appName}-prod`, 'secrets.yaml');
+                    if (fs.existsSync(path.dirname(legacyPath))) appProdPath = legacyPath;
+                }
                 overwriteSecretFile(appProdPath, appProdObj, agePubKey);
             }
 
@@ -179,7 +213,11 @@ export async function POST(req) {
                     }
                 });
 
-                const dbProdPath = path.join(appsPath, `${appName}-db-prod`, 'secrets.yaml');
+                let dbProdPath = path.join(appsPath, `${appId}-db-${appName}-prod`, 'secrets.yaml');
+                if (!fs.existsSync(path.dirname(dbProdPath))) {
+                    const legacyPath = path.join(appsPath, `${appName}-db-prod`, 'secrets.yaml');
+                    if (fs.existsSync(path.dirname(legacyPath))) dbProdPath = legacyPath;
+                }
                 // Only overwrite if paths exist (or just try, the helper handles check)
                 overwriteSecretFile(dbProdPath, dbProdObj, agePubKey);
             }

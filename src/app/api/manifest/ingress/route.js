@@ -94,7 +94,22 @@ export async function GET(req) {
             execSync(`git config user.name "${userName}"`, { cwd: repoPath });
             execSync(`git config user.email "${userEmail}"`, { cwd: repoPath });
 
-            const prodPath = path.join(repoPath, 'apps', `${appName}-prod`, 'values.yaml');
+            const registryPath = path.join(repoPath, 'registry.json');
+            let appId = null;
+            if (fs.existsSync(registryPath)) {
+                try {
+                    const registry = JSON.parse(fs.readFileSync(registryPath, 'utf8'));
+                    const appEntry = registry.find(a => a.name === appName);
+                    if (appEntry) appId = appEntry.id;
+                } catch (e) { console.error("Failed to parse registry", e); }
+            }
+
+            let prodPath = path.join(repoPath, 'apps', `${appId}-${appName}-prod`, 'values.yaml');
+            if (!fs.existsSync(prodPath)) {
+                const legacyPath = path.join(repoPath, 'apps', `${appName}-prod`, 'values.yaml');
+                if (fs.existsSync(legacyPath)) prodPath = legacyPath;
+            }
+            
             const config = readIngressConfig(prodPath);
 
             return NextResponse.json(config || { enabled: false, host: "", tls: false });
@@ -129,8 +144,21 @@ export async function POST(req) {
             execSync(`git config user.name "${userName}"`, { cwd: repoPath });
             execSync(`git config user.email "${userEmail}"`, { cwd: repoPath });
 
-            const prodPath = path.join(repoPath, 'apps', `${appName}-prod`, 'values.yaml');
-            const testPath = path.join(repoPath, 'apps', `${appName}-testing`, 'values.yaml');
+            const registryPath = path.join(repoPath, 'registry.json');
+            let appId = null;
+            if (fs.existsSync(registryPath)) {
+                try {
+                    const registry = JSON.parse(fs.readFileSync(registryPath, 'utf8'));
+                    const appEntry = registry.find(a => a.name === appName);
+                    if (appEntry) appId = appEntry.id;
+                } catch (e) { console.error("Failed to parse registry", e); }
+            }
+
+            let prodPath = path.join(repoPath, 'apps', `${appId}-${appName}-prod`, 'values.yaml');
+            if (!fs.existsSync(prodPath)) {
+                const legacyPath = path.join(repoPath, 'apps', `${appName}-prod`, 'values.yaml');
+                if (fs.existsSync(legacyPath)) prodPath = legacyPath;
+            }
 
             const config = { enabled, host, tls };
 

@@ -79,8 +79,12 @@ export async function GET() {
               return null;
             }
 
-            const prodValuesPath = path.join(repoPath, 'apps', `${app.name}-prod`, 'values.yaml');
-            const testValuesPath = path.join(repoPath, 'apps', `${app.name}-testing`, 'values.yaml');
+            const prodValuesPath = path.join(repoPath, 'apps', `${app.id}-${app.name}-prod`, 'values.yaml');
+            const testValuesPath = path.join(repoPath, 'apps', `${app.id}-${app.name}-testing`, 'values.yaml');
+            
+            // Legacy Fallback
+            const legacyProdValuesPath = path.join(repoPath, 'apps', `${app.name}-prod`, 'values.yaml');
+            const legacyTestValuesPath = path.join(repoPath, 'apps', `${app.name}-testing`, 'values.yaml');
             
             let prodHost = null;
             let testHost = null;
@@ -93,6 +97,13 @@ export async function GET() {
                         prodHost = doc.ingress.hosts[0].host;
                     }
                 } catch (e) { console.warn(`Failed to read prod values for ${app.name}`, e.message); }
+            } else if (fs.existsSync(legacyProdValuesPath)) {
+                try {
+                    const doc = yaml.load(fs.readFileSync(legacyProdValuesPath, 'utf8'));
+                    if (doc.ingress && doc.ingress.enabled && doc.ingress.hosts && doc.ingress.hosts.length > 0) {
+                        prodHost = doc.ingress.hosts[0].host;
+                    }
+                } catch (e) { console.warn(`Failed to read legacy prod values for ${app.name}`, e.message); }
             }
 
             // Read Testing
@@ -103,6 +114,13 @@ export async function GET() {
                         testHost = doc.ingress.hosts[0].host;
                     }
                 } catch (e) { console.warn(`Failed to read test values for ${app.name}`, e.message); }
+            } else if (fs.existsSync(legacyTestValuesPath)) {
+                try {
+                    const doc = yaml.load(fs.readFileSync(legacyTestValuesPath, 'utf8'));
+                    if (doc.ingress && doc.ingress.enabled && doc.ingress.hosts && doc.ingress.hosts.length > 0) {
+                        testHost = doc.ingress.hosts[0].host;
+                    }
+                } catch (e) { console.warn(`Failed to read legacy test values for ${app.name}`, e.message); }
             }
 
             return {

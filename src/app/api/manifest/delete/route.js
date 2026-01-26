@@ -59,13 +59,19 @@ export async function POST(req) {
             if (fs.existsSync(appsPath)) {
                 const files = fs.readdirSync(appsPath);
                 files.forEach(file => {
-                    // Strict check to ensure we don't delete "inventory-backend" when deleting "inventory"
-                    // The folders generated are exactly: appName + "-prod", "-testing", "-db-prod", "-db-testing"
-                    if (file === `${appName}-prod` ||
-                        file === `${appName}-testing` ||
-                        file === `${appName}-db-prod` ||
-                        file === `${appName}-db-testing`) {
+                    // Match either legacy format (appName-env) or new format (appId-appName-env)
+                    // and also DB variants
+                    const isLegacy = file === `${appName}-prod` ||
+                                     file === `${appName}-testing` ||
+                                     file === `${appName}-db-prod` ||
+                                     file === `${appName}-db-testing`;
+                    
+                    const isNewFormat = file === `${appId}-${appName}-prod` ||
+                                        file === `${appId}-${appName}-testing` ||
+                                        file === `${appId}-db-${appName}-prod` ||
+                                        file === `${appId}-db-${appName}-testing`;
 
+                    if (isLegacy || isNewFormat) {
                         const fullPath = path.join(appsPath, file);
                         fs.rmSync(fullPath, { recursive: true, force: true });
                         foldersToDelete.push(file);
