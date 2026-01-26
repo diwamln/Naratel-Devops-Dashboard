@@ -278,6 +278,9 @@ image:
   repository: "${safeImageRepo}"
   tag: "${data.imageTag}"
 
+imagePullSecrets:
+  - name: "dockerhub-auth"
+
 service:
   port: ${data.servicePort}
   targetPort: ${data.targetPort}
@@ -432,6 +435,9 @@ storage:
   className: "${data.storageClass || 'longhorn'}"
   size: "10Gi"
 
+imagePullSecrets:
+  - name: "dockerhub-auth"
+
 serviceAccount:
   create: true
   name: "sa-db-${appName}"
@@ -491,6 +497,9 @@ s3:
 storage:
   className: "${data.storageClass || 'longhorn'}"
   size: "5Gi" # Smaller size for testing
+
+imagePullSecrets:
+  - name: "dockerhub-auth"
 
 serviceAccount:
   create: true
