@@ -428,7 +428,7 @@ databaseType: "${dbType}"
 
 s3:
   endpoint: "http://10.246.2.154:8010"
-  bucket: "db-wal-archive"
+  bucket: "${dbType === 'postgres' ? 'postgres-wal-archive' : 'mariadb-wal-archive'}"
   region: "us-east-1"
   # Credentials are now handled via encrypted secrets.yaml
 
@@ -493,7 +493,7 @@ databaseType: "${dbType}"
 
 s3:
   endpoint: "http://10.246.2.154:8010"
-  bucket: "db-wal-archive"
+  bucket: "${dbType === 'postgres' ? 'postgres-wal-archive' : 'mariadb-wal-archive'}"
   region: "us-east-1"
   # Credentials are now handled via encrypted secrets.yaml
 
