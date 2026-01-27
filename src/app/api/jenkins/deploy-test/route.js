@@ -58,8 +58,6 @@ export async function POST(req) {
 
         // --- DOMAIN ALLOCATION LOGIC ---
         let selectedDomain = null;
-        
-        // Load Config for Pool
         let domainPool = [];
         if (fs.existsSync(configPath)) {
             const config = JSON.parse(fs.readFileSync(configPath, 'utf8'));
@@ -67,17 +65,10 @@ export async function POST(req) {
         }
 
         if (domainPool.length > 0) {
-            // Check if app already has a test domain assigned
             if (appEntry.testDomain && domainPool.includes(appEntry.testDomain)) {
                 selectedDomain = appEntry.testDomain;
-                console.log(`[Domain] Reusing assigned domain for ${appName}: ${selectedDomain}`);
             } else {
-                // Find used domains
-                const usedDomains = registry
-                    .map(r => r.testDomain)
-                    .filter(d => d); // Filter nulls
-                
-                // Find first available
+                const usedDomains = registry.map(r => r.testDomain).filter(d => d);
                 selectedDomain = domainPool.find(d => !usedDomains.includes(d));
                 
                 if (!selectedDomain) {
@@ -85,15 +76,11 @@ export async function POST(req) {
                         error: "No testing domains available. Please destroy an existing test environment to free up a slot." 
                     }, { status: 503 });
                 }
-                
-                // Assign to app entry (in memory, save later)
                 registry[appIndex].testDomain = selectedDomain;
-                console.log(`[Domain] Allocated new domain for ${appName}: ${selectedDomain}`);
             }
         } else {
             console.warn("[Domain] No testDomains defined in config.json. Falling back to NodePort/Default.");
         }
-        // -------------------------------
 
         const generatedFolders = [];
 
@@ -106,7 +93,7 @@ export async function POST(req) {
             let testFolder = path.join(repoPath, 'apps', `${appId}-${dbPrefix}${appName}${suffixTest}`);
             
             if (!fs.existsSync(prodFolder)) {
-                // Legacy Fallback (without ID prefix)
+                // Legacy Fallback
                 const legacyProdFolder = path.join(repoPath, 'apps', `${dbPrefix}${appName}${suffixProd}`);
                 if (fs.existsSync(legacyProdFolder)) {
                     prodFolder = legacyProdFolder;
@@ -121,10 +108,15 @@ export async function POST(req) {
                 fs.mkdirSync(testFolder, { recursive: true });
             }
 
-            // A. Copy Secrets (Encrypted)
-            const prodSecret = path.join(prodFolder, 'secrets.yaml');
-            if (fs.existsSync(prodSecret)) {
-                fs.copyFileSync(prodSecret, path.join(testFolder, 'secrets.yaml'));
+            // A. Handle Secrets (Prefer Standby, Fallback to Copy)
+            const testSecretPath = path.join(testFolder, 'secrets.yaml');
+            const prodSecretPath = path.join(prodFolder, 'secrets.yaml');
+            
+            if (fs.existsSync(testSecretPath)) {
+                console.log(`[Secrets] Using existing/standby secrets for ${appName}${suffixTest}`);
+            } else if (fs.existsSync(prodSecretPath)) {
+                console.warn(`[Secrets] Standby secret not found. Copying Prod secret for ${appName}${suffixTest}`);
+                fs.copyFileSync(prodSecretPath, testSecretPath);
             }
 
             // B. Read & Modify Values
@@ -135,37 +127,26 @@ export async function POST(req) {
 
                 const isDbComp = role === 'db';
 
-                // --- SPECIAL LOGIC FOR DB: Use Lightweight Testing Chart ---
                 if (isDbComp) {
-                    // Extract existing DB info from prod values to maintain version consistency
+                    // --- DB LOGIC: Use Lightweight Testing Chart ---
                     const dbType = values.databaseType || 'mariadb';
                     const dbRepo = values[dbType]?.image?.repository || (dbType === 'postgres' ? 'devopsnaratel/postgresql' : 'devopsnaratel/mariadb');
                     const dbTag = values[dbType]?.image?.tag || (dbType === 'postgres' ? '18.1' : '12.1.2');
                     const storageClass = values.storage?.className || 'longhorn';
 
-                    // Reconstruct values entirely for db-testing-chart
                     values = {
                         namespace: `${appId}-db-${appName}-testing`,
                         fullnameOverride: `sts-db-${appName}-${appId}`,
                         databaseType: dbType,
-                        storage: {
-                            className: storageClass,
-                            size: "2Gi" // Fixed small size for ephemeral testing
-                        },
-                        imagePullSecrets: [
-                            { name: "dockerhub-auth" }
-                        ],
-                        serviceAccount: {
-                            create: true,
-                            name: `sa-db-${appName}-test`
-                        },
+                        storage: { className: storageClass, size: "2Gi" },
+                        imagePullSecrets: [{ name: "dockerhub-auth" }],
+                        serviceAccount: { create: true, name: `sa-db-${appName}-test` },
                         podAnnotations: {
                             "app.kubernetes.io/id": appId,
                             "app.kubernetes.io/env": "testing"
                         }
                     };
 
-                    // Add DB Specific Image Config
                     if (dbType === 'mariadb') {
                         values.mariadb = { image: { repository: dbRepo, tag: dbTag } };
                     } else {
@@ -173,32 +154,20 @@ export async function POST(req) {
                     }
 
                 } else {
-                    // --- APP LOGIC: Clone & Modify ---
+                    // --- APP LOGIC: Clone & Modify with Security Overrides ---
                     values.namespace = `${appId}-${appName}-testing`; 
                     values.app.env = 'testing';
                     
-                    // Override Image Tag if provided (Only for App)
-                    if (imageTag) {
-                        values.image.tag = imageTag;
-                    }
+                    if (imageTag) values.image.tag = imageTag;
 
-                    // --- INGRESS LOGIC ---
+                    // Ingress
                     if (selectedDomain) {
-                        // Use Allocated Domain
                         values.ingress = {
                             enabled: true,
-                            className: "nginx", // Default to nginx or keep prod class
-                            hosts: [
-                                {
-                                    host: selectedDomain,
-                                    path: "/"
-                                }
-                            ]
+                            className: "nginx",
+                            hosts: [{ host: selectedDomain, path: "/" }]
                         };
-                        // Note: We deliberately do not enable TLS for ephemeral testing to avoid CertManager limits/complexity, 
-                        // or we could add a wildcard secret if available. For now, http only.
                     } else {
-                        // Fallback to NodePort logic or "test-" prefix if pool empty (shouldn't happen with check above)
                         if (values.ingress && values.ingress.enabled && values.ingress.hosts) {
                             values.ingress.hosts = values.ingress.hosts.map(h => ({
                                 ...h,
@@ -207,60 +176,54 @@ export async function POST(req) {
                         }
                     }
                     
-                    // Override Migration Command for Testing (Auto-Seed)
+                    // Migration
                     if (values.migration && values.migration.enabled) {
                         values.migration.command = "php artisan migrate --seed --force";
                     }
                     
-                    // DB Connection for APP (FORCE OVERRIDE PROD SECRETS)
+                    // DB Connection: AGGRESSIVE OVERWRITE
                     if (dbType !== 'none') {
                         const dbFqdn = `svc-db-${appName}-${appId}.${appId}-db-${appName}-testing.svc.cluster.local`;
                         const dbPort = dbType === 'postgres' ? "5432" : "3306";
-                        const dbUser = "admin"; // Default user from db-testing-chart templates (if using bitnami default or custom)
-                        // Note: Ensure your testing chart sets these defaults or uses secrets we can predict. 
-                        // Currently db-testing-chart uses 'postgres' user for PG.
                         const realDbUser = dbType === 'postgres' ? "postgres" : "root"; 
-                        
-                        // Default credentials for testing chart (Should match what db-testing-chart expects)
-                        // In db-testing-chart/values.yaml, we need to ensure these are set or we inject them.
-                        // Since we can't edit encrypted secrets easily for DB, we assume db-testing-chart 
-                        // uses standard env vars or we rely on the fact that we REWROTE the db values.yaml completely.
+                        // Note: For 'postgres' chart, default pass might be needed if not set.
+                        // Ideally we should use a known testing password or one generated in the DB deployment.
+                        // Assuming 'changeme_securely' is the default for our testing charts or handled by secrets.
                         
                         if (!values.extraEnv) values.extraEnv = [];
                         
-                        // List of vars to force override
                         const overrides = [
+                            // Standard
                             { name: "DB_HOST", value: dbFqdn },
                             { name: "DB_PORT", value: dbPort },
                             { name: "DB_USER", value: realDbUser },
                             { name: "DB_USERNAME", value: realDbUser },
-                            // For testing, we might need to set a known password or trust the secret generation?
-                            // Wait, db-testing-chart also needs secrets. 
-                            // The app needs to know the password of the TESTING DB.
-                            // Currently we don't know the Testing DB password because we didn't generate a fresh secret for it, 
-                            // we just cleared values.yaml. 
+                            { name: "DB_PASSWORD", value: "changeme_securely" },
+                            { name: "DB_PASS", value: "changeme_securely" },
+                            { name: "DB_NAME", value: `${appName.replace(/-/g, '_')}_testing` },
+                            { name: "DB_DATABASE", value: `${appName.replace(/-/g, '_')}_testing` },
+
+                            // Postgres Specific
+                            { name: "POSTGRES_HOST", value: dbFqdn },
+                            { name: "PGHOST", value: dbFqdn },
+                            { name: "POSTGRES_USER", value: realDbUser },
+                            { name: "POSTGRES_PASSWORD", value: "changeme_securely" },
+                            { name: "POSTGRES_DB", value: `${appName.replace(/-/g, '_')}_testing` },
+
+                            // MySQL/MariaDB Specific
+                            { name: "MYSQL_HOST", value: dbFqdn },
+                            { name: "MARIADB_HOST", value: dbFqdn },
+                            { name: "MYSQL_USER", value: realDbUser },
+                            { name: "MYSQL_PASSWORD", value: "changeme_securely" },
+                            { name: "MYSQL_DATABASE", value: `${appName.replace(/-/g, '_')}_testing` },
                             
-                            // CRITICAL FIX: Since we re-generated DB values.yaml, the DB secret is also just copied from Prod?
-                            // No, deployComponent('db') logic copies secrets too.
-                            // We MUST Ensure the DB (Testing) and App (Testing) agree on a password.
-                            
-                            // Since we can't easily change the DB password (in secret), 
-                            // we must assume the copied secret works OR we must accept that we need to generate new secrets.
-                            
-                            // Re-thinking: If we copy Prod Secret to Test DB, Test DB will have Prod Password.
-                            // App (Test) connecting to Test DB using Prod Password (via copied secret) works fine technically.
-                            // BUT we want to ensure isolation.
-                            
-                            // SAFETY NET: Overwrite DB_DATABASE to ensure we don't accidentally write to a prod DB name 
-                            // if host DNS fails (unlikely but good practice).
-                            { name: "DB_DATABASE", value: `${appName.replace(/-/g, '_')}_testing` } 
+                            // Dangerous Connection Strings (POISONING)
+                            { name: "DATABASE_URL", value: `${dbType}://${realDbUser}:changeme_securely@${dbFqdn}:${dbPort}/${appName.replace(/-/g, '_')}_testing` },
+                            { name: "DB_URL", value: `${dbType}://${realDbUser}:changeme_securely@${dbFqdn}:${dbPort}/${appName.replace(/-/g, '_')}_testing` }
                         ];
 
-                        // Remove existing entries to avoid duplicates
                         const overrideNames = overrides.map(o => o.name);
                         values.extraEnv = values.extraEnv.filter(e => !overrideNames.includes(e.name));
-                        
-                        // Push overrides
                         values.extraEnv.push(...overrides);
                     }
                 }
