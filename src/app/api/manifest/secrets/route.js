@@ -21,20 +21,43 @@ const getRepoConfig = () => {
 };
 
 const readSecretKeys = (filePath) => {
-    if (!fs.existsSync(filePath)) return {};
+    if (!fs.existsSync(filePath)) return [];
     try {
         const content = fs.readFileSync(filePath, 'utf8');
         const parsed = yaml.load(content);
         const secrets = parsed.secretData || {};
-        
-        const result = {};
-        Object.keys(secrets).forEach(k => {
-            result[k] = ""; 
-        });
-        return result;
+        return Object.keys(secrets);
     } catch (e) {
         console.error(`Failed to read keys from ${filePath}:`, e.message);
-        return {};
+        return [];
+    }
+};
+
+const overwriteSecretFile = (filePath, newSecrets, agePubKey) => {
+    const dir = path.dirname(filePath);
+    if (!fs.existsSync(dir)) fs.mkdirSync(dir, { recursive: true });
+
+    try {
+        const cleanSecrets = {};
+        // newSecrets is an array of {key, value} or object
+        // The API sends array of {key, value}.
+        if (Array.isArray(newSecrets)) {
+            newSecrets.forEach(s => {
+                if (s.key && s.value !== undefined) cleanSecrets[s.key] = s.value;
+            });
+        } else {
+            Object.entries(newSecrets).forEach(([k, v]) => {
+                if (v !== undefined) cleanSecrets[k] = v;
+            });
+        }
+
+        const doc = { secretData: cleanSecrets };
+        const newYaml = yaml.dump(doc, { lineWidth: -1 });
+        fs.writeFileSync(filePath, newYaml);
+
+        execSync(`sops --encrypt --age ${agePubKey} --encrypted-regex '^(secretData)$' --in-place "${filePath}"`);
+    } catch (e) {
+        throw new Error(`Failed to overwrite ${path.basename(filePath)}: ${e.message}`);
     }
 };
 
@@ -74,45 +97,43 @@ export async function GET(req) {
                 } catch (e) { console.error("Failed to parse registry", e); }
             }
 
-            // TARGET secrets.yaml (PROD ONLY)
+            // Define Paths
             let appProdPath = path.join(appsPath, `${appId}-${appName}-prod`, 'secrets.yaml');
+            let appTestPath = path.join(appsPath, `${appId}-${appName}-testing`, 'secrets.yaml');
+            
             let dbProdPath = path.join(appsPath, `${appId}-db-${appName}-prod`, 'secrets.yaml');
+            let dbTestPath = path.join(appsPath, `${appId}-db-${appName}-testing`, 'secrets.yaml');
 
             // Legacy Fallback
             if (!fs.existsSync(path.dirname(appProdPath))) {
-                const legacyPath = path.join(appsPath, `${appName}-prod`, 'secrets.yaml');
-                if (fs.existsSync(path.dirname(legacyPath))) appProdPath = legacyPath;
+                appProdPath = path.join(appsPath, `${appName}-prod`, 'secrets.yaml');
+                // Assume legacy structure implies legacy testing path too if exists
+                appTestPath = path.join(appsPath, `${appName}-testing`, 'secrets.yaml');
             }
             if (!fs.existsSync(path.dirname(dbProdPath))) {
-                const legacyPath = path.join(appsPath, `${appName}-db-prod`, 'secrets.yaml');
-                if (fs.existsSync(path.dirname(legacyPath))) dbProdPath = legacyPath;
+                dbProdPath = path.join(appsPath, `${appName}-db-prod`, 'secrets.yaml');
+                dbTestPath = path.join(appsPath, `${appName}-db-testing`, 'secrets.yaml');
             }
 
-            const appProdKeys = readSecretKeys(appProdPath);
-            
-            // Check based on folder existence, assuming db folder implies db exists
-            const dbProdFolder = path.dirname(dbProdPath);
-            const dbExists = fs.existsSync(dbProdFolder);
-            
-            const dbProdKeys = dbExists ? readSecretKeys(dbProdPath) : {};
+            // Read Keys
+            const appKeysProd = readSecretKeys(appProdPath);
+            const appKeysTest = readSecretKeys(appTestPath);
+            const dbKeysProd = readSecretKeys(dbProdPath);
+            const dbKeysTest = readSecretKeys(dbTestPath);
 
-            const mapKeys = (prodObj) => {
-                const keys = Object.keys(prodObj);
-                const result = [];
-                keys.forEach(key => {
-                    result.push({ key, valueProd: "" });
-                });
-                return result;
-            };
+            // Merge Unique Keys
+            const mergeKeys = (keysA, keysB) => Array.from(new Set([...keysA, ...keysB]));
+            
+            const appAllKeys = mergeKeys(appKeysProd, appKeysTest);
+            const dbAllKeys = mergeKeys(dbKeysProd, dbKeysTest);
 
-            const appSecretsMerged = mapKeys(appProdKeys);
-            const dbSecretsMerged = mapKeys(dbProdKeys);
+            const appSecrets = appAllKeys.map(k => ({ key: k }));
+            const dbSecrets = dbAllKeys.map(k => ({ key: k }));
 
             return NextResponse.json({
-                appSecrets: appSecretsMerged,
-                dbSecrets: dbSecretsMerged,
-                hasDb: dbExists,
-                mode: "overwrite"
+                appSecrets,
+                dbSecrets,
+                hasDb: fs.existsSync(path.dirname(dbProdPath))
             });
 
         } catch (err) {
@@ -122,38 +143,8 @@ export async function GET(req) {
     });
 }
 
-const overwriteSecretFile = (filePath, newSecrets, agePubKey) => {
-    // If file doesn't exist (migration case), create it?
-    // Generator ensures it exists for NEW apps.
-    // For OLD apps, we might need to create it.
-    // Let's create it if directory exists.
-    const dir = path.dirname(filePath);
-    if (!fs.existsSync(dir)) return;
-
-    try {
-        const cleanSecrets = {};
-        Object.entries(newSecrets).forEach(([k, v]) => {
-            if (v !== undefined && v !== null) {
-                cleanSecrets[k] = v;
-            }
-        });
-
-        // Always reconstruct minimal structure
-        const doc = { secretData: cleanSecrets };
-
-        const newYaml = yaml.dump(doc, { lineWidth: -1 });
-        fs.writeFileSync(filePath, newYaml);
-
-        // Encrypt using PUBLIC KEY
-        execSync(`sops --encrypt --age ${agePubKey} --encrypted-regex '^(secretData)$' --in-place "${filePath}"`);
-        
-    } catch (e) {
-        throw new Error(`Failed to overwrite ${path.basename(filePath)}: ${e.message}`);
-    }
-};
-
 export async function POST(req) {
-    const { appName, appSecrets, dbSecrets } = await req.json();
+    const { appName, appSecrets, appSecretsTest, dbSecrets, dbSecretsTest } = await req.json();
     if (!appName) return NextResponse.json({ error: "Missing App Name" }, { status: 400 });
 
     return await gitMutex.runExclusive(async () => {
@@ -187,48 +178,41 @@ export async function POST(req) {
                 } catch (e) { console.error("Failed to parse registry", e); }
             }
             
-            // --- PROCESS APP SECRETS (PROD ONLY) ---
-            if (appSecrets && Array.isArray(appSecrets)) {
-                const appProdObj = {};
-                appSecrets.forEach(s => {
-                    if (s.key) {
-                        if (s.valueProd !== undefined && s.valueProd !== null) appProdObj[s.key] = s.valueProd;
+            const getPaths = (type) => {
+                let prod = path.join(appsPath, `${appId}-${type === 'db' ? 'db-' : ''}${appName}-prod`, 'secrets.yaml');
+                let test = path.join(appsPath, `${appId}-${type === 'db' ? 'db-' : ''}${appName}-testing`, 'secrets.yaml');
+                
+                // Legacy check
+                if (!fs.existsSync(path.dirname(prod))) {
+                    prod = path.join(appsPath, `${type === 'db' ? '' : ''}${appName}${type === 'db' ? '-db' : ''}-prod`, 'secrets.yaml'); // Naming was inconsistent? Assuming consistent new naming.
+                    // Fallback to simpler check:
+                    if (!fs.existsSync(path.dirname(path.join(appsPath, `${appId}-${type === 'db' ? 'db-' : ''}${appName}-prod`)))) {
+                         // Attempt legacy
+                         const legacyBase = path.join(appsPath, `${appName}${type === 'db' ? '-db' : ''}`);
+                         prod = legacyBase + '-prod/secrets.yaml';
+                         test = legacyBase + '-testing/secrets.yaml';
                     }
-                });
-
-                let appProdPath = path.join(appsPath, `${appId}-${appName}-prod`, 'secrets.yaml');
-                if (!fs.existsSync(path.dirname(appProdPath))) {
-                    const legacyPath = path.join(appsPath, `${appName}-prod`, 'secrets.yaml');
-                    if (fs.existsSync(path.dirname(legacyPath))) appProdPath = legacyPath;
                 }
-                overwriteSecretFile(appProdPath, appProdObj, agePubKey);
-            }
+                return { prod, test };
+            };
 
-            // --- PROCESS DB SECRETS (PROD ONLY) ---
-            if (dbSecrets && Array.isArray(dbSecrets)) {
-                const dbProdObj = {};
-                dbSecrets.forEach(s => {
-                    if (s.key) {
-                        if (s.valueProd !== undefined && s.valueProd !== null) dbProdObj[s.key] = s.valueProd;
-                    }
-                });
+            // APP SECRETS
+            const appPaths = getPaths('app');
+            if (appSecrets && appSecrets.length > 0) overwriteSecretFile(appPaths.prod, appSecrets, agePubKey);
+            if (appSecretsTest && appSecretsTest.length > 0) overwriteSecretFile(appPaths.test, appSecretsTest, agePubKey);
 
-                let dbProdPath = path.join(appsPath, `${appId}-db-${appName}-prod`, 'secrets.yaml');
-                if (!fs.existsSync(path.dirname(dbProdPath))) {
-                    const legacyPath = path.join(appsPath, `${appName}-db-prod`, 'secrets.yaml');
-                    if (fs.existsSync(path.dirname(legacyPath))) dbProdPath = legacyPath;
-                }
-                // Only overwrite if paths exist (or just try, the helper handles check)
-                overwriteSecretFile(dbProdPath, dbProdObj, agePubKey);
-            }
+            // DB SECRETS
+            const dbPaths = getPaths('db');
+            if (dbSecrets && dbSecrets.length > 0) overwriteSecretFile(dbPaths.prod, dbSecrets, agePubKey);
+            if (dbSecretsTest && dbSecretsTest.length > 0) overwriteSecretFile(dbPaths.test, dbSecretsTest, agePubKey);
 
             execSync(`git add .`, { cwd: repoPath });
             const status = execSync(`git status --porcelain`, { cwd: repoPath }).toString();
             
             if (status.trim()) {
-                execSync(`git commit -m "chore: update secrets for ${appName} (overwrite)"`, { cwd: repoPath });
+                execSync(`git commit -m "chore: update secrets for ${appName} (prod/test)"`, { cwd: repoPath });
                 execSync(`git push origin main`, { cwd: repoPath });
-                return NextResponse.json({ message: "Secrets overwritten and encrypted successfully!" });
+                return NextResponse.json({ message: "Secrets updated successfully for both environments!" });
             } else {
                 return NextResponse.json({ message: "No changes detected." });
             }
