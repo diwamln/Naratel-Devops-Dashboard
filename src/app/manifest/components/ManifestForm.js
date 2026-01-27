@@ -220,6 +220,13 @@ export default function ManifestForm({ onClose, onSuccess }) {
     } catch (err) { setMessage({ text: err.message, type: 'error' }); } finally { setLoading(false); }
   };
 
+  const handleFormSubmit = (e) => {
+    e.preventDefault();
+    if (step < 4) {
+      nextStep();
+    }
+  };
+
   // --- RENDERERS ---
   // Identity, Database, Access steps are same structure, mostly just form binding updates handled by state init
   // I will condense them for brevity but keep logical integrity.
