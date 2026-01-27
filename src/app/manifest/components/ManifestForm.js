@@ -315,18 +315,35 @@ export default function ManifestForm({ onClose, onSuccess }) {
           <div className="flex items-center justify-between">
             <div>
               <h4 className="font-bold text-sm text-neutral-800 dark:text-neutral-200 flex items-center gap-2"><Database size={16} /> Internal Database DNS</h4>
-              <p className="text-xs text-neutral-500 mt-1">Connection string for your application to reach the database.</p>
+              <p className="text-xs text-neutral-500 mt-1">Connection strings for your application environments.</p>
             </div>
           </div>
 
-          <div className="flex items-center gap-2 bg-neutral-900 text-neutral-200 p-2 rounded-lg border border-neutral-700 font-mono text-xs">
-            <span className="text-[#FFA500]">$</span>
-            <code className="flex-1 break-all">
-              svc-db-{form.appName}-{form.appId}.{form.appId}-db-{form.appName}-prod.svc.cluster.local
-            </code>
-            <button type="button" onClick={() => copyToClipboard(`svc-db-${form.appName}-${form.appId}.${form.appId}-db-${form.appName}-prod.svc.cluster.local`)} className="p-1.5 hover:bg-white/10 rounded-md transition-colors text-neutral-400 hover:text-white shrink-0" title="Copy DNS"><Copy size={14} /></button>
+          <div className="space-y-3">
+            <div>
+              <p className="text-[10px] font-bold text-neutral-400 uppercase mb-1">Production DNS</p>
+              <div className="flex items-center gap-2 bg-neutral-900 text-neutral-200 p-2 rounded-lg border border-neutral-700 font-mono text-xs">
+                <span className="text-blue-400">PROD</span>
+                <code className="flex-1 break-all">
+                  svc-db-{form.appName}-{form.appId}.{form.appId}-db-{form.appName}-prod.svc.cluster.local
+                </code>
+                <button type="button" onClick={() => copyToClipboard(`svc-db-${form.appName}-${form.appId}.${form.appId}-db-${form.appName}-prod.svc.cluster.local`)} className="p-1.5 hover:bg-white/10 rounded-md transition-colors text-neutral-400 hover:text-white shrink-0" title="Copy Prod DNS"><Copy size={14} /></button>
+              </div>
+            </div>
+
+            <div>
+              <p className="text-[10px] font-bold text-neutral-400 uppercase mb-1">Testing DNS</p>
+              <div className="flex items-center gap-2 bg-neutral-900 text-neutral-200 p-2 rounded-lg border border-neutral-700 font-mono text-xs">
+                <span className="text-orange-400">TEST</span>
+                <code className="flex-1 break-all">
+                  svc-db-{form.appName}-{form.appId}.{form.appId}-db-{form.appName}-testing.svc.cluster.local
+                </code>
+                <button type="button" onClick={() => copyToClipboard(`svc-db-${form.appName}-${form.appId}.${form.appId}-db-${form.appName}-testing.svc.cluster.local`)} className="p-1.5 hover:bg-white/10 rounded-md transition-colors text-neutral-400 hover:text-white shrink-0" title="Copy Test DNS"><Copy size={14} /></button>
+              </div>
+            </div>
           </div>
-          <p className="text-[10px] text-neutral-500">Use this hostname to connect to your database from your application.</p>
+          
+          <p className="text-[10px] text-neutral-500 italic">Use these hostnames to connect to your database from your application secrets.</p>
         </div>
       )}
 
