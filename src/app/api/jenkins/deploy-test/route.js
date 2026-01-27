@@ -95,49 +95,86 @@ export async function POST(req) {
                 const prodValContent = fs.readFileSync(prodValuesPath, 'utf8');
                 let values = yaml.load(prodValContent);
 
-                // Modify for Testing
                 const isDbComp = role === 'db';
-                // Format: ID-db-APPNAME-testing OR ID-APPNAME-testing
-                values.namespace = `${appId}-${isDbComp ? 'db-' : ''}${appName}-testing`; 
-                values.app.env = 'testing';
-                
-                // Override Image Tag if provided (Only for App)
-                if (role === 'app' && imageTag) {
-                    values.image.tag = imageTag;
-                }
 
-                // Handle Ingress (Add 'test-' prefix)
-                if (values.ingress && values.ingress.enabled && values.ingress.hosts) {
-                    values.ingress.hosts = values.ingress.hosts.map(h => ({
-                        ...h,
-                        host: `test-${h.host}`
-                    }));
-                }
+                // --- SPECIAL LOGIC FOR DB: Use Lightweight Testing Chart ---
+                if (isDbComp) {
+                    // Extract existing DB info from prod values to maintain version consistency
+                    const dbType = values.databaseType || 'mariadb';
+                    const dbRepo = values[dbType]?.image?.repository || (dbType === 'postgres' ? 'devopsnaratel/postgresql' : 'devopsnaratel/mariadb');
+                    const dbTag = values[dbType]?.image?.tag || (dbType === 'postgres' ? '18.1' : '12.1.2');
+                    const storageClass = values.storage?.className || 'longhorn';
 
-                // C. Special Handling: DB Connection for APP
-                if (role === 'app' && dbType !== 'none') {
-                    // FQDN Calculation
-                    // DB Service: svc-db-{appName}-{appId}
-                    // DB Namespace: {appId}-db-{appName}-testing
-                    const dbFqdn = `svc-db-${appName}-${appId}.${appId}-db-${appName}-testing.svc.cluster.local`;
-                    
-                    if (!values.extraEnv) values.extraEnv = [];
-                    
-                    // Remove existing DB_HOST in extraEnv if any
-                    values.extraEnv = values.extraEnv.filter(e => e.name !== 'DB_HOST');
-                    
-                    // Add new DB_HOST
-                    values.extraEnv.push({
-                        name: "DB_HOST",
-                        value: dbFqdn
-                    });
-                }
+                    // Reconstruct values entirely for db-testing-chart
+                    values = {
+                        namespace: `${appId}-db-${appName}-testing`,
+                        fullnameOverride: `sts-db-${appName}-${appId}`,
+                        databaseType: dbType,
+                        storage: {
+                            className: storageClass,
+                            size: "2Gi" // Fixed small size for ephemeral testing
+                        },
+                        imagePullSecrets: [
+                            { name: "dockerhub-auth" }
+                        ],
+                        serviceAccount: {
+                            create: true,
+                            name: `sa-db-${appName}-test`
+                        },
+                        podAnnotations: {
+                            "app.kubernetes.io/id": appId,
+                            "app.kubernetes.io/env": "testing"
+                        }
+                    };
 
-                // D. Override Migration Command for Testing (Auto-Seed)
-                if (values.migration && values.migration.enabled) {
-                    // Default laravel/php command, adjust if you use different stack
-                    // Force seed for testing environment
-                    values.migration.command = "php artisan migrate --seed --force";
+                    // Add DB Specific Image Config
+                    if (dbType === 'mariadb') {
+                        values.mariadb = { image: { repository: dbRepo, tag: dbTag } };
+                    } else {
+                        values.postgres = { image: { repository: dbRepo, tag: dbTag } };
+                    }
+
+                } else {
+                    // --- APP LOGIC: Clone & Modify ---
+                    values.namespace = `${appId}-${appName}-testing`; 
+                    values.app.env = 'testing';
+                    
+                    // Override Image Tag if provided (Only for App)
+                    if (imageTag) {
+                        values.image.tag = imageTag;
+                    }
+
+                    // Handle Ingress (Add 'test-' prefix)
+                    if (values.ingress && values.ingress.enabled && values.ingress.hosts) {
+                        values.ingress.hosts = values.ingress.hosts.map(h => ({
+                            ...h,
+                            host: `test-${h.host}`
+                        }));
+                    }
+                    
+                    // Override Migration Command for Testing (Auto-Seed)
+                    if (values.migration && values.migration.enabled) {
+                        values.migration.command = "php artisan migrate --seed --force";
+                    }
+                    
+                    // DB Connection for APP
+                    if (dbType !== 'none') {
+                        // FQDN Calculation
+                        // DB Service: svc-db-{appName}-{appId} (Now handled by svcname helper, but DNS remains svc-)
+                        // DB Namespace: {appId}-db-{appName}-testing
+                        const dbFqdn = `svc-db-${appName}-${appId}.${appId}-db-${appName}-testing.svc.cluster.local`;
+                        
+                        if (!values.extraEnv) values.extraEnv = [];
+                        
+                        // Remove existing DB_HOST in extraEnv if any
+                        values.extraEnv = values.extraEnv.filter(e => e.name !== 'DB_HOST');
+                        
+                        // Add new DB_HOST
+                        values.extraEnv.push({
+                            name: "DB_HOST",
+                            value: dbFqdn
+                        });
+                    }
                 }
 
                 // Write Values
