@@ -188,7 +188,7 @@ export async function POST(req) {
 
         // 4. Deploy DB (if exists)
         if (dbType !== 'none') {
-            deployComponent('db', '-db-prod', '-db-testing');
+            deployComponent('db', '-prod', '-testing');
         }
 
         if (generatedFolders.length === 0) {
