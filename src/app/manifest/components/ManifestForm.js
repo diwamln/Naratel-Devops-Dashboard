@@ -24,7 +24,7 @@ import {
   Copy,
   Info,
   GitBranch,
-  TestTube
+  FlaskConical
 } from "lucide-react";
 import { SiPostgresql, SiMariadb } from "react-icons/si";
 import { motion } from "framer-motion";
@@ -332,7 +332,7 @@ export default function ManifestForm({ onClose, onSuccess }) {
       <div className="border-t pt-6 border-neutral-200 dark:border-neutral-800">
         <div className="flex gap-4 border-b border-neutral-200 dark:border-neutral-800 mb-4">
           <button type="button" onClick={() => setSecretTab('prod')} className={`pb-2 text-sm font-bold border-b-2 transition-colors ${secretTab === 'prod' ? 'border-[#FFA500] text-[#FFA500]' : 'border-transparent text-neutral-500'}`}>Production Secrets</button>
-          <button type="button" onClick={() => setSecretTab('test')} className={`pb-2 text-sm font-bold border-b-2 transition-colors flex items-center gap-2 ${secretTab === 'test' ? 'border-orange-400 text-orange-400' : 'border-transparent text-neutral-500'}`}><TestTube size={14}/> Testing Secrets</button>
+          <button type="button" onClick={() => setSecretTab('test')} className={`pb-2 text-sm font-bold border-b-2 transition-colors flex items-center gap-2 ${secretTab === 'test' ? 'border-orange-400 text-orange-400' : 'border-transparent text-neutral-500'}`}><FlaskConical size={14}/> Testing Secrets</button>
         </div>
 
         <div className="bg-neutral-50 dark:bg-neutral-900/30 p-4 rounded-xl border border-neutral-200 dark:border-neutral-800">
@@ -366,6 +366,10 @@ export default function ManifestForm({ onClose, onSuccess }) {
     <div className="bg-white dark:bg-neutral-900 w-full rounded-xl border border-neutral-200 dark:border-neutral-800 shadow-sm flex flex-col relative overflow-hidden h-[85vh]">
       <div className="bg-white dark:bg-neutral-900 px-6 py-4 border-b border-neutral-200 dark:border-neutral-800 flex justify-between items-center z-10 sticky top-0"><div className="flex items-center gap-4"><button onClick={onClose} className="flex items-center gap-2 text-neutral-500 hover:text-neutral-800 dark:hover:text-neutral-200 transition-colors"><ChevronLeft size={20} /></button><h2 className="text-lg font-bold flex items-center gap-2"><FilePlus className="text-[#FFA500]" size={20} /> New App Wizard</h2></div></div>
       <div className="px-6 py-4 border-b border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-900">
+        <div className="flex items-center justify-between mb-2">
+          <span className="text-xs font-bold text-neutral-500 dark:text-neutral-400 uppercase tracking-wider">Step {step} of 4: <span className="text-neutral-900 dark:text-white ml-1">{steps[step - 1]}</span></span>
+          <span className="text-xs font-mono font-bold text-[#FFA500]">{Math.round((step / 4) * 100)}%</span>
+        </div>
         <div className="h-1.5 w-full bg-neutral-100 dark:bg-neutral-800 rounded-full overflow-hidden"><motion.div className="h-full bg-[#FFA500]" initial={{ width: 0 }} animate={{ width: `${(step / 4) * 100}%` }} /></div>
       </div>
       <div className="flex-1 overflow-y-auto p-8 relative">
