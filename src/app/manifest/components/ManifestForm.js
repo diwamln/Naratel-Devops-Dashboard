@@ -258,7 +258,7 @@ export default function ManifestForm({ onClose, onSuccess }) {
             {type === 'postgres' && <SiPostgresql size={32} className="text-blue-500" />}
             {type === 'mariadb' && <SiMariadb size={32} className="text-orange-600" />}
             <span className="capitalize font-bold text-sm">{type}</span>
-
+          </div>
         ))}
       </div>
       {form.dbType !== 'none' && (
