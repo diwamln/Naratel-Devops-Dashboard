@@ -86,19 +86,21 @@ export async function POST(req) {
 
         // 2. Commit & Push
         execSync(`git add .`, { cwd: repoPath });
-        const commitMsg = `chore: destroy ephemeral testing for ${appName}`;
         
-        try {
-             execSync(`git commit -m "${commitMsg}"`, { cwd: repoPath });
-             execSync(`git push origin main`, { cwd: repoPath });
-        } catch (e) {
-             if (e.message.includes('nothing to commit')) {
-                 return NextResponse.json({ message: "Already clean." });
-             }
-             throw e;
+        const status = execSync(`git status --porcelain`, { cwd: repoPath }).toString();
+        
+        if (status.trim()) {
+            const commitMsg = `chore: destroy ephemeral testing for ${appName}`;
+            try {
+                 execSync(`git commit -m "${commitMsg}"`, { cwd: repoPath });
+                 execSync(`git push origin main`, { cwd: repoPath });
+            } catch (e) {
+                 throw new Error("Failed to push changes: " + e.message);
+            }
+            return NextResponse.json({ message: "Ephemeral environment destroyed successfully." });
+        } else {
+            return NextResponse.json({ message: "No changes to clean up (Already clean)." });
         }
-
-        return NextResponse.json({ message: "Ephemeral environment destroyed successfully." });
 
     });
 
