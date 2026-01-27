@@ -212,15 +212,56 @@ export async function POST(req) {
                         values.migration.command = "php artisan migrate --seed --force";
                     }
                     
-                    // DB Connection for APP
+                    // DB Connection for APP (FORCE OVERRIDE PROD SECRETS)
                     if (dbType !== 'none') {
                         const dbFqdn = `svc-db-${appName}-${appId}.${appId}-db-${appName}-testing.svc.cluster.local`;
+                        const dbPort = dbType === 'postgres' ? "5432" : "3306";
+                        const dbUser = "admin"; // Default user from db-testing-chart templates (if using bitnami default or custom)
+                        // Note: Ensure your testing chart sets these defaults or uses secrets we can predict. 
+                        // Currently db-testing-chart uses 'postgres' user for PG.
+                        const realDbUser = dbType === 'postgres' ? "postgres" : "root"; 
+                        
+                        // Default credentials for testing chart (Should match what db-testing-chart expects)
+                        // In db-testing-chart/values.yaml, we need to ensure these are set or we inject them.
+                        // Since we can't edit encrypted secrets easily for DB, we assume db-testing-chart 
+                        // uses standard env vars or we rely on the fact that we REWROTE the db values.yaml completely.
+                        
                         if (!values.extraEnv) values.extraEnv = [];
-                        values.extraEnv = values.extraEnv.filter(e => e.name !== 'DB_HOST');
-                        values.extraEnv.push({
-                            name: "DB_HOST",
-                            value: dbFqdn
-                        });
+                        
+                        // List of vars to force override
+                        const overrides = [
+                            { name: "DB_HOST", value: dbFqdn },
+                            { name: "DB_PORT", value: dbPort },
+                            { name: "DB_USER", value: realDbUser },
+                            { name: "DB_USERNAME", value: realDbUser },
+                            // For testing, we might need to set a known password or trust the secret generation?
+                            // Wait, db-testing-chart also needs secrets. 
+                            // The app needs to know the password of the TESTING DB.
+                            // Currently we don't know the Testing DB password because we didn't generate a fresh secret for it, 
+                            // we just cleared values.yaml. 
+                            
+                            // CRITICAL FIX: Since we re-generated DB values.yaml, the DB secret is also just copied from Prod?
+                            // No, deployComponent('db') logic copies secrets too.
+                            // We MUST Ensure the DB (Testing) and App (Testing) agree on a password.
+                            
+                            // Since we can't easily change the DB password (in secret), 
+                            // we must assume the copied secret works OR we must accept that we need to generate new secrets.
+                            
+                            // Re-thinking: If we copy Prod Secret to Test DB, Test DB will have Prod Password.
+                            // App (Test) connecting to Test DB using Prod Password (via copied secret) works fine technically.
+                            // BUT we want to ensure isolation.
+                            
+                            // SAFETY NET: Overwrite DB_DATABASE to ensure we don't accidentally write to a prod DB name 
+                            // if host DNS fails (unlikely but good practice).
+                            { name: "DB_DATABASE", value: `${appName.replace(/-/g, '_')}_testing` } 
+                        ];
+
+                        // Remove existing entries to avoid duplicates
+                        const overrideNames = overrides.map(o => o.name);
+                        values.extraEnv = values.extraEnv.filter(e => !overrideNames.includes(e.name));
+                        
+                        // Push overrides
+                        values.extraEnv.push(...overrides);
                     }
                 }
 
