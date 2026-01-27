@@ -175,12 +175,12 @@ function AppCard({ app }) {
             <span className="text-[10px] font-mono text-neutral-400 dark:text-neutral-500 bg-neutral-100 dark:bg-neutral-800 px-2 py-0.5 rounded">
               #{app.id}
             </span>
-            {/* Dynamic Testing Indicator */}
-            <TestingIndicator appId={app.id} appName={app.name} />
+            <StatusBadge appName={prodName} label="Prod" />
           </div>
           
           <div className="flex items-center gap-2">
-            <StatusBadge appName={prodName} label="Prod" />
+            {/* Dynamic Testing Indicator moved to right */}
+            <TestingIndicator appId={app.id} appName={app.name} />
           </div>
         </div>
 
