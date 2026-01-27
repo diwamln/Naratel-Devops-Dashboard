@@ -3,11 +3,8 @@ import { execSync } from 'child_process';
 import fs from 'fs';
 import path from 'path';
 import os from 'os';
-import yaml from 'js-yaml'; // Pastikan package ini ada (biasanya standar di Next.js projects atau perlu install)
+import yaml from 'js-yaml'; 
 import { gitMutex } from '@/lib/gitMutex';
-
-// Jika js-yaml belum ada, kita pakai basic parsing/string manipulation atau asumsi environment sudah punya.
-// Namun untuk keamanan, saya akan gunakan simple read/replace jika import gagal, tapi mari kita coba import dulu.
 
 export async function POST(req) {
   try {
@@ -21,6 +18,7 @@ export async function POST(req) {
     const repoDirName = 'manifest-repo-workdir';
     const repoPath = path.join(os.tmpdir(), repoDirName);
     const registryPath = path.join(repoPath, 'registry.json');
+    const configPath = path.join(repoPath, 'config.json');
     
     const token = process.env.GITHUB_TOKEN;
     const repoUrl = process.env.MANIFEST_REPO_URL;
@@ -43,19 +41,59 @@ export async function POST(req) {
             execSync(`git reset --hard origin/main`, { cwd: repoPath });
         }
 
-        // 2. Get App ID from Registry
+        // 2. Get App ID from Registry & Check Domain Availability
         let registry = [];
         if (fs.existsSync(registryPath)) {
             registry = JSON.parse(fs.readFileSync(registryPath, 'utf8'));
         }
-        const appEntry = registry.find(r => r.name === appName);
         
-        if (!appEntry) {
+        const appIndex = registry.findIndex(r => r.name === appName);
+        if (appIndex === -1) {
             return NextResponse.json({ error: `App ${appName} not found in registry` }, { status: 404 });
         }
         
+        const appEntry = registry[appIndex];
         const appId = appEntry.id;
-        const dbType = appEntry.db; // 'none', 'postgres', 'mariadb'
+        const dbType = appEntry.db; 
+
+        // --- DOMAIN ALLOCATION LOGIC ---
+        let selectedDomain = null;
+        
+        // Load Config for Pool
+        let domainPool = [];
+        if (fs.existsSync(configPath)) {
+            const config = JSON.parse(fs.readFileSync(configPath, 'utf8'));
+            domainPool = config.testDomains || [];
+        }
+
+        if (domainPool.length > 0) {
+            // Check if app already has a test domain assigned
+            if (appEntry.testDomain && domainPool.includes(appEntry.testDomain)) {
+                selectedDomain = appEntry.testDomain;
+                console.log(`[Domain] Reusing assigned domain for ${appName}: ${selectedDomain}`);
+            } else {
+                // Find used domains
+                const usedDomains = registry
+                    .map(r => r.testDomain)
+                    .filter(d => d); // Filter nulls
+                
+                // Find first available
+                selectedDomain = domainPool.find(d => !usedDomains.includes(d));
+                
+                if (!selectedDomain) {
+                    return NextResponse.json({ 
+                        error: "No testing domains available. Please destroy an existing test environment to free up a slot." 
+                    }, { status: 503 });
+                }
+                
+                // Assign to app entry (in memory, save later)
+                registry[appIndex].testDomain = selectedDomain;
+                console.log(`[Domain] Allocated new domain for ${appName}: ${selectedDomain}`);
+            }
+        } else {
+            console.warn("[Domain] No testDomains defined in config.json. Falling back to NodePort/Default.");
+        }
+        // -------------------------------
 
         const generatedFolders = [];
 
@@ -144,12 +182,29 @@ export async function POST(req) {
                         values.image.tag = imageTag;
                     }
 
-                    // Handle Ingress (Add 'test-' prefix)
-                    if (values.ingress && values.ingress.enabled && values.ingress.hosts) {
-                        values.ingress.hosts = values.ingress.hosts.map(h => ({
-                            ...h,
-                            host: `test-${h.host}`
-                        }));
+                    // --- INGRESS LOGIC ---
+                    if (selectedDomain) {
+                        // Use Allocated Domain
+                        values.ingress = {
+                            enabled: true,
+                            className: "nginx", // Default to nginx or keep prod class
+                            hosts: [
+                                {
+                                    host: selectedDomain,
+                                    path: "/"
+                                }
+                            ]
+                        };
+                        // Note: We deliberately do not enable TLS for ephemeral testing to avoid CertManager limits/complexity, 
+                        // or we could add a wildcard secret if available. For now, http only.
+                    } else {
+                        // Fallback to NodePort logic or "test-" prefix if pool empty (shouldn't happen with check above)
+                        if (values.ingress && values.ingress.enabled && values.ingress.hosts) {
+                            values.ingress.hosts = values.ingress.hosts.map(h => ({
+                                ...h,
+                                host: `test-${h.host}`
+                            }));
+                        }
                     }
                     
                     // Override Migration Command for Testing (Auto-Seed)
@@ -159,17 +214,9 @@ export async function POST(req) {
                     
                     // DB Connection for APP
                     if (dbType !== 'none') {
-                        // FQDN Calculation
-                        // DB Service: svc-db-{appName}-{appId} (Now handled by svcname helper, but DNS remains svc-)
-                        // DB Namespace: {appId}-db-{appName}-testing
                         const dbFqdn = `svc-db-${appName}-${appId}.${appId}-db-${appName}-testing.svc.cluster.local`;
-                        
                         if (!values.extraEnv) values.extraEnv = [];
-                        
-                        // Remove existing DB_HOST in extraEnv if any
                         values.extraEnv = values.extraEnv.filter(e => e.name !== 'DB_HOST');
-                        
-                        // Add new DB_HOST
                         values.extraEnv.push({
                             name: "DB_HOST",
                             value: dbFqdn
@@ -195,9 +242,12 @@ export async function POST(req) {
              return NextResponse.json({ error: "No prod manifests found to clone." }, { status: 400 });
         }
 
-        // 5. Commit & Push
+        // 5. Save Registry (Update assigned domain)
+        fs.writeFileSync(registryPath, JSON.stringify(registry, null, 2));
+
+        // 6. Commit & Push
         execSync(`git add .`, { cwd: repoPath });
-        const commitMsg = `feat: deploy ephemeral testing for ${appName} (Build ${imageTag || 'latest'})`;
+        const commitMsg = `feat: deploy ephemeral testing for ${appName} using ${selectedDomain || 'NodePort'}`;
         
         try {
              execSync(`git commit -m "${commitMsg}"`, { cwd: repoPath });
@@ -212,6 +262,7 @@ export async function POST(req) {
         return NextResponse.json({ 
             message: "Ephemeral environment deployed", 
             folders: generatedFolders,
+            testDomain: selectedDomain,
             namespaceApp: `${appId}-${appName}-testing`,
             namespaceDb: dbType !== 'none' ? `${appId}-${appName}-db-testing` : null
         });

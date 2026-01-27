@@ -40,11 +40,26 @@ export async function POST(req) {
 
         const registryPath = path.join(repoPath, 'registry.json');
         let appId = null;
+        let registry = [];
+        let releasedDomain = null;
+
         if (fs.existsSync(registryPath)) {
             try {
-                const registry = JSON.parse(fs.readFileSync(registryPath, 'utf8'));
-                const appEntry = registry.find(a => a.name === appName);
-                if (appEntry) appId = appEntry.id;
+                registry = JSON.parse(fs.readFileSync(registryPath, 'utf8'));
+                const appIndex = registry.findIndex(a => a.name === appName);
+                if (appIndex !== -1) {
+                    appId = registry[appIndex].id;
+                    
+                    // Release Domain
+                    if (registry[appIndex].testDomain) {
+                        releasedDomain = registry[appIndex].testDomain;
+                        console.log(`[Domain] Releasing domain ${releasedDomain} for ${appName}`);
+                        registry[appIndex].testDomain = null; // Release it
+                        
+                        // Save Registry immediately
+                        fs.writeFileSync(registryPath, JSON.stringify(registry, null, 2));
+                    }
+                }
             } catch (e) { console.error("Failed to parse registry", e); }
         }
 
@@ -65,7 +80,7 @@ export async function POST(req) {
             }
         });
 
-        if (deletedCount === 0) {
+        if (deletedCount === 0 && !releasedDomain) {
             return NextResponse.json({ message: "No testing environments found to destroy." });
         }
 
