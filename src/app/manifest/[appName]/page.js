@@ -123,11 +123,16 @@ export default function AppDetailsPage({ params }) {
     // 🚀 SWR: Cached app data - instant on navigation back
     const { app: registryApp, isLoading: isLoadingRegistry, mutate } = useApp(appName);
 
-    // 🚀 SWR: Check if testing environment exists (cached separately)
-    const { exists: testEnvExists } = useArgoStatus(`${decodedName}-testing`);
+    // Derived ID and Names (Prioritize Registry ID)
+    const appId = registryApp?.id;
+    const prodArgoName = appId ? `${appId}-${decodedName}-prod` : `${decodedName}-prod`;
+    const testArgoName = appId ? `${appId}-${decodedName}-testing` : `${decodedName}-testing`;
 
-    // 🚀 SWR: Fallback check for apps in ArgoCD but not in registry
-    const { exists: prodExistsInArgo, isLoading: isLoadingArgo } = useArgoStatus(`${decodedName}-prod`);
+    // 🚀 SWR: Check if testing environment exists (using correct ID-prefixed name)
+    const { exists: testEnvExists } = useArgoStatus(testArgoName);
+
+    // 🚀 SWR: Check Prod status
+    const { exists: prodExistsInArgo, isLoading: isLoadingArgo } = useArgoStatus(prodArgoName);
 
     // Derived app state - use registry data, or create fallback if found in ArgoCD
     const app = registryApp || (prodExistsInArgo ? {
@@ -268,13 +273,13 @@ export default function AppDetailsPage({ params }) {
 
                     <div className="grid grid-cols-1 gap-8">
                         {/* Production Card */}
-                        <div className="bg-gradient-to-br from-orange-50/80 via-white to-white dark:from-orange-950/20 dark:via-neutral-900/80 dark:to-neutral-900/80 border border-orange-100 dark:border-orange-900/20 rounded-2xl p-6 relative overflow-hidden">
+                        <div className="bg-gradient-to-br from-blue-50/80 via-white to-blue-50/20 dark:from-blue-950/30 dark:via-neutral-900/80 dark:to-neutral-900/80 border border-blue-200 dark:border-blue-800 rounded-2xl p-6 relative overflow-hidden shadow-sm">
                             <div className="flex items-center justify-between mb-6">
                                 <div className="flex items-center gap-2">
-                                    <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
+                                    <div className="w-2 h-2 rounded-full bg-blue-500 animate-pulse" />
                                     <h3 className="text-sm font-bold text-neutral-900 dark:text-white uppercase tracking-wider">Production Environment</h3>
                                 </div>
-                                <span className="text-[10px] font-bold text-orange-600 dark:text-orange-400 bg-orange-50/50 dark:bg-orange-900/20 border border-orange-100 dark:border-orange-800/50 px-2 py-1 rounded-md uppercase">Stable</span>
+                                <span className="text-[10px] font-bold text-blue-600 dark:text-blue-400 bg-blue-50/50 dark:bg-blue-900/20 border border-blue-100 dark:border-blue-800/50 px-2 py-1 rounded-md uppercase">Stable</span>
                             </div>
 
                             <div className="flex flex-col md:flex-row items-stretch md:items-center gap-4 relative z-10">
@@ -283,7 +288,7 @@ export default function AppDetailsPage({ params }) {
                                         title="Application"
                                         type="app"
                                         env="PRODUCTION"
-                                        argoAppName={`${app.name}-prod`}
+                                        argoAppName={prodArgoName}
                                         domain={app.liveIngressProd}
                                     />
                                 </div>
@@ -299,7 +304,7 @@ export default function AppDetailsPage({ params }) {
                                                 title="Database"
                                                 type="db"
                                                 env="PRODUCTION"
-                                                argoAppName={`${app.name}-db-prod`}
+                                                argoAppName={`${app.id}-db-${app.name}-prod`}
                                                 internalDns={`svc-db-${app.name}-${app.id}.${app.id}-db-${app.name}-prod.svc.cluster.local`}
                                             />
                                         </div>
@@ -310,13 +315,13 @@ export default function AppDetailsPage({ params }) {
 
                         {/* Testing Card */}
                         {testEnvExists && (
-                            <div className="bg-gradient-to-br from-amber-50/80 via-white to-white dark:from-amber-950/10 dark:via-neutral-900/80 dark:to-neutral-900/80 border border-amber-100 dark:border-amber-900/20 rounded-2xl p-6 relative overflow-hidden animate-in fade-in slide-in-from-top-2">
+                            <div className="bg-gradient-to-br from-emerald-50/80 via-white to-emerald-50/20 dark:from-emerald-950/30 dark:via-neutral-900/80 dark:to-neutral-900/80 border border-emerald-200 dark:border-emerald-800 rounded-2xl p-6 relative overflow-hidden shadow-sm animate-in fade-in slide-in-from-top-2">
                                 <div className="flex items-center justify-between mb-6">
                                     <div className="flex items-center gap-2">
-                                        <div className="w-2 h-2 rounded-full bg-orange-500" />
+                                        <div className="w-2 h-2 rounded-full bg-emerald-500" />
                                         <h3 className="text-sm font-bold text-neutral-900 dark:text-white uppercase tracking-wider">Testing Environment</h3>
                                     </div>
-                                    <span className="text-[10px] font-bold text-orange-500 bg-orange-50 dark:bg-orange-900/20 border border-orange-100 dark:border-orange-800/50 px-2 py-1 rounded-md uppercase">Ephemeral</span>
+                                    <span className="text-[10px] font-bold text-emerald-600 dark:text-emerald-400 bg-emerald-50/50 dark:bg-emerald-900/20 border border-emerald-100 dark:border-emerald-800/50 px-2 py-1 rounded-md uppercase">Ephemeral</span>
                                 </div>
 
                                 <div className="flex flex-col md:flex-row items-stretch md:items-center gap-4 relative z-10">
@@ -325,7 +330,7 @@ export default function AppDetailsPage({ params }) {
                                             title="Application"
                                             type="app"
                                             env="TESTING"
-                                            argoAppName={`${app.name}-testing`}
+                                            argoAppName={testArgoName}
                                             nodePort={true}
                                         />
                                     </div>
@@ -341,7 +346,7 @@ export default function AppDetailsPage({ params }) {
                                                     title="Database"
                                                     type="db"
                                                     env="TESTING"
-                                                    argoAppName={`${app.name}-db-testing`}
+                                                    argoAppName={`${app.id}-db-${app.name}-testing`}
                                                     internalDns={`svc-db-${app.name}-${app.id}.${app.id}-db-${app.name}-testing.svc.cluster.local`}
                                                 />
                                             </div>
