@@ -160,9 +160,11 @@ export async function POST(req) {
                     }
                     
                     // Migration
-                    if (values.migration && values.migration.enabled) {
-                        values.migration.command = "php artisan migrate --seed --force";
-                    }
+                    // We use the same command as Prod (cloned from values), unless we want to force seed.
+                    // User requested to match WebUI input exactly.
+                    // if (values.migration && values.migration.enabled) {
+                    //    values.migration.command = "php artisan migrate --seed --force";
+                    // }
                     
                     // NO AGGRESSIVE OVERWRITE HERE
                     // System expects that the Standby Secret ALREADY contains correct DB_HOST etc.
