@@ -159,24 +159,20 @@ export default function ManifestForm({ onClose, onSuccess }) {
     if (type === 'postgres') {
       const defaults = [
         { key: "POSTGRESQL_DATABASE", value: "" },
-        { key: "POSTGRESQL_USERNAME", value: "postgres" },
+        { key: "POSTGRESQL_USERNAME", value: "" },
         { key: "POSTGRESQL_PASSWORD", value: "" }
       ];
       prod = JSON.parse(JSON.stringify(defaults));
       test = JSON.parse(JSON.stringify(defaults));
-      // Set default secure password for testing placeholder
-      test[2].value = "changeme_securely";
     } else if (type === 'mariadb') {
       const defaults = [
         { key: "MARIADB_DATABASE", value: "" },
-        { key: "MARIADB_USER", value: "app_user" },
+        { key: "MARIADB_USER", value: "" },
         { key: "MARIADB_PASSWORD", value: "" },
         { key: "MARIADB_ROOT_PASSWORD", value: "" }
       ];
       prod = JSON.parse(JSON.stringify(defaults));
       test = JSON.parse(JSON.stringify(defaults));
-      test[2].value = "changeme_securely";
-      test[3].value = "changeme_root";
     }
     setDbFileName('');
     setForm(prev => ({ ...prev, dbType: type, dbSecrets: prod, dbSecretsTest: test }));
