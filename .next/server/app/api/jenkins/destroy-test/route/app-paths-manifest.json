@@ -1,0 +1,3 @@
+{
+  "/api/jenkins/destroy-test/route": "app/api/jenkins/destroy-test/route.js"
+}

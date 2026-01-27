@@ -1,0 +1,3 @@
+{
+  "/api/k8s/namespaces/route": "app/api/k8s/namespaces/route.js"
+}

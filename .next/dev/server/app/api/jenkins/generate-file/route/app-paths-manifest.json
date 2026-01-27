@@ -1,0 +1,3 @@
+{
+  "/api/jenkins/generate-file/route": "app/api/jenkins/generate-file/route.js"
+}

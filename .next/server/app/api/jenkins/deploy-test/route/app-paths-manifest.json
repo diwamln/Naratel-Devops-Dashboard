@@ -1,0 +1,3 @@
+{
+  "/api/jenkins/deploy-test/route": "app/api/jenkins/deploy-test/route.js"
+}

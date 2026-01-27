@@ -1,0 +1,10 @@
+var R=require("../../../../chunks/[turbopack]_runtime.js")("server/app/api/auth/[...nextauth]/route.js")
+R.c("server/chunks/4ce54_next_2466a5d2._.js")
+R.c("server/chunks/4ce54_next-auth_bc71ed9e._.js")
+R.c("server/chunks/4ce54_openid-client_04e3f7be._.js")
+R.c("server/chunks/4ce54_jose_dist_node_cjs_736766f6._.js")
+R.c("server/chunks/4ce54_2336a8cd._.js")
+R.c("server/chunks/[root-of-the-server]__31eda918._.js")
+R.c("server/chunks/7c62a__next-internal_server_app_api_auth_[___nextauth]_route_actions_698b58ad.js")
+R.m("[project]/fix/Naratel-Devops-Dashboard/node_modules/next/dist/esm/build/templates/app-route.js { INNER_APP_ROUTE => \"[project]/fix/Naratel-Devops-Dashboard/src/app/api/auth/[...nextauth]/route.js [app-route] (ecmascript)\" } [app-route] (ecmascript)")
+module.exports=R.m("[project]/fix/Naratel-Devops-Dashboard/node_modules/next/dist/esm/build/templates/app-route.js { INNER_APP_ROUTE => \"[project]/fix/Naratel-Devops-Dashboard/src/app/api/auth/[...nextauth]/route.js [app-route] (ecmascript)\" } [app-route] (ecmascript)").exports

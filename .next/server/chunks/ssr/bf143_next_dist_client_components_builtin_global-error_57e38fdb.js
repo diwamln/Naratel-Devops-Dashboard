@@ -1,0 +1,3 @@
+module.exports=[50554,(a,b,c)=>{let{createClientModuleProxy:d}=a.r(24716);a.n(d("[project]/webui-devops/Naratel-Devops-Dashboard/node_modules/next/dist/client/components/builtin/global-error.js <module evaluation>"))},88589,(a,b,c)=>{let{createClientModuleProxy:d}=a.r(24716);a.n(d("[project]/webui-devops/Naratel-Devops-Dashboard/node_modules/next/dist/client/components/builtin/global-error.js"))},99879,a=>{"use strict";a.i(50554);var b=a.i(88589);a.n(b)}];
+
+//# sourceMappingURL=bf143_next_dist_client_components_builtin_global-error_57e38fdb.js.map

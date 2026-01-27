@@ -1,0 +1,11 @@
+{
+  "/_not-found/page": "app/_not-found/page.js",
+  "/api/auth/[...nextauth]/route": "app/api/auth/[...nextauth]/route.js",
+  "/api/jenkins/generate-file/route": "app/api/jenkins/generate-file/route.js",
+  "/api/manifest/argo-status/route": "app/api/manifest/argo-status/route.js",
+  "/api/manifest/ingress/route": "app/api/manifest/ingress/route.js",
+  "/api/manifest/next-id/route": "app/api/manifest/next-id/route.js",
+  "/api/manifest/secrets/route": "app/api/manifest/secrets/route.js",
+  "/manifest/[appName]/page": "app/manifest/[appName]/page.js",
+  "/manifest/page": "app/manifest/page.js"
+}

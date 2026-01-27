@@ -1,0 +1,3 @@
+(globalThis.TURBOPACK||(globalThis.TURBOPACK=[])).push(["chunks/webui-devops_Naratel-Devops-Dashboard_edge-wrapper_b261a265.js",17127,(e,t,h)=>{self._ENTRIES||={};let r=Promise.resolve().then(()=>e.i(21523));r.catch(()=>{}),self._ENTRIES.middleware_middleware=new Proxy(r,{get(e,t){if("then"===t)return(t,h)=>e.then(t,h);let h=(...h)=>e.then(e=>(0,e[t])(...h));return h.then=(h,r)=>e.then(e=>e[t]).then(h,r),h}})}]);
+
+//# sourceMappingURL=webui-devops_Naratel-Devops-Dashboard_edge-wrapper_b261a265.js.map

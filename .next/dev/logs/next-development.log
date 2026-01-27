@@ -1,0 +1,45 @@
+[00:00:00.815] Server  WARN     ⚠ The "middleware" file convention is deprecated. Please use "proxy" instead. Learn more: https://nextjs.org/docs/messages/middleware-to-proxy
+[00:00:00.818] Server  ERROR    ⨯ The file "./src/middleware.js" must export a function, either as a default export or as a named "middleware" export.
+This function is what Next.js runs for every request handled by this middleware.
+
+Why this happens:
+- The file exists but doesn't export a function.
+- The export is not a function (e.g., an object or constant).
+- There's a syntax error preventing the export from being recognized.
+
+To fix it:
+- Ensure this file has either a default or "middleware" function export.
+
+Learn more: https://nextjs.org/docs/messages/middleware-to-proxy
+[00:00:00.914] Server  LOG      ✓ Ready in 640ms
+[00:00:05.746] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:00:06.368] Server  LOG     --- GET /api/manifest/next-id ---
+[00:00:06.370] Server  LOG     Token: Loaded
+[00:00:06.372] Server  LOG     Repo URL: https://github.com/DevopsNaratel/Deployment-Manifest-App
+[00:00:06.372] Server  LOG     Fetching and resetting repo at /tmp/manifest-repo-workdir
+[00:00:07.730] Server  LOG     Git operations successful.
+[00:00:07.731] Server  LOG     registry.json content: "[\n  {\n    \"id\": \"001\",\n    \"name\": \"diwapp\",\n    \"image\": \"devopsnaratel/diwapp:1.0\",\n    \"db\": \"postgres\",\n    \"ingressHost\": \"prod1.roomify3.my.id\",\n    \"gitRepoUrl\": \"https://github.com/DevopsNaratel/diwapp\",\n    \"createdAt\": \"2026-01-27T04:24:07.937Z\",\n    \"testDomain\": null\n  }\n]"
+[00:00:07.731] Server  LOG     Found 1 apps in registry.
+[00:00:07.735] Server  LOG     Enriched 1 apps successfully.
+[00:00:07.735] Server  LOG     Calculated nextId: 002
+[00:00:07.955] Server  LOG     [ArgoCD] Attempting login to http://117.103.71.154:32081...
+[00:00:07.961] Server  LOG     [ArgoCD] Attempting login to http://117.103.71.154:32081...
+[00:00:07.968] Server  LOG     [ArgoCD] Attempting login to http://117.103.71.154:32081...
+[00:00:08.713] Server  LOG     [ArgoCD] Login successful, token cached.
+[00:00:08.716] Server  LOG     [ArgoCD] Login successful, token cached.
+[00:00:08.742] Server  ERROR   [ArgoCD] Fetch Error for 001-diwapp-testing: "ArgoCD API Error (403): {\"error\":\"permission denied\",\"code\":7,\"message\":\"permission denied\"}"
+[00:00:08.915] Server  LOG     [ArgoCD] Login successful, token cached.
+[00:01:33.025] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:01:33.067] Server  LOG     --- GET /api/manifest/next-id ---
+[00:01:33.067] Server  LOG     Token: Loaded
+[00:01:33.067] Server  LOG     Repo URL: https://github.com/DevopsNaratel/Deployment-Manifest-App
+[00:01:33.068] Server  LOG     Fetching and resetting repo at /tmp/manifest-repo-workdir
+[00:01:34.282] Server  LOG     Git operations successful.
+[00:01:34.282] Server  LOG     registry.json content: "[\n  {\n    \"id\": \"001\",\n    \"name\": \"diwapp\",\n    \"image\": \"devopsnaratel/diwapp:1.0\",\n    \"db\": \"postgres\",\n    \"ingressHost\": \"prod1.roomify3.my.id\",\n    \"gitRepoUrl\": \"https://github.com/DevopsNaratel/diwapp\",\n    \"createdAt\": \"2026-01-27T04:24:07.937Z\",\n    \"testDomain\": null\n  }\n]"
+[00:01:34.282] Server  LOG     Found 1 apps in registry.
+[00:01:34.283] Server  LOG     Enriched 1 apps successfully.
+[00:01:34.283] Server  LOG     Calculated nextId: 002
+[00:01:34.347] Server  ERROR   [ArgoCD] Fetch Error for diwapp-testing: "ArgoCD API Error (403): {\"error\":\"permission denied\",\"code\":7,\"message\":\"permission denied\"}"
+[00:01:34.350] Server  ERROR   [ArgoCD] Fetch Error for diwapp-prod: "ArgoCD API Error (403): {\"error\":\"permission denied\",\"code\":7,\"message\":\"permission denied\"}"
+[00:01:36.766] Server  ERROR   [ArgoCD] Fetch Error for 001-diwapp-testing: "ArgoCD API Error (403): {\"error\":\"permission denied\",\"code\":7,\"message\":\"permission denied\"}"
+[00:06:34.944] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold

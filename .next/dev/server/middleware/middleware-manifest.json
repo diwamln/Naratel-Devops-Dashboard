@@ -1,0 +1,31 @@
+{
+  "sorted_middleware": [],
+  "middleware": {
+    "/": {
+      "files": [
+        "server/edge/chunks/fix_Naratel-Devops-Dashboard_d780f972._.js",
+        "server/edge/chunks/[root-of-the-server]__5b436d81._.js",
+        "server/edge/chunks/turbopack-fix_Naratel-Devops-Dashboard_edge-wrapper_3e0c3cf0.js"
+      ],
+      "name": "middleware",
+      "page": "/",
+      "matchers": [
+        {
+          "regexp": "/:nextData(_next/data/[^/]{1,})?/((?!login|api/auth|api/jenkins|api/manifest|_next/static|_next/image|favicon.ico|Logo.png).*){(\\\\.json)}?",
+          "originalSource": "/((?!login|api/auth|api/jenkins|api/manifest|_next/static|_next/image|favicon.ico|Logo.png).*)"
+        }
+      ],
+      "wasm": [],
+      "assets": [],
+      "env": {
+        "__NEXT_BUILD_ID": "development",
+        "NEXT_SERVER_ACTIONS_ENCRYPTION_KEY": "mjwbn2ndkfnDvYuFKIrr5OT9rK2grD4X+Mpf/mgKwPU=",
+        "__NEXT_PREVIEW_MODE_ID": "1017865ae1a55c70f7619dba9d030b9d",
+        "__NEXT_PREVIEW_MODE_ENCRYPTION_KEY": "47f67429d9df5cb24f85ae93e3897121957e9b69498a8ea18a32e40a9013ee38",
+        "__NEXT_PREVIEW_MODE_SIGNING_KEY": "96e6a080e5fd52105b449343fae5e2989ca8841c796eec4b9a1cbfa9f0fd83f4"
+      }
+    }
+  },
+  "instrumentation": null,
+  "functions": {}
+}
