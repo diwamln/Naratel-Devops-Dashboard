@@ -226,7 +226,7 @@ export default function ManifestForm({ onClose, onSuccess }) {
 
   // --- STYLES (Replaced @apply with explicit classes) ---
   const labelClass = "block text-xs font-bold text-neutral-500 uppercase mb-2";
-  const inputClass = "w-full p-3 text-sm border rounded-lg dark:bg-neutral-950 dark:border-neutral-800 focus:ring-2 focus:ring-[#FFA500] outline-none transition-all";
+  const inputClass = "w-full p-3 text-sm border border-neutral-300 dark:border-neutral-800 rounded-lg dark:bg-neutral-950 focus:border-[#FFA500] focus:ring-1 focus:ring-[#FFA500] outline-none transition-all placeholder:text-neutral-400";
   const btnPrimaryClass = "flex items-center gap-2 px-8 py-2.5 rounded-lg text-sm font-bold bg-neutral-900 text-white hover:bg-neutral-800 dark:bg-white dark:text-neutral-900 shadow-md transition-all";
   const btnSecondaryClass = "flex items-center gap-2 px-6 py-2.5 rounded-lg text-sm font-bold text-neutral-600 hover:bg-neutral-100 dark:text-neutral-300 dark:hover:bg-neutral-800 disabled:opacity-30 transition-all";
 
