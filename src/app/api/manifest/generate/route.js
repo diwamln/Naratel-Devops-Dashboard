@@ -146,7 +146,7 @@ export async function POST(req) {
             if (Object.keys(obj).length === 0) return '{}';
             return Object.entries(obj)
                 .map(([k, v]) => {
-                    const safeVal = String(v).replace(/\/g, '\\').replace(/"/g, '"');
+                    const safeVal = String(v).replace(/\\/g, '\\\\').replace(/"/g, '\\"');
                     return `  ${k}: "${safeVal}"`;
                 })
                 .join('\n');
