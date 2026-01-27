@@ -298,6 +298,26 @@ export default function ManifestForm({ onClose, onSuccess }) {
     <div className="space-y-8 animate-in fade-in slide-in-from-right-4 duration-300">
       <div className="flex items-center gap-2 mb-4 text-[#FFA500]"><Server size={24} /><h2 className="font-bold uppercase text-sm tracking-wider text-neutral-500">Configuration & Secrets</h2></div>
 
+      {form.dbType !== 'none' && (
+        <div className="bg-neutral-50 dark:bg-neutral-900/50 p-4 rounded-xl border border-neutral-200 dark:border-neutral-800 space-y-4 mb-6">
+          <div className="flex items-center justify-between">
+            <div>
+              <h4 className="font-bold text-sm text-neutral-800 dark:text-neutral-200 flex items-center gap-2"><Database size={16} /> Internal Database DNS</h4>
+              <p className="text-xs text-neutral-500 mt-1">Connection string for your application to reach the database.</p>
+            </div>
+          </div>
+
+          <div className="flex items-center gap-2 bg-neutral-900 text-neutral-200 p-2 rounded-lg border border-neutral-700 font-mono text-xs">
+            <span className="text-[#FFA500]">$</span>
+            <code className="flex-1 break-all">
+              svc-db-{form.appName}-{form.appId}.{form.appId}-db-{form.appName}-prod.svc.cluster.local
+            </code>
+            <button type="button" onClick={() => copyToClipboard(`svc-db-${form.appName}-${form.appId}.${form.appId}-db-${form.appName}-prod.svc.cluster.local`)} className="p-1.5 hover:bg-white/10 rounded-md transition-colors text-neutral-400 hover:text-white shrink-0" title="Copy DNS"><Copy size={14} /></button>
+          </div>
+          <p className="text-[10px] text-neutral-500">Use this hostname to connect to your database from your application.</p>
+        </div>
+      )}
+
       {/* Migration Toggle */}
       <div className="bg-neutral-50 dark:bg-neutral-900/50 p-4 rounded-xl border border-neutral-200 dark:border-neutral-800 flex items-center justify-between">
         <div><h4 className="font-bold text-sm">Auto-Migration</h4><p className="text-xs text-neutral-500">Run DB migration on deploy</p></div>
