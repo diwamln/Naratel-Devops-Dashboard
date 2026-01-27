@@ -144,7 +144,7 @@ function TestingIndicator({ appId, appName }) {
   if (!exists) return null;
 
   return (
-    <div className="flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[10px] font-bold text-white bg-gradient-to-r from-orange-500 to-amber-500 shadow-lg shadow-orange-500/30 animate-in fade-in zoom-in duration-300 ring-1 ring-white/20">
+    <div className="flex items-center gap-1.5 px-2 py-0.5 rounded-md text-[10px] font-bold text-white bg-gradient-to-r from-orange-500 to-amber-500 animate-in fade-in zoom-in duration-300 ring-1 ring-white/10">
       <FlaskConical size={11} className="shrink-0" />
       TESTING ACTIVE
     </div>
