@@ -66,6 +66,7 @@ export async function POST(req) {
         const foldersToDelete = [
             path.join(repoPath, 'apps', `${appId}-${appName}-testing`),
             path.join(repoPath, 'apps', `${appId}-db-${appName}-testing`),
+            // Legacy paths support
             path.join(repoPath, 'apps', `${appName}-testing`),
             path.join(repoPath, 'apps', `${appName}-db-testing`)
         ];
@@ -73,10 +74,13 @@ export async function POST(req) {
         let deletedCount = 0;
 
         foldersToDelete.forEach(folder => {
-            if (fs.existsSync(folder)) {
-                fs.rmSync(folder, { recursive: true, force: true });
+            const valuesPath = path.join(folder, 'values.yaml');
+            if (fs.existsSync(valuesPath)) {
+                // Only delete values.yaml to trigger ArgoCD pruning
+                // We PRESERVE the folder and secrets.yaml for the next deployment
+                fs.rmSync(valuesPath);
                 deletedCount++;
-                console.log(`Deleted: ${folder}`);
+                console.log(`Deleted values.yaml in: ${folder}`);
             }
         });
 
