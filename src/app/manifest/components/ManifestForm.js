@@ -227,18 +227,22 @@ export default function ManifestForm({ onClose, onSuccess }) {
     }
   };
 
+  // --- STYLES (Replaced @apply with explicit classes) ---
+  const labelClass = "block text-xs font-bold text-neutral-500 uppercase mb-2";
+  const inputClass = "w-full p-3 text-sm border rounded-lg dark:bg-neutral-950 dark:border-neutral-800 focus:ring-2 focus:ring-[#FFA500] outline-none transition-all";
+  const btnPrimaryClass = "flex items-center gap-2 px-8 py-2.5 rounded-lg text-sm font-bold bg-neutral-900 text-white hover:bg-neutral-800 dark:bg-white dark:text-neutral-900 shadow-md transition-all";
+  const btnSecondaryClass = "flex items-center gap-2 px-6 py-2.5 rounded-lg text-sm font-bold text-neutral-600 hover:bg-neutral-100 dark:text-neutral-300 dark:hover:bg-neutral-800 disabled:opacity-30 transition-all";
+
   // --- RENDERERS ---
-  // Identity, Database, Access steps are same structure, mostly just form binding updates handled by state init
-  // I will condense them for brevity but keep logical integrity.
 
   const renderIdentityStep = () => (
     <div className="space-y-4 animate-in fade-in slide-in-from-right-4 duration-300">
       <div className="flex items-center gap-2 mb-4 text-[#FFA500]"><Box size={24} /><h2 className="font-bold uppercase text-sm tracking-wider text-neutral-500">Identity</h2></div>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-        <div className="md:col-span-2"><label className="label-sm">Application Name</label><input required className="input-field" placeholder="e.g. inventory-app" value={form.appName} onChange={e => setForm({ ...form, appName: e.target.value.toLowerCase().replace(/\s+/g, '-') })} /></div>
-        <div className="md:col-span-2"><label className="label-sm">Docker Image</label><input required className="input-field" placeholder="devopsnaratel/app" value={form.imageRepo} onChange={e => setForm({ ...form, imageRepo: e.target.value })} /></div>
-        <div className="md:col-span-2"><label className="label-sm">Image Tag</label><input required className="input-field" placeholder="v1.0.0" value={form.imageTag} onChange={e => setForm({ ...form, imageTag: e.target.value })} /></div>
-        <div className="md:col-span-2"><label className="label-sm">Git Repo URL</label><input className="input-field" placeholder="https://github.com/..." value={form.gitRepoUrl} onChange={e => setForm({ ...form, gitRepoUrl: e.target.value })} /></div>
+        <div className="md:col-span-2"><label className={labelClass}>Application Name</label><input required className={inputClass} placeholder="e.g. inventory-app" value={form.appName} onChange={e => setForm({ ...form, appName: e.target.value.toLowerCase().replace(/\s+/g, '-') })} /></div>
+        <div className="md:col-span-2"><label className={labelClass}>Docker Image</label><input required className={inputClass} placeholder="devopsnaratel/app" value={form.imageRepo} onChange={e => setForm({ ...form, imageRepo: e.target.value })} /></div>
+        <div className="md:col-span-2"><label className={labelClass}>Image Tag</label><input required className={inputClass} placeholder="v1.0.0" value={form.imageTag} onChange={e => setForm({ ...form, imageTag: e.target.value })} /></div>
+        <div className="md:col-span-2"><label className={labelClass}>Git Repo URL</label><input className={inputClass} placeholder="https://github.com/..." value={form.gitRepoUrl} onChange={e => setForm({ ...form, gitRepoUrl: e.target.value })} /></div>
       </div>
     </div>
   );
@@ -255,7 +259,7 @@ export default function ManifestForm({ onClose, onSuccess }) {
         ))}
       </div>
       {form.dbType !== 'none' && (
-        <div><label className="label-sm">Storage Class</label><input className="input-field" value={form.storageClass} onChange={e => setForm({...form, storageClass: e.target.value})} /></div>
+        <div><label className={labelClass}>Storage Class</label><input className={inputClass} value={form.storageClass} onChange={e => setForm({...form, storageClass: e.target.value})} /></div>
       )}
     </div>
   );
@@ -264,12 +268,12 @@ export default function ManifestForm({ onClose, onSuccess }) {
     <div className="space-y-6 animate-in fade-in slide-in-from-right-4 duration-300">
       <div className="flex items-center gap-2 mb-4 text-[#FFA500]"><Network size={24} /><h2 className="font-bold uppercase text-sm tracking-wider text-neutral-500">Access</h2></div>
       <div className="grid grid-cols-2 gap-4">
-        <div><label className="label-sm">Service Port</label><input type="number" className="input-field" value={form.servicePort} onChange={e => setForm({...form, servicePort: parseInt(e.target.value)})} /></div>
-        <div><label className="label-sm">Target Port</label><input type="number" className="input-field" value={form.targetPort} onChange={e => setForm({...form, targetPort: parseInt(e.target.value)})} /></div>
+        <div><label className={labelClass}>Service Port</label><input type="number" className={inputClass} value={form.servicePort} onChange={e => setForm({...form, servicePort: parseInt(e.target.value)})} /></div>
+        <div><label className={labelClass}>Target Port</label><input type="number" className={inputClass} value={form.targetPort} onChange={e => setForm({...form, targetPort: parseInt(e.target.value)})} /></div>
       </div>
       <div className="p-4 border rounded-xl bg-gray-50 dark:bg-neutral-900/50">
         <label className="flex items-center gap-3 cursor-pointer"><input type="checkbox" checked={form.ingressEnabled} onChange={e => setForm({...form, ingressEnabled: e.target.checked})} className="accent-[#FFA500] w-5 h-5" /><span className="font-bold text-sm">Enable Ingress</span></label>
-        {form.ingressEnabled && <div className="mt-4"><label className="label-sm">Hostname</label><input className="input-field" placeholder="app.naratel.id" value={form.ingressHost} onChange={e => setForm({...form, ingressHost: e.target.value})} /></div>}
+        {form.ingressEnabled && <div className="mt-4"><label className={labelClass}>Hostname</label><input className={inputClass} placeholder="app.naratel.id" value={form.ingressHost} onChange={e => setForm({...form, ingressHost: e.target.value})} /></div>}
       </div>
     </div>
   );
@@ -299,7 +303,7 @@ export default function ManifestForm({ onClose, onSuccess }) {
         <div><h4 className="font-bold text-sm">Auto-Migration</h4><p className="text-xs text-neutral-500">Run DB migration on deploy</p></div>
         <input type="checkbox" checked={form.migrationEnabled} onChange={e => setForm({...form, migrationEnabled: e.target.checked})} className="w-5 h-5 accent-[#FFA500]" />
       </div>
-      {form.migrationEnabled && <input className="input-field mt-2" value={form.migrationCommand} onChange={e => setForm({...form, migrationCommand: e.target.value})} />}
+      {form.migrationEnabled && <input className={inputClass + " mt-2"} value={form.migrationCommand} onChange={e => setForm({...form, migrationCommand: e.target.value})} />}
 
       {/* Secrets Management Tabs */}
       <div className="border-t pt-6 border-neutral-200 dark:border-neutral-800">
@@ -351,15 +355,9 @@ export default function ManifestForm({ onClose, onSuccess }) {
         </form>
       </div>
       <div className="p-6 bg-white dark:bg-neutral-900 border-t border-neutral-200 dark:border-neutral-800 flex justify-between items-center z-10">
-        <button type="button" onClick={prevStep} disabled={step === 1} className="btn-secondary">Back</button>
-        {step < 4 ? <button type="button" onClick={nextStep} className="btn-primary">Next Step</button> : <button type="button" onClick={handleDeploy} disabled={loading} className="btn-primary bg-[#FFA500] hover:bg-orange-600">{loading ? <Loader2 className="animate-spin" /> : 'Deploy App'}</button>}
+        <button type="button" onClick={prevStep} disabled={step === 1} className={btnSecondaryClass}>Back</button>
+        {step < 4 ? <button type="button" onClick={nextStep} className={btnPrimaryClass}>Next Step</button> : <button type="button" onClick={handleDeploy} disabled={loading} className={`${btnPrimaryClass} bg-[#FFA500] hover:bg-orange-600`}>{loading ? <Loader2 className="animate-spin" /> : 'Deploy App'}</button>}
       </div>
-      <style jsx>{`
-        .label-sm { @apply block text-xs font-bold text-neutral-500 uppercase mb-2; }
-        .input-field { @apply w-full p-3 text-sm border rounded-lg dark:bg-neutral-950 dark:border-neutral-800 focus:ring-2 focus:ring-[#FFA500] outline-none transition-all; }
-        .btn-primary { @apply flex items-center gap-2 px-8 py-2.5 rounded-lg text-sm font-bold bg-neutral-900 text-white hover:bg-neutral-800 dark:bg-white dark:text-neutral-900 shadow-md transition-all; }
-        .btn-secondary { @apply flex items-center gap-2 px-6 py-2.5 rounded-lg text-sm font-bold text-neutral-600 hover:bg-neutral-100 dark:text-neutral-300 dark:hover:bg-neutral-800 disabled:opacity-30 transition-all; }
-      `}</style>
     </div>
   );
 }
