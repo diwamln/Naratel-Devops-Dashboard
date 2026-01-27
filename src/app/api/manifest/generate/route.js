@@ -408,7 +408,11 @@ mariadb:
     repository: "${dbImage}"
     tag: "${dbTag}"
   backup:
-    schedule: "0 1 * * *"`;
+    schedule: "0 1 * * *"
+  restore:
+    enabled: "false"
+    s3Path: ""
+    sourceNamespace: ""`;
                 } else {
                     dbSpecificConfig = `
 postgres:
@@ -416,7 +420,11 @@ postgres:
     repository: "${dbImage}"
     tag: "${dbTag}"
   backup:
-    schedule: "0 1 * * *"`;
+    schedule: "0 1 * * *"
+  restore:
+    enabled: "false"
+    s3Path: ""
+    sourceNamespace: ""`;
                 }
                 
                 values = `
@@ -471,7 +479,11 @@ mariadb:
     repository: "${dbImage}"
     tag: "${dbTag}"
   backup:
-    schedule: "0 1 * * *"`;
+    schedule: "0 1 * * *"
+  restore:
+    enabled: "false"
+    s3Path: ""
+    sourceNamespace: ""`;
                 } else {
                     dbSpecificConfig = `
 postgres:
@@ -479,7 +491,11 @@ postgres:
     repository: "${dbImage}"
     tag: "${dbTag}"
   backup:
-    schedule: "0 1 * * *"`;
+    schedule: "0 1 * * *"
+  restore:
+    enabled: "false"
+    s3Path: ""
+    sourceNamespace: ""`;
                 }
 
                 values = `
