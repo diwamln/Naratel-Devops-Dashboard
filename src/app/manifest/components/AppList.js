@@ -9,7 +9,8 @@ import {
   Box,
   ExternalLink,
   Activity,
-  TestTube
+  TestTube,
+  FlaskConical
 } from "lucide-react";
 import { useRouter } from "next/navigation";
 import useSWR from 'swr';
@@ -143,8 +144,8 @@ function TestingIndicator({ appId, appName }) {
   if (!exists) return null;
 
   return (
-    <div className="flex items-center gap-1.5 px-2 py-0.5 rounded-md text-[10px] font-bold text-orange-600 dark:text-orange-400 bg-orange-50 dark:bg-orange-900/20 border border-orange-100 dark:border-orange-800/50 animate-in fade-in zoom-in duration-300">
-      <TestTube size={10} />
+    <div className="flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[10px] font-bold text-white bg-gradient-to-r from-orange-500 to-amber-500 shadow-lg shadow-orange-500/30 animate-in fade-in zoom-in duration-300 ring-1 ring-white/20">
+      <FlaskConical size={11} className="shrink-0" />
       TESTING ACTIVE
     </div>
   );
