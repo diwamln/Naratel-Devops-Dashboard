@@ -286,13 +286,26 @@ export default function ManifestForm({ onClose, onSuccess }) {
     return (
       <div className="space-y-2 mt-3 max-h-[200px] overflow-y-auto pr-2">
         {list.map((s, idx) => (
-          <div key={idx} className="flex gap-2">
-            <input className="flex-1 p-2 text-xs border rounded dark:bg-neutral-950 dark:border-neutral-800 font-mono" value={s.key} onChange={e => updateSecret(type, env, idx, 'key', e.target.value)} placeholder="KEY" />
+          <div key={idx} className="flex gap-2 items-center">
+            {type === 'db' ? (
+              <div className="flex-1 p-2 text-[10px] font-mono font-bold text-neutral-500 bg-neutral-100 dark:bg-neutral-800/50 rounded border border-transparent truncate">
+                {s.key}
+              </div>
+            ) : (
+              <input 
+                className="flex-1 p-2 text-xs border rounded dark:bg-neutral-950 dark:border-neutral-800 font-mono" 
+                value={s.key} 
+                onChange={e => updateSecret(type, env, idx, 'key', e.target.value)} 
+                placeholder="KEY" 
+              />
+            )}
             <input className="flex-1 p-2 text-xs border rounded dark:bg-neutral-950 dark:border-neutral-800" value={s.value} onChange={e => updateSecret(type, env, idx, 'value', e.target.value)} placeholder="VALUE" />
           </div>
         ))}
         {list.length === 0 && <p className="text-xs text-neutral-400 italic">No secrets.</p>}
-        <button type="button" onClick={() => addSecret(type, env)} className="text-xs font-bold text-[#FFA500] flex items-center gap-1 mt-2"><Plus size={12} /> Add Variable</button>
+        {type === 'app' && (
+          <button type="button" onClick={() => addSecret(type, env)} className="text-xs font-bold text-[#FFA500] flex items-center gap-1 mt-2"><Plus size={12} /> Add Variable</button>
+        )}
       </div>
     );
   };
