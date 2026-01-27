@@ -26,6 +26,7 @@ import {
   GitBranch,
   TestTube
 } from "lucide-react";
+import { SiPostgresql, SiMariadb } from "react-icons/si";
 import { motion } from "framer-motion";
 
 const steps = ["Identity", "Database", "Access", "Configuration"];
@@ -253,9 +254,11 @@ export default function ManifestForm({ onClose, onSuccess }) {
       <div className="grid grid-cols-3 gap-4">
         {['none', 'postgres', 'mariadb'].map(type => (
           <div key={type} onClick={() => handleDbTypeChange(type)} className={`cursor-pointer rounded-xl border-2 p-4 flex flex-col items-center gap-3 ${form.dbType === type ? 'border-[#FFA500] bg-[#FFA500]/5' : 'border-neutral-200 dark:border-neutral-800'}`}>
+            {type === 'none' && <X size={32} className="text-neutral-400" />}
+            {type === 'postgres' && <SiPostgresql size={32} className="text-blue-500" />}
+            {type === 'mariadb' && <SiMariadb size={32} className="text-orange-600" />}
             <span className="capitalize font-bold text-sm">{type}</span>
-            {form.dbType === type && <CheckCircle size={16} className="text-[#FFA500]" />}
-          </div>
+
         ))}
       </div>
       {form.dbType !== 'none' && (
