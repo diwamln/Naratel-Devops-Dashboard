@@ -144,6 +144,18 @@ export default function ManifestForm({ onClose, onSuccess }) {
     const key = `${type}Secrets${env === 'test' ? 'Test' : ''}`;
     const updated = [...form[key]];
     updated[index][field] = value;
+    
+    // Auto-sync Prod DB secrets to Test DB secrets for convenience
+    if (type === 'db' && env !== 'test') {
+      const testKey = 'dbSecretsTest';
+      const updatedTest = [...form[testKey]];
+      if (updatedTest[index]) {
+        updatedTest[index][field] = value;
+        setForm(prev => ({ ...prev, [key]: updated, [testKey]: updatedTest }));
+        return;
+      }
+    }
+
     setForm(prev => ({ ...prev, [key]: updated }));
   };
 
