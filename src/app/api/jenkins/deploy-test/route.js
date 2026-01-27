@@ -78,8 +78,6 @@ export async function POST(req) {
                 }
                 registry[appIndex].testDomain = selectedDomain;
             }
-        } else {
-            console.warn("[Domain] No testDomains defined in config.json. Falling back to NodePort/Default.");
         }
 
         const generatedFolders = [];
@@ -92,32 +90,19 @@ export async function POST(req) {
             let prodFolder = path.join(repoPath, 'apps', `${appId}-${dbPrefix}${appName}${suffixProd}`);
             let testFolder = path.join(repoPath, 'apps', `${appId}-${dbPrefix}${appName}${suffixTest}`);
             
-            if (!fs.existsSync(prodFolder)) {
-                // Legacy Fallback
-                const legacyProdFolder = path.join(repoPath, 'apps', `${dbPrefix}${appName}${suffixProd}`);
-                if (fs.existsSync(legacyProdFolder)) {
-                    prodFolder = legacyProdFolder;
-                    testFolder = path.join(repoPath, 'apps', `${dbPrefix}${appName}${suffixTest}`);
-                } else {
-                    console.warn(`Prod folder not found: ${prodFolder}`);
-                    return;
-                }
-            }
-
+            // Note: Folder testing mungkin sudah ada jika standby secret sudah di-generate
             if (!fs.existsSync(testFolder)) {
                 fs.mkdirSync(testFolder, { recursive: true });
             }
 
-            // A. Handle Secrets (Prefer Standby, Fallback to Copy)
+            // A. Handle Secrets (ABSOLUTE REQUIREMENT)
             const testSecretPath = path.join(testFolder, 'secrets.yaml');
-            const prodSecretPath = path.join(prodFolder, 'secrets.yaml');
             
-            if (fs.existsSync(testSecretPath)) {
-                console.log(`[Secrets] Using existing/standby secrets for ${appName}${suffixTest}`);
-            } else if (fs.existsSync(prodSecretPath)) {
-                console.warn(`[Secrets] Standby secret not found. Copying Prod secret for ${appName}${suffixTest}`);
-                fs.copyFileSync(prodSecretPath, testSecretPath);
+            if (!fs.existsSync(testSecretPath)) {
+                throw new Error(`Standby secret for ${role} (${appName}${suffixTest}) not found in repository. Please configure testing secrets first.`);
             }
+            
+            console.log(`[Secrets] Using verified standby secrets for ${appName}${suffixTest}`);
 
             // B. Read & Modify Values
             const prodValuesPath = path.join(prodFolder, 'values.yaml');
@@ -154,7 +139,7 @@ export async function POST(req) {
                     }
 
                 } else {
-                    // --- APP LOGIC: Clone & Modify with Security Overrides ---
+                    // --- APP LOGIC: Simple Clone & Metadata Update ---
                     values.namespace = `${appId}-${appName}-testing`; 
                     values.app.env = 'testing';
                     
@@ -167,13 +152,11 @@ export async function POST(req) {
                             className: "nginx",
                             hosts: [{ host: selectedDomain, path: "/" }]
                         };
-                    } else {
-                        if (values.ingress && values.ingress.enabled && values.ingress.hosts) {
-                            values.ingress.hosts = values.ingress.hosts.map(h => ({
-                                ...h,
-                                host: `test-${h.host}`
-                            }));
-                        }
+                    } else if (values.ingress && values.ingress.enabled && values.ingress.hosts) {
+                        values.ingress.hosts = values.ingress.hosts.map(h => ({
+                            ...h,
+                            host: `test-${h.host}`
+                        }));
                     }
                     
                     // Migration
@@ -181,51 +164,8 @@ export async function POST(req) {
                         values.migration.command = "php artisan migrate --seed --force";
                     }
                     
-                    // DB Connection: AGGRESSIVE OVERWRITE
-                    if (dbType !== 'none') {
-                        const dbFqdn = `svc-db-${appName}-${appId}.${appId}-db-${appName}-testing.svc.cluster.local`;
-                        const dbPort = dbType === 'postgres' ? "5432" : "3306";
-                        const realDbUser = dbType === 'postgres' ? "postgres" : "root"; 
-                        // Note: For 'postgres' chart, default pass might be needed if not set.
-                        // Ideally we should use a known testing password or one generated in the DB deployment.
-                        // Assuming 'changeme_securely' is the default for our testing charts or handled by secrets.
-                        
-                        if (!values.extraEnv) values.extraEnv = [];
-                        
-                        const overrides = [
-                            // Standard
-                            { name: "DB_HOST", value: dbFqdn },
-                            { name: "DB_PORT", value: dbPort },
-                            { name: "DB_USER", value: realDbUser },
-                            { name: "DB_USERNAME", value: realDbUser },
-                            { name: "DB_PASSWORD", value: "changeme_securely" },
-                            { name: "DB_PASS", value: "changeme_securely" },
-                            { name: "DB_NAME", value: `${appName.replace(/-/g, '_')}_testing` },
-                            { name: "DB_DATABASE", value: `${appName.replace(/-/g, '_')}_testing` },
-
-                            // Postgres Specific
-                            { name: "POSTGRES_HOST", value: dbFqdn },
-                            { name: "PGHOST", value: dbFqdn },
-                            { name: "POSTGRES_USER", value: realDbUser },
-                            { name: "POSTGRES_PASSWORD", value: "changeme_securely" },
-                            { name: "POSTGRES_DB", value: `${appName.replace(/-/g, '_')}_testing` },
-
-                            // MySQL/MariaDB Specific
-                            { name: "MYSQL_HOST", value: dbFqdn },
-                            { name: "MARIADB_HOST", value: dbFqdn },
-                            { name: "MYSQL_USER", value: realDbUser },
-                            { name: "MYSQL_PASSWORD", value: "changeme_securely" },
-                            { name: "MYSQL_DATABASE", value: `${appName.replace(/-/g, '_')}_testing` },
-                            
-                            // Dangerous Connection Strings (POISONING)
-                            { name: "DATABASE_URL", value: `${dbType}://${realDbUser}:changeme_securely@${dbFqdn}:${dbPort}/${appName.replace(/-/g, '_')}_testing` },
-                            { name: "DB_URL", value: `${dbType}://${realDbUser}:changeme_securely@${dbFqdn}:${dbPort}/${appName.replace(/-/g, '_')}_testing` }
-                        ];
-
-                        const overrideNames = overrides.map(o => o.name);
-                        values.extraEnv = values.extraEnv.filter(e => !overrideNames.includes(e.name));
-                        values.extraEnv.push(...overrides);
-                    }
+                    // NO AGGRESSIVE OVERWRITE HERE
+                    // System expects that the Standby Secret ALREADY contains correct DB_HOST etc.
                 }
 
                 // Write Values
@@ -234,42 +174,48 @@ export async function POST(req) {
             }
         };
 
-        // 3. Deploy App
-        deployComponent('app', '-prod', '-testing');
-
-        // 4. Deploy DB (if exists)
-        if (dbType !== 'none') {
-            deployComponent('db', '-prod', '-testing');
-        }
-
-        if (generatedFolders.length === 0) {
-             return NextResponse.json({ error: "No prod manifests found to clone." }, { status: 400 });
-        }
-
-        // 5. Save Registry (Update assigned domain)
-        fs.writeFileSync(registryPath, JSON.stringify(registry, null, 2));
-
-        // 6. Commit & Push
-        execSync(`git add .`, { cwd: repoPath });
-        const commitMsg = `feat: deploy ephemeral testing for ${appName} using ${selectedDomain || 'NodePort'}`;
-        
         try {
-             execSync(`git commit -m "${commitMsg}"`, { cwd: repoPath });
-             execSync(`git push origin main`, { cwd: repoPath });
-        } catch (e) {
-             if (e.message.includes('nothing to commit')) {
-                 return NextResponse.json({ message: "Environment already up-to-date." });
-             }
-             throw e;
-        }
+            // 3. Deploy App (Throws if no secret)
+            deployComponent('app', '-prod', '-testing');
 
-        return NextResponse.json({ 
-            message: "Ephemeral environment deployed", 
-            folders: generatedFolders,
-            testDomain: selectedDomain,
-            namespaceApp: `${appId}-${appName}-testing`,
-            namespaceDb: dbType !== 'none' ? `${appId}-${appName}-db-testing` : null
-        });
+            // 4. Deploy DB (Throws if no secret)
+            if (dbType !== 'none') {
+                deployComponent('db', '-prod', '-testing');
+            }
+
+            if (generatedFolders.length === 0) {
+                 return NextResponse.json({ error: "No manifests generated." }, { status: 400 });
+            }
+
+            // 5. Save Registry (Update assigned domain)
+            fs.writeFileSync(registryPath, JSON.stringify(registry, null, 2));
+
+            // 6. Commit & Push
+            execSync(`git add .`, { cwd: repoPath });
+            const commitMsg = `feat: deploy ephemeral testing for ${appName} using standby secrets`;
+            
+            try {
+                 execSync(`git commit -m "${commitMsg}"`, { cwd: repoPath });
+                 execSync(`git push origin main`, { cwd: repoPath });
+            } catch (e) {
+                 if (e.message.includes('nothing to commit')) {
+                     return NextResponse.json({ message: "Environment already up-to-date." });
+                 }
+                 throw e;
+            }
+
+            return NextResponse.json({ 
+                message: "Ephemeral environment deployed successfully using standby secrets", 
+                folders: generatedFolders,
+                testDomain: selectedDomain,
+                namespaceApp: `${appId}-${appName}-testing`,
+                namespaceDb: dbType !== 'none' ? `${appId}-db-${appName}-testing` : null
+            });
+
+        } catch (err) {
+            // If deployComponent throws, it lands here
+            return NextResponse.json({ error: err.message }, { status: 400 });
+        }
 
     });
 
